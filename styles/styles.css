@@ -1,165 +1,289 @@
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 3px 10px 3px 7px;
+  color: white;
+  background: #222;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  user-select: none;
+}
+
+.icon-svg {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+/* Colores personalizados por tecnología */
+.tag.react {
+  background: #222;
+  color: #61dafb;
+}
+
+.tag.vite {
+  background: #222;
+  color: #ffb300;
+}
+
+.tag.firebase {
+  background: #222;
+  color: #ffca28;
+}
+
+.tag.mui {
+  background: #222;
+  color: #007fff;
+}
+
+.tag.typescript {
+  background: #222;
+  color: #3178c6;
+}
+
+.tag.giphy {
+  background: #222;
+  color: #0cf;
+}
+
+.tag.php {
+  background: #222;
+  color: #8993be;
+}
+
+.tag.mysql {
+  background: #222;
+  color: #00758f;
+}
+
+.tag.js {
+  background: #222;
+  color: #f7df1e;
+}
+
+.tag.bootstrap {
+  background: #222;
+  color: #7952b3;
+}
+
+.tag.pdf {
+  background: #222;
+  color: #e53935;
+}
+
+.tag.css {
+  background: #222;
+  color: #2965f1;
+}
+
+.tag.remix {
+  background: #222;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .tech-tags {
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 7px;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 2px 7px 2px 5px;
+  }
+
+  .icon-svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-body{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  background:transparent;
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: black;
   font-family: "Roboto Condensed", sans-serif;
 }
 
-header{
-  width:98%;
+header {
+  width: 98%;
   max-width: 1200px;
-  height:60px;
+  height: 60px;
   /* background-color:rgba(17, 16, 16, 0.398); */
-  background:rgba(0, 0, 0, 0.35);
-  padding:5px 0px;
-  border-radius:10px;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  color:white;
-  position:fixed;
+  background: rgba(0, 0, 0, 0);
+  padding: 5px 0px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  position: fixed;
   z-index: 10;
   margin: 10px auto;
   left: 50%;
   transform: translateX(-50%);
-  backdrop-filter:blur(10px);
-  top:0;
-  box-shadow: 0 2px 9px rgba(252, 252, 252, 0.3);
+  backdrop-filter: blur(80px);
+  top: 0;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
-.img-profile{
-  width:60px;
-  border-radius:50%;
+header .logo {
+  width: 50px;
+  height: 50px;
+  margin-left: 20px;
+  fill: white;
 }
 
-header ul{
-  display:flex;
+header ul {
+  display: flex;
 }
 
-header li{
-  list-style:none;
-  padding:0px 20px;
+header li {
+  list-style: none;
+  padding: 0px 20px;
 }
 
-header a{
-  text-decoration:none;
-  transition:0.4s ease;
-  color:white;
+header a {
+  text-decoration: none;
+  transition: 0.4s ease;
+  color: white;
 }
 
-header a:hover{
-  background:conic-gradient(at left top, rgb(134, 239, 172), rgb(165, 243, 252), rgb(63, 98, 18));
+header a:hover {
+  background: conic-gradient(at left top, rgb(134, 239, 172), rgb(165, 243, 252), rgb(63, 98, 18));
   background-clip: text;
   color: transparent;
-  transition:0.4s ease;
-  font-weight:bold;
-  font-size:17px;
+  transition: 0.4s ease;
+  font-weight: bold;
+  font-size: 17px;
 }
 
-#welcome-section{
-  position:relative;
+#welcome-section {
+  position: relative;
   margin: 20px auto;
-  margin-top:90px;
-  justify-content:space-evenly;
-  display:flex;
-  background:linear-gradient(to right, rgb(55, 65, 81), rgb(17, 24, 39) 10%, rgb(0, 0, 0));
-  border-radius:10px;
-  color:white;
-  align-items:center;
-  width:98%;
+  margin-top: 90px;
+  justify-content: space-evenly;
+  display: flex;
+  background: linear-gradient(135deg, rgb(0, 0, 0) 0.000%, rgb(18, 18, 23) 33.333%, rgb(22, 22, 23) 50.000%, rgb(2, 6, 26) 66.667%, rgb(31, 33, 43) 83.333%, rgb(24, 21, 26) 100.000%);
+  background-size: 180% 180%;
+  animation: gradient-animation 30s ease infinite;
+  border-radius: 10px;
+  color: white;
+  align-items: center;
+  width: 85%;
   max-width: 1200px;
-  min-height:80vh;
+  min-height: 80vh;
   padding: 20px;
   box-sizing: border-box;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
-#welcome-section img{
-  width:250px;
-  border-radius:10px;
+
+
+#welcome-section img {
+  width: 250px;
+  border-radius: 10px;
 }
 
-#welcome-section span{
-  background:linear-gradient(90deg,rgb(240, 125, 56), rgb(195, 31, 39), rgb(217, 72, 194));
+#welcome-section span {
+  background: linear-gradient(90deg, rgb(240, 125, 56), rgb(195, 31, 39), rgb(217, 72, 194));
   background-clip: text;
   color: transparent;
-  font-size:60px;
-  font-weight:900;
+  font-size: 60px;
+  font-weight: 900;
 }
 
-#welcome-section h1{
-  font-size:50px;
-  font-weight:600;
+#welcome-section h1 {
+  font-size: 50px;
+  font-weight: 600;
 }
 
-#welcome-section p{
-  background:white;
-  border-radius:15px;
-  color:black;
-  text-align:center;
-  font-weight:500;
-  font-size:20px;
+#welcome-section p {
+  background: white;
+  border-radius: 15px;
+  color: black;
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
   padding: 10px 20px;
   margin: 10px 0;
   display: inline-block;
 }
-#projects{
-  background:rgba(97, 96, 96, 0.282);
+
+#projects {
+  background: rgba(97, 96, 96, 0.282);
   margin: 20px auto;
-  border-radius:10px;
-  background:linear-gradient(45deg,rgb(60, 13, 13),black 80%);
-  width:98%;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(255, 198, 149, 1.000) 0.000%, rgba(255, 193, 149, 1.000) 3.030%, rgba(255, 187, 148, 1.000) 6.061%, rgba(255, 182, 148, 1.000) 9.091%, rgba(255, 176, 147, 1.000) 12.121%, rgba(245, 170, 146, 1.000) 15.152%, rgba(234, 164, 145, 1.000) 18.182%, rgba(222, 158, 143, 1.000) 21.212%, rgba(210, 152, 141, 1.000) 24.242%, rgba(198, 146, 139, 1.000) 27.273%, rgba(185, 141, 137, 1.000) 30.303%, rgba(172, 135, 135, 1.000) 33.333%, rgba(159, 129, 132, 1.000) 36.364%, rgba(146, 123, 129, 1.000) 39.394%, rgba(132, 117, 126, 1.000) 42.424%, rgba(119, 111, 123, 1.000) 45.455%, rgba(106, 105, 120, 1.000) 48.485%, rgba(92, 99, 116, 1.000) 51.515%, rgba(79, 94, 112, 1.000) 54.545%, rgba(66, 88, 108, 1.000) 57.576%, rgba(54, 82, 104, 1.000) 60.606%, rgba(42, 77, 100, 1.000) 63.636%, rgba(30, 72, 95, 1.000) 66.667%, rgba(19, 66, 91, 1.000) 69.697%, rgba(8, 61, 86, 1.000) 72.727%, rgba(0, 56, 81, 1.000) 75.758%, rgba(0, 51, 76, 1.000) 78.788%, rgba(0, 46, 71, 1.000) 81.818%, rgba(0, 41, 66, 1.000) 84.848%, rgba(0, 37, 60, 1.000) 87.879%, rgba(0, 32, 55, 1.000) 90.909%, rgba(0, 28, 49, 1.000) 93.939%, rgba(0, 24, 44, 1.000) 96.970%, rgba(0, 20, 38, 1.000) 100.000%);
+
   max-width: 1200px;
   position: relative;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  background-size: 180% 180%;
+  animation: gradient-animation 30s ease infinite;
 }
 
-#projects img{
-  border-radius:10px;
+.project>img {
+  border-radius: 5px;
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin-bottom: 20px
 }
 
-#projects h1,#contact h1{
+#projects h1,
+#contact h1 {
   text-align: center;
-  border-radius:10px 10px 0px 0px;
-  color:white;
-  padding:20px 0px
+  border-radius: 10px 10px 0px 0px;
+  color: white;
+  padding: 20px 0px
 }
 
 
-.div-projects{
-  display:grid;
+.div-projects {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
   justify-items: center;
 }
 
-.project{
-  display:flex;
-  flex-direction:column;
+.project {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  max-width: 350px;
-  background:black;
-  border-radius:10px;
-  text-align:center;
+  max-width: 500px;
+  background: black;
+  border-radius: 10px;
+  text-align: center;
   padding: 15px;
   box-sizing: border-box;
 }
 
-.project a{
-  color:white;
-  text-decoration:none;
+.project a {
+  color: white;
+  text-decoration: none;
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-.project-description{
+.project-description {
   color: #ccc;
   font-size: 14px;
   line-height: 1.4;
@@ -167,418 +291,127 @@ header a:hover{
   text-align: left;
 }
 
-#contact{
-  background:linear-gradient(45deg,rgb(13, 60, 33),black 80%);
-  border-radius:10px;
+#contact {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1.000) 0.000%, rgba(0, 0, 0, 1.000) 3.030%, rgba(0, 0, 0, 1.000) 6.061%, rgba(0, 0, 0, 1.000) 9.091%, rgba(0, 0, 0, 1.000) 12.121%, rgba(0, 0, 0, 1.000) 15.152%, rgba(0, 0, 0, 1.000) 18.182%, rgba(0, 0, 0, 1.000) 21.212%, rgba(0, 0, 0, 1.000) 24.242%, rgba(0, 0, 0, 1.000) 27.273%, rgba(0, 0, 0, 1.000) 30.303%, rgba(0, 0, 0, 1.000) 33.333%, rgba(0, 0, 0, 1.000) 36.364%, rgba(0, 0, 0, 1.000) 39.394%, rgba(0, 0, 0, 1.000) 42.424%, rgba(0, 0, 0, 1.000) 45.455%, rgba(0, 0, 0, 1.000) 48.485%, rgba(0, 0, 0, 1.000) 51.515%, rgba(0, 0, 0, 1.000) 54.545%, rgba(0, 0, 0, 1.000) 57.576%, rgba(0, 0, 0, 1.000) 60.606%, rgba(0, 0, 0, 1.000) 63.636%, rgba(0, 0, 0, 1.000) 66.667%, rgba(0, 1, 0, 1.000) 69.697%, rgba(0, 5, 0, 1.000) 72.727%, rgba(0, 10, 0, 1.000) 75.758%, rgba(0, 15, 0, 1.000) 78.788%, rgba(0, 19, 1, 1.000) 81.818%, rgba(0, 23, 4, 1.000) 84.848%, rgba(0, 27, 7, 1.000) 87.879%, rgba(0, 31, 10, 1.000) 90.909%, rgba(0, 34, 13, 1.000) 93.939%, rgba(0, 36, 15, 1.000) 96.970%, rgba(0, 39, 18, 1.000) 100.000%);
+  border-radius: 10px;
   margin: 20px auto;
-  width:98%;
+  width: 98%;
   max-width: 1200px;
   position: relative;
+  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  background-size: 180% 180%;
+  animation: gradient-animation 30s ease infinite;
 }
 
-.social{
-  padding:0 0 20px 0;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
+.social {
+  padding: 0 0 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-#contact i{
-  font-size:50px;
-  color:white;
-  padding:0 30px;
+#contact i {
+  font-size: 50px;
+  color: white;
+  padding: 0 30px;
 }
 
-footer{
+footer {
   margin: 20px auto;
-  border:1px solid #333;
-  border-radius:10px;
-  width:98%;
+  border: 1px solid #333;
+  border-radius: 10px;
+  width: 98%;
   max-width: 1200px;
   position: relative;
   background: rgba(0, 0, 0, 0.3);
 }
 
-footer p{
-  text-align:center;
+footer p {
+  text-align: center;
   padding: 20px;
   margin: 0;
   color: white;
 }
 
-@media(max-width:600px){
-
-header{
-  width: 96%;
-  max-width: none;
+footer .logo {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  vertical-align: middle;
 }
 
-header ul{
-  display:block;
+@media(max-width:600px) {
+
+  header {
+    width: 96%;
+    max-width: none;
+  }
+
+  header ul {
+    display: block;
+  }
+
+  #welcome-section {
+    width: 96%;
+    max-width: none;
+    min-height: 40vh;
+    padding: 5px;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #welcome-section img {
+    width: 180px;
+    margin-top: 20px;
+  }
+
+  #welcome-section span {
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  #welcome-section h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  #welcome-section p {
+    width: 70%;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 10px auto;
+  }
+
+  .div-projects {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .project {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  #projects,
+  #contact,
+  footer {
+    width: 96%;
+    max-width: none;
+  }
 }
 
-#welcome-section{
-  width:96%;
-  max-width: none;
-  min-height:40vh;
-  padding:5px;
-  justify-content:center;
-  box-sizing:border-box;
-  flex-direction: column;
-  text-align: center;
-}
-
-#welcome-section img{
-  width:180px;
-  margin-top: 20px;
-}
-
-#welcome-section span{
-  font-size:2rem;
-  font-weight:900;
-}
-
-#welcome-section h1{
-  font-size:2rem;
-  font-weight:600;
-}
-
-#welcome-section p{
-  width:70%;
-  font-weight:400;
-  font-size:1rem;
-  margin: 10px auto;
-}
-
-.div-projects{
-  grid-template-columns: 1fr;
-  padding: 10px;
-}
-
-.project{
-  width: 90%;
-  margin: 10px auto;
-}
-
-#projects, #contact, footer {
-  width: 96%;
-  max-width: none;
-}
-}
-
-@keyframes hero-gradient-animation {
+@keyframes gradient-animation {
   0% {
-      --y-0: 28%;
-      --x-0: 14%;
-      --c-0: hsla(226, 23%, 19%, 1);
-      --s-start-0: 3.434065934065934%;
-      --s-end-0: 47.35935437548292%;
-      --c-1: hsla(329.4392523364486, 100%, 41%, 1);
-      --y-1: 66%;
-      --x-1: 23%;
-      --s-start-1: 13%;
-      --s-end-1: 57%;
-      --c-2: hsla(329, 100%, 41%, 1);
-      --s-start-2: 13%;
-      --s-end-2: 57%;
-      --x-2: 98%;
-      --y-2: 9%;
-      --s-start-3: 31.423358623798077%;
-      --s-end-3: 81.65057356278976%;
-      --c-3: hsla(227, 24%, 19%, 1);
-      --x-3: 92%;
-      --y-3: 17%;
-      --s-start-4: 5%;
-      --s-end-4: 53.251442290924416%;
-      --x-4: 93%;
-      --c-4: hsla(329, 100%, 41%, 1);
-      --y-4: 93%;
-      --x-5: 5%;
-      --s-start-5: 13%;
-      --s-end-5: 65%;
-      --y-5: 90%;
-      --c-5: hsla(227, 24%, 19%, 1);
-      --y-6: 90%;
-      --c-6: hsla(227, 24%, 19%, 1);
-      --s-start-6: 13%;
-      --s-end-6: 65%;
-      --x-6: 5%;
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
   }
 
   100% {
-      --y-0: 46%;
-      --x-0: 52%;
-      --c-0: hsla(226, 23%, 19%, 1);
-      --s-start-0: 9;
-      --s-end-0: 73;
-      --c-1: hsla(329.4392523364486, 100%, 41%, 1);
-      --y-1: 80%;
-      --x-1: 10%;
-      --s-start-1: 9;
-      --s-end-1: 73;
-      --c-2: hsla(329, 100%, 41%, 1);
-      --s-start-2: 9;
-      --s-end-2: 73;
-      --x-2: 28%;
-      --y-2: 77%;
-      --s-start-3: 9;
-      --s-end-3: 73;
-      --c-3: hsla(227, 24%, 19%, 1);
-      --x-3: 41%;
-      --y-3: 97%;
-      --s-start-4: 9;
-      --s-end-4: 73;
-      --x-4: 66%;
-      --c-4: hsla(329, 100%, 41%, 1);
-      --y-4: 83%;
-      --x-5: 18%;
-      --s-start-5: 9;
-      --s-end-5: 73;
-      --y-5: 47%;
-      --c-5: hsla(227, 24%, 19%, 1);
-      --y-6: 72%;
-      --c-6: hsla(227, 24%, 19%, 1);
-      --s-start-6: 9;
-      --s-end-6: 73;
-      --x-6: 45%;
+    background-position: 0% 50%;
   }
-}
-
-@property --y-0 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 28%
-}
-
-@property --x-0 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 14%
-}
-
-@property --c-0 {
-  syntax: '<color>';
-  inherits: false;
-  initial-value: hsla(226, 23%, 19%, 1)
-}
-
-@property --s-start-0 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 3.434065934065934%
-}
-
-@property --s-end-0 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 47.35935437548292%
-}
-
-@property --c-1 {
-  syntax: '<color>';
-  inherits: false;
-  initial-value: hsla(329.4392523364486, 100%, 41%, 1)
-}
-
-@property --y-1 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 66%
-}
-
-@property --x-1 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 23%
-}
-
-@property --s-start-1 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 13%
-}
-
-@property --s-end-1 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 57%
-}
-
-@property --c-2 {
-  syntax: '<color>';
-  inherits: false;
-  initial-value: hsla(329, 100%, 41%, 1)
-}
-
-@property --s-start-2 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 13%
-}
-
-@property --s-end-2 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 57%
-}
-
-@property --x-2 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 98%
-}
-
-@property --y-2 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 9%
-}
-
-@property --s-start-3 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 31.423358623798077%
-}
-
-@property --s-end-3 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 81.65057356278976%
-}
-
-@property --c-3 {
-  syntax: '<color>';
-  inherits: false;
-  initial-value: hsla(227, 24%, 19%, 1)
-}
-
-@property --x-3 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 92%
-}
-
-@property --y-3 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 17%
-}
-
-@property --s-start-4 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 5%
-}
-
-@property --s-end-4 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 53.251442290924416%
-}
-
-@property --x-4 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 93%
-}
-
-@property --c-4 {
-  syntax: '<color>';
-  inherits: false;
-  initial-value: hsla(329, 100%, 41%, 1)
-}
-
-@property --y-4 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 93%
-}
-
-@property --x-5 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 5%
-}
-
-@property --s-start-5 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 13%
-}
-
-@property --s-end-5 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 65%
-}
-
-@property --y-5 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 90%
-}
-
-@property --c-5 {
-  syntax: '<color>';
-  inherits: false;
-  initial-value: hsla(227, 24%, 19%, 1)
-}
-
-@property --y-6 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 90%
-}
-
-@property --c-6 {
-  syntax: '<color>';
-  inherits: false;
-  initial-value: hsla(227, 24%, 19%, 1)
-}
-
-@property --s-start-6 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 13%
-}
-
-@property --s-end-6 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 65%
-}
-
-@property --x-6 {
-  syntax: '<percentage>';
-  inherits: false;
-  initial-value: 5%
-}
-
-body {
-  --y-0: 28%;
-  --x-0: 14%;
-  --c-0: hsla(226, 23%, 19%, 1);
-  --c-1: rgb(98, 206, 111);
-  --y-1: 66%;
-  --x-1: 23%;
-  --c-2: rgb(143, 209, 0);
-  --x-2: 98%;
-  --y-2: 9%;
-  --c-3: hsla(227, 24%, 19%, 1);
-  --x-3: 92%;
-  --y-3: 17%;
-  --x-4: 93%;
-  --c-4: rgb(80, 209, 0);
-  --y-4: 93%;
-  --x-5: 5%;
-  --y-5: 90%;
-  --c-5: hsla(227, 24%, 19%, 1);
-  --y-6: 90%;
-  --c-6: hsla(227, 24%, 19%, 1);
-  --x-6: 5%;
-  ;
-  background-color: rgb(0, 0, 0);
-  background-image: radial-gradient(circle at var(--x-0) var(--y-0), var(--c-0) var(--s-start-0), transparent var(--s-end-0)), radial-gradient(circle at var(--x-1) var(--y-1), var(--c-1) var(--s-start-1), transparent var(--s-end-1)), radial-gradient(circle at var(--x-2) var(--y-2), var(--c-2) var(--s-start-2), transparent var(--s-end-2)), radial-gradient(circle at var(--x-3) var(--y-3), var(--c-3) var(--s-start-3), transparent var(--s-end-3)), radial-gradient(circle at var(--x-4) var(--y-4), var(--c-4) var(--s-start-4), transparent var(--s-end-4)), radial-gradient(circle at var(--x-5) var(--y-5), var(--c-5) var(--s-start-5), transparent var(--s-end-5)), radial-gradient(circle at var(--x-6) var(--y-6), var(--c-6) var(--s-start-6), transparent var(--s-end-6));
-  animation: hero-gradient-animation 10s linear infinite alternate;
-  background-blend-mode: normal, normal, normal, normal, normal, normal, normal;
 }

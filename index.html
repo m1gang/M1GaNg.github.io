@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
     integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="icon" href="./assets/img/migang.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./styles/styles.css" />
 
@@ -15,7 +15,18 @@
 
 <body>
   <header class='profile'>
-    <img class='img-profile' src="https://i.postimg.cc/BnC8xJD2/zyro-image-1-1.png"/>
+    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450.1 347.25">
+      <path
+        d="M211.2 341.57l-13.74-13.73 233.23-233.23 13.73 13.73c7.57 7.57 7.57 19.9 0 27.47l-205.76 205.76c-7.57 7.57-19.91 7.57-27.47 0zm89.24-322.22l13.74-13.74c7.56-7.57 20.01-7.47 27.69 0.22l88.8 88.8-27.47 27.47-102.76-102.76z" />
+      <path
+        d="M215.53 290.98l-31.91 8.99c-6.95 1.96-13.9 0.15-19-4.96L5.68 136.07c-7.57-7.57-7.56-19.91 0-27.47l13.73-13.74 89.02-89.02c7.57-7.57 19.9-7.57 27.47 0l13.74 13.73-102.76 102.76-27.47-27.47 196.12 196.12z" />
+      <path
+        d="M145.3 174.48l-65.92-65.92 31.91-8.99c6.95-1.96 13.9-0.14 19 4.96l42.48 42.48 27.47 27.47-41.24 41.24-27.47-27.47 13.76-13.76z" />
+      <path
+        d="M182.45 52.38l135.87 135.87-31.91 8.99c-6.95 1.96-13.9 0.14-19-4.96L131.54 56.41l31.91-8.99c6.95-1.96 13.9-0.15 19 4.96z" />
+      <path
+        d="M304.78 69.95l65.92 65.92-31.91 8.99c-6.95 1.96-13.9 0.14-19.01-4.96l-42.47-42.48-13.74-13.74c-7.57-7.57-7.57-19.91 0-27.47l27.5-27.5 27.47 27.47-13.76 13.77z" />
+    </svg>
     <nav id='navbar'>
       <ul>
         <li><a href='#welcome-section'>SOBRE MI</a></li>
@@ -29,9 +40,10 @@
       <div>
         <h1>Hola soy <span><a id="profile-link" target='_blank'>&ltMiGaNg/&gt</a></span></h1>
         <p>DESARROLLADOR WEB</p>
+
       </div>
 
-      <img src="https://i.postimg.cc/BnC8xJD2/zyro-image-1-1.png"/>
+      <img src="https://i.postimg.cc/BnC8xJD2/zyro-image-1-1.png" />
 
 
     </section>
@@ -39,24 +51,62 @@
       <h1>PROJECTS</h1>
       <div class='div-projects'>
         <div class='project'>
-          <img src="https://i.postimg.cc/8zHF4WCC/Captura-de-pantalla-2024-08-31-224220.png"/>
-          <a class='project-tile' href='https://github.com/M1GaNg/CondisaRomeroWebDesign'>App Pro Web Site</a>
-          <p class='project-description'>Aplicación web profesional desarrollada con tecnologías modernas para gestión empresarial.</p>
+          <img src="./assets/img/journal-app-react.png" />
+          <a class='project-tile' href='https://github.com/m1gang/journal-app-react' target="_blank">Journal App
+            React</a>
+          <p class='project-description'>App de diario personal con autenticación, gestión de notas y subida de
+            imágenes. Hecha con React, Vite, Firebase y Material-UI.</p>
+          <div class="tech-tags">
+            <span class="tag react"><i class="ri-reactjs-line"></i> React</span>
+            <span class="tag vite"><img src="https://vitejs.dev/logo.svg" alt="Vite" class="icon-svg" /> Vite</span>
+            <span class="tag firebase"><img src="https://www.svgrepo.com/show/373595/firebase.svg" alt="Firebase"
+                class="icon-svg" /> Firebase</span>
+            <span class="tag mui"><img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
+                alt="Material UI" class="icon-svg" /> Material-UI</span>
+          </div>
         </div>
         <div class='project'>
-          <img src="https://i.postimg.cc/s2rWRNsf/Captura-de-pantalla-2024-09-01-220839.png"/>
-          <a href='https://m1gang.github.io/react-gifApp/'>Gif Expert App</a>
-          <p class='project-description'>Aplicación React para buscar y mostrar GIFs utilizando la API de Giphy con interfaz moderna.</p>
+          <img src="./assets/img/gif-search-react.png" />
+          <a href='https://github.com/m1gang/gifs-app-updated' target="_blank">Gif Search React</a>
+          <p class='project-description'>Buscador de GIFs moderno usando la API de Giphy. Desarrollado con React,
+            TypeScript y Vite.</p>
+          <div class="tech-tags">
+            <span class="tag react"><i class="ri-reactjs-line"></i> React</span>
+            <span class="tag typescript"><i class="ri-code-s-slash-line"></i> TypeScript</span>
+            <span class="tag vite"><img src="https://vitejs.dev/logo.svg" alt="Vite" class="icon-svg" /> Vite</span>
+            <span class="tag giphy"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Giphy-logo.svg"
+                alt="Giphy" class="icon-svg" /> Giphy API</span>
+          </div>
         </div>
         <div class='project'>
-          <img src="https://i.postimg.cc/0Q6b9B06/Captura-de-pantalla-2024-08-31-224543.png"/>
-          <a href='https://github.com/M1GaNg/Sistema-POS-libreria'>Sistema POS Libreria</a>
-          <p class='project-description'>Sistema de punto de venta completo para librerías con gestión de inventario y ventas.</p>
+          <img src="./assets/img/pos-libreria.png" />
+          <a href='https://github.com/M1GaNg/Sistema-POS-libreria' target="_blank">Sistema POS Librería</a>
+          <p class='project-description'>Sistema de punto de venta en PHP y MySQL para gestión de inventario, ventas,
+            clientes y reportes en PDF.</p>
+          <div class="tech-tags">
+            <span class="tag php"><i class="ri-php-line"></i> PHP</span>
+            <span class="tag mysql"><img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
+                class="icon-svg" /> MySQL</span>
+            <span class="tag js"><i class="ri-javascript-line"></i> JavaScript</span>
+            <span class="tag bootstrap"><img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+                alt="Bootstrap" class="icon-svg" /> Bootstrap</span>
+            <span class="tag pdf"><i class="ri-file-pdf-2-line"></i> PDF</span>
+          </div>
         </div>
         <div class='project'>
-          <img src="https://i.postimg.cc/4NRmTw7d/Captura-de-pantalla-2024-08-31-224740.png"/>
-          <a href='https://github.com/M1GaNg/CondisaRomeroWebDesign'>Condisa Romero Web Site</a>
-          <p class='project-description'>Sitio web corporativo para empresa de construcción con diseño responsivo y moderno.</p>
+          <img src="./assets/img/website-condisa.png" />
+          <a href='https://github.com/M1GaNg/CondisaRomeroWebDesign' target="_blank">Condisa Romero Web Site</a>
+          <p class='project-description'>Sitio web corporativo responsivo para empresa constructora, hecho con React y
+            Vite, portafolio, blog y animaciones.</p>
+          <div class="tech-tags">
+            <span class="tag react"><i class="ri-reactjs-line"></i> React</span>
+            <span class="tag vite"><img src="https://vitejs.dev/logo.svg" alt="Vite" class="icon-svg" /> Vite</span>
+            <span class="tag css"><i class="ri-css3-line"></i> CSS3</span>
+            <span class="tag remix"><i class="ri-remixicon-line"></i> Remix Icons</span>
+          </div>
         </div>
 
       </div>
@@ -69,11 +119,21 @@
         <i class="ri-linkedin-box-fill"></i>
         <i class="ri-github-fill"></i>
         <i class="ri-mail-fill"></i>
-        <i class="ri-smartphone-fill"></i>
       </div>
   </main>
   <footer>
-    <p>© Created for MiGaNg</p>
+    <p>© Created for <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450.1 347.25">
+        <path
+          d="M211.2 341.57l-13.74-13.73 233.23-233.23 13.73 13.73c7.57 7.57 7.57 19.9 0 27.47l-205.76 205.76c-7.57 7.57-19.91 7.57-27.47 0zm89.24-322.22l13.74-13.74c7.56-7.57 20.01-7.47 27.69 0.22l88.8 88.8-27.47 27.47-102.76-102.76z" />
+        <path
+          d="M215.53 290.98l-31.91 8.99c-6.95 1.96-13.9 0.15-19-4.96L5.68 136.07c-7.57-7.57-7.56-19.91 0-27.47l13.73-13.74 89.02-89.02c7.57-7.57 19.9-7.57 27.47 0l13.74 13.73-102.76 102.76-27.47-27.47 196.12 196.12z" />
+        <path
+          d="M145.3 174.48l-65.92-65.92 31.91-8.99c6.95-1.96 13.9-0.14 19 4.96l42.48 42.48 27.47 27.47-41.24 41.24-27.47-27.47 13.76-13.76z" />
+        <path
+          d="M182.45 52.38l135.87 135.87-31.91 8.99c-6.95 1.96-13.9 0.14-19-4.96L131.54 56.41l31.91-8.99c6.95-1.96 13.9-0.15 19 4.96z" />
+        <path
+          d="M304.78 69.95l65.92 65.92-31.91 8.99c-6.95 1.96-13.9 0.14-19.01-4.96l-42.47-42.48-13.74-13.74c-7.57-7.57-7.57-19.91 0-27.47l27.5-27.5 27.47 27.47-13.76 13.77z" />
+      </svg> <b>MiGaNg</b></p>
   </footer>
 </body>
 
