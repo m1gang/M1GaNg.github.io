@@ -1,67 +1,105 @@
-import React from 'react'
-import Icon from '../components/Icon'
-import profile from '../assets/profile.png'
+import Icon from "../components/Icon";
+import { motion } from "motion/react";
+import GradientText from "@/components/GradientText";
+import { MagicGridSection } from "@/components/MagicGridSection";
+import AnimatedBackground from "@/components/AnimatedBackground";
 
 export const Inicio = () => {
-    return (
-        <div id='portafolio' className="text-white flex w-full h-screen overflow-hidden">
-            <header className="flex justify-center items-center w-1/5 h-full overflow-y-auto ">
+  return (
+    <div
+      id="portafolio"
+      className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full bg-black text-white relative"
+    >
+      {/* <AnimatedBackground /> */}
+      <motion.header
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 2.5,
+          delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+        className="flex justify-center items-center w-full lg:w-1/5 h-auto lg:h-full font-clash"
+      >
+        <nav className="card-glass flex flex-col p-5 gap-y-5 justify-center border-indigo-500">
+          <a href="#" className="flex items-center gap-1.5 p-2 text-white">
+            <Icon name="home" fill="white" color="white" size={30} />
+            <span className="font-medium text-[20px] leading-none text-white">
+              INICIO
+            </span>
+          </a>
+          <a href="#" className="flex items-center gap-1.5 p-2">
+            <Icon name="user" fill="white" size={30} />
+            <span className="font-medium text-[20px] leading-none">PERFIL</span>
+          </a>
+          <a href="#" className="flex items-center gap-1.5 p-2">
+            <Icon name="folder" fill="white" size={30} />
+            <span className="font-medium text-[20px] leading-none">
+              PROYECTOS
+            </span>
+          </a>
+          <a href="#" className="flex items-center gap-1.5 p-2">
+            <Icon name="road" fill="white" size={30} />
+            <span className="font-medium text-[20px] leading-none">
+              EXPERIENCIA
+            </span>
+          </a>
+          <a href="#" className="flex items-center gap-1.5 p-2">
+            <Icon name="contact" fill="white" size={30} />
+            <span className="font-medium text-[20px] leading-none">
+              CONTACTO
+            </span>
+          </a>
+        </nav>
+      </motion.header>
 
-                <nav className="flex flex-col h-full p-4 gap-2 justify-center border-indigo-500">
-                    <a href="#" className="flex items-center gap-1.5 mb-7 font-medium">
-                        <Icon name="home" fill="white" />INICIO
-                    </a>
-                    <a href="#" className="flex items-center gap-1.5 mb-7 font-medium">
-                        <Icon name="user" fill="white" />PERFIL
-                    </a>
-                    <a href="#" className="flex items-center gap-1.5 mb-7 font-medium">
-                        <Icon name="folder" fill="white" />PROYECTOS
-                    </a>
-                    <a href="#" className="flex items-center gap-1.5 mb-7 font-medium">
-                        <Icon name="road" fill="white" />EXPERIENCIA
-                    </a>
-                    <a href="#" className="flex items-center gap-1.5 mb-7 font-medium">
-                        <Icon name="contact" fill="white" />CONTACTO
-                    </a>
-                </nav>
-            </header>
+      <main className="flex flex-col items-center font-roboto w-full h-full overflow-y-auto">
+        <motion.h1
+          className="text-4xl p-2 font-thin font-sawbones"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 2.5,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
+          INICIO
+        </motion.h1>
 
-            <main className="flex-1 h-full overflow-hidden flex flex-col items-center ">
+        <motion.div
+          className="nav-vertical p-2"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 2.5,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
+          <nav className="card-glass flex py-1 px-1 gap-3">
+            <a href="#" className="bg-white rounded-[25px] px-3 text-black">
+              Portada
+            </a>
+            <a href="#" className="px-3">
+              Redes
+            </a>
+          </nav>
+        </motion.div>
 
-                <h1 className="text-xl font-bold p-2">INICIO</h1>
-
-                <div className="nav-vertical p-2">
-                    <nav className="flex gap-4">
-                        <a href="#">Portada</a>
-                        <a href="#">Redes</a>
-                    </nav>
-                </div>
-
-                <section className="flex-1 overflow-hidden p-2 w-full">
-                    <div className="grid grid-cols-6 grid-rows-5 gap-2 w-full h-full">
-                        <div className="card-glass flex justify-center p-2 col-span-2 row-span-2 col-start-1 row-start-1">
-                            <img src={profile} alt="profile-migang" />
-                        </div>
-
-                        <div className="card-glass flex flex-col justify-center text-center col-span-4 row-span-2 col-start-3 row-start-1">
-                            <h1 className='text-4xl'>Hola soy <span className='text-red-600 text-6xl font-bold'>MiGaNg</span></h1>
-                            <h2 className='bg-white rounded-full text-black'>&lt;Ingeniero de Sistemas & Frontend Deceloper/&gt;</h2>
-                            <p>"Me especializo en construir experiencias digitales que no solo funcionan, sino que comunican y fluyen."
-                            </p>
-                        </div>
-                        <div className="card-glass shadow-lg p-6 col-span-2 row-span-2 col-start-1 row-start-3" ></div>
-                        <div className="card-glass col-span-2 row-span-1 col-start-1 row-start-5"></div>
-                        <div className="card-glass col-span-2 row-span-3 col-start-3 row-start-3"></div>
-
-                        <div className="col-span-2 row-span-3 flex flex-col gap-2">
-                            <div className="card-glass grow-3 "></div>
-                            <div className="card-glass grow-2 "></div>
-                        </div>
-
-
-                    </div>
-                </section>
-            </main>
-        </div>
-    )
-}
+        <MagicGridSection
+          className="flex-1 min-h-0"
+          enableStars={false}
+          enableSpotlight={false}
+          enableBorderGlow={false}
+          enableTilt={true}
+          enableMagnetism={true}
+          clickEffect={false}
+          spotlightRadius={300}
+          particleCount={12}
+          glowColor="255, 0, 0"
+        />
+      </main>
+    </div>
+  );
+};
