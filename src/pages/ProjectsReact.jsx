@@ -6,11 +6,11 @@ import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import ImageCarousel from "../components/ImageCarousel";
 
 // Import images
-import journalImg1 from "../assets/img/projects/REACT/localhost_3000_ 1.png";
-import journalImg2 from "../assets/img/projects/REACT/localhost_3000_marvel (1).png";
-import journalImg3 from "../assets/img/projects/REACT/localhost_3000_marvel.png";
-import journalImg4 from "../assets/img/projects/REACT/localhost_5174_ (1).png";
-import journalImg5 from "../assets/img/projects/REACT/localhost_5174_.png";
+import journalImg1 from "../assets/img/projects/react/gif-app-search.png";
+import journalImg2 from "../assets/img/projects/react/heroes-app-search-1.png";
+import journalImg3 from "../assets/img/projects/react/heroes-app-search-2.png";
+import journalImg4 from "../assets/img/projects/react/heroes-app-search-3.png";
+import journalImg5 from "../assets/img/projects/react/localhost_5174_.png";
 
 const ProjectsReact = () => {
   const gridRef = useRef(null);

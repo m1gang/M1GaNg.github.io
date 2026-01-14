@@ -54,9 +54,9 @@ const MainLayout = () => {
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 2.5, delay: 0.5, ease: [0, 0.71, 0.2, 1.01] }}
-        className="flex justify-center items-center w-full lg:w-1/5 h-auto lg:h-full font-clash z-10"
+        className="flex justify-center items-center w-full fixed z-100 lg:w-1/5 lg:relative h-auto font-clash bottom-5"
       >
-        <nav className="card-glass flex flex-col p-5 gap-y-5 justify-center border-indigo-500">
+        <nav className="card-glass flex lg:flex-col p-2 lg:p-5 gap-y-5 justify-center border-indigo-500">
           <SidebarLink
             to="/inicio"
             icon="home"
@@ -147,7 +147,7 @@ const SidebarLink = ({ to, icon, label, active }) => (
   <NavLink
     to={to}
     className={() =>
-      `flex items-center gap-3 p-3 transition-all duration-500 rounded-xl ${
+      `flex items-center w-[70px] lg:w-full md:w-full flex-col md:flex-row md:gap-2 md:p-2 lg:gap-3 lg:p-3 transition-all duration-500 rounded-xl ${
         active
           ? "bg-white/15 text-white shadow-lg shadow-white/5 border border-white/10"
           : "text-white/50 hover:text-white hover:bg-white/5"
@@ -160,7 +160,7 @@ const SidebarLink = ({ to, icon, label, active }) => (
       size={28}
     />
     <span
-      className={`font-medium text-[18px] leading-none tracking-tight ${
+      className={`font-medium text-[10px] md:text-[18px] lg:text-[18px] leading-none tracking-tight ${
         active ? "opacity-100" : "opacity-80"
       }`}
     >

@@ -6,11 +6,11 @@ import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import ImageCarousel from "../components/ImageCarousel";
 
 // Import images
-import telephoneImg from "../assets/img/projects/MINIPROJECTS/127.0.0.1_5500_Telephone%20Number%20Validator_index.html 1.png";
-import cashRegisterImg from "../assets/img/projects/MINIPROJECTS/127.0.0.1_5500_Cash-Register-Project_index.html 1.png";
-import palindromeImg from "../assets/img/projects/MINIPROJECTS/127.0.0.1_5500_Palindrome%20Checker_index.html 1.png";
-import romanImg from "../assets/img/projects/MINIPROJECTS/127.0.0.1_5500_Roman%20Numeral%20Converter_index.html 1.png";
-import rpgImg from "../assets/img/projects/MINIPROJECTS/127.0.0.1_5500_RPG%20Creature%20Search%20App_index.html 1.png";
+import telephoneImg from "../assets/img/projects/miniapps/miniapps-telephone-number-validator.png";
+import cashRegisterImg from "../assets/img/projects/miniapps/miniapps-cash-register.png";
+import palindromeImg from "../assets/img/projects/miniapps/miniapps-palindrome-checker.png";
+import romanImg from "../assets/img/projects/miniapps/miniapps-roman-numeral-converter.png";
+import rpgImg from "../assets/img/projects/miniapps/miniapps-rpg-creatures-search.png";
 
 const ProjectsMiniApps = () => {
   const gridRef = useRef(null);

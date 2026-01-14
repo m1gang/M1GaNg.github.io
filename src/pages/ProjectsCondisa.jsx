@@ -6,12 +6,12 @@ import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import ImageCarousel from "../components/ImageCarousel";
 
 // Import images
-import condisaImg1 from "../assets/img/projects/CONDISA/localhost_5173_ (1).png";
-import condisaImg2 from "../assets/img/projects/CONDISA/localhost_5173_projects (1).png";
-import condisaImg3 from "../assets/img/projects/CONDISA/localhost_5173_projects.png";
-import condisaImg4 from "../assets/img/projects/CONDISA/localhost_pos_crear-venta.png";
-import condisaImg5 from "../assets/img/projects/CONDISA/localhost_pos_ingreso.png";
-import condisaImg6 from "../assets/img/projects/CONDISA/localhost_pos_inicio (1).png";
+import condisaImg1 from "../assets/img/projects/condisa/pagina-web-condisa-1.png";
+import condisaImg2 from "../assets/img/projects/condisa/pagina-web-condisa-2.png";
+import condisaImg3 from "../assets/img/projects/condisa/pagina-web-condisa-3.png";
+import condisaImg4 from "../assets/img/projects/condisa/sistema-pos-condisa-1.png";
+import condisaImg5 from "../assets/img/projects/condisa/sistema-pos-condisa-2.png";
+import condisaImg6 from "../assets/img/projects/condisa/sistema-pos-condisa-3.png";
 
 const ProjectsCondisa = () => {
   const gridRef = useRef(null);
