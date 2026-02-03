@@ -49,7 +49,7 @@ const MainLayout = () => {
   return (
     <div
       id="portafolio"
-      className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full invert bg-black text-white relative "
+      className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full bg-black text-white relative "
     >
       <AnimatedBackground />
       <MouseTrail />

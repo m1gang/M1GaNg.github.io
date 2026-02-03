@@ -12,6 +12,7 @@ import {
 import { MagicCard } from "../components/MagicCard";
 import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import ImageCarousel from "../components/ImageCarousel";
+import Icon from "../components/Icon";
 
 const ProjectsCondisa = () => {
   const gridRef = useRef(null);
@@ -42,10 +43,10 @@ const ProjectsCondisa = () => {
         ).href,
       ],
       techs: [
-        { icon: "⚛️", name: "React", color: "text-cyan-400" },
-        { icon: "⚡", name: "Vite", color: "text-purple-500" },
-        { icon: "🎨", name: "Tailwind", color: "text-blue-400" },
-        { icon: "📱", name: "Responsive", color: "text-green-500" },
+        { iconName: "react", name: "React", color: "text-cyan-400" },
+        { iconName: "vitejs", name: "Vite", color: "text-purple-500" },
+        { iconName: "css", name: "CSS", color: "text-blue-600" },
+        { iconName: "responsive", name: "Responsive", color: "text-green-500" },
       ],
       repoUrl: "https://github.com/m1gang/website-condisa-romero",
     },
@@ -72,10 +73,11 @@ const ProjectsCondisa = () => {
         ).href,
       ],
       techs: [
-        { icon: "🐘", name: "PHP", color: "text-purple-400" },
-        { icon: "🗄️", name: "MySQL", color: "text-orange-400" },
-        { icon: "📜", name: "JS", color: "text-yellow-400" },
-        { icon: "🎨", name: "Bootstrap", color: "text-indigo-400" },
+        { iconName: "php", name: "PHP", color: "text-purple-400" },
+        { iconName: "mysql", name: "MySQL", color: "text-orange-400" },
+        { iconName: "javascript", name: "JS", color: "text-yellow-400" },
+        { iconName: "bootstrap", name: "Bootstrap", color: "text-indigo-400" },
+        { iconName: "jquery", name: "jquery", color: "text-blue-400" },
       ],
       repoUrl: "https://github.com/m1gang/pos-system-php",
     },
@@ -212,7 +214,7 @@ const ProjectsCondisa = () => {
                   {currentProject.techs.map((tech, index) => (
                     <TechBadge
                       key={index}
-                      icon={tech.icon}
+                      iconName={tech.iconName}
                       name={tech.name}
                       color={tech.color}
                     />
@@ -239,9 +241,9 @@ const ProjectsCondisa = () => {
 };
 
 // Tech Badge Component
-const TechBadge = ({ icon, name, color }) => (
+const TechBadge = ({ iconName, name, color }) => (
   <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <span className="text-lg">{icon}</span>
+    <Icon name={iconName} size={20} className={color} />
     <span className={`text-sm font-medium ${color}`}>{name}</span>
   </div>
 );

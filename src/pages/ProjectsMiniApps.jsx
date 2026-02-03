@@ -14,6 +14,7 @@ import {
 import { MagicCard } from "../components/MagicCard";
 import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import ImageCarousel from "../components/ImageCarousel";
+import Icon from "../components/Icon";
 
 const ProjectsMiniApps = () => {
   const gridRef = useRef(null);
@@ -36,10 +37,11 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { icon: "🌐", name: "HTML", color: "text-orange-500" },
-        { icon: "🎨", name: "CSS", color: "text-blue-500" },
-        { icon: "💛", name: "JavaScript", color: "text-yellow-500" },
-        { icon: "✅", name: "Regex", color: "text-green-500" },
+        { iconName: "html", name: "HTML", color: "text-orange-500" },
+        { iconName: "css", name: "CSS", color: "text-blue-600" },
+        { iconName: "javascript", name: "JavaScript", color: "text-yellow-300" },
+        { iconName: "regex", name: "Regex", color: "text-blue-500" },
+        { iconName: "freecodecamp", name: "freecodecamp", color: "text-white" },
       ],
       repoUrl:
         "https://github.com/m1gang/telephone-number-validator-freeCodeCamp",
@@ -59,10 +61,10 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { icon: "🌐", name: "HTML", color: "text-orange-500" },
-        { icon: "🎨", name: "CSS", color: "text-blue-500" },
-        { icon: "💛", name: "JavaScript", color: "text-yellow-500" },
-        { icon: "🔤", name: "String Methods", color: "text-cyan-400" },
+        { iconName: "html", name: "HTML", color: "text-orange-500" },
+        { iconName: "css", name: "CSS", color: "text-blue-600" },
+        { iconName: "javascript", name: "JavaScript", color: "text-yellow-300" },
+        { iconName: "freecodecamp", name: "freecodecamp", color: "text-white" },
       ],
       repoUrl: "https://github.com/m1gang/palindrome-checker-freeCodeCamp",
     },
@@ -81,10 +83,10 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { icon: "🌐", name: "HTML", color: "text-orange-500" },
-        { icon: "🎨", name: "CSS", color: "text-blue-500" },
-        { icon: "💛", name: "JavaScript", color: "text-yellow-500" },
-        { icon: "🔢", name: "Algorithms", color: "text-amber-400" },
+        { iconName: "html", name: "HTML", color: "text-orange-500" },
+        { iconName: "css", name: "CSS", color: "text-blue-600" },
+        { iconName: "javascript", name: "JavaScript", color: "text-yellow-300" },
+        { iconName: "freecodecamp", name: "freecodecamp", color: "text-white" },
       ],
       repoUrl: "https://github.com/m1gang/roman-numeral-converter-freeCodeCamp",
     },
@@ -103,10 +105,12 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { icon: "🌐", name: "HTML", color: "text-orange-500" },
-        { icon: "🎨", name: "CSS", color: "text-blue-500" },
-        { icon: "💛", name: "JavaScript", color: "text-yellow-500" },
-        { icon: "🔍", name: "Search", color: "text-emerald-400" },
+        { iconName: "html", name: "HTML", color: "text-orange-500" },
+        { iconName: "css", name: "CSS", color: "text-blue-600" },
+        { iconName: "javascript", name: "JavaScript", color: "text-yellow-300" },
+        { iconName: "api-interface", name: "API", color: "text-blue-500" },
+        { iconName: "freecodecamp", name: "freecodecamp", color: "text-white" },
+
       ],
       repoUrl: "https://github.com/m1gang/RPG-creature-search-freeCodeCamp",
     },
@@ -125,10 +129,10 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { icon: "🌐", name: "HTML", color: "text-orange-500" },
-        { icon: "🎨", name: "CSS", color: "text-blue-500" },
-        { icon: "💛", name: "JavaScript", color: "text-yellow-500" },
-        { icon: "💰", name: "Math", color: "text-green-400" },
+        { iconName: "html", name: "HTML", color: "text-orange-500" },
+        { iconName: "css", name: "CSS", color: "text-blue-500" },
+        { iconName: "javascript", name: "JavaScript", color: "text-yellow-300" },
+        { iconName: "freecodecamp", name: "freecodecamp", color: "text-white" },
       ],
       repoUrl: "https://github.com/m1gang/cash-register-freecodeCamp",
     },
@@ -147,10 +151,10 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { icon: "🌐", name: "HTML", color: "text-orange-500" },
-        { icon: "🎨", name: "Tailwind", color: "text-cyan-400" },
-        { icon: "💛", name: "JavaScript", color: "text-yellow-500" },
-        { icon: "📱", name: "Responsive", color: "text-indigo-400" },
+        { iconName: "html", name: "HTML", color: "text-orange-500" },
+        { iconName: "tailwindcss", name: "Tailwind", color: "text-cyan-400" },
+        { iconName: "javascript", name: "JavaScript", color: "text-yellow-300" },
+        { iconName: "responsive", name: "Responsive", color: "text-indigo-400" },
       ],
       repoUrl: "#", // No tiene repositorio específico
     },
@@ -288,7 +292,7 @@ const ProjectsMiniApps = () => {
                   {currentProject.techs.map((tech, index) => (
                     <TechBadge
                       key={index}
-                      icon={tech.icon}
+                      iconName={tech.iconName}
                       name={tech.name}
                       color={tech.color}
                     />
@@ -319,9 +323,9 @@ const ProjectsMiniApps = () => {
 };
 
 // Tech Badge Component
-const TechBadge = ({ icon, name, color }) => (
+const TechBadge = ({ iconName, name, color }) => (
   <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <span className="text-lg">{icon}</span>
+    <Icon name={iconName} size={20} className={color} />
     <span className={`text-sm font-medium ${color}`}>{name}</span>
   </div>
 );

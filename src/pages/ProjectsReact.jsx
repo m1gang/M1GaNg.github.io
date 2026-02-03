@@ -12,6 +12,7 @@ import {
 import { MagicCard } from "../components/MagicCard";
 import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import ImageCarousel from "../components/ImageCarousel";
+import Icon from "../components/Icon";
 
 const ProjectsReact = () => {
   const gridRef = useRef(null);
@@ -34,10 +35,12 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { icon: "⚛️", name: "React", color: "text-cyan-400" },
-        { icon: "⚡", name: "Vite", color: "text-purple-500" },
-        { icon: "🎨", name: "CSS", color: "text-blue-400" },
-        { icon: "🖼️", name: "Giphy API", color: "text-pink-400" },
+        { iconName: "react", name: "React", color: "text-cyan-400" },
+        { iconName: "typescript", name: "TypeScript", color: "text-blue-400" },
+        { iconName: "vitejs", name: "Vite", color: "text-purple-500" },
+        { iconName: "vitest", name: "Vitest", color: "text-green-500" },
+        { iconName: "giphy", name: "Giphy API", color: "text-pink-400" },
+        { iconName: "devtalles", name: "DevTalles", color: "text-purple-800" },
       ],
       repoUrl: "https://github.com/m1gang/gifs-app-updated",
     },
@@ -64,10 +67,13 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { icon: "⚛️", name: "React", color: "text-cyan-400" },
-        { icon: "🧭", name: "React Router", color: "text-red-400" },
-        { icon: "🎨", name: "CSS", color: "text-blue-400" },
-        { icon: "🔐", name: "Auth", color: "text-green-400" },
+        { iconName: "react", name: "React", color: "text-cyan-400" },
+        { iconName: "typescript", name: "TypeScript", color: "text-blue-400" },
+        { iconName: "tailwindcss", name: "Tailwind", color: "text-sky-400" },
+        { iconName: "vitest", name: "Vitest", color: "text-green-500" },
+        { iconName: "reactrouter", name: "React Router", color: "text-red-500" },
+        { iconName: "reactquery", name: "React Query", color: "text-red-300" },
+        { iconName: "devtalles", name: "DevTalles", color: "text-purple-800" },
       ],
       repoUrl: "https://github.com/m1gang/heroes-app-updated",
     },
@@ -90,10 +96,13 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { icon: "⚛️", name: "React", color: "text-cyan-400" },
-        { icon: "⚡", name: "Vite", color: "text-purple-500" },
-        { icon: "🎨", name: "MaterialUI", color: "text-blue-500" },
-        { icon: "🔥", name: "Firebase", color: "text-orange-500" },
+        { iconName: "react", name: "React", color: "text-cyan-400" },
+        { iconName: "vitejs", name: "Vite", color: "text-purple-500" },
+        { iconName: "materialui", name: "MaterialUI", color: "text-blue-500" },
+        { iconName: "firebase", name: "Firebase", color: "text-orange-500" },
+        { iconName: "reactrouter", name: "React Router", color: "text-red-500" },
+        { iconName: "redux", name: "Redux", color: "text-purple-500" },
+        { iconName: "devtalles", name: "DevTalles", color: "text-purple-800" },
       ],
       repoUrl: "https://github.com/m1gang/journal-app-react",
     },
@@ -120,10 +129,14 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { icon: "⚛️", name: "React", color: "text-cyan-400" },
-        { icon: "▲", name: "Next.js", color: "text-white" },
-        { icon: "💳", name: "PayPal", color: "text-blue-400" },
-        { icon: "🎨", name: "Tailwind", color: "text-teal-400" },
+        { iconName: "react", name: "React", color: "text-cyan-400" },
+        { iconName: "typescript", name: "TypeScript", color: "text-blue-400" },
+        { iconName: "vitejs", name: "Vite", color: "text-purple-500" },
+        { iconName: "tailwindcss", name: "Tailwind", color: "text-teal-400" },
+        { iconName: "zustand", name: "Zustand", color: "text-orange-800" },
+        { iconName: "reactrouter", name: "React Router", color: "text-red-500" },
+        { iconName: "reactquery", name: "React Query", color: "text-red-300" },
+        { iconName: "devtalles", name: "DevTalles", color: "text-purple-800" },
       ],
       repoUrl: "https://github.com/m1gang/teslo-shop-react",
     },
@@ -261,7 +274,7 @@ const ProjectsReact = () => {
                   {currentProject.techs.map((tech, index) => (
                     <TechBadge
                       key={index}
-                      icon={tech.icon}
+                      iconName={tech.iconName}
                       name={tech.name}
                       color={tech.color}
                     />
@@ -288,9 +301,9 @@ const ProjectsReact = () => {
 };
 
 // Tech Badge Component
-const TechBadge = ({ icon, name, color }) => (
+const TechBadge = ({ iconName, name, color }) => (
   <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <span className="text-lg">{icon}</span>
+    <Icon name={iconName} size={20} className={color} />
     <span className={`text-sm font-medium ${color}`}>{name}</span>
   </div>
 );
