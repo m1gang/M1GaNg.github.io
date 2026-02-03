@@ -8,7 +8,7 @@ export const Inicio = () => {
   return (
     <div
       id="portafolio"
-      className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full bg-black text-white relative"
+      className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full relative"
     >
       {/* <AnimatedBackground /> */}
       <motion.header

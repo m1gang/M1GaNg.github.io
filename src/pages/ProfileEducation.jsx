@@ -3,7 +3,8 @@ import { motion } from "motion/react";
 import { GraduationCap, BookOpen, Flame, Globe } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import { GlobalSpotlight } from "../components/GlobalSpotlight";
-
+import uncpLogo from "../assets/img/education/uncp-logo-2.png";
+import fisLogo from "../assets/img/education/fis-logo.png";
 const ProfileEducation = () => {
   const gridRef = useRef(null);
 
@@ -37,7 +38,7 @@ const ProfileEducation = () => {
               <div className="flex flex-col items-center gap-3">
                 <div className="flex items-center gap-3 bg-white/[0.03] px-4 py-2 rounded-xl border border-white/10 shadow-xl">
                   <img
-                    src="/sistemas-logo-small.png"
+                    src={fisLogo}
                     alt="Sistemas Icon"
                     className="w-6 h-6 object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]"
                   />
@@ -65,7 +66,7 @@ const ProfileEducation = () => {
             {/* Right Logo (Hombre Pájaro) */}
             <div className="lg:col-span-3 flex justify-center items-center">
               <img
-                src="/uncp-hombre-pajaro.png"
+                src={uncpLogo}
                 alt="UNCP Hombre Pájaro"
                 className="w-full max-w-[120px] lg:max-w-[160px] h-auto object-contain drop-shadow-[0_0_30px_rgba(163,163,163,0.1)] opacity-90"
               />

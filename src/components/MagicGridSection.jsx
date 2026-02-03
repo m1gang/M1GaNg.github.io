@@ -138,9 +138,8 @@ export const MagicGridSection = ({
           className="grid gap-4 h-auto lg:h-full lg:grid-cols-6 lg:grid-rows-5 md:grid-cols-4 pb-4 lg:pb-0"
         >
           <MagicCard
-            className={`magic-card card-glass flex justify-center p-2 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1 md:col-span-2  md:col-start-1 md:row-start-2 ${
-              enableBorderGlow ? "card--border-glow" : ""
-            } font-roboto`}
+            className={`magic-card card-glass flex justify-center p-2 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1 md:col-span-2  md:col-start-1 md:row-start-2 ${enableBorderGlow ? "card--border-glow" : ""
+              } font-roboto`}
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -154,9 +153,8 @@ export const MagicGridSection = ({
           </MagicCard>
 
           <MagicCard
-            className={`magic-card card-glass flex flex-col justify-center items-center lg:col-span-4 lg:row-span-2 lg:col-start-3 lg:row-start-1 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-1 ${
-              enableBorderGlow ? "card--border-glow" : ""
-            } font-roboto`}
+            className={`magic-card card-glass flex flex-col justify-center items-center lg:col-span-4 lg:row-span-2 lg:col-start-3 lg:row-start-1 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-1 ${enableBorderGlow ? "card--border-glow" : ""
+              } font-roboto`}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -186,9 +184,8 @@ export const MagicGridSection = ({
           </MagicCard>
 
           <MagicCard
-            className={`magic-card card-glass shadow-lg p-6 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-3 md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-3 ${
-              enableBorderGlow ? "card--border-glow" : ""
-            } font-roboto`}
+            className={`magic-card card-glass shadow-lg p-6 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-3 md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-3 ${enableBorderGlow ? "card--border-glow" : ""
+              } font-roboto`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -222,7 +219,7 @@ export const MagicGridSection = ({
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h1 className="text-6xl text-red-600 font-sawbones">+1año</h1>
+                <h1 className="text-[50px] text-red-600 font-sawbones">+1 año</h1>
                 <span className="flex text-xl gap-3">
                   <Icon name="experiencia" />
                   Experiencia
@@ -232,9 +229,8 @@ export const MagicGridSection = ({
           </MagicCard>
 
           <MagicCard
-            className={`magic-card flex justify-center items-center card-glass gap-4 lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:row-start-5 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-5 ${
-              enableBorderGlow ? "card--border-glow" : ""
-            } font-roboto`}
+            className={`magic-card flex justify-center items-center card-glass gap-4 lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:row-start-5 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-5 ${enableBorderGlow ? "card--border-glow" : ""
+              } font-roboto`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -249,9 +245,8 @@ export const MagicGridSection = ({
           </MagicCard>
 
           <MagicCard
-            className={`magic-card card-glass lg:col-span-2 lg:row-span-3 lg:col-start-3 lg:row-start-3 md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 ${
-              enableBorderGlow ? "card--border-glow" : ""
-            } font-roboto`}
+            className={`magic-card card-glass lg:col-span-2 lg:row-span-3 lg:col-start-3 lg:row-start-3 md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 ${enableBorderGlow ? "card--border-glow" : ""
+              } font-roboto`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -331,9 +326,8 @@ export const MagicGridSection = ({
             className="flex flex-col lg:col-span-2 lg:row-span-3 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-4 font-roboto " //technologies gap-4 lg:col-span-2 lg:row-span-3 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-4
           >
             <MagicCard
-              className={`magic-card card-glass grow-4 flex flex-wrap justify-center items-center font-sawbones ${
-                enableBorderGlow ? "card--border-glow" : ""
-              } font-roboto`}
+              className={`magic-card card-glass grow-4 flex flex-wrap justify-center items-center font-sawbones ${enableBorderGlow ? "card--border-glow" : ""
+                } font-roboto`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{

@@ -42,6 +42,7 @@ const HomeRedes = () => {
               label="LinkedIn"
               color="bg-[#0077b5]"
               link="https://linkedin.com"
+
             />
             <SocialButton
               icon={<Github className="w-6 h-6" />}
@@ -115,11 +116,10 @@ const SocialButton = ({ icon, label, color, link }) => (
 const TimelineItem = ({ text, active }) => (
   <div className="flex gap-6 items-start z-10 group">
     <div
-      className={`mt-1.5 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
-        active
+      className={`mt-1.5 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${active
           ? "bg-[#00c9ff] shadow-[0_0_15px_rgba(0,201,255,0.4)]"
           : "bg-gray-600"
-      }`}
+        }`}
     >
       <CheckCircle2 className="w-4 h-4 text-black font-bold" />
     </div>

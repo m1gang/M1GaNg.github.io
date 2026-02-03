@@ -13,7 +13,7 @@ const HomePortada = () => {
         clickEffect={true}
         spotlightRadius={300}
         particleCount={12}
-        glowColor="255, 0, 0"
+        glowColor="255, 255, 255"
       />
     </div>
   );

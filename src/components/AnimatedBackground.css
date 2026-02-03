@@ -1,0 +1,32 @@
+/* Animación de gradiente animado similar a GradientText - más lenta para apreciar los colores */
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-gradient-blob {
+    animation: gradient-shift 30s linear infinite;
+}
+
+/* Optimización para rendimiento */
+@media (prefers-reduced-motion: no-preference) {
+    .animate-gradient-blob {
+        animation-timing-function: linear;
+    }
+}
+
+/* Optimización para rendimiento */
+@media (prefers-reduced-motion: no-preference) {
+    .animate-floating-blob {
+        animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+    }
+}
