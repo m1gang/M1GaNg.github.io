@@ -92,12 +92,12 @@ export const Inicio = () => {
           enableStars={false}
           enableSpotlight={false}
           enableBorderGlow={false}
-          enableTilt={true}
-          enableMagnetism={true}
+          enableTilt={false}
+          enableMagnetism={false}
           clickEffect={false}
           spotlightRadius={300}
-          particleCount={12}
-          glowColor="255, 0, 0"
+          particleCount={0}
+          glowColor="0, 0, 0"
         />
       </main>
     </div>

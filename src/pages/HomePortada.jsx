@@ -5,7 +5,7 @@ const HomePortada = () => {
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
       <MagicGridSection
         className="w-full h-full font-clash"
-        enableStars={true}
+        enableStars={false}
         enableSpotlight={true}
         enableBorderGlow={true}
         enableTilt={true}
@@ -13,7 +13,7 @@ const HomePortada = () => {
         clickEffect={true}
         spotlightRadius={300}
         particleCount={12}
-        glowColor="255, 255, 255"
+        glowColor="255, 0, 0"
       />
     </div>
   );

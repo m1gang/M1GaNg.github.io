@@ -41,7 +41,7 @@ const MainLayout = () => {
       { label: "Contacto" }
     ]
 
-    // Añadir más según sea necesario
+
   };
 
   const currentSubNav = subNavConfig[mainSection] || [];
