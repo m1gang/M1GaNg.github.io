@@ -51,7 +51,7 @@ const MainLayout = () => {
       id="portafolio"
       className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full bg-black text-white relative "
     >
-      <AnimatedBackground />
+      {/* <AnimatedBackground /> */}
       <MouseTrail />
 
       {/* Sidebar Navigation */}

@@ -1,14 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import {
-  Building2,
-  Github,
-  ShoppingCart,
-  Globe,
-  Server,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import ImageCarousel from "../components/ImageCarousel";
@@ -25,9 +17,18 @@ const ProjectsCondisa = () => {
       title: "Website Condisa Romero",
       description:
         "Sitio web corporativo para una empresa de construcción y servicios. Desarrollado para fortalecer la presencia digital y facilitar el contacto con clientes. Cuenta con secciones de servicios, proyectos y blog, optimizado para SEO y rendimiento.",
-      icon: <Globe className="w-8 h-8 text-blue-400" />,
-      iconBg: "bg-blue-500/20 border-blue-500/30",
-      gradient: "from-[#1a2a4a] to-[#0a0a0a]",
+      icon: (
+        <img
+          src={
+            new URL(
+              "../assets/img/icon-projects/web-condisa.png",
+              import.meta.url,
+            ).href
+          }
+          alt="Website Condisa Romero"
+          className="w-10 h-10 object-contain drop-shadow-md"
+        />
+      ),
       images: [
         new URL(
           "../assets/img/projects/CONDISA/website-condisa-romero-1.png",
@@ -55,9 +56,18 @@ const ProjectsCondisa = () => {
       title: "Sistema POS Librería",
       description:
         "Sistema de Punto de Venta (POS) completo para la gestión de inventario y ventas de una librería. Incluye manejo de productos, control de stock, generación de reportes y facturación. Desarrollado con PHP y MySQL para una gestión robusta de datos.",
-      icon: <ShoppingCart className="w-8 h-8 text-green-400" />,
-      iconBg: "bg-green-500/20 border-green-500/30",
-      gradient: "from-[#0a3a1a] to-[#0a0a0a]",
+      icon: (
+        <img
+          src={
+            new URL(
+              "../assets/img/icon-projects/pos-condisa.png",
+              import.meta.url,
+            ).href
+          }
+          alt="Sistema POS Librería"
+          className="w-10 h-10 object-contain drop-shadow-md"
+        />
+      ),
       images: [
         new URL(
           "../assets/img/projects/CONDISA/pos-libreria-1.png",
@@ -110,39 +120,37 @@ const ProjectsCondisa = () => {
       >
         {/* Project Switcher - Icon & Title */}
         <MagicCard
-          className={`lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-gradient-to-br ${currentProject.gradient} border-white/5 font-roboto transition-colors duration-500`}
+          className="lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <div className="flex items-center gap-4 h-full">
-            <div
-              className={`p-3 rounded-xl border ${currentProject.iconBg} transition-colors duration-500 shrink-0`}
+          <div className="flex items-center gap-4 h-full w-full justify-between">
+            <button
+              onClick={prevProject}
+              className="p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all shrink-0"
+              aria-label="Previous Project"
             >
-              {currentProject.icon}
-            </div>
+              <ChevronLeft className="w-6 h-6" />
+            </button>
 
-            <div className="flex items-center gap-2 flex-1 justify-center">
-              <button
-                onClick={prevProject}
-                className="p-1 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all"
-                aria-label="Previous Project"
-              >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
+            <div className="flex items-center gap-4 flex-1 justify-center">
+              <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
+                {currentProject.icon}
+              </div>
 
-              <h2 className="text-lg md:text-xl font-bold text-white text-center flex-1 select-none">
+              <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
                 {currentProject.title}
               </h2>
-
-              <button
-                onClick={nextProject}
-                className="p-1 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all"
-                aria-label="Next Project"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
             </div>
+
+            <button
+              onClick={nextProject}
+              className="p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all shrink-0"
+              aria-label="Next Project"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
           </div>
         </MagicCard>
 

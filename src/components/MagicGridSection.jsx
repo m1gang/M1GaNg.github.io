@@ -2,6 +2,8 @@ import React, { useRef, useState, useEffect } from "react";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react";
 import profile from "../assets/img/profile.png";
+import logo from "../assets/img/migang.png";
+
 import GradientText from "./GradientText";
 import Icon from "./Icon";
 import { MagicButton } from "./MagicButton";
