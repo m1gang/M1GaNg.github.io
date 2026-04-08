@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { MapPin, Phone, FileText, Wrench } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import { GlobalSpotlight } from "../components/GlobalSpotlight";
+import uncpLogo from "../assets/img/education/uncp-logo-2.png";
 
 const ExperienceUNCP = () => {
   const gridRef = useRef(null);
@@ -26,11 +27,11 @@ const ExperienceUNCP = () => {
           <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start relative z-10 w-full h-full">
             {/* UNCP Logo */}
             <div className="flex justify-center shrink-0 items-center">
-              <img
-                src="/uncp-hombre-pajaro.png"
-                alt="UNCP Logo"
-                className="w-32 h-32 object-contain drop-shadow-[0_0_20px_rgba(255,255,255,0.1)] opacity-90"
-              />
+              <div className="w-32 h-32 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
+                <div className="text-center">
+                  <img src={uncpLogo} alt="condisa romero logo" />
+                </div>
+              </div>
             </div>
 
             {/* Office Details */}

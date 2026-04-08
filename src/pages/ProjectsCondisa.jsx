@@ -83,11 +83,11 @@ const ProjectsCondisa = () => {
         ).href,
       ],
       techs: [
-        { iconName: "php", name: "PHP", color: "text-purple-400" },
-        { iconName: "mysql", name: "MySQL", color: "text-orange-400" },
-        { iconName: "javascript", name: "JS", color: "text-yellow-400" },
-        { iconName: "bootstrap", name: "Bootstrap", color: "text-indigo-400" },
-        { iconName: "jquery", name: "jquery", color: "text-blue-400" },
+        { iconName: "php", name: "PHP" },
+        { iconName: "mysql", name: "MySQL" },
+        { iconName: "javascript", name: "JS" },
+        { iconName: "bootstrap", name: "Bootstrap" },
+        { iconName: "jquery", name: "jquery" },
       ],
       repoUrl: "https://github.com/m1gang/pos-system-php",
     },
@@ -125,32 +125,14 @@ const ProjectsCondisa = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <div className="flex items-center gap-4 h-full w-full justify-between">
-            <button
-              onClick={prevProject}
-              className="p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all shrink-0"
-              aria-label="Previous Project"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <div className="flex items-center gap-4 flex-1 justify-center">
-              <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
-                {currentProject.icon}
-              </div>
-
-              <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
-                {currentProject.title}
-              </h2>
+          <div className="flex items-center gap-4 h-full w-full justify-center">
+            <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
+              {currentProject.icon}
             </div>
 
-            <button
-              onClick={nextProject}
-              className="p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all shrink-0"
-              aria-label="Next Project"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+            <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
+              {currentProject.title}
+            </h2>
           </div>
         </MagicCard>
 
@@ -196,6 +178,8 @@ const ProjectsCondisa = () => {
                 alt={`${currentProject.title} screenshot`}
                 autoPlay={true}
                 interval={4000}
+                onPrevProject={prevProject}
+                onNextProject={nextProject}
               />
             </motion.div>
           </AnimatePresence>
@@ -249,10 +233,10 @@ const ProjectsCondisa = () => {
 };
 
 // Tech Badge Component
-const TechBadge = ({ iconName, name, color }) => (
-  <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <Icon name={iconName} size={20} className={color} />
-    <span className={`text-sm font-medium ${color}`}>{name}</span>
+const TechBadge = ({ iconName, name }) => (
+  <div className="font-clash flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
+    <Icon name={iconName} size={20} />
+    <span className="text-sm font-medium">{name}</span>
   </div>
 );
 

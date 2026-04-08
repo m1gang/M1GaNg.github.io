@@ -140,8 +140,9 @@ export const MagicGridSection = ({
           className="grid gap-4 h-auto lg:h-full lg:grid-cols-6 lg:grid-rows-5 md:grid-cols-4 pb-4 lg:pb-0"
         >
           <MagicCard
-            className={`magic-card card-glass flex justify-center p-2 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1 md:col-span-2  md:col-start-1 md:row-start-2 ${enableBorderGlow ? "card--border-glow" : ""
-              } font-roboto`}
+            className={`magic-card card-glass flex justify-center p-2 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1 md:col-span-2  md:col-start-1 md:row-start-2 ${
+              enableBorderGlow ? "card--border-glow" : ""
+            } font-roboto`}
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -155,8 +156,9 @@ export const MagicGridSection = ({
           </MagicCard>
 
           <MagicCard
-            className={`magic-card card-glass flex flex-col justify-center items-center lg:col-span-4 lg:row-span-2 lg:col-start-3 lg:row-start-1 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-1 ${enableBorderGlow ? "card--border-glow" : ""
-              } font-roboto`}
+            className={`magic-card card-glass flex flex-col justify-center items-center lg:col-span-4 lg:row-span-2 lg:col-start-3 lg:row-start-1 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-1 ${
+              enableBorderGlow ? "card--border-glow" : ""
+            } font-roboto`}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -166,12 +168,12 @@ export const MagicGridSection = ({
             }}
             {...cardProps}
           >
-            <h2 className="text-5xl flex gap-3 items-baseline">
+            <h2 className="text-4xl flex gap-3 items-baseline">
               Hola soy
               <GradientText
                 colors={["#FEE4E6", "#E6EFEB", "#CEFBF1"]}
                 animationSpeed={8}
-                className="text-8xl font-bold"
+                className="text-7xl font-bold"
               >
                 MiGaNg
               </GradientText>
@@ -179,15 +181,16 @@ export const MagicGridSection = ({
             <h2 className="w-fit inline-block px-3 my-2 bg-white rounded-full font-medium text-black text-[20px]">
               &lt;Ingeniero de Sistemas & Frontend Developer/&gt;
             </h2>
-            <p className="font-thin text-2xl text-center">
+            <p className="font-thin text-xl text-center">
               "Me especializo en construir experiencias digitales que no solo
               funcionan, sino que comunican y fluyen."
             </p>
           </MagicCard>
 
           <MagicCard
-            className={`magic-card card-glass shadow-lg p-6 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-3 md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-3 ${enableBorderGlow ? "card--border-glow" : ""
-              } font-roboto`}
+            className={`magic-card card-glass shadow-lg p-6 lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-3 md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-3 ${
+              enableBorderGlow ? "card--border-glow" : ""
+            } font-roboto`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -221,7 +224,9 @@ export const MagicGridSection = ({
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h1 className="text-[50px] text-red-600 font-sawbones">+1 año</h1>
+                <h1 className="text-[50px] text-red-600 font-sawbones">
+                  +1 año
+                </h1>
                 <span className="flex text-xl gap-3">
                   <Icon name="experiencia" />
                   Experiencia
@@ -231,8 +236,9 @@ export const MagicGridSection = ({
           </MagicCard>
 
           <MagicCard
-            className={`magic-card flex justify-center items-center card-glass gap-4 lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:row-start-5 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-5 ${enableBorderGlow ? "card--border-glow" : ""
-              } font-roboto`}
+            className={`magic-card flex justify-center items-center card-glass gap-4 lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:row-start-5 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-5 ${
+              enableBorderGlow ? "card--border-glow" : ""
+            } font-roboto`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -247,8 +253,9 @@ export const MagicGridSection = ({
           </MagicCard>
 
           <MagicCard
-            className={`magic-card card-glass lg:col-span-2 lg:row-span-3 lg:col-start-3 lg:row-start-3 md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 ${enableBorderGlow ? "card--border-glow" : ""
-              } font-roboto`}
+            className={`magic-card card-glass lg:col-span-2 lg:row-span-3 lg:col-start-3 lg:row-start-3 md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2 ${
+              enableBorderGlow ? "card--border-glow" : ""
+            } font-roboto`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -259,9 +266,9 @@ export const MagicGridSection = ({
             {...cardProps}
           >
             <div className="grid grid-cols-2 grid-rows-3 p-4 gap-2 h-full w-full">
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 bg-[#2929293b] rounded-2xl border border-[#ffffff15]">
-                <div className="flex gap-2 justify-center items-center text-center">
-                  <Icon name="code" size={28} />
+              <div className="flex flex-col items-center justify-center text-2xl gap-2  rounded-2xl ">
+                <div className="flex gap-2 justify-center items-center text-xl text-center">
+                  <Icon name="code" size={30} />
                   Desarrollo
                   <br />
                   web
@@ -270,18 +277,9 @@ export const MagicGridSection = ({
                   Front end con React
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 bg-[#2929293b] rounded-2xl border border-[#ffffff15]">
-                <div className="flex gap-2 justify-center items-center">
-                  <Icon name="ui-ux" size={28} />
-                  UI / UX
-                </div>
-                <p className="text-[15px] bg-[#37d09e]/10 rounded p-1 font-thin">
-                  Prototipos
-                </p>
-              </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 bg-[#2929293b] rounded-2xl border border-[#ffffff15]">
-                <div className="flex gap-2 justify-center items-center">
-                  <Icon name="soporte" size={28} />
+              <div className="flex flex-col items-center justify-center text-2xl gap-2  rounded-2xl ">
+                <div className="flex gap-2 justify-center items-center text-lg">
+                  <Icon name="soporte" size={30} />
                   Soporte
                   <br />
                   Técnico
@@ -290,9 +288,9 @@ export const MagicGridSection = ({
                   Optimización
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 bg-[#2929293b] rounded-2xl border border-[#ffffff15]">
-                <div className="flex gap-2 justify-center items-center">
-                  <Icon name="design" size={28} />
+              <div className="flex flex-col items-center justify-center text-2xl gap-2  rounded-2xl ">
+                <div className="flex gap-2 justify-center items-center text-lg">
+                  <Icon name="design" size={30} />
                   Diseño
                   <br />
                   gráfico
@@ -301,9 +299,9 @@ export const MagicGridSection = ({
                   Corel, Branding
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 bg-[#2929293b] rounded-2xl border border-[#ffffff15]">
-                <div className="flex gap-2 justify-center items-center">
-                  <Icon name="graduate" size={28} />
+              <div className="flex flex-col items-center justify-center text-2xl gap-2  rounded-2xl ">
+                <div className="flex gap-2 justify-center items-center text-lg">
+                  <Icon name="graduate" size={30} />
                   Aprendizaje
                   <br />
                   continuo
@@ -312,9 +310,19 @@ export const MagicGridSection = ({
                   Siempre aprendiendo
                 </p>
               </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 bg-[#2929293b] rounded-2xl border border-[#ffffff15]">
-                <div className="flex gap-2 justify-center items-center">
-                  <Icon name="comunicate" size={28} />
+              <div className="flex flex-col items-center justify-center text-2xl gap-2  rounded-2xl ">
+                <div className="flex gap-2 justify-center items-center text-lg">
+                  <Icon name="ui-ux" size={30} />
+                  UI / UX
+                </div>
+                <p className="text-[15px] bg-[#37d09e]/10 rounded p-1 font-thin">
+                  Prototipos
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-2xl gap-2  rounded-2xl ">
+                <div className="flex gap-2 justify-center items-center text-lg">
+                  <Icon name="comunicate" size={30} />
                   Comunicación
                 </div>
                 <p className="text-[15px] bg-[#afb1b7]/10 rounded p-1 font-thin">
@@ -328,8 +336,9 @@ export const MagicGridSection = ({
             className="flex flex-col lg:col-span-2 lg:row-span-3 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-4 font-roboto " //technologies gap-4 lg:col-span-2 lg:row-span-3 md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-4
           >
             <MagicCard
-              className={`magic-card card-glass grow-4 flex flex-wrap justify-center items-center font-sawbones ${enableBorderGlow ? "card--border-glow" : ""
-                } font-roboto`}
+              className={`magic-card card-glass grow-4 flex flex-wrap justify-center items-center font-sawbones  text-lg ${
+                enableBorderGlow ? "card--border-glow" : ""
+              }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
@@ -340,40 +349,40 @@ export const MagicGridSection = ({
               {...cardProps}
             >
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="react" />
-                <h1 className="text-xl">React</h1>
+                <Icon name="react" size={20} />
+                <h1 className="text-base">React</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="tailwindcss" />
-                <h1 className="text-xl">Tailwind</h1>
+                <Icon name="tailwindcss" size={20} />
+                <h1>Tailwind</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="vitejs" />
-                <h1 className="text-xl">Vite</h1>
+                <Icon name="vitejs" size={20} />
+                <h1 className="text-base">Vite</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="javascript" />
-                <h1 className="text-xl">Javascript</h1>
+                <Icon name="javascript" size={20} />
+                <h1 className="text-base">Javascript</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="css" />
-                <h1 className="text-xl">CSS</h1>
+                <Icon name="css" size={20} />
+                <h1 className="text-base">CSS</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="html" />
-                <h1 className="text-xl">HTML</h1>
+                <Icon name="html" size={20} />
+                <h1 className="text-base">HTML</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="git" />
-                <h1 className="text-xl">Git</h1>
+                <Icon name="git" size={20} />
+                <h1 className="text-base">Git</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="github" />
-                <h1 className="text-xl">Github</h1>
+                <Icon name="github" size={20} />
+                <h1 className="text-base">Github</h1>
               </div>
               <div className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit">
-                <Icon name="figma" />
-                <h1 className="text-xl">Figma</h1>
+                <Icon name="figma" size={20} />
+                <h1 className="text-base">Figma</h1>
               </div>
             </MagicCard>
             <motion.div

@@ -143,15 +143,14 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { iconName: "html", name: "HTML", color: "text-orange-500" },
-        { iconName: "css", name: "CSS", color: "text-blue-600" },
+        { iconName: "html", name: "HTML" },
+        { iconName: "css", name: "CSS" },
         {
           iconName: "javascript",
           name: "JavaScript",
-          color: "text-yellow-300",
         },
-        { iconName: "api-interface", name: "API", color: "text-blue-500" },
-        { iconName: "freecodecamp", name: "freecodecamp", color: "text-white" },
+        { iconName: "api-interface", name: "API" },
+        { iconName: "freecodecamp", name: "freecodecamp" },
       ],
       repoUrl: "https://github.com/m1gang/RPG-creature-search-freeCodeCamp",
     },
@@ -177,14 +176,13 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { iconName: "html", name: "HTML", color: "text-orange-500" },
-        { iconName: "css", name: "CSS", color: "text-blue-500" },
+        { iconName: "html", name: "HTML" },
+        { iconName: "css", name: "CSS" },
         {
           iconName: "javascript",
           name: "JavaScript",
-          color: "text-yellow-300",
         },
-        { iconName: "freecodecamp", name: "freecodecamp", color: "text-white" },
+        { iconName: "freecodecamp", name: "freecodecamp" },
       ],
       repoUrl: "https://github.com/m1gang/cash-register-freecodeCamp",
     },
@@ -210,17 +208,15 @@ const ProjectsMiniApps = () => {
         ).href,
       ],
       techs: [
-        { iconName: "html", name: "HTML", color: "text-orange-500" },
-        { iconName: "tailwindcss", name: "Tailwind", color: "text-cyan-400" },
+        { iconName: "html", name: "HTML" },
+        { iconName: "tailwindcss", name: "Tailwind" },
         {
           iconName: "javascript",
           name: "JavaScript",
-          color: "text-yellow-300",
         },
         {
           iconName: "responsive",
           name: "Responsive",
-          color: "text-indigo-400",
         },
       ],
       repoUrl: "#", // No tiene repositorio específico
@@ -251,39 +247,21 @@ const ProjectsMiniApps = () => {
         ref={gridRef}
         className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 h-full w-full"
       >
-        {/* Project Switcher - Icon & Title with Arrows */}
+        {/* Project Switcher - Icon & Title */}
         <MagicCard
           className="lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <div className="flex items-center gap-4 h-full w-full justify-between">
-            <button
-              onClick={prevProject}
-              className="p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all shrink-0"
-              aria-label="Previous Project"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <div className="flex items-center gap-4 flex-1 justify-center">
-              <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
-                {currentProject.icon}
-              </div>
-
-              <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
-                {currentProject.title}
-              </h2>
+          <div className="flex items-center gap-4 h-full w-full justify-center">
+            <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
+              {currentProject.icon}
             </div>
 
-            <button
-              onClick={nextProject}
-              className="p-2 rounded-full hover:bg-white/10 text-white/50 hover:text-white transition-all shrink-0"
-              aria-label="Next Project"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
+            <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
+              {currentProject.title}
+            </h2>
           </div>
         </MagicCard>
 
@@ -331,6 +309,8 @@ const ProjectsMiniApps = () => {
                 alt={`${currentProject.title} screenshot`}
                 autoPlay={true}
                 interval={4000}
+                onPrevProject={prevProject}
+                onNextProject={nextProject}
               />
             </motion.div>
           </AnimatePresence>
@@ -388,10 +368,10 @@ const ProjectsMiniApps = () => {
 };
 
 // Tech Badge Component
-const TechBadge = ({ iconName, name, color }) => (
-  <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <Icon name={iconName} size={20} className={color} />
-    <span className={`text-sm font-medium ${color}`}>{name}</span>
+const TechBadge = ({ iconName, name }) => (
+  <div className="font-clash flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
+    <Icon name={iconName} size={20} />
+    <span className="text-sm font-medium`">{name}</span>
   </div>
 );
 

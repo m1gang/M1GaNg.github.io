@@ -55,7 +55,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Tu Nombre"
-                  className="w-full px-4 py-3 bg-[#1a2332] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
+                  className="w-full px-4 py-3 bg-[#1e2024] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
                   required
                 />
               </div>
@@ -69,7 +69,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="tu@email.com"
-                  className="w-full px-4 py-3 bg-[#1a2332] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
+                  className="w-full px-4 py-3 bg-[#1e2024] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
                   required
                 />
               </div>
@@ -84,7 +84,7 @@ const Contact = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 placeholder="Asunto del mensaje"
-                className="w-full px-4 py-3 bg-[#1a2332] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
+                className="w-full px-4 py-3 bg-[#1e2024] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors"
                 required
               />
             </div>
@@ -100,7 +100,7 @@ const Contact = () => {
                 onChange={handleChange}
                 placeholder="Escribe tu mensaje aquí..."
                 rows={6}
-                className="flex-1 px-4 py-3 bg-[#1a2332] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
+                className="flex-1 px-4 py-3 bg-[#1e2024] border border-white/10 rounded-lg text-white placeholder:text-white/30 focus:outline-none focus:border-blue-500/50 transition-colors resize-none"
                 required
               />
             </div>
@@ -108,7 +108,7 @@ const Contact = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 bg-orange-500 hover:bg-orange-900 text-white font-semibold rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               Enviar Mensaje
             </button>
@@ -140,7 +140,7 @@ const Contact = () => {
                     href="mailto:migang@example.com"
                     className="text-white hover:text-blue-400 transition-colors"
                   >
-                    migang@example.com
+                    miguelangelyv1@gmail.com
                   </a>
                 </div>
               </div>
@@ -152,7 +152,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-white/60 mb-1">Teléfono</p>
-                  <p className="text-white">+123 456 7890</p>
+                  <p className="text-white">+51 954936677</p>
                 </div>
               </div>
 
@@ -163,7 +163,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-white/60 mb-1">Ubicación</p>
-                  <p className="text-white">Ciudad, País</p>
+                  <p className="text-white">Ciudad, Perú</p>
                 </div>
               </div>
             </div>

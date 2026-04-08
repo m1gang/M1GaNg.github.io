@@ -22,7 +22,7 @@ const ProfileEducation = () => {
           glowColor="0, 255, 100"
         >
           {/* Subtle Green Glow Background */}
-          <div className="absolute top-[-40%] right-[-10%] w-[500px] h-[500px] bg-green-500/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-green-500/15 transition-all duration-1000"></div>
+          <div className="absolute top-[-40%] right-[-10%] w-[500px] h-[500px] bg-linear-to-br to-green-500/10 from-green-500/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-green-500/15 transition-all duration-1000"></div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10 w-full h-full">
             {/* Left/Center Info */}
@@ -68,7 +68,7 @@ const ProfileEducation = () => {
             <div className="lg:col-span-3 flex justify-center items-center">
               <img
                 src={uncpLogo}
-                alt="UNCP Hombre Pájaro"
+                alt="UNCP LOGO"
                 className="w-full max-w-[140px] lg:max-w-[180px] h-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] opacity-100"
               />
             </div>

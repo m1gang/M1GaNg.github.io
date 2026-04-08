@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { MapPin, Monitor, FileText, Wrench } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import { GlobalSpotlight } from "../components/GlobalSpotlight";
+import condisaLogo from "../assets/img/education/condisa-romero.png";
 
 const ExperienceCondisa = () => {
   const gridRef = useRef(null);
@@ -28,10 +29,7 @@ const ExperienceCondisa = () => {
             <div className="flex justify-center shrink-0 items-center">
               <div className="w-32 h-32 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
                 <div className="text-center">
-                  <div className="text-white text-sm font-bold mb-1">
-                    CONDISA
-                  </div>
-                  <div className="text-white text-xs">ROMERO</div>
+                  <img src={condisaLogo} alt="condisa romero logo" />
                 </div>
               </div>
             </div>
