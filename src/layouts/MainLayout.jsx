@@ -18,7 +18,7 @@ const MainLayout = () => {
   return (
     <div
       id="portafolio"
-      className=" flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full dark:bg-black text-white relative "
+      className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full dark:bg-black text-white relative "
     >
       <div className=" absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <AnimatedBackground />
@@ -53,4 +53,3 @@ const MainLayout = () => {
 };
 
 export default MainLayout;
-

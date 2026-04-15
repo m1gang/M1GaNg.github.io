@@ -399,6 +399,7 @@ export const MagicGridSection = ({
                 icon="projects"
                 gradientColors={["#3BC4F2", "#7A69F9", "#2667FF"]}
                 className="w-full"
+                to="../../proyectos"
               >
                 Ver proyectos
               </MagicButton>
@@ -407,6 +408,7 @@ export const MagicGridSection = ({
                   icon="contactar"
                   gradientColors={["#00F260", "#0575E6", "#00F260"]}
                   className="w-full"
+                  to="../../contacto"
                 >
                   Contactar
                 </MagicButton>
@@ -414,6 +416,8 @@ export const MagicGridSection = ({
                   icon="cv"
                   gradientColors={["#7A69F9", "#F26378", "#F5833F"]}
                   className="w-full"
+                  to="https://www.cvresume.dev/m1gang"
+                  target="_blank"
                 >
                   Ver CV
                 </MagicButton>

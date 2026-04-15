@@ -1,6 +1,3 @@
-import EvilEye from "./EvilEye";
-import LightPillar from "./LightPillar";
-import LightRays from "./LightRays";
 import Noise from "./Noise";
 
 export const AnimatedBackground = () => {
