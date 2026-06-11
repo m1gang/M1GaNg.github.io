@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { GraduationCap, BookOpen, Flame, Globe } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
-import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import uncpLogo from "../assets/img/education/uncp-logo-2.png";
 import fisLogo from "../assets/img/education/fis-logo.png";
 const ProfileEducation = () => {
@@ -9,7 +8,7 @@ const ProfileEducation = () => {
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
-      <GlobalSpotlight gridRef={gridRef} />
+
 
       <div
         ref={gridRef}

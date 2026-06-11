@@ -1,7 +1,5 @@
 import { useRef } from "react";
 import { MapPin, Phone, FileText, Wrench } from "lucide-react";
-import { MagicCard } from "../components/MagicCard";
-import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import uncpLogo from "../assets/img/education/uncp-logo-2.png";
 
 const ExperienceUNCP = () => {
@@ -9,18 +7,13 @@ const ExperienceUNCP = () => {
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
-      <GlobalSpotlight gridRef={gridRef} />
-
       <div
         ref={gridRef}
         className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 h-full w-full"
       >
         {/* Top left - Office Info */}
-        <MagicCard
-          className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#3a0a1f]/40 border-white/5 relative group font-roboto flex items-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
+        <div
+          className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#3a0a1f]/40 border-white/5 relative group font-roboto flex items-center hover:bg-[#3a0a1f]/50 transition-colors duration-300"
         >
           <div className="absolute top-[-40%] right-[-10%] w-[500px] h-[500px] bg-pink-500/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-pink-500/15 transition-all duration-1000"></div>
 
@@ -57,10 +50,10 @@ const ExperienceUNCP = () => {
               </p>
             </div>
           </div>
-        </MagicCard>
+        </div>
 
         {/* Top Right Card - Office Description */}
-        <MagicCard className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <p className="text-sm md:text-base text-white/60 leading-relaxed text-justify">
             La Oficina de Tecnologías de la Información de la Universidad
             Nacional del Centro del Perú es el área responsable de la gestión de
@@ -68,10 +61,10 @@ const ExperienceUNCP = () => {
             institucional, el portal de transparencia, la administración de la
             telefonía VoIP, así como del soporte y mantenimiento de equipos.
           </p>
-        </MagicCard>
+        </div>
 
         {/* Middle left - Responsibilities */}
-        <MagicCard className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex flex-col justify-center">
+        <div className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex flex-col justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-col gap-5">
             <div className="flex items-start gap-4">
               <div className="mt-1 shrink-0">
@@ -101,10 +94,10 @@ const ExperienceUNCP = () => {
               </p>
             </div>
           </div>
-        </MagicCard>
+        </div>
 
         {/* Middle right - Services */}
-        <MagicCard className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex justify-center w-full">
             <div className="flex flex-col gap-3 justify-center items-center">
               <ServiceBadge
@@ -129,10 +122,10 @@ const ExperienceUNCP = () => {
               />
             </div>
           </div>
-        </MagicCard>
+        </div>
 
         {/* Bottom left - Aprendizajes clave title */}
-        <MagicCard className="lg:col-span-4 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-4 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex items-center gap-4">
             <div className="text-4xl text-amber-300">💡</div>
             <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
@@ -141,10 +134,10 @@ const ExperienceUNCP = () => {
               clave
             </h3>
           </div>
-        </MagicCard>
+        </div>
 
         {/* Bottom right - Quotes */}
-        <MagicCard className="lg:col-span-8 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-8 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-col gap-4 text-center w-full">
             <blockquote className="text-sm md:text-base text-white/80">
               "Fortalecí mi capacidad para desarrollar soluciones web adaptadas
@@ -159,7 +152,7 @@ const ExperienceUNCP = () => {
               corporativos."
             </blockquote>
           </div>
-        </MagicCard>
+        </div>
       </div>
     </div>
   );

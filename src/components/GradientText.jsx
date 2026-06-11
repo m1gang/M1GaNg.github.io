@@ -1,50 +1,30 @@
+import React from "react";
+
 export default function GradientText({
   children,
   className = '',
   colors = ['#ffaa40', '#9c40ff', '#ffaa40'],
-  animationSpeed = 8,
+  animationSpeed,
 }) {
-  const gradientColors = [...colors, ...colors];
   const gradientStyle = {
-    backgroundImage: `linear-gradient(to right, ${gradientColors.join(', ')})`,
-    animationDuration: `${animationSpeed}s`
+    backgroundImage: `linear-gradient(to right, ${colors.join(', ')})`,
   };
 
   return (
-    <div
-      className={`relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
+    <span
+      className={`relative mx-auto inline-flex max-w-fit flex-row items-center justify-center font-medium overflow-hidden ${className}`}
     >
-
-      <div
-        className="inline-block relative z-2 text-transparent font-bold bg-cover leading-[1.2] animate-gradient"
+      <span
+        className="inline-block relative z-2 text-transparent font-bold bg-cover leading-[1.2]"
         style={{
           ...gradientStyle,
           backgroundClip: 'text',
           WebkitBackgroundClip: 'text',
-          backgroundSize: '200% 100%'
+          backgroundSize: '100% 100%'
         }}
       >
         {children}
-      </div>
-    </div>
+      </span>
+    </span>
   );
 }
-
-// tailwind.config.js
-// module.exports = {
-//   theme: {
-//     extend: {
-//       keyframes: {
-//         gradient: {
-//           '0%': { backgroundPosition: '0% 50%' },
-//           '50%': { backgroundPosition: '100% 50%' },
-//           '100%': { backgroundPosition: '0% 50%' },
-//         },
-//       },
-//       animation: {
-//         gradient: 'gradient 8s linear infinite'
-//       },
-//     },
-//   },
-//   plugins: [],
-// };

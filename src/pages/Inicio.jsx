@@ -1,8 +1,5 @@
 import Icon from "../components/Icon";
-import { motion } from "motion/react";
-import GradientText from "@/components/GradientText";
 import { MagicGridSection } from "@/components/MagicGridSection";
-import AnimatedBackground from "@/components/AnimatedBackground";
 
 export const Inicio = () => {
   return (
@@ -11,14 +8,7 @@ export const Inicio = () => {
       className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full relative"
     >
       {/* <AnimatedBackground /> */}
-      <motion.header
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{
-          duration: 2.5,
-          delay: 0.5,
-          ease: [0, 0.71, 0.2, 1.01],
-        }}
+      <header
         className="flex justify-center items-center w-full lg:w-1/5 h-auto lg:h-full font-clash"
       >
         <nav className="card-glass flex flex-col p-5 gap-y-5 justify-center border-indigo-500">
@@ -51,31 +41,17 @@ export const Inicio = () => {
             </span>
           </a>
         </nav>
-      </motion.header>
+      </header>
 
       <main className="flex flex-col items-center font-roboto w-full h-full overflow-y-auto">
-        <motion.h1
+        <h1
           className="text-4xl p-2 font-thin font-sawbones"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 2.5,
-            delay: 0.5,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
         >
           INICIO
-        </motion.h1>
+        </h1>
 
-        <motion.div
+        <div
           className="nav-vertical p-2"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 2.5,
-            delay: 0.5,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
         >
           <nav className="card-glass flex py-1 px-1 gap-3">
             <a href="#" className="bg-white rounded-[25px] px-3 text-black">
@@ -85,7 +61,7 @@ export const Inicio = () => {
               Redes
             </a>
           </nav>
-        </motion.div>
+        </div>
 
         <MagicGridSection
           className="flex-1 min-h-0"

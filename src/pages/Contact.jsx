@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "motion/react";
+
 import {
   Mail,
   Phone,
@@ -36,11 +36,8 @@ const Contact = () => {
       {/* Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 overflow-y-auto lg:overflow-hidden">
         {/* Left: Contact Form */}
-        <motion.div
+        <div
           className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
         >
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 h-full">
             {/* Name and Email Row */}
@@ -113,16 +110,13 @@ const Contact = () => {
               Enviar Mensaje
             </button>
           </form>
-        </motion.div>
+        </div>
 
         {/* Right: Contact Info & Social */}
         <div className="flex flex-col gap-6">
           {/* Contact Information */}
-          <motion.div
+          <div
             className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
           >
             <h3 className="text-xl font-bold mb-6">Información de Contacto</h3>
 
@@ -167,14 +161,11 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Social Media */}
-          <motion.div
+          <div
             className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
           >
             <h3 className="text-xl font-bold mb-6">Redes Sociales</h3>
 
@@ -216,7 +207,7 @@ const Contact = () => {
                 <Instagram className="w-6 h-6 text-white" />
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

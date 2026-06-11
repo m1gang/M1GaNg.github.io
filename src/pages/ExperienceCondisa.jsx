@@ -1,7 +1,5 @@
 import { useRef } from "react";
 import { MapPin, Monitor, FileText, Wrench } from "lucide-react";
-import { MagicCard } from "../components/MagicCard";
-import { GlobalSpotlight } from "../components/GlobalSpotlight";
 import condisaLogo from "../assets/img/education/condisa-romero.png";
 
 const ExperienceCondisa = () => {
@@ -9,18 +7,13 @@ const ExperienceCondisa = () => {
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
-      <GlobalSpotlight gridRef={gridRef} />
-
       <div
         ref={gridRef}
         className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 h-full w-full"
       >
         {/* Top left - Company Info */}
-        <MagicCard
-          className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a1f3a]/40 border-white/5 relative group font-roboto flex items-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
+        <div
+          className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a1f3a]/40 border-white/5 relative group font-roboto flex items-center hover:bg-[#0a1f3a]/50 transition-colors duration-300"
         >
           <div className="absolute top-[-40%] right-[-10%] w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-blue-500/15 transition-all duration-1000"></div>
 
@@ -57,10 +50,10 @@ const ExperienceCondisa = () => {
               </p>
             </div>
           </div>
-        </MagicCard>
+        </div>
 
         {/* Top right - Description */}
-        <MagicCard className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <p className="text-sm md:text-base text-white/60 leading-relaxed text-justify">
             Condisa Romero Servicios Generales & Construcciones S.A.C. es una
             empresa peruana dedicada a la arquitectura, ingeniería y
@@ -68,10 +61,10 @@ const ExperienceCondisa = () => {
             construcción en general, elaboración de planos, gestión de
             licencias, tasaciones y defensa civil.
           </p>
-        </MagicCard>
+        </div>
 
         {/* Middle left - Responsibilities */}
-        <MagicCard className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex flex-col justify-center">
+        <div className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex flex-col justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-col gap-5">
             <div className="flex items-start gap-4">
               <div className="mt-1 shrink-0">
@@ -100,10 +93,10 @@ const ExperienceCondisa = () => {
               </p>
             </div>
           </div>
-        </MagicCard>
+        </div>
 
         {/* Middle right - Tech Stack */}
-        <MagicCard className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
             <TechBadge icon="🌐" name="HTML" color="text-orange-500" />
             <TechBadge icon="🎨" name="CSS" color="text-blue-500" />
@@ -115,10 +108,10 @@ const ExperienceCondisa = () => {
             <TechBadge icon="🗄️" name="MySQL" color="text-white/80" />
             <TechBadge icon="🛠️" name="Soporte técnico" color="text-gray-300" />
           </div>
-        </MagicCard>
+        </div>
 
         {/* Bottom left - Aprendizajes clave title */}
-        <MagicCard className="lg:col-span-4 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-4 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex items-center gap-4">
             <div className="text-4xl text-amber-300">💡</div>
             <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
@@ -127,10 +120,10 @@ const ExperienceCondisa = () => {
               clave
             </h3>
           </div>
-        </MagicCard>
+        </div>
 
         {/* Bottom right - Quotes */}
-        <MagicCard className="lg:col-span-8 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center">
+        <div className="lg:col-span-8 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-col gap-4 text-center w-full">
             <blockquote className="text-sm md:text-base text-white/80">
               "Aprendí a trabajar en entornos institucionales con sistemas
@@ -144,7 +137,7 @@ const ExperienceCondisa = () => {
               "Desarrollé disciplina en la gestión de tareas y documentación."
             </blockquote>
           </div>
-        </MagicCard>
+        </div>
       </div>
     </div>
   );

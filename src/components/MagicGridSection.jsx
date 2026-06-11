@@ -1,6 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "motion/react";
 import profile from "../assets/img/profile.png";
 import logo from "../assets/img/migang.png";
 
@@ -385,15 +383,8 @@ export const MagicGridSection = ({
                 <h1 className="text-base">Figma</h1>
               </div>
             </MagicCard>
-            <motion.div
+            <div
               className="grow flex flex-col gap-4 justify-center items-center m-5"
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 2.5,
-                delay: 0.5,
-                ease: [0, 0.71, 0.2, 1.01],
-              }}
             >
               <MagicButton
                 icon="projects"
@@ -422,7 +413,7 @@ export const MagicGridSection = ({
                   Ver CV
                 </MagicButton>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

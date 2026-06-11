@@ -1,5 +1,4 @@
 import { Outlet, useLocation } from "react-router";
-import { motion } from "motion/react";
 import { MouseTrail } from "../components/MouseTrail";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Sidebar from "../components/layout/Sidebar";
@@ -18,7 +17,7 @@ const MainLayout = () => {
   return (
     <div
       id="portafolio"
-      className="flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full dark:bg-black text-white relative "
+      className="bg-black flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full dark:bg-black text-white relative "
     >
       <div className=" absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <AnimatedBackground />
@@ -31,14 +30,9 @@ const MainLayout = () => {
       {/* Main Content Area */}
       <main className="flex flex-col items-center font-roboto w-full h-full overflow-y-auto lg:overflow-hidden z-10 pt-10 lg:pt-0">
         {/* Main Section Title (Top) */}
-        <motion.h1
-          className="text-4xl p-2 font-thin font-sawbones uppercase tracking-widest"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 2.5, delay: 0.5, ease: [0, 0.71, 0.2, 1.01] }}
-        >
+        <h1 className="text-4xl p-2 font-thin font-sawbones uppercase tracking-widest">
           {mainSection}
-        </motion.h1>
+        </h1>
 
         {/* Sub-Navigation (Top Nav) */}
         <SubNavbar items={currentSubNav} />

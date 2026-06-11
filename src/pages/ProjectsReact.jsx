@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
-import { GlobalSpotlight } from "../components/GlobalSpotlight";
+import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
 import Icon from "../components/Icon";
 
@@ -196,19 +194,12 @@ const ProjectsReact = () => {
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
-      <GlobalSpotlight gridRef={gridRef} />
-
       <div
         ref={gridRef}
         className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 h-full w-full"
       >
         {/* Project Switcher - Icon & Title */}
-        <MagicCard
-          className="lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-        >
+        <MagicCard className="lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500 hover:bg-white/[0.02]">
           <div className="flex items-center gap-4 h-full w-full justify-center">
             <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
               {currentProject.icon}
@@ -221,84 +212,43 @@ const ProjectsReact = () => {
         </MagicCard>
 
         {/* Project Description */}
-        <MagicCard
-          className="lg:col-span-8 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-        >
+        <MagicCard className="lg:col-span-8 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto">
           <div className="flex items-center h-full">
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={activeProject}
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.2 }}
-                className="text-xs md:text-sm text-white/70"
-              >
-                {currentProject.description}
-              </motion.p>
-            </AnimatePresence>
+            <p className="text-xs md:text-sm text-white/70">
+              {currentProject.description}
+            </p>
           </div>
         </MagicCard>
 
         {/* Image Carousel */}
-        <MagicCard
-          className="lg:col-span-12 lg:row-span-4 card-glass p-4 bg-[#0a0a0a90] border-white/5 overflow-hidden group"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeProject}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="w-full h-full"
-            >
-              <ImageCarousel
-                images={currentProject.images}
-                alt={`${currentProject.title} screenshot`}
-                autoPlay={true}
-                interval={4000}
-                onPrevProject={prevProject}
-                onNextProject={nextProject}
-              />
-            </motion.div>
-          </AnimatePresence>
+        <MagicCard className="lg:col-span-12 lg:row-span-4 card-glass p-4 bg-[#0a0a0a90] border-white/5 overflow-hidden group">
+          <div className="w-full h-full">
+            <ImageCarousel
+              images={currentProject.images}
+              alt={`${currentProject.title} screenshot`}
+              autoPlay={true}
+              interval={4000}
+              onPrevProject={prevProject}
+              onNextProject={nextProject}
+            />
+          </div>
         </MagicCard>
 
         {/* Tech Stack & GitHub */}
-        <MagicCard
-          className="lg:col-span-12 lg:row-span-1 card-glass p-4 lg:p-6 bg-[#0a0a0a90] border-white/5 font-roboto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
+        <MagicCard className="lg:col-span-12 lg:row-span-1 card-glass p-4 lg:p-6 bg-[#0a0a0a90] border-white/5 font-roboto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-4 h-full">
             {/* Tech Badges */}
             <div className="flex flex-wrap gap-3 items-center justify-center lg:justify-start">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeProject + "-tech"}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex flex-wrap gap-3"
-                >
-                  {currentProject.techs.map((tech, index) => (
-                    <TechBadge
-                      key={index}
-                      iconName={tech.iconName}
-                      name={tech.name}
-                      color={tech.color}
-                    />
-                  ))}
-                </motion.div>
-              </AnimatePresence>
+              <div className="flex flex-wrap gap-3">
+                {currentProject.techs.map((tech, index) => (
+                  <TechBadge
+                    key={index}
+                    iconName={tech.iconName}
+                    name={tech.name}
+                    color={tech.color}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* GitHub Button */}
