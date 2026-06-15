@@ -1,8 +1,18 @@
 export const MAIN_NAV_ITEMS = [
   { to: "/inicio", icon: "home", label: "INICIO", section: "inicio" },
   { to: "/perfil", icon: "user", label: "PERFIL", section: "perfil" },
-  { to: "/proyectos", icon: "folder", label: "PROYECTOS", section: "proyectos" },
-  { to: "/experiencia", icon: "road", label: "EXPERIENCIA", section: "experiencia" },
+  {
+    to: "/proyectos",
+    icon: "folder",
+    label: "PROYECTOS",
+    section: "proyectos",
+  },
+  {
+    to: "/experiencia",
+    icon: "road",
+    label: "EXPERIENCIA",
+    section: "experiencia",
+  },
   { to: "/contacto", icon: "contact", label: "CONTACTO", section: "contacto" },
 ];
 
@@ -18,18 +28,20 @@ export const SUB_NAV_CONFIG = {
   ],
   experiencia: [
     {
-      label: "Condisa Romero",
-      path: "/experiencia/condisa",
+      label: "Devdatep",
+      path: "/experiencia/devdatep",
       isDefault: true,
+    },
+    {
+      label: "Condisa",
+      path: "/experiencia/condisa",
     },
     { label: "UNCP", path: "/experiencia/uncp" },
   ],
   proyectos: [
     { label: "Mini Apps", path: "/proyectos/miniapps", isDefault: true },
     { label: "Apps React", path: "/proyectos/react" },
-    { label: "Empresa Condisa", path: "/proyectos/condisa" },
+    { label: "Condisa", path: "/proyectos/condisa" },
   ],
-  contacto: [
-    { label: "Contacto", path: "/contacto" }
-  ],
+  contacto: [{ label: "Contacto", path: "/contacto" }],
 };

@@ -12,11 +12,7 @@ const ExperienceUNCP = () => {
         className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 h-full w-full"
       >
         {/* Top left - Office Info */}
-        <div
-          className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#3a0a1f]/40 border-white/5 relative group font-roboto flex items-center hover:bg-[#3a0a1f]/50 transition-colors duration-300"
-        >
-          <div className="absolute top-[-40%] right-[-10%] w-[500px] h-[500px] bg-pink-500/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-pink-500/15 transition-all duration-1000"></div>
-
+        <div className="lg:col-span-7 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#3a0a1f]/40 border-white/5 relative group font-roboto flex items-center hover:bg-[#3a0a1f]/50 transition-colors duration-300">
           <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start relative z-10 w-full h-full">
             {/* UNCP Logo */}
             <div className="flex justify-center shrink-0 items-center">
@@ -99,7 +95,7 @@ const ExperienceUNCP = () => {
         {/* Middle right - Services */}
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex justify-center w-full">
-            <div className="flex flex-col gap-3 justify-center items-center">
+            <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
               <ServiceBadge
                 icon="🟪"
                 name="Servicios Web"

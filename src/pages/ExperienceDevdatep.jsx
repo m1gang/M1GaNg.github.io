@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { MapPin, Monitor, FileText, Wrench } from "lucide-react";
-import condisaLogo from "../assets/img/education/condisa-romero.png";
+import devdatepLogo from "../assets/img/education/devdatep.png";
 
-const ExperienceCondisa = () => {
+const ExperienceDevdatep = () => {
   const gridRef = useRef(null);
 
   return (
@@ -18,7 +18,7 @@ const ExperienceCondisa = () => {
             <div className="flex justify-center shrink-0 items-center">
               <div className="w-32 h-32 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
                 <div className="text-center">
-                  <img src={condisaLogo} alt="condisa romero logo" />
+                  <img src={devdatepLogo} alt="condisa romero logo" />
                 </div>
               </div>
             </div>
@@ -26,11 +26,11 @@ const ExperienceCondisa = () => {
             {/* Company Details */}
             <div className="flex flex-col justify-center gap-2 h-full py-2">
               <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
-                CONDISA ROMERO S.A.C.
+                DEVDATEP CONSULTING
               </h2>
               <div className="flex flex-row gap-4">
                 <div className="flex items-center gap-1.5 text-white/70">
-                  <MapPin size={14} className="text-blue-400" />
+                  <MapPin size={14} className="text-sky-400" />
                   <span className="text-sm">Lima, Perú</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-white/70">
@@ -39,10 +39,10 @@ const ExperienceCondisa = () => {
                 </div>
               </div>
               <h3 className="text-base md:text-lg font-semibold text-white/90 mt-1">
-                Desarrollador Web & Soporte Técnico
+                Desarrollador React Junior y Líder Área Frontend
               </h3>
               <p className="text-sm text-red-500 font-bold">
-                Ago 2023 - Feb 2024
+                Feb 2026 - Nay 2026
               </p>
             </div>
           </div>
@@ -51,11 +51,11 @@ const ExperienceCondisa = () => {
         {/* Top right - Description */}
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <p className="text-sm md:text-base text-white/60 leading-relaxed text-justify">
-            Condisa Romero Servicios Generales & Construcciones S.A.C. es una
-            empresa peruana dedicada a la arquitectura, ingeniería y
-            construcción. Ofrece servicios integrales como diseño de interiores,
-            construcción en general, elaboración de planos, gestión de
-            licencias, tasaciones y defensa civil.
+            Devdatep es una agencia especializada en marketing, diseño web,
+            diseño gráfico y desarrollo de software . Se enfoca en impulsar la
+            transformación digital de las organizaciones mediante soluciones
+            tecnológicas estratégicas, como el desarrollo de intranets
+            corporativas y la creación de servicios web de alto impacto
           </p>
         </div>
 
@@ -67,7 +67,8 @@ const ExperienceCondisa = () => {
                 <Monitor className="w-5 h-5 text-blue-400" />
               </div>
               <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                Desarrollo de la web corporativa con HTML, CSS, JS y PHP.
+                Desarrollo de interfaces para la intranet corporativa
+                (Onboarding y Reclutamiento) con React y Zod
               </p>
             </div>
             <div className="flex items-start gap-4">
@@ -75,17 +76,17 @@ const ExperienceCondisa = () => {
                 <FileText className="w-5 h-5 text-purple-400" />
               </div>
               <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                Implementación de sistema POS para la librería asociada (gestión
-                de inventario y facturación).
+                Liderazgo técnico y supervisión de maquetación basada en
+                prototipos de Figma y documentación técnica
               </p>
             </div>
             <div className="flex items-start gap-4">
               <div className="mt-1 shrink-0">
-                <Wrench className="w-5 h-5 text-yellow-400" />
+                <Wrench className="w-5 h-5 text-yellow-400" />|{" "}
               </div>
               <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                Soporte técnico remoto: actualización de drivers, solución de
-                errores en software de construcción.
+                Liderazgo técnico y supervisión de maquetación basada en
+                prototipos de Figma y documentación técnica
               </p>
             </div>
           </div>
@@ -94,15 +95,15 @@ const ExperienceCondisa = () => {
         {/* Middle right - Tech Stack */}
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
-            <TechBadge icon="🌐" name="HTML" color="text-orange-500" />
-            <TechBadge icon="🎨" name="CSS" color="text-blue-500" />
             <TechBadge icon="⚛️" name="React" color="text-cyan-400" />
             <TechBadge icon="⚡" name="Vite" color="text-purple-500" />
-            <TechBadge icon="🐘" name="PHP" color="text-indigo-400" />
-            <TechBadge icon="💛" name="JS" color="text-yellow-500" />
-            <TechBadge icon="📱" name="Responsive" color="text-blue-300" />
-            <TechBadge icon="🗄️" name="MySQL" color="text-white/80" />
-            <TechBadge icon="🛠️" name="Soporte técnico" color="text-gray-300" />
+            <TechBadge icon="📘" name="TypeScript" color="text-blue-500" />
+            <TechBadge icon="🛡️" name="Zod" color="text-yellow-500" />
+            <TechBadge icon="🔄" name="React Query" color="text-red-500" />
+            <TechBadge icon="📁" name="Supabase" color="text-green-500" />
+            <TechBadge icon="☁️" name="Cloudinary" color="text-purple-500" />
+            <TechBadge icon="🎨" name="Figma" color="text-blue-500" />
+            <TechBadge icon="📖" name="Documentación" color="text-gray-500" />
           </div>
         </div>
 
@@ -122,15 +123,16 @@ const ExperienceCondisa = () => {
         <div className="lg:col-span-8 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-col gap-4 text-center w-full">
             <blockquote className="text-sm md:text-base text-white/80">
-              "Aprendí a trabajar en entornos institucionales con sistemas
-              informáticos en producción."
+              "Aprendí a liderar equipos técnicos coordinando el flujo entre
+              diseño, documentación y desarrollo"
             </blockquote>
             <blockquote className="text-sm md:text-base text-white/80">
-              "Fortalecí mis habilidades en soporte técnico y comunicación con
-              equipos multidisciplinarios."
+              "Perfeccioné el uso de arquitecturas modulares con React Query y
+              esquemas de validación avanzada"
             </blockquote>
             <blockquote className="text-sm md:text-base text-white/80">
-              "Desarrollé disciplina en la gestión de tareas y documentación."
+              "Aprendí a gestionar proyectos digitales desde la estrategia
+              comercial hasta la entrega final"
             </blockquote>
           </div>
         </div>
@@ -147,4 +149,4 @@ const TechBadge = ({ icon, name, color }) => (
   </div>
 );
 
-export default ExperienceCondisa;
+export default ExperienceDevdatep;

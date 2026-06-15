@@ -11,6 +11,7 @@ import Contact from "../pages/Contact";
 import ProjectsMiniApps from "../pages/ProjectsMiniApps";
 import ProjectsReact from "../pages/ProjectsReact";
 import ProjectsCondisa from "../pages/ProjectsCondisa";
+import ExperienceDevdatep from "@/pages/ExperienceDevdatep";
 
 export const router = createBrowserRouter([
   {
@@ -85,7 +86,11 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/experiencia/condisa" replace />,
+            element: <Navigate to="/experiencia/devdatep" replace />,
+          },
+          {
+            path: "devdatep",
+            element: <ExperienceDevdatep />,
           },
           {
             path: "condisa",
