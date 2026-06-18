@@ -32,13 +32,11 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-roboto lg:h-screen">
       {/* Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 overflow-y-auto lg:overflow-hidden">
         {/* Left: Contact Form */}
-        <div
-          className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl"
-        >
+        <div className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl">
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 h-full">
             {/* Name and Email Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -115,9 +113,7 @@ const Contact = () => {
         {/* Right: Contact Info & Social */}
         <div className="flex flex-col gap-6">
           {/* Contact Information */}
-          <div
-            className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl"
-          >
+          <div className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl">
             <h3 className="text-xl font-bold mb-6">Información de Contacto</h3>
 
             <div className="flex flex-col gap-4">
@@ -164,9 +160,7 @@ const Contact = () => {
           </div>
 
           {/* Social Media */}
-          <div
-            className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl"
-          >
+          <div className="card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 rounded-2xl">
             <h3 className="text-xl font-bold mb-6">Redes Sociales</h3>
 
             <div className="flex gap-4 justify-start">

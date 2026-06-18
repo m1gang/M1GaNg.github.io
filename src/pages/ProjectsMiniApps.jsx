@@ -238,7 +238,7 @@ const ProjectsMiniApps = () => {
   };
 
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden  lg:h-screen">
       <div
         ref={gridRef}
         className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 h-full w-full"
@@ -319,7 +319,7 @@ const ProjectsMiniApps = () => {
 
 // Tech Badge Component
 const TechBadge = ({ iconName, name }) => (
-  <div className="font-clash flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
+  <div className=" flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
     <Icon name={iconName} size={20} />
     <span className="text-sm font-medium`">{name}</span>
   </div>
