@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { MagicCard } from "../components/MagicCard";
 import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
-import Icon from "../components/Icon";
+import TechBadge from "../components/TechBadge";
 
 const ProjectsReact = () => {
   const gridRef = useRef(null);
@@ -19,7 +19,7 @@ const ProjectsReact = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/giff-search.png",
+              "../assets/img/icon-projects/giff-search.webp",
               import.meta.url,
             ).href
           }
@@ -29,7 +29,7 @@ const ProjectsReact = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/REACT/gif-app-search.png",
+          "../assets/img/projects/REACT/gif-app-search.webp",
           import.meta.url,
         ).href,
       ],
@@ -52,7 +52,7 @@ const ProjectsReact = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/logo-heroes-search.png",
+              "../assets/img/icon-projects/logo-heroes-search.webp",
               import.meta.url,
             ).href
           }
@@ -62,15 +62,15 @@ const ProjectsReact = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/REACT/heroes-app-search-1.png",
+          "../assets/img/projects/REACT/heroes-app-search-1.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/REACT/heroes-app-search-2.png",
+          "../assets/img/projects/REACT/heroes-app-search-2.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/REACT/heroes-app-search-3.png",
+          "../assets/img/projects/REACT/heroes-app-search-3.webp",
           import.meta.url,
         ).href,
       ],
@@ -97,7 +97,7 @@ const ProjectsReact = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/journal-app.png",
+              "../assets/img/icon-projects/journal-app.webp",
               import.meta.url,
             ).href
           }
@@ -107,11 +107,11 @@ const ProjectsReact = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/REACT/journal-app-1.png",
+          "../assets/img/projects/REACT/journal-app-1.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/REACT/journal-app-2.png",
+          "../assets/img/projects/REACT/journal-app-2.webp",
           import.meta.url,
         ).href,
       ],
@@ -138,7 +138,7 @@ const ProjectsReact = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/teslo-shop.png",
+              "../assets/img/icon-projects/teslo-shop.webp",
               import.meta.url,
             ).href
           }
@@ -148,15 +148,15 @@ const ProjectsReact = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/REACT/teslo-shop-react-1.png",
+          "../assets/img/projects/REACT/teslo-shop-react-1.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/REACT/teslo-shop-react-2.png",
+          "../assets/img/projects/REACT/teslo-shop-react-2.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/REACT/teslo-shop-react-3.png",
+          "../assets/img/projects/REACT/teslo-shop-react-3.webp",
           import.meta.url,
         ).href,
       ],
@@ -243,9 +243,8 @@ const ProjectsReact = () => {
                 {currentProject.techs.map((tech, index) => (
                   <TechBadge
                     key={index}
-                    iconName={tech.iconName}
+                    icon={tech.iconName}
                     name={tech.name}
-                    color={tech.color}
                   />
                 ))}
               </div>
@@ -267,13 +266,5 @@ const ProjectsReact = () => {
     </div>
   );
 };
-
-// Tech Badge Component
-const TechBadge = ({ iconName, name }) => (
-  <div className=" flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <Icon name={iconName} size={20} />
-    <span className="text-sm font-medium">{name}</span>
-  </div>
-);
 
 export default ProjectsReact;

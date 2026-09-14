@@ -4,7 +4,6 @@ export default function GradientText({
   children,
   className = '',
   colors = ['#ffaa40', '#9c40ff', '#ffaa40'],
-  animationSpeed,
 }) {
   const gradientStyle = {
     backgroundImage: `linear-gradient(to right, ${colors.join(', ')})`,

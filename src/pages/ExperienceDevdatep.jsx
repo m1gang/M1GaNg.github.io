@@ -1,6 +1,7 @@
 import { useRef } from "react";
-import { MapPin, Monitor, FileText, Wrench } from "lucide-react";
-import devdatepLogo from "../assets/img/education/devdatep.png";
+import { MapPin, Monitor, FileText, Wrench, Lightbulb, ShieldCheck, Database, Cloud } from "lucide-react";
+import devdatepLogo from "../assets/img/education/devdatep.webp";
+import TechBadge from "../components/TechBadge";
 
 const ExperienceDevdatep = () => {
   const gridRef = useRef(null);
@@ -18,7 +19,7 @@ const ExperienceDevdatep = () => {
             <div className="flex justify-center shrink-0 items-center">
               <div className="w-32 h-32 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
                 <div className="text-center">
-                  <img src={devdatepLogo} alt="condisa romero logo" />
+                  <img src={devdatepLogo} alt="Devdatep Consulting logo" />
                 </div>
               </div>
             </div>
@@ -82,11 +83,11 @@ const ExperienceDevdatep = () => {
             </div>
             <div className="flex items-start gap-4">
               <div className="mt-1 shrink-0">
-                <Wrench className="w-5 h-5 text-yellow-400" />|{" "}
+                <Wrench className="w-5 h-5 text-yellow-400" />
               </div>
               <p className="text-sm md:text-base text-white/80 leading-relaxed">
-                Liderazgo técnico y supervisión de maquetación basada en
-                prototipos de Figma y documentación técnica
+                Coordinación con stakeholders: levantamiento de requerimientos
+                y seguimiento de entregas del área frontend
               </p>
             </div>
           </div>
@@ -95,22 +96,22 @@ const ExperienceDevdatep = () => {
         {/* Middle right - Tech Stack */}
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
-            <TechBadge icon="⚛️" name="React" color="text-cyan-400" />
-            <TechBadge icon="⚡" name="Vite" color="text-purple-500" />
-            <TechBadge icon="📘" name="TypeScript" color="text-blue-500" />
-            <TechBadge icon="🛡️" name="Zod" color="text-yellow-500" />
-            <TechBadge icon="🔄" name="React Query" color="text-red-500" />
-            <TechBadge icon="📁" name="Supabase" color="text-green-500" />
-            <TechBadge icon="☁️" name="Cloudinary" color="text-purple-500" />
-            <TechBadge icon="🎨" name="Figma" color="text-blue-500" />
-            <TechBadge icon="📖" name="Documentación" color="text-gray-500" />
+            <TechBadge icon="react" name="React" />
+            <TechBadge icon="vitejs" name="Vite" />
+            <TechBadge icon="typescript" name="TypeScript" />
+            <TechBadge lucideIcon={ShieldCheck} iconClassName="text-yellow-500" name="Zod" />
+            <TechBadge icon="reactquery" name="React Query" />
+            <TechBadge lucideIcon={Database} iconClassName="text-green-500" name="Supabase" />
+            <TechBadge lucideIcon={Cloud} iconClassName="text-purple-500" name="Cloudinary" />
+            <TechBadge icon="figma" name="Figma" />
+            <TechBadge lucideIcon={FileText} iconClassName="text-gray-400" name="Documentación" />
           </div>
         </div>
 
         {/* Bottom left - Aprendizajes clave title */}
         <div className="lg:col-span-4 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex items-center gap-4">
-            <div className="text-4xl text-amber-300">💡</div>
+            <div className="text-amber-300"><Lightbulb size={36} /></div>
             <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
               Aprendizajes
               <br />
@@ -140,13 +141,5 @@ const ExperienceDevdatep = () => {
     </div>
   );
 };
-
-// Tech Badge Component
-const TechBadge = ({ icon, name, color }) => (
-  <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
-    <span className="text-lg">{icon}</span>
-    <span className={`text-sm font-medium ${color}`}>{name}</span>
-  </div>
-);
 
 export default ExperienceDevdatep;

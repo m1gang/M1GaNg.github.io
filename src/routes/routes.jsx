@@ -1,8 +1,8 @@
 import { Navigate, createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import HomePortada from "../pages/HomePortada";
-import HomeRedes from "../pages/HomeRedes";
 import ProfileAbout from "../pages/ProfileAbout";
+import ProfileIntereses from "../pages/ProfileIntereses";
 import ProfileEducation from "../pages/ProfileEducation";
 import ProfileSkills from "../pages/ProfileSkills";
 import ExperienceCondisa from "../pages/ExperienceCondisa";
@@ -33,10 +33,6 @@ export const router = createBrowserRouter([
             path: "portada",
             element: <HomePortada />,
           },
-          {
-            path: "redes",
-            element: <HomeRedes />,
-          },
         ],
       },
       {
@@ -49,6 +45,10 @@ export const router = createBrowserRouter([
           {
             path: "sobre-mi",
             element: <ProfileAbout />,
+          },
+          {
+            path: "intereses",
+            element: <ProfileIntereses />,
           },
           {
             path: "educacion",

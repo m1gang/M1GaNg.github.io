@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 
 const Icon = ({
   name,
@@ -9,15 +9,15 @@ const Icon = ({
   style = {},
   ...props
 }) => {
+  const uid = useId().replace(/:/g, "");
   // Validación básica del nombre del icono
   if (!name) {
     console.warn('Icon component requires a "name" prop');
     return null;
   }
 
-  const gradientId = `icon-gradient-${name}-${Math.random()
-    .toString(36)
-    .substr(2, 9)}`;
+  const gradientId = `icon-gradient-${name}-${uid}`;
+  const spriteHref = `${import.meta.env.BASE_URL}sprite.svg#${name}`;
 
   if (gradient && Array.isArray(gradient) && gradient.length >= 2) {
     return (
@@ -26,6 +26,8 @@ const Icon = ({
         height={size}
         className={className}
         style={{ ...style }}
+        aria-hidden="true"
+        focusable="false"
         {...props}
       >
         <defs>
@@ -44,7 +46,7 @@ const Icon = ({
             <stop offset="100%" stopColor={gradient[gradient.length - 1]} />
           </linearGradient>
         </defs>
-        <use href={`/sprite.svg#${name}`} fill={`url(#${gradientId})`} />
+        <use href={`${spriteHref}`} fill={`url(#${gradientId})`} />
       </svg>
     );
   }
@@ -56,9 +58,11 @@ const Icon = ({
       className={className}
       style={style}
       fill={props.fill || color}
+      aria-hidden="true"
+      focusable="false"
       {...props}
     >
-      <use href={`/sprite.svg#${name}`} />
+      <use href={`${spriteHref}`} />
     </svg>
   );
 };

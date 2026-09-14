@@ -1,6 +1,7 @@
 import { useRef } from "react";
-import { MapPin, Monitor, FileText, Wrench } from "lucide-react";
-import condisaLogo from "../assets/img/education/condisa-romero.png";
+import { MapPin, Monitor, FileText, Wrench, Lightbulb } from "lucide-react";
+import condisaLogo from "../assets/img/education/condisa-romero.webp";
+import TechBadge from "../components/TechBadge";
 
 const ExperienceCondisa = () => {
   const gridRef = useRef(null);
@@ -94,22 +95,22 @@ const ExperienceCondisa = () => {
         {/* Middle right - Tech Stack */}
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
-            <TechBadge icon="🌐" name="HTML" color="text-orange-500" />
-            <TechBadge icon="🎨" name="CSS" color="text-blue-500" />
-            <TechBadge icon="⚛️" name="React" color="text-cyan-400" />
-            <TechBadge icon="⚡" name="Vite" color="text-purple-500" />
-            <TechBadge icon="🐘" name="PHP" color="text-indigo-400" />
-            <TechBadge icon="💛" name="JS" color="text-yellow-500" />
-            <TechBadge icon="📱" name="Responsive" color="text-blue-300" />
-            <TechBadge icon="🗄️" name="MySQL" color="text-white/80" />
-            <TechBadge icon="🛠️" name="Soporte técnico" color="text-gray-300" />
+            <TechBadge icon="html" name="HTML" />
+            <TechBadge icon="css" name="CSS" />
+            <TechBadge icon="react" name="React" />
+            <TechBadge icon="vitejs" name="Vite" />
+            <TechBadge icon="php" name="PHP" />
+            <TechBadge icon="javascript" name="JS" />
+            <TechBadge icon="responsive" name="Responsive" />
+            <TechBadge icon="mysql" name="MySQL" />
+            <TechBadge lucideIcon={Wrench} iconClassName="text-gray-300" name="Soporte técnico" />
           </div>
         </div>
 
         {/* Bottom left - Aprendizajes clave title */}
         <div className="lg:col-span-4 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex items-center gap-4">
-            <div className="text-4xl text-amber-300">💡</div>
+            <div className="text-amber-300"><Lightbulb size={36} /></div>
             <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
               Aprendizajes
               <br />
@@ -138,13 +139,5 @@ const ExperienceCondisa = () => {
     </div>
   );
 };
-
-// Tech Badge Component
-const TechBadge = ({ icon, name, color }) => (
-  <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
-    <span className="text-lg">{icon}</span>
-    <span className={`text-sm font-medium ${color}`}>{name}</span>
-  </div>
-);
 
 export default ExperienceCondisa;

@@ -1,5 +1,6 @@
 import { useRef } from "react";
-import Icon from "../components/Icon";
+import SharedBadge from "../components/TechBadge";
+import { cn } from "@/lib/utils";
 import {
   Layout,
   MessageSquare,
@@ -27,8 +28,6 @@ const ProfileSkills = () => {
         {/* --- Top Left: Skill Bars (5 cols) --- */}
         <MagicCard
           className="lg:col-span-5 lg:row-span-3 card-glass p-8 bg-[#0a0a0a90] border-white/5 font-roboto"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
         >
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 h-full items-center">
             {/* Left Column Skills */}
@@ -58,8 +57,6 @@ const ProfileSkills = () => {
         {/* --- Top Right: Badges (7 cols) --- */}
         <MagicCard
           className="lg:col-span-7 lg:row-span-3 card-glass p-8 lg:p-10 bg-[#0a0a0a90] border-white/5 flex flex-col gap-4 justify-center font-roboto"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
         >
           <h3 className="text-xl font-bold text-white/50 tracking-[0.2em] uppercase text-center mb-2">
             Frontend & Diseño
@@ -82,10 +79,6 @@ const ProfileSkills = () => {
         {/* --- Bottom Left: Soft Skills (5 cols) --- */}
         <MagicCard
           className="lg:col-span-5 lg:row-span-3 card-glass p-8 grid grid-cols-2 gap-8 bg-linear-to-br from-[#111111] to-[#1a1a0030] relative overflow-hidden group border-white/5 items-center justify-items-center font-roboto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          enableBorderGlow={true}
-          glowColor="255, 200, 0"
         >
           <div className="absolute inset-0 bg-yellow-500/5 blur-[90px] pointer-events-none group-hover:bg-yellow-500/10 transition-all duration-700"></div>
 
@@ -203,35 +196,34 @@ const SkillBar = ({ label, percent, color }) => (
 );
 
 const TechBadge = ({ name, icon }) => (
-  <div className="flex items-center gap-2 px-3 py-1.5 bg-[#1a1a1a] border border-white/5 rounded-[12px] group hover:bg-white/[0.05] transition-all hover:scale-105 hover:border-white/10 shadow-lg">
-    <Icon
-      name={icon}
-      size={20}
-      className="opacity-90 group-hover:opacity-100"
-    />
-    <span className="text-xs font-bold text-white/70 group-hover:text-white">
-      {name}
-    </span>
-  </div>
+  <SharedBadge
+    name={name}
+    icon={icon}
+    iconClassName="opacity-90 group-hover:opacity-100"
+    textClassName="text-xs font-bold text-white/70 group-hover:text-white"
+    className="py-1.5 rounded-[12px] bg-[#1a1a1a] border-white/5 shadow-lg group hover:bg-white/[0.05] hover:scale-105 hover:border-white/10 transition-all"
+  />
 );
 
 const TechBadgeSmall = ({
   name,
   icon,
-  lucideIcon: LucideIcon,
+  lucideIcon,
   iconColor = "text-white/80",
   width = "w-auto",
 }) => (
-  <div
-    className={`flex items-center justify-center gap-2 px-3 py-1 bg-[#1f1f1f] border border-white/5 rounded-md hover:bg-white/10 transition-colors ${width}`}
-  >
-    {LucideIcon ? (
-      <LucideIcon size={14} className={`${iconColor} opacity-90`} />
-    ) : (
-      <Icon name={icon} size={14} className="opacity-80" />
+  <SharedBadge
+    name={name}
+    icon={icon}
+    lucideIcon={lucideIcon}
+    iconSize={14}
+    iconClassName={cn(iconColor, "opacity-90")}
+    textClassName="text-[10px] font-bold text-white/60"
+    className={cn(
+      "justify-center py-1 rounded-md bg-[#1f1f1f] border-white/5",
+      width,
     )}
-    <span className="text-[10px] font-bold text-white/60">{name}</span>
-  </div>
+  />
 );
 
 const SoftSkillItem = ({ icon, title }) => (

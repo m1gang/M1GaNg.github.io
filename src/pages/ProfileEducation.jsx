@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import { GraduationCap, BookOpen, Flame, Globe } from "lucide-react";
+import { GraduationCap, BookOpen, Flame, Globe, Landmark } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
-import uncpLogo from "../assets/img/education/uncp-logo-2.png";
-import fisLogo from "../assets/img/education/fis-logo.png";
+import uncpLogo from "../assets/img/education/uncp-logo-2.webp";
+import fisLogo from "../assets/img/education/fis-logo.webp";
 const ProfileEducation = () => {
   const gridRef = useRef(null);
 
@@ -17,8 +17,6 @@ const ProfileEducation = () => {
         {/* --- Top: Academic Formation (Full Width) --- */}
         <MagicCard
           className="lg:col-span-3 lg:row-span-2 card-glass p-6 lg:p-8 bg-gradient-to-br from-[#111111] to-[#0a1f0a] border-white/5 relative group font-roboto"
-          enableBorderGlow={true}
-          glowColor="0, 255, 100"
         >
           {/* Subtle Green Glow Background */}
           <div className="absolute top-[-40%] right-[-10%] w-[500px] h-[500px] bg-linear-to-br to-green-500/10 from-green-500/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-green-500/15 transition-all duration-1000"></div>
@@ -144,11 +142,7 @@ const ProfileEducation = () => {
               </div>
             </div>
             <div className="shrink-0">
-              <img
-                src="/gob-pe-logo.png"
-                alt="Gob PE"
-                className="w-12 h-auto md:w-16 object-contain"
-              />
+              <Landmark className="w-12 h-12 md:w-16 md:h-16 text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300" />
             </div>
           </div>
         </MagicCard>

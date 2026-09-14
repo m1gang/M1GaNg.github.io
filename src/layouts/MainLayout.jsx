@@ -1,9 +1,15 @@
 import { Outlet, useLocation } from "react-router";
-import { MouseTrail } from "../components/MouseTrail";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
 import Sidebar from "../components/layout/Sidebar";
 import SubNavbar from "../components/layout/SubNavbar";
 import { SUB_NAV_CONFIG } from "../constants/navigation";
+
+const SECTION_TITLES = {
+  inicio: "Inicio",
+  perfil: "Perfil",
+  proyectos: "Proyectos",
+  experiencia: "Experiencia",
+  contacto: "Contacto",
+};
 
 const MainLayout = () => {
   const location = useLocation();
@@ -19,11 +25,6 @@ const MainLayout = () => {
       id="portafolio"
       className="bg-black flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full dark:bg-black text-white relative "
     >
-      <div className=" absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <AnimatedBackground />
-      </div>
-      <MouseTrail />
-
       {/* Sidebar Navigation */}
       <Sidebar mainSection={mainSection} />
 
@@ -31,7 +32,7 @@ const MainLayout = () => {
       <main className="flex flex-col items-center font-roboto w-full h-full overflow-y-auto lg:overflow-hidden z-10 pt-10 lg:pt-0">
         {/* Main Section Title (Top) */}
         <h1 className="text-4xl p-2 font-thin font-sawbones uppercase tracking-widest">
-          {mainSection}
+          {SECTION_TITLES[mainSection] ?? mainSection}
         </h1>
 
         {/* Sub-Navigation (Top Nav) */}

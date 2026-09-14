@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { MagicCard } from "../components/MagicCard";
 import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
-import Icon from "../components/Icon";
+import TechBadge from "../components/TechBadge";
 
 const ProjectsCondisa = () => {
   const gridRef = useRef(null);
@@ -19,7 +19,7 @@ const ProjectsCondisa = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/web-condisa.png",
+              "../assets/img/icon-projects/web-condisa.webp",
               import.meta.url,
             ).href
           }
@@ -29,15 +29,15 @@ const ProjectsCondisa = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/CONDISA/website-condisa-romero-1.png",
+          "../assets/img/projects/condisa/website-condisa-romero-1.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/CONDISA/website-condisa-romero-2.png",
+          "../assets/img/projects/condisa/website-condisa-romero-2.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/CONDISA/website-condisa-romero-3.png",
+          "../assets/img/projects/condisa/website-condisa-romero-3.webp",
           import.meta.url,
         ).href,
       ],
@@ -58,7 +58,7 @@ const ProjectsCondisa = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/pos-condisa.png",
+              "../assets/img/icon-projects/pos-condisa.webp",
               import.meta.url,
             ).href
           }
@@ -68,15 +68,15 @@ const ProjectsCondisa = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/CONDISA/pos-libreria-1.png",
+          "../assets/img/projects/condisa/pos-libreria-1.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/CONDISA/pos-libreria-2.png",
+          "../assets/img/projects/condisa/pos-libreria-2.webp",
           import.meta.url,
         ).href,
         new URL(
-          "../assets/img/projects/CONDISA/pos-libreria-3.png",
+          "../assets/img/projects/condisa/pos-libreria-3.webp",
           import.meta.url,
         ).href,
       ],
@@ -157,9 +157,8 @@ const ProjectsCondisa = () => {
                 {currentProject.techs.map((tech, index) => (
                   <TechBadge
                     key={index}
-                    iconName={tech.iconName}
+                    icon={tech.iconName}
                     name={tech.name}
-                    color={tech.color}
                   />
                 ))}
               </div>
@@ -181,13 +180,5 @@ const ProjectsCondisa = () => {
     </div>
   );
 };
-
-// Tech Badge Component
-const TechBadge = ({ iconName, name }) => (
-  <div className=" flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <Icon name={iconName} size={20} />
-    <span className="text-sm font-medium">{name}</span>
-  </div>
-);
 
 export default ProjectsCondisa;

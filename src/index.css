@@ -116,6 +116,11 @@
         @apply border-border outline-ring/50;
     }
 
+    :focus-visible {
+        outline: 2px solid oklch(0.92 0.004 286.32);
+        outline-offset: 2px;
+    }
+
     body {
         @apply bg-background text-foreground;
     }
@@ -128,16 +133,19 @@
 @font-face {
     font-family: 'SawBones';
     src: url('./assets/fonts/SawBones.woff2') format('woff2');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Roboto Condensed';
     src: url('./assets/fonts/RobotoCondensed.woff2') format('woff2');
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Clash Display';
     src: url('./assets/fonts/ClashDisplay.woff2') format('woff2');
+    font-display: swap;
 }
 
 @theme {
@@ -188,5 +196,23 @@
 
     .animation-delay-4000 {
         animation-delay: 4s;
+    }
+}
+
+@keyframes border-glow-translate {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-50%, -50%) translate(10px, 10px);
+    }
+}
+
+@keyframes border-glow-scale {
+    0% {
+        transform: translateX(-50%) scale(1);
+    }
+    100% {
+        transform: translateX(-50%) scale(1.2);
     }
 }

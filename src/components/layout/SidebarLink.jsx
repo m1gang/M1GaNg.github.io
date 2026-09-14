@@ -18,7 +18,7 @@ const SidebarLink = ({ to, icon, label, active }) => (
       size={28}
     />
     <span
-      className={`font-medium text-[10px] md:text-[15px] lg:text-[18px] leading-none tracking-tight ${
+      className={`font-medium text-xs md:text-[15px] lg:text-[18px] leading-none tracking-tight ${
         active ? "opacity-100" : "opacity-80"
       }`}
     >

@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Github } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import ImageCarousel from "../components/ImageCarousel";
-import Icon from "../components/Icon";
+import TechBadge from "../components/TechBadge";
 
 const ProjectsMiniApps = () => {
   const gridRef = useRef(null);
@@ -19,7 +19,7 @@ const ProjectsMiniApps = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/phone-validate.png",
+              "../assets/img/icon-projects/phone-validate.webp",
               import.meta.url,
             ).href
           }
@@ -29,7 +29,7 @@ const ProjectsMiniApps = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/miniapps/telefono-validator.png",
+          "../assets/img/projects/miniapps/telefono-validator.webp",
           import.meta.url,
         ).href,
       ],
@@ -56,7 +56,7 @@ const ProjectsMiniApps = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/palindrome.png",
+              "../assets/img/icon-projects/palindrome.webp",
               import.meta.url,
             ).href
           }
@@ -66,7 +66,7 @@ const ProjectsMiniApps = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/miniapps/palindrome-checker.png",
+          "../assets/img/projects/miniapps/palindrome-checker.webp",
           import.meta.url,
         ).href,
       ],
@@ -91,7 +91,7 @@ const ProjectsMiniApps = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/roman-converter.png",
+              "../assets/img/icon-projects/roman-converter.webp",
               import.meta.url,
             ).href
           }
@@ -101,7 +101,7 @@ const ProjectsMiniApps = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/miniapps/roman-numeral-converter.png",
+          "../assets/img/projects/miniapps/roman-numeral-converter.webp",
           import.meta.url,
         ).href,
       ],
@@ -126,7 +126,7 @@ const ProjectsMiniApps = () => {
         <img
           src={
             new URL(
-              "../assets/img/icon-projects/rpg-search.png",
+              "../assets/img/icon-projects/rpg-search.webp",
               import.meta.url,
             ).href
           }
@@ -136,7 +136,7 @@ const ProjectsMiniApps = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/miniapps/rpg-searach-creature.png",
+          "../assets/img/projects/miniapps/rpg-searach-creature.webp",
           import.meta.url,
         ).href,
       ],
@@ -160,7 +160,7 @@ const ProjectsMiniApps = () => {
       icon: (
         <img
           src={
-            new URL("../assets/img/icon-projects/cash.png", import.meta.url)
+            new URL("../assets/img/icon-projects/cash.webp", import.meta.url)
               .href
           }
           alt="Cash Register"
@@ -169,7 +169,7 @@ const ProjectsMiniApps = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/miniapps/cash-register.png",
+          "../assets/img/projects/miniapps/cash-register.webp",
           import.meta.url,
         ).href,
       ],
@@ -192,7 +192,7 @@ const ProjectsMiniApps = () => {
       icon: (
         <img
           src={
-            new URL("../assets/img/icon-projects/form.png", import.meta.url)
+            new URL("../assets/img/icon-projects/form.webp", import.meta.url)
               .href
           }
           alt="Form Design"
@@ -201,7 +201,7 @@ const ProjectsMiniApps = () => {
       ),
       images: [
         new URL(
-          "../assets/img/projects/miniapps/form-design.png",
+          "../assets/img/projects/miniapps/form-design.webp",
           import.meta.url,
         ).href,
       ],
@@ -288,9 +288,8 @@ const ProjectsMiniApps = () => {
                 {currentProject.techs.map((tech, index) => (
                   <TechBadge
                     key={index}
-                    iconName={tech.iconName}
+                    icon={tech.iconName}
                     name={tech.name}
-                    color={tech.color}
                   />
                 ))}
               </div>
@@ -316,13 +315,5 @@ const ProjectsMiniApps = () => {
     </div>
   );
 };
-
-// Tech Badge Component
-const TechBadge = ({ iconName, name }) => (
-  <div className=" flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors cursor-default">
-    <Icon name={iconName} size={20} />
-    <span className="text-sm font-medium`">{name}</span>
-  </div>
-);
 
 export default ProjectsMiniApps;

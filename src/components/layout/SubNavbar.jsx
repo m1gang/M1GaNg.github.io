@@ -4,8 +4,8 @@ const SubNavbar = ({ items }) => {
   if (!items || items.length === 0) return null;
 
   return (
-    <div className="nav-vertical p-2 mt-2">
-      <nav className="card-glass flex py-1 px-1 gap-2 bg-[#29292980]">
+    <div className="nav-vertical p-2 mt-2 max-w-full">
+      <nav aria-label="Subnavegación" className="card-glass flex py-1 px-1 gap-2 bg-[#29292980] max-w-full overflow-x-auto">
         {items.map((sub) => (
           <NavLink
             key={sub.path || "#"}

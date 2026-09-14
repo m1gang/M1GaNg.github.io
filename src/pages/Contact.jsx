@@ -17,18 +17,20 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [sent, setSent] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setSent(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log("Form submitted:", formData);
+    setSent(true);
+    setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
   return (
@@ -41,11 +43,12 @@ const Contact = () => {
             {/* Name and Email Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm text-white/70 mb-2">
+                <label htmlFor="contact-name" className="block text-sm text-white/70 mb-2">
                   Nombre
                 </label>
                 <input
                   type="text"
+                  id="contact-name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
@@ -55,11 +58,12 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm text-white/70 mb-2">
+                <label htmlFor="contact-email" className="block text-sm text-white/70 mb-2">
                   Correo Electrónico
                 </label>
                 <input
                   type="email"
+                  id="contact-email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
@@ -72,9 +76,10 @@ const Contact = () => {
 
             {/* Subject */}
             <div>
-              <label className="block text-sm text-white/70 mb-2">Asunto</label>
+              <label htmlFor="contact-subject" className="block text-sm text-white/70 mb-2">Asunto</label>
               <input
                 type="text"
+                id="contact-subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
@@ -86,10 +91,11 @@ const Contact = () => {
 
             {/* Message */}
             <div className="flex-1 flex flex-col">
-              <label className="block text-sm text-white/70 mb-2">
+              <label htmlFor="contact-message" className="block text-sm text-white/70 mb-2">
                 Mensaje
               </label>
               <textarea
+                id="contact-message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
@@ -107,6 +113,12 @@ const Contact = () => {
             >
               Enviar Mensaje
             </button>
+            {sent && (
+              <p role="status" className="text-sm text-green-400 text-center">
+                ¡Mensaje listo! Por ahora contáctame directo a
+                miguelangelyv1@gmail.com
+              </p>
+            )}
           </form>
         </div>
 
@@ -127,7 +139,7 @@ const Contact = () => {
                     Correo Electrónico
                   </p>
                   <a
-                    href="mailto:migang@example.com"
+                    href="mailto:miguelangelyv1@gmail.com"
                     className="text-white hover:text-blue-400 transition-colors"
                   >
                     miguelangelyv1@gmail.com

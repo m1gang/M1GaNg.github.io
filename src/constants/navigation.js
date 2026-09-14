@@ -19,10 +19,10 @@ export const MAIN_NAV_ITEMS = [
 export const SUB_NAV_CONFIG = {
   inicio: [
     { label: "Portada", path: "/inicio/portada", isDefault: true },
-    { label: "Redes", path: "/inicio/redes" },
   ],
   perfil: [
     { label: "Sobre mí", path: "/perfil/sobre-mi", isDefault: true },
+    { label: "Intereses", path: "/perfil/intereses" },
     { label: "Educación", path: "/perfil/educacion" },
     { label: "Habilidades", path: "/perfil/habilidades" },
   ],

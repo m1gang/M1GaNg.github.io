@@ -1,4 +1,5 @@
-import profile from "../assets/img/profile.png";
+import { Link } from "react-router";
+import profile from "../assets/img/profile.webp";
 import GradientText from "../components/GradientText";
 import Icon from "../components/Icon";
 
@@ -22,7 +23,7 @@ import Icon from "../components/Icon";
 
 // ── GlowButton ────────────────────────────────────────────────────────────────
 // Botón con borde degradado animado. Acepta `href` para renderizar como <a>.
-const GlowButton = ({ href, target, rel, children, className = "" }) => {
+const GlowButton = ({ href, to, target, rel, children, className = "" }) => {
   const glowStyle = {
     background: "linear-gradient(135deg, rgb(122, 105, 249), rgb(242, 99, 120), rgb(245, 131, 63))",
   };
@@ -62,12 +63,22 @@ const GlowButton = ({ href, target, rel, children, className = "" }) => {
 
   const cls = `group relative bg-neutral-800 rounded-full p-px overflow-hidden w-full ${className}`;
 
+  if (to) {
+    return (
+      <Link to={to} className={cls}>
+        {inner}
+      </Link>
+    );
+  }
+
   return href ? (
     <a href={href} target={target} rel={rel} className={cls}>
       {inner}
     </a>
   ) : (
-    <button className={cls}>{inner}</button>
+    <button type="button" className={cls}>
+      {inner}
+    </button>
   );
 };
 
@@ -109,7 +120,6 @@ const HomePortada = () => {
               Hola soy
               <GradientText
                 colors={["#FEE4E6", "#E6EFEB", "#CEFBF1"]}
-                animationSpeed={8}
                 className="text-7xl font-bold"
               >
                 MiGaNg
@@ -134,31 +144,30 @@ const HomePortada = () => {
           >
             <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full w-full">
               <div className="flex flex-col items-center justify-center">
-                <h1 className="text-6xl text-red-600 font-sawbones">+15</h1>
+                <p className="text-6xl text-red-600 font-sawbones">+15</p>
                 <span className="flex text-xl gap-3">
                   <Icon name="proyectos" />
                   Proyectos
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h1 className="text-6xl text-red-600 font-sawbones">+3</h1>
+                <p className="text-6xl text-red-600 font-sawbones">+3</p>
                 <span className="flex text-xl gap-3">
                   <Icon name="certificacion" />
                   Certificaciones
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h1 className="text-6xl text-red-600 font-sawbones">2</h1>
+                <p className="text-6xl text-red-600 font-sawbones">2</p>
                 <span className="flex items-center text-xl gap-3">
                   <Icon name="experiencia-laboral" />
-                  Experiencias <br />
-                  laborales
+                  Empresas
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <h1 className="text-[50px] text-red-600 font-sawbones">
+                <p className="text-[50px] text-red-600 font-sawbones">
                   +1 año
-                </h1>
+                </p>
                 <span className="flex text-xl gap-3">
                   <Icon name="experiencia" />
                   Experiencia
@@ -272,14 +281,14 @@ const HomePortada = () => {
                         lg:col-span-2 lg:row-span-1 lg:col-start-5 lg:row-start-5"
           >
             <div className="flex flex-col md:flex-row lg:grid lg:grid-cols-2 w-full gap-3">
-              <GlowButton className="w-full md:flex-1 lg:col-span-2">
+              <GlowButton to="/proyectos/miniapps" className="w-full md:flex-1 lg:col-span-2">
                 <Icon name="projects" size={18} />
                 <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
                   Ver proyectos
                 </span>
               </GlowButton>
 
-              <GlowButton href="/contacto" className="w-full md:flex-1">
+              <GlowButton to="/contacto" className="w-full md:flex-1">
                 <Icon name="contactar" size={18} />
                 <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
                   Contactar

@@ -15,11 +15,17 @@ const ImageCarousel = ({
   onNextProject,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
+  const [isPlaying, setIsPlaying] = useState(
+    () =>
+      autoPlay &&
+      (typeof window === "undefined" ||
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches),
+  );
+  const [pausedByHover, setPausedByHover] = useState(false);
 
   useEffect(() => {
     let intervalId;
-    if (isPlaying && images.length > 1) {
+    if (isPlaying && !pausedByHover && images.length > 1) {
       intervalId = setInterval(() => {
         setCurrentIndex((prevIndex) =>
           prevIndex === images.length - 1 ? 0 : prevIndex + 1,
@@ -27,7 +33,15 @@ const ImageCarousel = ({
       }, interval);
     }
     return () => clearInterval(intervalId);
-  }, [isPlaying, images.length, interval]);
+  }, [isPlaying, pausedByHover, images.length, interval]);
+
+  useEffect(() => {
+    const onVisibility = () => {
+      if (document.hidden) setIsPlaying(false);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) =>
@@ -54,12 +68,20 @@ const ImageCarousel = ({
   }
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center bg-black/40 rounded-xl overflow-hidden group">
+    <div
+      className="relative w-full h-full flex items-center justify-center bg-black/40 rounded-xl overflow-hidden group"
+      onMouseEnter={() => setPausedByHover(true)}
+      onMouseLeave={() => setPausedByHover(false)}
+      onFocus={() => setPausedByHover(true)}
+      onBlur={() => setPausedByHover(false)}
+    >
       {/* Main Image */}
       <img
         src={images[currentIndex]}
         alt={`${alt} ${currentIndex + 1}`}
         className="max-w-full max-h-full object-contain"
+        loading="lazy"
+        decoding="async"
       />
 
       {/* Project Navigation Buttons (Edges) */}
@@ -67,7 +89,7 @@ const ImageCarousel = ({
         <>
           <button
             onClick={onPrevProject}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 hover:bg-black/80 rounded-full transition-all z-10 opacity-0 group-hover:opacity-100"
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 hover:bg-black/80 rounded-full transition-all z-10 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100"
             aria-label="Previous project"
           >
             <ChevronLeft className="w-8 h-8 text-white" />
@@ -75,7 +97,7 @@ const ImageCarousel = ({
 
           <button
             onClick={onNextProject}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 hover:bg-black/80 rounded-full transition-all z-10 opacity-0 group-hover:opacity-100"
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/60 hover:bg-black/80 rounded-full transition-all z-10 opacity-0 group-hover:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100"
             aria-label="Next project"
           >
             <ChevronRight className="w-8 h-8 text-white" />

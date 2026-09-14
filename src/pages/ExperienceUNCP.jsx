@@ -1,6 +1,7 @@
 import { useRef } from "react";
-import { MapPin, Phone, FileText, Wrench } from "lucide-react";
-import uncpLogo from "../assets/img/education/uncp-logo-2.png";
+import { MapPin, Phone, FileText, Wrench, Globe, Lightbulb } from "lucide-react";
+import uncpLogo from "../assets/img/education/uncp-logo-2.webp";
+import TechBadge from "../components/TechBadge";
 
 const ExperienceUNCP = () => {
   const gridRef = useRef(null);
@@ -18,7 +19,7 @@ const ExperienceUNCP = () => {
             <div className="flex justify-center shrink-0 items-center">
               <div className="w-32 h-32 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20">
                 <div className="text-center">
-                  <img src={uncpLogo} alt="condisa romero logo" />
+                  <img src={uncpLogo} alt="UNCP Oficina de T.I. logo" />
                 </div>
               </div>
             </div>
@@ -96,26 +97,10 @@ const ExperienceUNCP = () => {
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex justify-center w-full">
             <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
-              <ServiceBadge
-                icon="🟪"
-                name="Servicios Web"
-                color="text-white/80"
-              />
-              <ServiceBadge
-                icon="�‍💻"
-                name="Portal de transparencia"
-                color="text-white/80"
-              />
-              <ServiceBadge
-                icon="📞"
-                name="Telefonía VoIP"
-                color="text-white/80"
-              />
-              <ServiceBadge
-                icon="�"
-                name="Soporte técnico"
-                color="text-white/80"
-              />
+              <TechBadge lucideIcon={Globe} name="Servicios Web" />
+              <TechBadge lucideIcon={FileText} name="Portal de transparencia" />
+              <TechBadge lucideIcon={Phone} name="Telefonía VoIP" />
+              <TechBadge lucideIcon={Wrench} name="Soporte técnico" />
             </div>
           </div>
         </div>
@@ -123,7 +108,7 @@ const ExperienceUNCP = () => {
         {/* Bottom left - Aprendizajes clave title */}
         <div className="lg:col-span-4 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a80] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex items-center gap-4">
-            <div className="text-4xl text-amber-300">💡</div>
+            <div className="text-amber-300"><Lightbulb size={36} /></div>
             <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight leading-tight">
               Aprendizajes
               <br />
@@ -153,13 +138,5 @@ const ExperienceUNCP = () => {
     </div>
   );
 };
-
-// Service Badge Component
-const ServiceBadge = ({ icon, name, color }) => (
-  <div className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition-colors">
-    <span className="text-lg">{icon}</span>
-    <span className={`text-sm font-medium ${color}`}>{name}</span>
-  </div>
-);
 
 export default ExperienceUNCP;
