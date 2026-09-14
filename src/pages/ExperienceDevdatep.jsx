@@ -42,7 +42,7 @@ const ExperienceDevdatep = () => {
                 Desarrollador React Junior y Líder Área Frontend
               </h3>
               <p className="text-sm text-red-500 font-bold">
-                Feb 2026 - Nay 2026
+                Feb 2026 - May 2026
               </p>
             </div>
           </div>
