@@ -2,10 +2,10 @@
 
 ## Commands
 ```bash
-npm run dev      # Vite dev server
-npm run build    # Production build
-npm run preview  # Preview production build
-npm run lint     # ESLint on *.{js,jsx}
+pnpm dev       # Vite dev server
+pnpm build     # Production build
+pnpm preview   # Preview production build
+pnpm lint      # ESLint on *.{js,jsx}
 ```
 No test script, no typecheck script.
 
