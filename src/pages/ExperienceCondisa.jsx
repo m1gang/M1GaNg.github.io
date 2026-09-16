@@ -2,6 +2,14 @@ import { useRef } from "react";
 import { MapPin, Monitor, FileText, Wrench, Lightbulb } from "lucide-react";
 import condisaLogo from "../assets/img/education/condisa-romero.webp";
 import TechBadge from "../components/TechBadge";
+import HtmlIcon from "../components/icons/tech/html.svg?react";
+import CssIcon from "../components/icons/tech/css.svg?react";
+import ReactIcon from "../components/icons/tech/react.svg?react";
+import ViteIcon from "../components/icons/tech/vitejs.svg?react";
+import PhpIcon from "../components/icons/tech/php.svg?react";
+import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
+import ResponsiveIcon from "../components/icons/tech/responsive.svg?react";
+import MysqlIcon from "../components/icons/tech/mysql.svg?react";
 
 const ExperienceCondisa = () => {
   const gridRef = useRef(null);
@@ -95,15 +103,15 @@ const ExperienceCondisa = () => {
         {/* Middle right - Tech Stack */}
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
-            <TechBadge icon="html" name="HTML" />
-            <TechBadge icon="css" name="CSS" />
-            <TechBadge icon="react" name="React" />
-            <TechBadge icon="vitejs" name="Vite" />
-            <TechBadge icon="php" name="PHP" />
-            <TechBadge icon="javascript" name="JS" />
-            <TechBadge icon="responsive" name="Responsive" />
-            <TechBadge icon="mysql" name="MySQL" />
-            <TechBadge lucideIcon={Wrench} iconClassName="text-gray-300" name="Soporte técnico" />
+            <TechBadge icon={HtmlIcon} name="HTML" />
+            <TechBadge icon={CssIcon} name="CSS" />
+            <TechBadge icon={ReactIcon} name="React" />
+            <TechBadge icon={ViteIcon} name="Vite" />
+            <TechBadge icon={PhpIcon} name="PHP" />
+            <TechBadge icon={JavascriptIcon} name="JS" />
+            <TechBadge icon={ResponsiveIcon} name="Responsive" />
+            <TechBadge icon={MysqlIcon} name="MySQL" />
+            <TechBadge icon={Wrench} iconClassName="text-gray-300" name="Soporte técnico" />
           </div>
         </div>
 

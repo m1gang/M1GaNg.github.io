@@ -1,10 +1,8 @@
-import Icon from "./Icon";
 import { cn } from "@/lib/utils";
 
 const TechBadge = ({
   name,
-  icon,
-  lucideIcon: LucideIcon,
+  icon: IconComponent,
   iconSize = 20,
   iconClassName = "",
   textClassName = "text-sm font-medium text-white/80",
@@ -16,10 +14,13 @@ const TechBadge = ({
       className,
     )}
   >
-    {LucideIcon ? (
-      <LucideIcon size={iconSize} className={iconClassName} />
-    ) : (
-      <Icon name={icon} size={iconSize} className={iconClassName} />
+    {IconComponent && (
+      <IconComponent
+        width={iconSize}
+        height={iconSize}
+        className={iconClassName}
+        aria-hidden="true"
+      />
     )}
     <span className={textClassName}>{name}</span>
   </div>

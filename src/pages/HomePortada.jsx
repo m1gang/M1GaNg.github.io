@@ -1,7 +1,30 @@
 import { Link } from "react-router";
 import profile from "../assets/img/profile.webp";
 import GradientText from "../components/GradientText";
-import Icon from "../components/Icon";
+import ProyectosIcon from "../components/icons/custom/proyectos.svg?react";
+import CertificacionIcon from "../components/icons/custom/certificacion.svg?react";
+import ExperienciaLaboralIcon from "../components/icons/custom/experiencia-laboral.svg?react";
+import ExperienciaIcon from "../components/icons/custom/experiencia.svg?react";
+import CodeIcon from "../assets/svg/skills/code.svg?react";
+import SupportIcon from "../assets/svg/skills/support.svg?react";
+import DesignIcon from "../assets/svg/skills/design.svg?react";
+import LearningIcon from "../assets/svg/skills/learning.svg?react";
+import UiUxIcon from "../assets/svg/skills/ui_ux.svg?react";
+import TeamIcon from "../assets/svg/skills/team.svg?react";
+import ProjectsIcon from "../components/icons/custom/projects.svg?react";
+import ContactarIcon from "../components/icons/custom/contactar.svg?react";
+import CvIcon from "../components/icons/custom/cv.svg?react";
+import MigangIsotipo from "../components/icons/custom/migang-isotipo.svg?react";
+import MigangLogotipo from "../components/icons/custom/migang-logotipo.svg?react";
+import ReactIcon from "../components/icons/tech/react.svg?react";
+import TailwindIcon from "../components/icons/tech/tailwindcss.svg?react";
+import ViteIcon from "../components/icons/tech/vitejs.svg?react";
+import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
+import CssIcon from "../components/icons/tech/css.svg?react";
+import HtmlIcon from "../components/icons/tech/html.svg?react";
+import GitIcon from "../components/icons/tech/git.svg?react";
+import GithubIcon from "../components/icons/tech/github.svg?react";
+import FigmaIcon from "../components/icons/tech/figma.svg?react";
 
 // ─── Grid layout (6 cols × 5 rows en lg, 4 cols en md, 1 col en sm) ──────────
 //
@@ -146,21 +169,21 @@ const HomePortada = () => {
               <div className="flex flex-col items-center justify-center">
                 <p className="text-6xl text-red-600 font-sawbones">+15</p>
                 <span className="flex text-xl gap-3">
-                  <Icon name="proyectos" />
+                  <ProyectosIcon width={24} height={24} />
                   Proyectos
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
                 <p className="text-6xl text-red-600 font-sawbones">+3</p>
                 <span className="flex text-xl gap-3">
-                  <Icon name="certificacion" />
+                  <CertificacionIcon width={24} height={24} />
                   Certificaciones
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
                 <p className="text-6xl text-red-600 font-sawbones">2</p>
                 <span className="flex items-center text-xl gap-3">
-                  <Icon name="experiencia-laboral" />
+                  <ExperienciaLaboralIcon width={24} height={24} />
                   Empresas
                 </span>
               </div>
@@ -169,7 +192,7 @@ const HomePortada = () => {
                   +1 año
                 </p>
                 <span className="flex text-xl gap-3">
-                  <Icon name="experiencia" />
+                  <ExperienciaIcon width={24} height={24} />
                   Experiencia
                 </span>
               </div>
@@ -187,7 +210,7 @@ const HomePortada = () => {
             <div className="grid grid-cols-2 grid-rows-3 p-4 gap-2 h-full w-full">
               <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
                 <div className="flex gap-2 justify-center items-center text-xl text-center">
-                  <Icon name="code" size={30} />
+                  <CodeIcon width={30} height={30} />
                   Desarrollo <br /> web
                 </div>
                 <p className="text-[15px] bg-[#8b8afd]/10 rounded p-1 font-thin">
@@ -196,7 +219,7 @@ const HomePortada = () => {
               </div>
               <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
                 <div className="flex gap-2 justify-center items-center text-lg">
-                  <Icon name="soporte" size={30} />
+                  <SupportIcon width={30} height={30} />
                   Soporte <br /> Técnico
                 </div>
                 <p className="text-[15px] bg-[#343d4e]/10 rounded p-1 font-thin">
@@ -205,7 +228,7 @@ const HomePortada = () => {
               </div>
               <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
                 <div className="flex gap-2 justify-center items-center text-lg">
-                  <Icon name="design" size={30} />
+                  <DesignIcon width={30} height={30} />
                   Diseño <br /> gráfico
                 </div>
                 <p className="text-[15px] bg-[#cc1b75]/10 rounded p-1 font-thin">
@@ -214,7 +237,7 @@ const HomePortada = () => {
               </div>
               <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
                 <div className="flex gap-2 justify-center items-center text-lg">
-                  <Icon name="graduate" size={30} />
+                  <LearningIcon width={30} height={30} />
                   Aprendizaje <br /> continuo
                 </div>
                 <p className="text-[15px] bg-[#6d6d6d]/10 rounded p-1 font-thin">
@@ -223,7 +246,7 @@ const HomePortada = () => {
               </div>
               <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
                 <div className="flex gap-2 justify-center items-center text-lg">
-                  <Icon name="ui-ux" size={30} />
+                  <UiUxIcon width={30} height={30} />
                   UI / UX
                 </div>
                 <p className="text-[15px] bg-[#37d09e]/10 rounded p-1 font-thin">
@@ -232,7 +255,7 @@ const HomePortada = () => {
               </div>
               <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
                 <div className="flex gap-2 justify-center items-center text-lg">
-                  <Icon name="comunicate" size={30} />
+                  <TeamIcon width={30} height={30} />
                   Comunicación
                 </div>
                 <p className="text-[15px] bg-[#afb1b7]/10 rounded p-1 font-thin">
@@ -252,21 +275,21 @@ const HomePortada = () => {
           >
             <div className="flex flex-wrap justify-center items-center p-4 grow font-sawbones text-lg">
               {[
-                { name: "react",       label: "React" },
-                { name: "tailwindcss", label: "Tailwind" },
-                { name: "vitejs",      label: "Vite" },
-                { name: "javascript",  label: "Javascript" },
-                { name: "css",         label: "CSS" },
-                { name: "html",        label: "HTML" },
-                { name: "git",         label: "Git" },
-                { name: "github",      label: "Github" },
-                { name: "figma",       label: "Figma" },
-              ].map(({ name, label }) => (
+                { Icon: ReactIcon,      label: "React" },
+                { Icon: TailwindIcon,   label: "Tailwind" },
+                { Icon: ViteIcon,       label: "Vite" },
+                { Icon: JavascriptIcon, label: "Javascript" },
+                { Icon: CssIcon,        label: "CSS" },
+                { Icon: HtmlIcon,       label: "HTML" },
+                { Icon: GitIcon,        label: "Git" },
+                { Icon: GithubIcon,     label: "Github" },
+                { Icon: FigmaIcon,      label: "Figma" },
+              ].map(({ Icon, label }) => (
                 <div
-                  key={name}
+                  key={label}
                   className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit"
                 >
-                  <Icon name={name} size={20} />
+                  <Icon width={20} height={20} />
                   <span className="text-base">{label}</span>
                 </div>
               ))}
@@ -282,21 +305,21 @@ const HomePortada = () => {
           >
             <div className="flex flex-col md:flex-row lg:grid lg:grid-cols-2 w-full gap-3">
               <GlowButton to="/proyectos/miniapps" className="w-full md:flex-1 lg:col-span-2">
-                <Icon name="projects" size={18} />
+                <ProjectsIcon width={18} height={18} />
                 <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
                   Ver proyectos
                 </span>
               </GlowButton>
 
               <GlowButton to="/contacto" className="w-full md:flex-1">
-                <Icon name="contactar" size={18} />
+                <ContactarIcon width={18} height={18} />
                 <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
                   Contactar
                 </span>
               </GlowButton>
 
               <GlowButton href="https://www.cvresume.dev/m1gang" target="_blank" rel="noreferrer" className="w-full md:flex-1">
-                <Icon name="cv" size={18} />
+                <CvIcon width={18} height={18} />
                 <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
                   Ver CV
                 </span>
@@ -312,8 +335,8 @@ const HomePortada = () => {
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-5
                         lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:row-start-5"
           >
-            <Icon name="migang-isotipo" fill="white" size={80} />
-            <Icon name="migang-logotipo" fill="white" size={200} />
+            <MigangIsotipo width={80} height={80} fill="white" />
+            <MigangLogotipo width={200} height={200} fill="white" />
           </div>
 
         </div>

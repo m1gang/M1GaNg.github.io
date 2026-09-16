@@ -2,6 +2,11 @@ import { useRef } from "react";
 import { MapPin, Monitor, FileText, Wrench, Lightbulb, ShieldCheck, Database, Cloud } from "lucide-react";
 import devdatepLogo from "../assets/img/education/devdatep.webp";
 import TechBadge from "../components/TechBadge";
+import ReactIcon from "../components/icons/tech/react.svg?react";
+import ViteIcon from "../components/icons/tech/vitejs.svg?react";
+import TypescriptIcon from "../components/icons/tech/typescript.svg?react";
+import ReactqueryIcon from "../components/icons/tech/reactquery.svg?react";
+import FigmaIcon from "../components/icons/tech/figma.svg?react";
 
 const ExperienceDevdatep = () => {
   const gridRef = useRef(null);
@@ -96,15 +101,15 @@ const ExperienceDevdatep = () => {
         {/* Middle right - Tech Stack */}
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
-            <TechBadge icon="react" name="React" />
-            <TechBadge icon="vitejs" name="Vite" />
-            <TechBadge icon="typescript" name="TypeScript" />
-            <TechBadge lucideIcon={ShieldCheck} iconClassName="text-yellow-500" name="Zod" />
-            <TechBadge icon="reactquery" name="React Query" />
-            <TechBadge lucideIcon={Database} iconClassName="text-green-500" name="Supabase" />
-            <TechBadge lucideIcon={Cloud} iconClassName="text-purple-500" name="Cloudinary" />
-            <TechBadge icon="figma" name="Figma" />
-            <TechBadge lucideIcon={FileText} iconClassName="text-gray-400" name="Documentación" />
+            <TechBadge icon={ReactIcon} name="React" />
+            <TechBadge icon={ViteIcon} name="Vite" />
+            <TechBadge icon={TypescriptIcon} name="TypeScript" />
+            <TechBadge icon={ShieldCheck} iconClassName="text-yellow-500" name="Zod" />
+            <TechBadge icon={ReactqueryIcon} name="React Query" />
+            <TechBadge icon={Database} iconClassName="text-green-500" name="Supabase" />
+            <TechBadge icon={Cloud} iconClassName="text-purple-500" name="Cloudinary" />
+            <TechBadge icon={FigmaIcon} name="Figma" />
+            <TechBadge icon={FileText} iconClassName="text-gray-400" name="Documentación" />
           </div>
         </div>
 

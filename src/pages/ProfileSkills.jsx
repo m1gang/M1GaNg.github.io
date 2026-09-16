@@ -1,6 +1,19 @@
 import { useRef } from "react";
 import SharedBadge from "../components/TechBadge";
 import { cn } from "@/lib/utils";
+import HtmlIcon from "../components/icons/tech/html.svg?react";
+import CssIcon from "../components/icons/tech/css.svg?react";
+import ReactIcon from "../components/icons/tech/react.svg?react";
+import ViteIcon from "../components/icons/tech/vitejs.svg?react";
+import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
+import TailwindIcon from "../components/icons/tech/tailwindcss.svg?react";
+import FigmaIcon from "../components/icons/tech/figma.svg?react";
+import GithubIcon from "../components/icons/tech/github.svg?react";
+import GitIcon from "../components/icons/tech/git.svg?react";
+import CodeIcon from "../components/icons/custom/code.svg?react";
+import DesignIcon from "../components/icons/custom/design.svg?react";
+import UiUxIcon from "../components/icons/custom/ui-ux.svg?react";
+import ComunicateIcon from "../components/icons/custom/comunicate.svg?react";
 import {
   Layout,
   MessageSquare,
@@ -62,17 +75,17 @@ const ProfileSkills = () => {
             Frontend & Diseño
           </h3>
           <div className="flex flex-wrap justify-center gap-4 content-center">
-            <TechBadge name="HTML" icon="html" />
-            <TechBadge name="CSS" icon="css" />
-            <TechBadge name="React" icon="react" />
-            <TechBadge name="Vite" icon="vitejs" />
-            <TechBadge name="PHP" icon="code" />
-            <TechBadge name="JS" icon="javascript" />
-            <TechBadge name="Tailwind" icon="tailwindcss" />
-            <TechBadge name="Corel Draw" icon="design" />
-            <TechBadge name="Figma" icon="figma" />
-            <TechBadge name="UI / UX" icon="ui-ux" />
-            <TechBadge name="Responsive" icon="comunicate" />
+            <TechBadge name="HTML" icon={HtmlIcon} />
+            <TechBadge name="CSS" icon={CssIcon} />
+            <TechBadge name="React" icon={ReactIcon} />
+            <TechBadge name="Vite" icon={ViteIcon} />
+            <TechBadge name="PHP" icon={CodeIcon} />
+            <TechBadge name="JS" icon={JavascriptIcon} />
+            <TechBadge name="Tailwind" icon={TailwindIcon} />
+            <TechBadge name="Corel Draw" icon={DesignIcon} />
+            <TechBadge name="Figma" icon={FigmaIcon} />
+            <TechBadge name="UI / UX" icon={UiUxIcon} />
+            <TechBadge name="Responsive" icon={ComunicateIcon} />
           </div>
         </MagicCard>
 
@@ -106,12 +119,12 @@ const ProfileSkills = () => {
             <div className="flex flex-wrap justify-center gap-3">
               <TechBadgeSmall
                 name="Firebase"
-                lucideIcon={Flame}
+                icon={Flame}
                 iconColor="text-orange-500"
               />
               <TechBadgeSmall
                 name="MySQL"
-                lucideIcon={Database}
+                icon={Database}
                 iconColor="text-blue-400"
               />
             </div>
@@ -119,16 +132,16 @@ const ProfileSkills = () => {
 
           <TechCategoryCard title="Herramientas">
             <div className="flex flex-wrap justify-center gap-3">
-              <TechBadgeSmall name="VS Code" icon="code" />
+              <TechBadgeSmall name="VS Code" icon={CodeIcon} />
               <TechBadgeSmall
                 name="yarn"
-                lucideIcon={Box}
+                icon={Box}
                 iconColor="text-blue-300"
               />
-              <TechBadgeSmall name="Node JS" icon="code" />
+              <TechBadgeSmall name="Node JS" icon={CodeIcon} />
               <TechBadgeSmall
                 name="npm"
-                lucideIcon={Box}
+                icon={Box}
                 iconColor="text-red-500"
               />
             </div>
@@ -139,11 +152,11 @@ const ProfileSkills = () => {
             className="bg-yellow-900/10"
           >
             <div className="flex flex-wrap justify-center gap-3">
-              <TechBadgeSmall name="GitHub" icon="github" />
-              <TechBadgeSmall name="Git" icon="git" />
+              <TechBadgeSmall name="GitHub" icon={GithubIcon} />
+              <TechBadgeSmall name="Git" icon={GitIcon} />
               <TechBadgeSmall
                 name="Notion"
-                lucideIcon={FileText}
+                icon={FileText}
                 iconColor="text-white"
               />
             </div>
@@ -153,13 +166,13 @@ const ProfileSkills = () => {
             <div className="flex flex-col gap-3 w-full px-4">
               <TechBadgeSmall
                 name="Soporte técnico"
-                lucideIcon={Wrench}
+                icon={Wrench}
                 iconColor="text-blue-400"
                 width="w-full"
               />
               <TechBadgeSmall
                 name="Optimización"
-                lucideIcon={Settings}
+                icon={Settings}
                 iconColor="text-white/80"
                 width="w-full"
               />
@@ -198,8 +211,7 @@ const SkillBar = ({ label, percent, color }) => (
 const TechBadge = ({ name, icon }) => (
   <SharedBadge
     name={name}
-    icon={icon}
-    iconClassName="opacity-90 group-hover:opacity-100"
+    icon={icon}    iconClassName="opacity-90 group-hover:opacity-100"
     textClassName="text-xs font-bold text-white/70 group-hover:text-white"
     className="py-1.5 rounded-[12px] bg-[#1a1a1a] border-white/5 shadow-lg group hover:bg-white/[0.05] hover:scale-105 hover:border-white/10 transition-all"
   />
@@ -208,14 +220,12 @@ const TechBadge = ({ name, icon }) => (
 const TechBadgeSmall = ({
   name,
   icon,
-  lucideIcon,
   iconColor = "text-white/80",
   width = "w-auto",
 }) => (
   <SharedBadge
     name={name}
     icon={icon}
-    lucideIcon={lucideIcon}
     iconSize={14}
     iconClassName={cn(iconColor, "opacity-90")}
     textClassName="text-[10px] font-bold text-white/60"

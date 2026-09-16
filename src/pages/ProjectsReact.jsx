@@ -3,6 +3,19 @@ import { MagicCard } from "../components/MagicCard";
 import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
 import TechBadge from "../components/TechBadge";
+import ReactIcon from "../components/icons/tech/react.svg?react";
+import TypescriptIcon from "../components/icons/tech/typescript.svg?react";
+import ViteIcon from "../components/icons/tech/vitejs.svg?react";
+import VitestIcon from "../components/icons/tech/vitest.svg?react";
+import GiphyIcon from "../components/icons/tech/giphy.svg?react";
+import DevtallesIcon from "../components/icons/tech/devtalles.svg?react";
+import TailwindIcon from "../components/icons/tech/tailwindcss.svg?react";
+import ReactrouterIcon from "../components/icons/tech/reactrouter.svg?react";
+import ReactqueryIcon from "../components/icons/tech/reactquery.svg?react";
+import MaterialuiIcon from "../components/icons/tech/materialui.svg?react";
+import FirebaseIcon from "../components/icons/tech/firebase.svg?react";
+import ReduxIcon from "../components/icons/tech/redux.svg?react";
+import ZustandIcon from "../components/icons/tech/zustand.svg?react";
 
 const ProjectsReact = () => {
   const gridRef = useRef(null);
@@ -34,12 +47,12 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { iconName: "react", name: "React", color: "text-cyan-400" },
-        { iconName: "typescript", name: "TypeScript", color: "text-blue-400" },
-        { iconName: "vitejs", name: "Vite", color: "text-purple-500" },
-        { iconName: "vitest", name: "Vitest", color: "text-green-500" },
-        { iconName: "giphy", name: "Giphy API", color: "text-pink-400" },
-        { iconName: "devtalles", name: "DevTalles", color: "text-purple-800" },
+        { Icon: ReactIcon, name: "React", color: "text-cyan-400" },
+        { Icon: TypescriptIcon, name: "TypeScript", color: "text-blue-400" },
+        { Icon: ViteIcon, name: "Vite", color: "text-purple-500" },
+        { Icon: VitestIcon, name: "Vitest", color: "text-green-500" },
+        { Icon: GiphyIcon, name: "Giphy API", color: "text-pink-400" },
+        { Icon: DevtallesIcon, name: "DevTalles", color: "text-purple-800" },
       ],
       repoUrl: "https://github.com/m1gang/gifs-app-updated",
     },
@@ -75,16 +88,16 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { iconName: "react", name: "React" },
-        { iconName: "typescript", name: "TypeScript" },
-        { iconName: "tailwindcss", name: "Tailwind" },
-        { iconName: "vitest", name: "Vitest" },
+        { Icon: ReactIcon, name: "React" },
+        { Icon: TypescriptIcon, name: "TypeScript" },
+        { Icon: TailwindIcon, name: "Tailwind" },
+        { Icon: VitestIcon, name: "Vitest" },
         {
-          iconName: "reactrouter",
+          Icon: ReactrouterIcon,
           name: "React Router",
         },
-        { iconName: "reactquery", name: "React Query" },
-        { iconName: "devtalles", name: "DevTalles" },
+        { Icon: ReactqueryIcon, name: "React Query" },
+        { Icon: DevtallesIcon, name: "DevTalles" },
       ],
       repoUrl: "https://github.com/m1gang/heroes-app-updated",
     },
@@ -116,16 +129,16 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { iconName: "react", name: "React" },
-        { iconName: "vitejs", name: "Vite" },
-        { iconName: "materialui", name: "MaterialUI" },
-        { iconName: "firebase", name: "Firebase" },
+        { Icon: ReactIcon, name: "React" },
+        { Icon: ViteIcon, name: "Vite" },
+        { Icon: MaterialuiIcon, name: "MaterialUI" },
+        { Icon: FirebaseIcon, name: "Firebase" },
         {
-          iconName: "reactrouter",
+          Icon: ReactrouterIcon,
           name: "React Router",
         },
-        { iconName: "redux", name: "Redux" },
-        { iconName: "devtalles", name: "DevTalles" },
+        { Icon: ReduxIcon, name: "Redux" },
+        { Icon: DevtallesIcon, name: "DevTalles" },
       ],
       repoUrl: "https://github.com/m1gang/journal-app-react",
     },
@@ -161,16 +174,16 @@ const ProjectsReact = () => {
         ).href,
       ],
       techs: [
-        { iconName: "typescript", name: "TypeScript" },
-        { iconName: "vitejs", name: "Vite" },
-        { iconName: "tailwindcss", name: "Tailwind" },
-        { iconName: "zustand", name: "Zustand" },
+        { Icon: TypescriptIcon, name: "TypeScript" },
+        { Icon: ViteIcon, name: "Vite" },
+        { Icon: TailwindIcon, name: "Tailwind" },
+        { Icon: ZustandIcon, name: "Zustand" },
         {
-          iconName: "reactrouter",
+          Icon: ReactrouterIcon,
           name: "React Router",
         },
-        { iconName: "reactquery", name: "React Query" },
-        { iconName: "devtalles", name: "DevTalles" },
+        { Icon: ReactqueryIcon, name: "React Query" },
+        { Icon: DevtallesIcon, name: "DevTalles" },
       ],
       repoUrl: "https://github.com/m1gang/teslo-shop-react",
     },
@@ -243,7 +256,7 @@ const ProjectsReact = () => {
                 {currentProject.techs.map((tech, index) => (
                   <TechBadge
                     key={index}
-                    icon={tech.iconName}
+                    icon={tech.Icon}
                     name={tech.name}
                   />
                 ))}

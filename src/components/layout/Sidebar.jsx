@@ -11,7 +11,8 @@ const Sidebar = ({ mainSection }) => {
           <SidebarLink
             key={item.to}
             to={item.to}
-            icon={item.icon}
+            OutlineIcon={item.Outline}
+            FillIcon={item.Fill}
             label={item.label}
             active={mainSection === item.section}
           />

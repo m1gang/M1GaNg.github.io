@@ -20,7 +20,7 @@ React 19 + Vite 7 + Tailwind CSS 4 + React Router 7 + Motion + shadcn/ui (New Yo
 
 ## Conventions
 - **Alias**: `@/*` → `./src/*` (configured in both `vite.config.js` and `tsconfig.json`). Use it consistently.
-- **Icons**: mixed system — Lucide (`lucide-react`) for UI icons, SVG sprite at `public/sprite.svg` via `<Icon name="..." />` for tech logos. No emojis as icons.
+- **Icons**: SVGR components via direct `*.svg?react` imports (per-page, for code-splitting) — shared set in `src/components/icons/` (`nav/` outline+fill, `custom/`, `tech/`), page-specific designs in `src/assets/svg/` (e.g. `skills/`, nav `contact*.svg`); nav uses `Outline`/`Fill` pair from `constants/navigation.js` (fill when link active); `<TechBadge icon={...} />` accepts any SVG component (SVGR or Lucide). Lucide (`lucide-react`) for generic UI icons. No emojis as icons.
 - **Badges**: shared `<TechBadge />` in `src/components/TechBadge.jsx` (sprite `icon` or `lucideIcon`, merged with `cn()`). Do not create local badge components.
 - **CSS**: Tailwind v4 (`@import "tailwindcss"`). Glassmorphism card class: `.card-glass`. Custom fonts defined in `src/index.css` via `@theme` (with `font-display: swap`). Global `:focus-visible` ring in base layer.
 - **Utils**: `cn()` from `src/lib/utils.ts` (clsx + tailwind-merge) for conditional classes

@@ -1,17 +1,19 @@
+import { lazy } from "react";
 import { Navigate, createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
-import HomePortada from "../pages/HomePortada";
-import ProfileAbout from "../pages/ProfileAbout";
-import ProfileIntereses from "../pages/ProfileIntereses";
-import ProfileEducation from "../pages/ProfileEducation";
-import ProfileSkills from "../pages/ProfileSkills";
-import ExperienceCondisa from "../pages/ExperienceCondisa";
-import ExperienceUNCP from "../pages/ExperienceUNCP";
-import Contact from "../pages/Contact";
-import ProjectsMiniApps from "../pages/ProjectsMiniApps";
-import ProjectsReact from "../pages/ProjectsReact";
-import ProjectsCondisa from "../pages/ProjectsCondisa";
-import ExperienceDevdatep from "@/pages/ExperienceDevdatep";
+
+const HomePortada = lazy(() => import("../pages/HomePortada"));
+const ProfileAbout = lazy(() => import("../pages/ProfileAbout"));
+const ProfileIntereses = lazy(() => import("../pages/ProfileIntereses"));
+const ProfileEducation = lazy(() => import("../pages/ProfileEducation"));
+const ProfileSkills = lazy(() => import("../pages/ProfileSkills"));
+const ExperienceCondisa = lazy(() => import("../pages/ExperienceCondisa"));
+const ExperienceUNCP = lazy(() => import("../pages/ExperienceUNCP"));
+const Contact = lazy(() => import("../pages/Contact"));
+const ProjectsMiniApps = lazy(() => import("../pages/ProjectsMiniApps"));
+const ProjectsReact = lazy(() => import("../pages/ProjectsReact"));
+const ProjectsCondisa = lazy(() => import("../pages/ProjectsCondisa"));
+const ExperienceDevdatep = lazy(() => import("@/pages/ExperienceDevdatep"));
 
 export const router = createBrowserRouter([
   {

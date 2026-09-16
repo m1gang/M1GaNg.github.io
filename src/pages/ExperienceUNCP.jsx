@@ -97,10 +97,10 @@ const ExperienceUNCP = () => {
         <div className="lg:col-span-5 lg:row-span-2 card-glass p-6 lg:p-8 bg-[#0a0a0a90] border-white/5 font-roboto flex items-center justify-center hover:bg-white/[0.02] transition-colors duration-300">
           <div className="flex justify-center w-full">
             <div className="flex flex-wrap gap-3 justify-center max-w-sm mx-auto">
-              <TechBadge lucideIcon={Globe} name="Servicios Web" />
-              <TechBadge lucideIcon={FileText} name="Portal de transparencia" />
-              <TechBadge lucideIcon={Phone} name="Telefonía VoIP" />
-              <TechBadge lucideIcon={Wrench} name="Soporte técnico" />
+              <TechBadge icon={Globe} name="Servicios Web" />
+              <TechBadge icon={FileText} name="Portal de transparencia" />
+              <TechBadge icon={Phone} name="Telefonía VoIP" />
+              <TechBadge icon={Wrench} name="Soporte técnico" />
             </div>
           </div>
         </div>

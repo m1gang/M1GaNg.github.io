@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Outlet, useLocation } from "react-router";
 import Sidebar from "../components/layout/Sidebar";
 import SubNavbar from "../components/layout/SubNavbar";
@@ -40,7 +41,9 @@ const MainLayout = () => {
 
         {/* Content Outlet */}
         <div className="flex-1 w-full overflow-hidden flex flex-col">
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </div>
       </main>
     </div>

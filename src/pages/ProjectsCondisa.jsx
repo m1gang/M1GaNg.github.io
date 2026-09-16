@@ -3,6 +3,15 @@ import { MagicCard } from "../components/MagicCard";
 import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
 import TechBadge from "../components/TechBadge";
+import ReactIcon from "../components/icons/tech/react.svg?react";
+import ViteIcon from "../components/icons/tech/vitejs.svg?react";
+import CssIcon from "../components/icons/tech/css.svg?react";
+import ResponsiveIcon from "../components/icons/tech/responsive.svg?react";
+import PhpIcon from "../components/icons/tech/php.svg?react";
+import MysqlIcon from "../components/icons/tech/mysql.svg?react";
+import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
+import BootstrapIcon from "../components/icons/tech/bootstrap.svg?react";
+import JqueryIcon from "../components/icons/tech/jquery.svg?react";
 
 const ProjectsCondisa = () => {
   const gridRef = useRef(null);
@@ -42,10 +51,10 @@ const ProjectsCondisa = () => {
         ).href,
       ],
       techs: [
-        { iconName: "react", name: "React", color: "text-cyan-400" },
-        { iconName: "vitejs", name: "Vite", color: "text-purple-500" },
-        { iconName: "css", name: "CSS", color: "text-blue-600" },
-        { iconName: "responsive", name: "Responsive", color: "text-green-500" },
+        { Icon: ReactIcon, name: "React", color: "text-cyan-400" },
+        { Icon: ViteIcon, name: "Vite", color: "text-purple-500" },
+        { Icon: CssIcon, name: "CSS", color: "text-blue-600" },
+        { Icon: ResponsiveIcon, name: "Responsive", color: "text-green-500" },
       ],
       repoUrl: "https://github.com/m1gang/website-condisa-romero",
     },
@@ -81,11 +90,11 @@ const ProjectsCondisa = () => {
         ).href,
       ],
       techs: [
-        { iconName: "php", name: "PHP" },
-        { iconName: "mysql", name: "MySQL" },
-        { iconName: "javascript", name: "JS" },
-        { iconName: "bootstrap", name: "Bootstrap" },
-        { iconName: "jquery", name: "jquery" },
+        { Icon: PhpIcon, name: "PHP" },
+        { Icon: MysqlIcon, name: "MySQL" },
+        { Icon: JavascriptIcon, name: "JS" },
+        { Icon: BootstrapIcon, name: "Bootstrap" },
+        { Icon: JqueryIcon, name: "jquery" },
       ],
       repoUrl: "https://github.com/m1gang/pos-system-php",
     },
@@ -157,7 +166,7 @@ const ProjectsCondisa = () => {
                 {currentProject.techs.map((tech, index) => (
                   <TechBadge
                     key={index}
-                    icon={tech.iconName}
+                    icon={tech.Icon}
                     name={tech.name}
                   />
                 ))}
