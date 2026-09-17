@@ -1,6 +1,11 @@
 import { Link } from "react-router";
-import profile from "../assets/img/profile.webp";
+import profile from "../assets/img/migang-pics.webp";
 import GradientText from "../components/GradientText";
+import {
+  ProjectsButtonIcon,
+  ContactButtonIcon,
+  CvButtonIcon,
+} from "../components/ButtonIcon";
 import ProyectosIcon from "../components/icons/custom/proyectos.svg?react";
 import CertificacionIcon from "../components/icons/custom/certificacion.svg?react";
 import ExperienciaLaboralIcon from "../components/icons/custom/experiencia-laboral.svg?react";
@@ -11,9 +16,6 @@ import DesignIcon from "../assets/svg/skills/design.svg?react";
 import LearningIcon from "../assets/svg/skills/learning.svg?react";
 import UiUxIcon from "../assets/svg/skills/ui_ux.svg?react";
 import TeamIcon from "../assets/svg/skills/team.svg?react";
-import ProjectsIcon from "../components/icons/custom/projects.svg?react";
-import ContactarIcon from "../components/icons/custom/contactar.svg?react";
-import CvIcon from "../components/icons/custom/cv.svg?react";
 import MigangIsotipo from "../components/icons/custom/migang-isotipo.svg?react";
 import MigangLogotipo from "../components/icons/custom/migang-logotipo.svg?react";
 import ReactIcon from "../components/icons/tech/react.svg?react";
@@ -45,11 +47,19 @@ import FigmaIcon from "../components/icons/tech/figma.svg?react";
 //  sm: columna única, misma dirección que lg (flex-col)
 
 // ── GlowButton ────────────────────────────────────────────────────────────────
-// Botón con borde degradado animado. Acepta `href` para renderizar como <a>.
-const GlowButton = ({ href, to, target, rel, children, className = "" }) => {
-  const glowStyle = {
-    background: "linear-gradient(135deg, rgb(122, 105, 249), rgb(242, 99, 120), rgb(245, 131, 63))",
-  };
+// Botón estilo Uiverse con borde degradado animado, estrella con gradiente y
+// texto degradado. `glow`: css background del degradado. Acepta `href` o `to`.
+const GlowButton = ({
+  href,
+  to,
+  target,
+  rel,
+  glow,
+  icon: IconComponent,
+  label,
+  className = "",
+}) => {
+  const glowStyle = { background: glow };
 
   const inner = (
     <>
@@ -66,20 +76,37 @@ const GlowButton = ({ href, to, target, rel, children, className = "" }) => {
       {/* Halo animado recorriendo el borde */}
       <span
         className="inset-0 absolute pointer-events-none select-none"
-        style={{ animation: "10s ease-in-out 0s infinite alternate none running border-glow-translate" }}
+        style={{
+          animation:
+            "10s ease-in-out 0s infinite alternate none running border-glow-translate",
+        }}
       >
         <span
           className="block z-0 h-full w-12 blur-xl -translate-x-1/2 rounded-full"
           style={{
-            animation: "10s ease-in-out 0s infinite alternate none running border-glow-scale",
+            animation:
+              "10s ease-in-out 0s infinite alternate none running border-glow-scale",
             ...glowStyle,
           }}
         />
       </span>
 
       {/* Contenido centrado sobre fondo oscuro */}
-          <span className="flex items-center justify-center gap-2 relative z-[1] bg-neutral-950/90 rounded-full py-2.5 px-5 w-full h-full">
-        {children}
+      <span className="flex items-center justify-center gap-1 relative z-[1] bg-neutral-950/90 rounded-full py-2 px-4 w-full h-full">
+        <span className="relative group-hover:scale-105 transition-transform group-hover:rotate-[360deg] duration-500">
+          <IconComponent size={18} className="opacity-90" />
+          <span
+            className="rounded-full size-1 absolute opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-lg"
+            style={{
+              animation:
+                "14s ease-in-out 0s infinite alternate none running star-shine",
+              ...glowStyle,
+            }}
+          />
+        </span>
+        <span className="bg-gradient-to-b ml-1.5 from-white to-white/50 bg-clip-text text-sm text-transparent group-hover:scale-105 transition transform-gpu">
+          {label}
+        </span>
       </span>
     </>
   );
@@ -110,7 +137,6 @@ const HomePortada = () => {
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
       <section className="w-full h-auto lg:h-full bento-section rounded-md text-white">
-
         {/* ── BENTO GRID ─────────────────────────────────────────────────────── */}
         <div
           className="grid gap-4 h-auto lg:h-full
@@ -119,7 +145,6 @@ const HomePortada = () => {
                       lg:grid-cols-6 lg:grid-rows-5
                       pb-4 lg:pb-0"
         >
-
           {/* 1. FOTO DE PERFIL
                sm: order-2  md: [1-2, row2]  lg: [1-2, rows1-2] */}
           <div
@@ -188,9 +213,7 @@ const HomePortada = () => {
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <p className="text-[50px] text-red-600 font-sawbones">
-                  +1 año
-                </p>
+                <p className="text-[50px] text-red-600 font-sawbones">+1 año</p>
                 <span className="flex text-xl gap-3">
                   <ExperienciaIcon width={24} height={24} />
                   Experiencia
@@ -208,60 +231,72 @@ const HomePortada = () => {
                         lg:col-span-2 lg:row-span-3 lg:col-start-3 lg:row-start-3"
           >
             <div className="grid grid-cols-2 grid-rows-3 p-4 gap-2 h-full w-full">
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
-                <div className="flex gap-2 justify-center items-center text-xl text-center">
-                  <CodeIcon width={30} height={30} />
-                  Desarrollo <br /> web
+              {[
+                {
+                  Icon: CodeIcon,
+                  title: (<>Desarrollo <br /> web</>),
+                  subtitle: "Front end con React",
+                  chip: "bg-[#8b8afd]/10",
+                  textGradient: "linear-gradient(135deg, #00C6FB, #005BEA, #C73AC9)",
+                },
+                {
+                  Icon: SupportIcon,
+                  title: (<>Soporte <br /> Técnico</>),
+                  subtitle: "Optimización",
+                  chip: "bg-[#343d4e]/10",
+                  textGradient: "linear-gradient(135deg, #FFF4E4, #F0F6EE, #E7F0F0)",
+                },
+                {
+                  Icon: DesignIcon,
+                  title: (<>Diseño <br /> gráfico</>),
+                  subtitle: "Corel, Branding",
+                  chip: "bg-[#cc1b75]/10",
+                  textGradient: "linear-gradient(135deg, #F2A968, #CA1462, #8A2A86)",
+                },
+                {
+                  Icon: LearningIcon,
+                  title: (<>Aprendizaje <br /> continuo</>),
+                  subtitle: "Siempre aprendiendo",
+                  chip: "bg-[#6d6d6d]/10",
+                  textGradient: "linear-gradient(135deg, #B6DBDB, #687D7D, #9C8B8B)",
+                },
+                {
+                  Icon: UiUxIcon,
+                  title: "UI / UX",
+                  subtitle: "Prototipos",
+                  chip: "bg-[#37d09e]/10",
+                  textGradient: "linear-gradient(135deg, #C3FAC7, #F5E896, #DEE084)",
+                },
+                {
+                  Icon: TeamIcon,
+                  title: "Comunicación",
+                  subtitle: "Trabajo en equipo",
+                  chip: "bg-[#afb1b7]/10",
+                  textGradient: "linear-gradient(135deg, #E7F0FD, #ACCBEE, #9DB6D1)",
+                },
+              ].map(({ Icon, title, subtitle, chip, textGradient }) => (
+                <div
+                  key={subtitle}
+                  className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl"
+                >
+                  <div className="flex gap-2 justify-center items-center text-lg text-center">
+                    <Icon width={30} height={30} />
+                    <span
+                      style={{
+                        backgroundImage: textGradient,
+                        WebkitBackgroundClip: "text",
+                        backgroundClip: "text",
+                        color: "transparent",
+                      }}
+                    >
+                      {title}
+                    </span>
+                  </div>
+                  <p className={`text-[15px] ${chip} rounded p-1 font-thin`}>
+                    {subtitle}
+                  </p>
                 </div>
-                <p className="text-[15px] bg-[#8b8afd]/10 rounded p-1 font-thin">
-                  Front end con React
-                </p>
-              </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
-                <div className="flex gap-2 justify-center items-center text-lg">
-                  <SupportIcon width={30} height={30} />
-                  Soporte <br /> Técnico
-                </div>
-                <p className="text-[15px] bg-[#343d4e]/10 rounded p-1 font-thin">
-                  Optimización
-                </p>
-              </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
-                <div className="flex gap-2 justify-center items-center text-lg">
-                  <DesignIcon width={30} height={30} />
-                  Diseño <br /> gráfico
-                </div>
-                <p className="text-[15px] bg-[#cc1b75]/10 rounded p-1 font-thin">
-                  Corel, Branding
-                </p>
-              </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
-                <div className="flex gap-2 justify-center items-center text-lg">
-                  <LearningIcon width={30} height={30} />
-                  Aprendizaje <br /> continuo
-                </div>
-                <p className="text-[15px] bg-[#6d6d6d]/10 rounded p-1 font-thin">
-                  Siempre aprendiendo
-                </p>
-              </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
-                <div className="flex gap-2 justify-center items-center text-lg">
-                  <UiUxIcon width={30} height={30} />
-                  UI / UX
-                </div>
-                <p className="text-[15px] bg-[#37d09e]/10 rounded p-1 font-thin">
-                  Prototipos
-                </p>
-              </div>
-              <div className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl">
-                <div className="flex gap-2 justify-center items-center text-lg">
-                  <TeamIcon width={30} height={30} />
-                  Comunicación
-                </div>
-                <p className="text-[15px] bg-[#afb1b7]/10 rounded p-1 font-thin">
-                  Trabajo en equipo
-                </p>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -275,15 +310,15 @@ const HomePortada = () => {
           >
             <div className="flex flex-wrap justify-center items-center p-4 grow font-sawbones text-lg">
               {[
-                { Icon: ReactIcon,      label: "React" },
-                { Icon: TailwindIcon,   label: "Tailwind" },
-                { Icon: ViteIcon,       label: "Vite" },
+                { Icon: ReactIcon, label: "React" },
+                { Icon: TailwindIcon, label: "Tailwind" },
+                { Icon: ViteIcon, label: "Vite" },
                 { Icon: JavascriptIcon, label: "Javascript" },
-                { Icon: CssIcon,        label: "CSS" },
-                { Icon: HtmlIcon,       label: "HTML" },
-                { Icon: GitIcon,        label: "Git" },
-                { Icon: GithubIcon,     label: "Github" },
-                { Icon: FigmaIcon,      label: "Figma" },
+                { Icon: CssIcon, label: "CSS" },
+                { Icon: HtmlIcon, label: "HTML" },
+                { Icon: GitIcon, label: "Git" },
+                { Icon: GithubIcon, label: "Github" },
+                { Icon: FigmaIcon, label: "Figma" },
               ].map(({ Icon, label }) => (
                 <div
                   key={label}
@@ -304,26 +339,31 @@ const HomePortada = () => {
                         lg:col-span-2 lg:row-span-1 lg:col-start-5 lg:row-start-5"
           >
             <div className="flex flex-col md:flex-row lg:grid lg:grid-cols-2 w-full gap-3">
-              <GlowButton to="/proyectos/miniapps" className="w-full md:flex-1 lg:col-span-2">
-                <ProjectsIcon width={18} height={18} />
-                <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
-                  Ver proyectos
-                </span>
-              </GlowButton>
+              <GlowButton
+                to="/proyectos/miniapps"
+                className="w-full md:flex-1 lg:col-span-2"
+                glow="linear-gradient(135deg, rgb(122, 105, 249), rgb(242, 99, 120), rgb(245, 131, 63))"
+                icon={ProjectsButtonIcon}
+                label="Ver proyectos"
+              />
 
-              <GlowButton to="/contacto" className="w-full md:flex-1">
-                <ContactarIcon width={18} height={18} />
-                <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
-                  Contactar
-                </span>
-              </GlowButton>
+              <GlowButton
+                to="/contacto"
+                className="w-full md:flex-1"
+                glow="linear-gradient(135deg, rgb(59, 196, 242), rgb(122, 105, 249), rgb(180, 92, 242))"
+                icon={ContactButtonIcon}
+                label="Contactar"
+              />
 
-              <GlowButton href="https://www.cvresume.dev/m1gang" target="_blank" rel="noreferrer" className="w-full md:flex-1">
-                <CvIcon width={18} height={18} />
-                <span className="text-sm font-medium text-white/90 group-hover:scale-105 transition">
-                  Ver CV
-                </span>
-              </GlowButton>
+              <GlowButton
+                href="https://www.cvresume.dev/m1gang"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full md:flex-1"
+                glow="linear-gradient(135deg, rgb(52, 211, 153), rgb(163, 230, 53), rgb(34, 211, 238))"
+                icon={CvButtonIcon}
+                label="Ver CV"
+              />
             </div>
           </div>
 
@@ -338,7 +378,6 @@ const HomePortada = () => {
             <MigangIsotipo width={80} height={80} fill="white" />
             <MigangLogotipo width={200} height={200} fill="white" />
           </div>
-
         </div>
       </section>
     </div>

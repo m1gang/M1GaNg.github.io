@@ -24,7 +24,7 @@ const MainLayout = () => {
   return (
     <div
       id="portafolio"
-      className="bg-black flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full dark:bg-black text-white relative "
+      className="bg-black  flex flex-col lg:flex-row h-auto lg:h-screen lg:overflow-hidden w-full dark:bg-black text-white relative "
     >
       {/* Sidebar Navigation */}
       <Sidebar mainSection={mainSection} />
