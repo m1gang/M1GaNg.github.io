@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { GitCommitHorizontal } from "lucide-react";
 import profile from "../assets/img/migang-pics.webp";
 import GradientText from "../components/GradientText";
 import {
@@ -27,10 +29,11 @@ import HtmlIcon from "../components/icons/tech/html.svg?react";
 import GitIcon from "../components/icons/tech/git.svg?react";
 import GithubIcon from "../components/icons/tech/github.svg?react";
 import FigmaIcon from "../components/icons/tech/figma.svg?react";
+import { GitHubCalendar } from "react-github-calendar";
 
-// ─── Grid layout (6 cols × 5 rows en lg, 4 cols en md, 1 col en sm) ──────────
+// ─── Grid layout (6 cols × 6 rows en lg, 4 cols en md, 1 col en sm) ──────────
 //
-//  lg (6×5):
+//  lg (6×6):
 //  ┌──────────┬──────────────────────────┐
 //  │ FOTO     │ PRESENTACIÓN             │
 //  │ [1-2,1-2]│ [3-6,1-2]               │
@@ -40,7 +43,10 @@ import FigmaIcon from "../components/icons/tech/figma.svg?react";
 //  ├──────────┴───────────┼──────────────┤
 //  │ LOGO                 │ BOTONES      │
 //  │ [1-2,5]              │ [5-6,5]      │
-//  └──────────────────────┴──────────────┘
+//  ├────────────────────────────────────┬───────────────┤
+//  │ CONTRIBUCIONES (GitHub) [1-4, row6] │ ACTIVIDAD    │
+//  │                                     │ [5-6, row6]  │
+//  └────────────────────────────────────┴───────────────┘
 //
 //  md (4×auto): cada card ocupa filas/columnas definidas abajo
 //               BOTONES en md → row horizontal (flex-row)
@@ -132,6 +138,133 @@ const GlowButton = ({
   );
 };
 
+// ── Actividad reciente en GitHub ──────────────────────────────────────────────
+// PushEvents públicos de M1GaNg, con caché de 1h en localStorage para no quemar
+// el rate limit anónimo de la API (60 req/h). Falla de forma independiente.
+const ACTIVITY_CACHE_KEY = "m1gang-github-activity";
+const ACTIVITY_TTL = 60 * 60 * 1000;
+
+const timeAgo = (iso) => {
+  const mins = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
+  if (mins < 1) return "ahora mismo";
+  if (mins < 60) return `hace ${mins} min`;
+  const hours = Math.floor(mins / 60);
+  if (hours < 24) return `hace ${hours} h`;
+  const days = Math.floor(hours / 24);
+  if (days < 30) return `hace ${days} d`;
+  const months = Math.floor(days / 30);
+  return `hace ${months} mes${months > 1 ? "es" : ""}`;
+};
+
+const fetchRecentActivity = async () => {
+  try {
+    const raw = localStorage.getItem(ACTIVITY_CACHE_KEY);
+    if (raw) {
+      const { at, items } = JSON.parse(raw);
+      if (Date.now() - at < ACTIVITY_TTL) return items;
+    }
+  } catch {
+    /* almacenamiento no disponible: seguir a la red */
+  }
+  const res = await fetch("https://api.github.com/users/M1GaNg/events/public");
+  if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+  const events = await res.json();
+  const items = events
+    .filter((e) => e.type === "PushEvent")
+    .flatMap((e) =>
+      (e.payload.commits || []).map((c) => ({
+        repo: e.repo.name.replace("M1GaNg/", ""),
+        message: c.message.split("\n")[0],
+        date: e.created_at,
+        url: `https://github.com/${e.repo.name}/commit/${c.sha}`,
+      })),
+    )
+    .slice(0, 4);
+  try {
+    localStorage.setItem(
+      ACTIVITY_CACHE_KEY,
+      JSON.stringify({ at: Date.now(), items }),
+    );
+  } catch {
+    /* almacenamiento no disponible: omitir caché */
+  }
+  return items;
+};
+
+const RecentActivity = () => {
+  const [state, setState] = useState({ status: "loading", items: [] });
+
+  useEffect(() => {
+    let alive = true;
+    fetchRecentActivity()
+      .then((items) => {
+        if (alive) setState({ status: "ready", items });
+      })
+      .catch(() => {
+        if (alive) setState({ status: "error", items: [] });
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  if (state.status === "loading") {
+    return (
+      <div className="flex flex-col gap-2" aria-hidden="true">
+        {[0, 1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="h-8 animate-pulse rounded-lg bg-white/5"
+          />
+        ))}
+      </div>
+    );
+  }
+
+  if (state.status === "error") {
+    return (
+      <p className="text-sm text-white/45">
+        No se pudo cargar la actividad de GitHub.
+      </p>
+    );
+  }
+
+  if (state.items.length === 0) {
+    return (
+      <p className="text-sm text-white/45">Sin pushes recientes.</p>
+    );
+  }
+
+  return (
+    <ul className="flex min-h-0 flex-col justify-center gap-1">
+      {state.items.map((item) => (
+        <li key={item.url} className="min-w-0">
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${item.repo}: ${item.message}`}
+            className="group flex items-center gap-2.5 rounded-xl px-2 py-1 transition-colors hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            <GitCommitHorizontal
+              aria-hidden="true"
+              className="size-4 shrink-0 text-emerald-300/80 transition-colors group-hover:text-emerald-200"
+            />
+            <span className="min-w-0 flex-1">
+              <span className="block truncate text-[13px] font-medium leading-snug text-white">
+                {item.message}
+              </span>
+              <span className="block truncate text-xs leading-tight text-white/45">
+                {item.repo} · {timeAgo(item.date)}
+              </span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+};
+
 // ── HomePortada ───────────────────────────────────────────────────────────────
 const HomePortada = () => {
   return (
@@ -142,7 +275,7 @@ const HomePortada = () => {
           className="grid gap-4 h-auto lg:h-full
                       grid-cols-1
                       md:grid-cols-4
-                      lg:grid-cols-6 lg:grid-rows-5
+                      lg:grid-cols-6 lg:grid-rows-6
                       pb-4 lg:pb-0"
         >
           {/* 1. FOTO DE PERFIL
@@ -377,6 +510,57 @@ const HomePortada = () => {
           >
             <MigangIsotipo width={80} height={80} fill="white" />
             <MigangLogotipo width={200} height={200} fill="white" />
+          </div>
+
+          {/* 8. CONTRIBUCIONES GITHUB
+               sm: order-8  md: [1-4, auto]  lg: [1-4, row6] */}
+          <div
+            className="magic-card card-glass flex flex-col justify-center px-4 py-3 font-roboto
+                        order-8
+                        md:col-span-4 md:col-start-1
+                        lg:col-span-4 lg:row-span-1 lg:col-start-1 lg:row-start-6"
+          >
+            <a
+              href="https://github.com/M1GaNg"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ver perfil de GitHub de M1GaNg"
+              className="block w-full overflow-x-auto rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <GitHubCalendar
+                username="M1GaNg"
+                colorScheme="dark"
+                theme={{
+                  dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
+                }}
+                blockSize={11}
+                blockMargin={4}
+                fontSize={12}
+                labels={{
+                  months: [
+                    "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic",
+                  ],
+                  weekdays: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+                  totalCount: "{{count}} contribuciones en el último año",
+                  legend: { less: "Menos", more: "Más" },
+                }}
+              />
+            </a>
+          </div>
+
+          {/* 9. ACTIVIDAD RECIENTE (GitHub)
+               sm: order-9  md: [1-4, auto]  lg: [5-6, row6] */}
+          <div
+            className="magic-card card-glass flex min-h-0 flex-col justify-center gap-1 overflow-hidden px-4 py-3 font-roboto
+                        order-9
+                        md:col-span-4 md:col-start-1
+                        lg:col-span-2 lg:row-span-1 lg:col-start-5 lg:row-start-6"
+          >
+            <p className="shrink-0 px-2 text-[13px] font-medium text-white/55">
+              Actividad reciente
+            </p>
+            <RecentActivity />
           </div>
         </div>
       </section>
