@@ -1,8 +1,8 @@
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
-import { GitCommitHorizontal } from "lucide-react";
+import { GitCommitHorizontal, Github, Mail, MapPin } from "lucide-react";
+import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 import profile from "../assets/img/migang-pics.webp";
-import GradientText from "../components/GradientText";
 import {
   ProjectsButtonIcon,
   ContactButtonIcon,
@@ -169,17 +169,37 @@ const fetchRecentActivity = async () => {
   const res = await fetch("https://api.github.com/users/M1GaNg/events/public");
   if (!res.ok) throw new Error(`GitHub API ${res.status}`);
   const events = await res.json();
+  const shortRepo = (fullName) => {
+    const parts = String(fullName || "").split("/");
+    return parts.length > 1 ? parts.slice(1).join("/") : fullName;
+  };
   const items = events
     .filter((e) => e.type === "PushEvent")
-    .flatMap((e) =>
-      (e.payload.commits || []).map((c) => ({
-        repo: e.repo.name.replace("M1GaNg/", ""),
-        message: c.message.split("\n")[0],
-        date: e.created_at,
-        url: `https://github.com/${e.repo.name}/commit/${c.sha}`,
-      })),
-    )
-    .slice(0, 4);
+    .flatMap((e) => {
+      const repo = shortRepo(e.repo.name);
+      const ref = String(e.payload.ref || "").replace("refs/heads/", "");
+      const commits = e.payload.commits || [];
+      if (commits.length > 0) {
+        return commits.map((c) => ({
+          repo,
+          message: c.message.split("\n")[0],
+          date: e.created_at,
+          url: `https://github.com/${e.repo.name}/commit/${c.sha}`,
+        }));
+      }
+      // GitHub a veces omite `commits` en el PushEvent: respaldo con el head.
+      const head = e.payload.head || "";
+      if (!head) return [];
+      return [
+        {
+          repo,
+          message: `Push en ${ref || "main"} · ${head.slice(0, 7)}`,
+          date: e.created_at,
+          url: `https://github.com/${e.repo.name}/commit/${head}`,
+        },
+      ];
+    })
+    .slice(0, 3);
   try {
     localStorage.setItem(
       ACTIVITY_CACHE_KEY,
@@ -268,20 +288,20 @@ const RecentActivity = () => {
 // ── HomePortada ───────────────────────────────────────────────────────────────
 const HomePortada = () => {
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 lg:overflow-hidden font-clash">
       <section className="w-full h-auto lg:h-full bento-section rounded-md text-white">
         {/* ── BENTO GRID ─────────────────────────────────────────────────────── */}
         <div
           className="grid gap-4 h-auto lg:h-full
                       grid-cols-1
                       md:grid-cols-4
-                      lg:grid-cols-6 lg:grid-rows-6
+                      lg:grid-cols-6 lg:min-h-0 lg:grid-rows-[repeat(4,minmax(0,1fr))_minmax(0,1.35fr)_minmax(0,1.5fr)]
                       pb-4 lg:pb-0"
         >
           {/* 1. FOTO DE PERFIL
                sm: order-2  md: [1-2, row2]  lg: [1-2, rows1-2] */}
           <div
-            className="magic-card card-glass flex justify-center p-2 font-roboto
+            className="magic-card card-glass flex min-h-0 justify-center overflow-hidden p-2 font-roboto
                         order-2
                         md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-2
                         lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1"
@@ -292,24 +312,39 @@ const HomePortada = () => {
           {/* 2. PRESENTACIÓN
                sm: order-1  md: [1-4, row1]  lg: [3-6, rows1-2] */}
           <div
-            className="magic-card card-glass flex flex-col justify-center items-center font-roboto
+            className="magic-card card-glass flex min-h-0 flex-col items-center justify-center gap-1 overflow-hidden px-4 py-3 font-roboto
                         order-1
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-1
                         lg:col-span-4 lg:row-span-2 lg:col-start-3 lg:row-start-1"
           >
-            <h2 className="text-4xl flex gap-3 items-baseline">
+            <h2 className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-2xl lg:text-3xl">
               Hola soy
-              <GradientText
-                colors={["#FEE4E6", "#E6EFEB", "#CEFBF1"]}
-                className="text-7xl font-bold"
-              >
-                MiGaNg
-              </GradientText>
+              <span className="relative flex items-center gap-2">
+                {/* Resplandor pastel: conserva el acento de color del antiguo texto degradado */}
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -inset-x-6 -inset-y-3 rounded-full bg-[radial-gradient(closest-side,rgba(254,228,230,0.22),rgba(206,251,241,0.12),transparent)] blur-xl"
+                />
+                <MigangIsotipo
+                  width={41}
+                  height={32}
+                  className="h-8 w-auto lg:h-11"
+                  fill="white"
+                  aria-hidden="true"
+                />
+                <MigangLogotipo
+                  width={131}
+                  height={32}
+                  className="h-8 w-auto lg:h-11"
+                  fill="white"
+                  aria-hidden="true"
+                />
+              </span>
             </h2>
-            <h2 className="w-fit inline-block px-3 my-2 bg-white rounded-full font-medium text-black text-[20px]">
+            <h2 className="w-fit inline-block px-3 my-1 bg-white rounded-full font-medium text-black text-[19px]">
               &lt;Ingeniero de Sistemas &amp; Frontend Developer/&gt;
             </h2>
-            <p className="font-thin text-xl text-center">
+            <p className="max-w-[62ch] text-center text-lg font-thin">
               "Me especializo en construir experiencias digitales que no solo
               funcionan, sino que comunican y fluyen."
             </p>
@@ -318,14 +353,14 @@ const HomePortada = () => {
           {/* 3. ESTADÍSTICAS
                sm: order-3  md: [1-2, row3]  lg: [1-2, rows3-4] */}
           <div
-            className="magic-card card-glass shadow-lg p-6 font-roboto
+            className="magic-card card-glass shadow-lg min-h-0 overflow-hidden p-6 font-roboto
                         order-3
                         md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-3
                         lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-3"
           >
             <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full w-full">
               <div className="flex flex-col items-center justify-center">
-                <p className="text-6xl text-red-600 font-sawbones">+15</p>
+                <p className="text-6xl text-red-600 font-sawbones">+12</p>
                 <span className="flex text-xl gap-3">
                   <ProyectosIcon width={24} height={24} />
                   Proyectos
@@ -339,17 +374,17 @@ const HomePortada = () => {
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
-                <p className="text-6xl text-red-600 font-sawbones">2</p>
+                <p className="text-6xl text-red-600 font-sawbones">3</p>
                 <span className="flex items-center text-xl gap-3">
                   <ExperienciaLaboralIcon width={24} height={24} />
-                  Empresas
+                  Experiencias
                 </span>
               </div>
               <div className="flex flex-col items-center justify-center">
                 <p className="text-[50px] text-red-600 font-sawbones">+1 año</p>
                 <span className="flex text-xl gap-3">
                   <ExperienciaIcon width={24} height={24} />
-                  Experiencia
+                  Trayectoria
                 </span>
               </div>
             </div>
@@ -358,7 +393,7 @@ const HomePortada = () => {
           {/* 4. SKILLS
                sm: order-4  md: [3-4, rows2-3]  lg: [3-4, rows3-5] */}
           <div
-            className="magic-card card-glass font-roboto
+            className="magic-card card-glass min-h-0 overflow-hidden font-roboto
                         order-4
                         md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2
                         lg:col-span-2 lg:row-span-3 lg:col-start-3 lg:row-start-3"
@@ -436,7 +471,7 @@ const HomePortada = () => {
           {/* 5. TECNOLOGÍAS (badges)
                sm: order-5  md: [1-4, row4]  lg: [5-6, rows3-4] */}
           <div
-            className="magic-card card-glass flex flex-col font-roboto
+            className="magic-card card-glass flex min-h-0 flex-col overflow-hidden font-roboto
                         order-5
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-4
                         lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-3"
@@ -500,22 +535,52 @@ const HomePortada = () => {
             </div>
           </div>
 
-          {/* 6. LOGO (isotipo + logotipo)
+          {/* 6. DISPONIBILIDAD Y CONTACTO DIRECTO
                sm: order-6  md: [1-4, row5]  lg: [1-2, row5] */}
           <div
-            className="magic-card card-glass flex justify-center items-center gap-4 font-roboto
+            className="magic-card card-glass flex min-h-0 flex-col justify-center gap-2 overflow-hidden px-5 py-3 font-roboto
                         order-6
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-5
                         lg:col-span-2 lg:row-span-1 lg:col-start-1 lg:row-start-5"
           >
-            <MigangIsotipo width={80} height={80} fill="white" />
-            <MigangLogotipo width={200} height={200} fill="white" />
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-[13px] font-medium text-emerald-200">
+                <span aria-hidden="true" className="relative flex size-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60 motion-reduce:animate-none" />
+                  <span className="relative inline-flex size-2 rounded-full bg-emerald-300" />
+                </span>
+                Disponible para trabajar
+              </span>
+
+              <span className="flex items-center gap-1.5">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  aria-label={`Enviar correo a ${EMAIL}`}
+                  className="grid size-8 place-items-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <Mail aria-hidden="true" className="size-4" />
+                </a>
+                <a
+                  href="https://github.com/M1GaNg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Abrir mi perfil de GitHub en una pestaña nueva"
+                  className="grid size-8 place-items-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <Github aria-hidden="true" className="size-4" />
+                </a>
+              </span>
+            </div>
+            <p className="flex items-center gap-2 text-[13px] text-white/70">
+              <MapPin aria-hidden="true" className="size-4 shrink-0 text-white/45" />
+              {LOCATION_LABEL}
+            </p>
           </div>
 
           {/* 8. CONTRIBUCIONES GITHUB
                sm: order-8  md: [1-4, auto]  lg: [1-4, row6] */}
           <div
-            className="magic-card card-glass flex flex-col justify-center px-4 py-3 font-roboto
+            className="magic-card card-glass flex min-h-0 flex-col justify-center overflow-hidden px-4 py-2 font-roboto
                         order-8
                         md:col-span-4 md:col-start-1
                         lg:col-span-4 lg:row-span-1 lg:col-start-1 lg:row-start-6"
@@ -533,9 +598,10 @@ const HomePortada = () => {
                 theme={{
                   dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
                 }}
-                blockSize={11}
-                blockMargin={4}
-                fontSize={12}
+                blockSize={10}
+                blockMargin={3}
+                fontSize={11}
+                showColorLegend={false}
                 labels={{
                   months: [
                     "Ene", "Feb", "Mar", "Abr", "May", "Jun",

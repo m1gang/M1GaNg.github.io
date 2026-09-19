@@ -20,12 +20,12 @@ import {
   Clock,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 
 // Radius system: cards rounded-2xl (16px), inputs/buttons/icon tiles rounded-xl (12px), status pill rounded-full.
 // Color system: monochrome zinc/white base; brand gradients on icon tiles
 // (dark gradient resting, light gradient on hover); emerald reserved for
 // semantic success/availability states only.
-const EMAIL = "miguelangelyv1@gmail.com";
 const PHONE_LABEL = "+51 954 936 677";
 const PHONE_HREF = "tel:+51954936677";
 const MESSAGE_MAX = 1000;
@@ -56,7 +56,7 @@ const CHANNELS = [
     tileHover:
       "group-hover:border-[#F59E0B]/25 group-hover:from-[#FFF6E9] group-hover:via-[#FDEBD0] group-hover:to-[#FAD7A8] group-hover:text-[#B45309] group-hover:shadow-[0_8px_24px_-8px_rgba(245,158,11,0.55)]",
     label: "Ubicación",
-    value: "Perú · GMT-5 - remoto y presencial",
+    value: LOCATION_LABEL,
     href: null,
   },
 ];

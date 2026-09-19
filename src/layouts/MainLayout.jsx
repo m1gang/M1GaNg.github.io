@@ -40,7 +40,7 @@ const MainLayout = () => {
         <SubNavbar items={currentSubNav} />
 
         {/* Content Outlet */}
-        <div className="flex-1 w-full overflow-hidden flex flex-col">
+        <div className="flex-1 w-full overflow-hidden flex flex-col lg:min-h-0">
           <Suspense fallback={null}>
             <Outlet />
           </Suspense>
