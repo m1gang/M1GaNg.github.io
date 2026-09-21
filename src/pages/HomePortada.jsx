@@ -231,10 +231,10 @@ const RecentActivity = () => {
   if (state.status === "loading") {
     return (
       <div className="flex flex-col gap-2" aria-hidden="true">
-        {[0, 1, 2, 3].map((i) => (
+        {[0, 1, 2].map((i) => (
           <div
             key={i}
-            className="h-8 animate-pulse rounded-lg bg-white/5"
+            className="h-7 animate-pulse rounded-lg bg-white/5"
           />
         ))}
       </div>
@@ -256,7 +256,7 @@ const RecentActivity = () => {
   }
 
   return (
-    <ul className="flex min-h-0 flex-col justify-center gap-1">
+    <ul className="flex min-h-0 flex-col justify-center gap-0.5">
       {state.items.map((item) => (
         <li key={item.url} className="min-w-0">
           <a
@@ -264,17 +264,17 @@ const RecentActivity = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${item.repo}: ${item.message}`}
-            className="group flex items-center gap-2.5 rounded-xl px-2 py-1 transition-colors hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group flex items-center gap-2.5 rounded-xl px-2 py-0.5 transition-colors hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <GitCommitHorizontal
               aria-hidden="true"
               className="size-4 shrink-0 text-emerald-300/80 transition-colors group-hover:text-emerald-200"
             />
             <span className="min-w-0 flex-1">
-              <span className="block truncate text-[13px] font-medium leading-snug text-white">
+              <span className="block truncate text-xs font-medium leading-snug text-white">
                 {item.message}
               </span>
-              <span className="block truncate text-xs leading-tight text-white/45">
+              <span className="block truncate text-[11px] leading-tight text-white/45">
                 {item.repo} · {timeAgo(item.date)}
               </span>
             </span>
@@ -295,7 +295,7 @@ const HomePortada = () => {
           className="grid gap-4 h-auto lg:h-full
                       grid-cols-1
                       md:grid-cols-4
-                      lg:grid-cols-6 lg:min-h-0 lg:grid-rows-[repeat(4,minmax(0,1fr))_minmax(0,1.35fr)_minmax(0,1.5fr)]
+                      lg:grid-cols-6 lg:min-h-0 lg:grid-rows-[repeat(4,minmax(0,1.15fr))_minmax(0,0.95fr)_minmax(0,1.3fr)]
                       pb-4 lg:pb-0"
         >
           {/* 1. FOTO DE PERFIL
@@ -306,7 +306,7 @@ const HomePortada = () => {
                         md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-2
                         lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1"
           >
-            <img src={profile} alt="profile-migang" />
+            <img src={profile} alt="profile-migang" className="h-full w-full object-contain" />
           </div>
 
           {/* 2. PRESENTACIÓN
@@ -353,37 +353,37 @@ const HomePortada = () => {
           {/* 3. ESTADÍSTICAS
                sm: order-3  md: [1-2, row3]  lg: [1-2, rows3-4] */}
           <div
-            className="magic-card card-glass shadow-lg min-h-0 overflow-hidden p-6 font-roboto
+            className="magic-card card-glass shadow-lg min-h-0 overflow-hidden p-5 font-roboto
                         order-3
                         md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-3
                         lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-3"
           >
-            <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full w-full">
-              <div className="flex flex-col items-center justify-center">
-                <p className="text-6xl text-red-600 font-sawbones">+12</p>
-                <span className="flex text-xl gap-3">
-                  <ProyectosIcon width={24} height={24} />
+            <div className="grid grid-cols-2 grid-rows-2 gap-3 h-full w-full">
+              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
+                <p className="text-6xl leading-none text-red-600 font-sawbones">+17</p>
+                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
+                  <ProyectosIcon width={20} height={20} />
                   Proyectos
                 </span>
               </div>
-              <div className="flex flex-col items-center justify-center">
-                <p className="text-6xl text-red-600 font-sawbones">+3</p>
-                <span className="flex text-xl gap-3">
-                  <CertificacionIcon width={24} height={24} />
+              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
+                <p className="text-6xl leading-none text-red-600 font-sawbones">+3</p>
+                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
+                  <CertificacionIcon width={20} height={20} />
                   Certificaciones
                 </span>
               </div>
-              <div className="flex flex-col items-center justify-center">
-                <p className="text-6xl text-red-600 font-sawbones">3</p>
-                <span className="flex items-center text-xl gap-3">
-                  <ExperienciaLaboralIcon width={24} height={24} />
+              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
+                <p className="text-6xl leading-none text-red-600 font-sawbones">3</p>
+                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
+                  <ExperienciaLaboralIcon width={20} height={20} />
                   Experiencias
                 </span>
               </div>
-              <div className="flex flex-col items-center justify-center">
-                <p className="text-[50px] text-red-600 font-sawbones">+1 año</p>
-                <span className="flex text-xl gap-3">
-                  <ExperienciaIcon width={24} height={24} />
+              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
+                <p className="text-[50px] leading-none text-red-600 font-sawbones">+1 año</p>
+                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
+                  <ExperienciaIcon width={20} height={20} />
                   Trayectoria
                 </span>
               </div>
@@ -402,28 +402,28 @@ const HomePortada = () => {
               {[
                 {
                   Icon: CodeIcon,
-                  title: (<>Desarrollo <br /> web</>),
+                  title: "Desarrollo web",
                   subtitle: "Front end con React",
                   chip: "bg-[#8b8afd]/10",
                   textGradient: "linear-gradient(135deg, #00C6FB, #005BEA, #C73AC9)",
                 },
                 {
                   Icon: SupportIcon,
-                  title: (<>Soporte <br /> Técnico</>),
+                  title: "Soporte técnico",
                   subtitle: "Optimización",
                   chip: "bg-[#343d4e]/10",
                   textGradient: "linear-gradient(135deg, #FFF4E4, #F0F6EE, #E7F0F0)",
                 },
                 {
                   Icon: DesignIcon,
-                  title: (<>Diseño <br /> gráfico</>),
+                  title: "Diseño gráfico",
                   subtitle: "Corel, Branding",
                   chip: "bg-[#cc1b75]/10",
                   textGradient: "linear-gradient(135deg, #F2A968, #CA1462, #8A2A86)",
                 },
                 {
                   Icon: LearningIcon,
-                  title: (<>Aprendizaje <br /> continuo</>),
+                  title: "Aprendizaje continuo",
                   subtitle: "Siempre aprendiendo",
                   chip: "bg-[#6d6d6d]/10",
                   textGradient: "linear-gradient(135deg, #B6DBDB, #687D7D, #9C8B8B)",
@@ -445,10 +445,10 @@ const HomePortada = () => {
               ].map(({ Icon, title, subtitle, chip, textGradient }) => (
                 <div
                   key={subtitle}
-                  className="flex flex-col items-center justify-center text-2xl gap-2 rounded-2xl"
+                  className="flex min-h-0 flex-col items-center justify-center gap-1.5 rounded-2xl text-2xl"
                 >
-                  <div className="flex gap-2 justify-center items-center text-lg text-center">
-                    <Icon width={30} height={30} />
+                  <div className="flex gap-2 justify-center items-center text-lg leading-snug text-center">
+                    <Icon width={26} height={26} />
                     <span
                       style={{
                         backgroundImage: textGradient,
@@ -460,7 +460,7 @@ const HomePortada = () => {
                       {title}
                     </span>
                   </div>
-                  <p className={`text-[15px] ${chip} rounded p-1 font-thin`}>
+                  <p className={`text-xs ${chip} rounded px-1.5 py-0.5 font-thin`}>
                     {subtitle}
                   </p>
                 </div>
@@ -501,12 +501,12 @@ const HomePortada = () => {
 
           {/* 7. BOTONES DE ACCIÓN */}
           <div
-            className="flex flex-col justify-center items-center p-4 font-roboto w-full
+            className="flex min-h-0 flex-col justify-center items-center px-4 py-3 font-roboto w-full
                         order-7
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-6
                         lg:col-span-2 lg:row-span-1 lg:col-start-5 lg:row-start-5"
           >
-            <div className="flex flex-col md:flex-row lg:grid lg:grid-cols-2 w-full gap-3">
+            <div className="flex flex-col md:flex-row lg:grid lg:grid-cols-2 w-full gap-2">
               <GlowButton
                 to="/proyectos/miniapps"
                 className="w-full md:flex-1 lg:col-span-2"

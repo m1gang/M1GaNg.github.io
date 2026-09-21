@@ -7,12 +7,12 @@ const ProfileEducation = () => {
   const gridRef = useRef(null);
 
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 lg:overflow-y-auto font-clash">
 
 
       <div
         ref={gridRef}
-        className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-5 gap-4 h-full w-full"
+        className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-5 gap-4 min-h-full w-full"
       >
         {/* --- Top: Academic Formation (Full Width) --- */}
         <MagicCard

@@ -11,10 +11,9 @@ const ProfileAbout = () => {
   const gridRef = useRef(null);
 
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden font-clash lg:h-screen">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:h-screen lg:min-h-0 lg:overflow-y-auto font-clash">
 
 
-      {/* Main Grid Container - Full Height on Desktop */}
       {/* Main Grid Container - Full Height on Desktop */}
       <div
         ref={gridRef}
