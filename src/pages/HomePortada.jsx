@@ -157,7 +157,7 @@ const HomePortada = () => {
           className="grid gap-4 h-auto lg:h-full
                       grid-cols-1
                       md:grid-cols-4
-                      lg:grid-cols-6 lg:min-h-0 lg:grid-rows-[repeat(4,minmax(0,1.15fr))_minmax(0,0.95fr)_minmax(0,1.3fr)]
+                      lg:grid-cols-6 lg:min-h-0 lg:grid-rows-[repeat(2,minmax(0,1.15fr))_repeat(2,minmax(0,1.10fr))_minmax(0,1.05fr)_minmax(0,1.3fr)]
                       pb-4 lg:pb-0"
         >
           {/* 1. FOTO DE PERFIL
