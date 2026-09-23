@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Github, Mail, MapPin } from "lucide-react";
+import { ArrowUpRight, Github, Mail, MapPin } from "lucide-react";
 import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 import profile from "../assets/img/migang-pics.webp";
 import {
@@ -143,6 +143,7 @@ const FEATURED_PROJECT = {
   name: "Construcciones Sostenibles",
   tagline: "Landing page · Astro + Tailwind CSS",
   url: "https://github.com/m1gang/construcsostenibles-landingpage",
+  demo: "https://www.construcciones-sostenibles.com/",
 };
 
 // ── HomePortada ───────────────────────────────────────────────────────────────
@@ -494,15 +495,26 @@ const HomePortada = () => {
               <p className="shrink-0 px-2 text-[13px] font-medium text-white/55">
                 Último proyecto
               </p>
-              <a
-                href={FEATURED_PROJECT.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Ver ${FEATURED_PROJECT.name} en GitHub`}
-                className="grid size-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-              >
-                <Github aria-hidden="true" className="size-4" />
-              </a>
+              <span className="flex items-center gap-1.5">
+                <a
+                  href={FEATURED_PROJECT.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Abrir demo de ${FEATURED_PROJECT.name}`}
+                  className="grid size-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <ArrowUpRight aria-hidden="true" className="size-4" />
+                </a>
+                <a
+                  href={FEATURED_PROJECT.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ver ${FEATURED_PROJECT.name} en GitHub`}
+                  className="grid size-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                >
+                  <Github aria-hidden="true" className="size-4" />
+                </a>
+              </span>
             </div>
             <p className="truncate px-2 text-lg font-semibold leading-tight tracking-tight text-white">
               {FEATURED_PROJECT.name}
