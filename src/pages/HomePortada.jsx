@@ -1,6 +1,5 @@
 import { Link } from "react-router";
-import { useEffect, useState } from "react";
-import { GitCommitHorizontal, Github, Mail, MapPin } from "lucide-react";
+import { Github, Mail, MapPin } from "lucide-react";
 import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 import profile from "../assets/img/migang-pics.webp";
 import {
@@ -44,7 +43,7 @@ import { GitHubCalendar } from "react-github-calendar";
 //  │ LOGO                 │ BOTONES      │
 //  │ [1-2,5]              │ [5-6,5]      │
 //  ├────────────────────────────────────┬───────────────┤
-//  │ CONTRIBUCIONES (GitHub) [1-4, row6] │ ACTIVIDAD    │
+//  │ CONTRIBUCIONES (GitHub) [1-4, row6] │ DESTACADO    │
 //  │                                     │ [5-6, row6]  │
 //  └────────────────────────────────────┴───────────────┘
 //
@@ -138,151 +137,12 @@ const GlowButton = ({
   );
 };
 
-// ── Actividad reciente en GitHub ──────────────────────────────────────────────
-// PushEvents públicos de M1GaNg, con caché de 1h en localStorage para no quemar
-// el rate limit anónimo de la API (60 req/h). Falla de forma independiente.
-const ACTIVITY_CACHE_KEY = "m1gang-github-activity";
-const ACTIVITY_TTL = 60 * 60 * 1000;
-
-const timeAgo = (iso) => {
-  const mins = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
-  if (mins < 1) return "ahora mismo";
-  if (mins < 60) return `hace ${mins} min`;
-  const hours = Math.floor(mins / 60);
-  if (hours < 24) return `hace ${hours} h`;
-  const days = Math.floor(hours / 24);
-  if (days < 30) return `hace ${days} d`;
-  const months = Math.floor(days / 30);
-  return `hace ${months} mes${months > 1 ? "es" : ""}`;
-};
-
-const fetchRecentActivity = async () => {
-  try {
-    const raw = localStorage.getItem(ACTIVITY_CACHE_KEY);
-    if (raw) {
-      const { at, items } = JSON.parse(raw);
-      if (Date.now() - at < ACTIVITY_TTL) return items;
-    }
-  } catch {
-    /* almacenamiento no disponible: seguir a la red */
-  }
-  const res = await fetch("https://api.github.com/users/M1GaNg/events/public");
-  if (!res.ok) throw new Error(`GitHub API ${res.status}`);
-  const events = await res.json();
-  const shortRepo = (fullName) => {
-    const parts = String(fullName || "").split("/");
-    return parts.length > 1 ? parts.slice(1).join("/") : fullName;
-  };
-  const items = events
-    .filter((e) => e.type === "PushEvent")
-    .flatMap((e) => {
-      const repo = shortRepo(e.repo.name);
-      const ref = String(e.payload.ref || "").replace("refs/heads/", "");
-      const commits = e.payload.commits || [];
-      if (commits.length > 0) {
-        return commits.map((c) => ({
-          repo,
-          message: c.message.split("\n")[0],
-          date: e.created_at,
-          url: `https://github.com/${e.repo.name}/commit/${c.sha}`,
-        }));
-      }
-      // GitHub a veces omite `commits` en el PushEvent: respaldo con el head.
-      const head = e.payload.head || "";
-      if (!head) return [];
-      return [
-        {
-          repo,
-          message: `Push en ${ref || "main"} · ${head.slice(0, 7)}`,
-          date: e.created_at,
-          url: `https://github.com/${e.repo.name}/commit/${head}`,
-        },
-      ];
-    })
-    .slice(0, 3);
-  try {
-    localStorage.setItem(
-      ACTIVITY_CACHE_KEY,
-      JSON.stringify({ at: Date.now(), items }),
-    );
-  } catch {
-    /* almacenamiento no disponible: omitir caché */
-  }
-  return items;
-};
-
-const RecentActivity = () => {
-  const [state, setState] = useState({ status: "loading", items: [] });
-
-  useEffect(() => {
-    let alive = true;
-    fetchRecentActivity()
-      .then((items) => {
-        if (alive) setState({ status: "ready", items });
-      })
-      .catch(() => {
-        if (alive) setState({ status: "error", items: [] });
-      });
-    return () => {
-      alive = false;
-    };
-  }, []);
-
-  if (state.status === "loading") {
-    return (
-      <div className="flex flex-col gap-2" aria-hidden="true">
-        {[0, 1, 2].map((i) => (
-          <div
-            key={i}
-            className="h-7 animate-pulse rounded-lg bg-white/5"
-          />
-        ))}
-      </div>
-    );
-  }
-
-  if (state.status === "error") {
-    return (
-      <p className="text-sm text-white/45">
-        No se pudo cargar la actividad de GitHub.
-      </p>
-    );
-  }
-
-  if (state.items.length === 0) {
-    return (
-      <p className="text-sm text-white/45">Sin pushes recientes.</p>
-    );
-  }
-
-  return (
-    <ul className="flex min-h-0 flex-col justify-center gap-0.5">
-      {state.items.map((item) => (
-        <li key={item.url} className="min-w-0">
-          <a
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${item.repo}: ${item.message}`}
-            className="group flex items-center gap-2.5 rounded-xl px-2 py-0.5 transition-colors hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            <GitCommitHorizontal
-              aria-hidden="true"
-              className="size-4 shrink-0 text-emerald-300/80 transition-colors group-hover:text-emerald-200"
-            />
-            <span className="min-w-0 flex-1">
-              <span className="block truncate text-xs font-medium leading-snug text-white">
-                {item.message}
-              </span>
-              <span className="block truncate text-[11px] leading-tight text-white/45">
-                {item.repo} · {timeAgo(item.date)}
-              </span>
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
+// ── Proyecto destacado ──────────────────────────────────────────────────────
+// Último proyecto publicado: se muestra en la card "Último proyecto" del bento.
+const FEATURED_PROJECT = {
+  name: "Construcciones Sostenibles",
+  tagline: "Landing page · Astro + Tailwind CSS",
+  url: "https://github.com/m1gang/construcsostenibles-landingpage",
 };
 
 // ── HomePortada ───────────────────────────────────────────────────────────────
@@ -622,18 +482,34 @@ const HomePortada = () => {
             </a>
           </div>
 
-          {/* 9. ACTIVIDAD RECIENTE (GitHub)
+          {/* 9. PROYECTO DESTACADO
                sm: order-9  md: [1-4, auto]  lg: [5-6, row6] */}
           <div
-            className="magic-card card-glass flex min-h-0 flex-col justify-center gap-1 overflow-hidden px-4 py-3 font-roboto
+            className="magic-card card-glass flex min-h-0 flex-col justify-center gap-1.5 overflow-hidden px-4 py-3 font-roboto
                         order-9
                         md:col-span-4 md:col-start-1
                         lg:col-span-2 lg:row-span-1 lg:col-start-5 lg:row-start-6"
           >
-            <p className="shrink-0 px-2 text-[13px] font-medium text-white/55">
-              Actividad reciente
+            <div className="flex items-center justify-between gap-3">
+              <p className="shrink-0 px-2 text-[13px] font-medium text-white/55">
+                Último proyecto
+              </p>
+              <a
+                href={FEATURED_PROJECT.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Ver ${FEATURED_PROJECT.name} en GitHub`}
+                className="grid size-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-white/70 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <Github aria-hidden="true" className="size-4" />
+              </a>
+            </div>
+            <p className="truncate px-2 text-lg font-semibold leading-tight tracking-tight text-white">
+              {FEATURED_PROJECT.name}
             </p>
-            <RecentActivity />
+            <p className="truncate px-2 text-[13px] leading-snug text-white/70">
+              {FEATURED_PROJECT.tagline}
+            </p>
           </div>
         </div>
       </section>
