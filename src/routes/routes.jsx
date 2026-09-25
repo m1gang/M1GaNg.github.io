@@ -9,6 +9,7 @@ const Experience = lazy(() => import("../pages/Experience"));
 const Contact = lazy(() => import("../pages/Contact"));
 const ProjectsApps = lazy(() => import("../pages/ProjectsApps"));
 const ProjectsCondisa = lazy(() => import("../pages/ProjectsCondisa"));
+const ProjectsLandings = lazy(() => import("../pages/ProjectsLandings"));
 
 export const router = createBrowserRouter([
   {
