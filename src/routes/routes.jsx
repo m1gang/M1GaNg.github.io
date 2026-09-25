@@ -8,8 +8,7 @@ const ProfileEducation = lazy(() => import("../pages/ProfileEducation"));
 const ExperienceCondisa = lazy(() => import("../pages/ExperienceCondisa"));
 const ExperienceUNCP = lazy(() => import("../pages/ExperienceUNCP"));
 const Contact = lazy(() => import("../pages/Contact"));
-const ProjectsMiniApps = lazy(() => import("../pages/ProjectsMiniApps"));
-const ProjectsReact = lazy(() => import("../pages/ProjectsReact"));
+const ProjectsApps = lazy(() => import("../pages/ProjectsApps"));
 const ProjectsCondisa = lazy(() => import("../pages/ProjectsCondisa"));
 const ExperienceDevdatep = lazy(() => import("@/pages/ExperienceDevdatep"));
 
@@ -57,15 +56,19 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/proyectos/miniapps" replace />,
+            element: <Navigate to="/proyectos/apps" replace />,
+          },
+          {
+            path: "apps",
+            element: <ProjectsApps />,
           },
           {
             path: "miniapps",
-            element: <ProjectsMiniApps />,
+            element: <Navigate to="/proyectos/apps" replace />,
           },
           {
             path: "react",
-            element: <ProjectsReact />,
+            element: <Navigate to="/proyectos/apps" replace />,
           },
           {
             path: "condisa",

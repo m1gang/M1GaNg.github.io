@@ -50,8 +50,7 @@ export const SUB_NAV_CONFIG = {
     { label: "UNCP", path: "/experiencia/uncp" },
   ],
   proyectos: [
-    { label: "Mini Apps", path: "/proyectos/miniapps", isDefault: true },
-    { label: "Apps React", path: "/proyectos/react" },
+    { label: "Apps", path: "/proyectos/apps", isDefault: true },
     { label: "Condisa", path: "/proyectos/condisa" },
   ],
   contacto: [{ label: "Contacto", path: "/contacto" }],
