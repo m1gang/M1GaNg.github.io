@@ -2,37 +2,35 @@ import {
   SiAstro,
   SiCloudflare,
   SiFramer,
-  SiSharp,
   SiTailwindcss,
   SiVercel,
 } from "react-icons/si";
 import { TbBrandTabler } from "react-icons/tb";
-import { LayoutGrid, Type } from "lucide-react";
 
 export const LANDINGS = [
   {
-    id: "solux",
-    title: "Solux",
-    tagline: "Landing industrial · Energía solar",
+    id: "gamag",
+    title: "Gamag",
+    tagline: "Landing de agencia · Software y soluciones IA",
     description:
-      "Landing page para una compañía industrial de energía renovable: hero de eficiencia energética, soluciones fotovoltaicas y BESS, casos de éxito con métricas y formulario de auditoría técnica.",
+      "Landing page para la agencia Gamag: propuesta de valor, comparativas, planes con precios, portafolio de proyectos y formulario de contacto con diagnóstico gratuito.",
     iconSrc: new URL(
-      "../assets/img/icon-projects/logo-solux.svg",
+      "../assets/img/icon-projects/gamag-logo.svg",
       import.meta.url,
     ).href,
-    deployUrl: "https://solux-landing-page.vercel.app/",
-    deployLabel: "Vercel",
-    repoUrl: "https://github.com/m1gang/solux-landingPage",
+    deployUrl: "https://gamag.dev/",
+    deployLabel: "Sitio en producción",
+    repoUrl: null,
     techs: [
       { name: "Astro", Icon: SiAstro },
       { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Geist Sans", Icon: Type },
-      { name: "Sharp", Icon: SiSharp },
-      { name: "Vercel", Icon: SiVercel },
+      { name: "Motion", Icon: SiFramer },
+      { name: "Tabler Icons", Icon: TbBrandTabler },
+      { name: "Cloudflare", Icon: SiCloudflare },
     ],
     images: [
       new URL(
-        "../assets/img/projects/landing/solux-landing.webp",
+        "../assets/img/projects/landing/gamag-landing.webp",
         import.meta.url,
       ).href,
     ],
@@ -53,9 +51,6 @@ export const LANDINGS = [
     techs: [
       { name: "Astro", Icon: SiAstro },
       { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Tailwind Forms", Icon: SiTailwindcss },
-      { name: "Container Queries", Icon: LayoutGrid },
-      { name: "Sharp", Icon: SiSharp },
       { name: "Vercel", Icon: SiVercel },
     ],
     images: [
@@ -81,7 +76,6 @@ export const LANDINGS = [
     techs: [
       { name: "Astro", Icon: SiAstro },
       { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Sharp", Icon: SiSharp },
       { name: "Cloudflare Workers", Icon: SiCloudflare },
     ],
     images: [
@@ -92,29 +86,26 @@ export const LANDINGS = [
     ],
   },
   {
-    id: "gamag",
-    title: "Gamag",
-    tagline: "Landing de agencia · Software y soluciones IA",
+    id: "solux",
+    title: "Solux",
+    tagline: "Landing industrial · Energía solar",
     description:
-      "Landing page para la agencia Gamag: propuesta de valor, comparativas, planes con precios, portafolio de proyectos y formulario de contacto con diagnóstico gratuito.",
+      "Landing page para una compañía industrial de energía renovable: hero de eficiencia energética, soluciones fotovoltaicas y BESS, casos de éxito con métricas y formulario de auditoría técnica.",
     iconSrc: new URL(
-      "../assets/img/icon-projects/gamag-logo.svg",
+      "../assets/img/icon-projects/logo-solux.svg",
       import.meta.url,
     ).href,
-    deployUrl: "https://gamag.dev/",
-    deployLabel: "Sitio en producción",
-    repoUrl: null,
+    deployUrl: "https://solux-landing-page.vercel.app/",
+    deployLabel: "Vercel",
+    repoUrl: "https://github.com/m1gang/solux-landingPage",
     techs: [
       { name: "Astro", Icon: SiAstro },
       { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Astro Icon", Icon: SiAstro },
-      { name: "Motion", Icon: SiFramer },
-      { name: "Tabler Icons", Icon: TbBrandTabler },
-      { name: "Cloudflare", Icon: SiCloudflare },
+      { name: "Vercel", Icon: SiVercel },
     ],
     images: [
       new URL(
-        "../assets/img/projects/landing/gamag-landing.webp",
+        "../assets/img/projects/landing/solux-landing.webp",
         import.meta.url,
       ).href,
     ],
