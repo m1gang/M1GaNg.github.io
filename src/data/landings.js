@@ -10,10 +10,9 @@ import { TbBrandTabler } from "react-icons/tb";
 export const LANDINGS = [
   {
     id: "gamag",
-    title: "Gamag",
-    tagline: "Landing de agencia · Software y soluciones IA",
+    title: "Landing Page Gamag",
     description:
-      "Landing page para la agencia Gamag: propuesta de valor, comparativas, planes con precios, portafolio de proyectos y formulario de contacto con diagnóstico gratuito.",
+      "Landing page para la agencia Gamag, especializada en software y soluciones IA: propuesta de valor, comparativas, planes con precios, portafolio de proyectos y formulario de contacto con diagnóstico gratuito.",
     iconSrc: new URL(
       "../assets/img/icon-projects/gamag-logo.svg",
       import.meta.url,
@@ -37,10 +36,9 @@ export const LANDINGS = [
   },
   {
     id: "kora",
-    title: "Kora",
-    tagline: "Landing inmobiliaria · Bienes raíces de lujo",
+    title: "Landing Page Kora",
     description:
-      "Landing page para la agencia inmobiliaria KORA: catálogo de propiedades exclusivas, servicios de compra, venta y renta, testimonios y contacto con oficinas en Lima.",
+      "Landing page para la agencia inmobiliaria KORA, especializada en bienes raíces de lujo: catálogo de propiedades exclusivas, servicios de compra, venta y renta, testimonios y contacto con oficinas en Lima.",
     iconSrc: new URL(
       "../assets/img/icon-projects/isotipo-kora.svg",
       import.meta.url,
@@ -62,10 +60,9 @@ export const LANDINGS = [
   },
   {
     id: "construcciones",
-    title: "Construcciones Sostenibles",
-    tagline: "Sitio corporativo · Arquitectura e ingeniería",
+    title: "Landing Page Construcciones Sostenibles",
     description:
-      "Sitio web corporativo para Construcciones Sostenibles PE: catálogo de servicios técnicos, equipo colegiado, expedientes de obra y contacto directo por WhatsApp.",
+      "Landing page para Construcciones Sostenibles PE, estudio de arquitectura e ingeniería: catálogo de servicios técnicos, equipo colegiado, expedientes de obra y contacto directo por WhatsApp.",
     iconSrc: new URL(
       "../assets/img/icon-projects/logo-constSost.svg",
       import.meta.url,
@@ -87,8 +84,7 @@ export const LANDINGS = [
   },
   {
     id: "solux",
-    title: "Solux",
-    tagline: "Landing industrial · Energía solar",
+    title: "Landing Page Solux",
     description:
       "Landing page para una compañía industrial de energía renovable: hero de eficiencia energética, soluciones fotovoltaicas y BESS, casos de éxito con métricas y formulario de auditoría técnica.",
     iconSrc: new URL(

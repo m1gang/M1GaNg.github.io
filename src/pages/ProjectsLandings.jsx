@@ -38,14 +38,9 @@ const ProjectsLandings = () => {
               />
             </div>
 
-            <div className="min-w-0">
-              <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/40">
-                {currentProject.tagline}
-              </p>
-              <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
-                {currentProject.title}
-              </h2>
-            </div>
+            <h2 className="text-lg md:text-xl font-bold text-white text-center select-none min-w-0">
+              {currentProject.title}
+            </h2>
           </div>
         </MagicCard>
 
