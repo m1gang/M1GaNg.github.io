@@ -10,6 +10,7 @@ const ExperienceUNCP = lazy(() => import("../pages/ExperienceUNCP"));
 const Contact = lazy(() => import("../pages/Contact"));
 const ProjectsApps = lazy(() => import("../pages/ProjectsApps"));
 const ProjectsCondisa = lazy(() => import("../pages/ProjectsCondisa"));
+const ProjectsLandings = lazy(() => import("../pages/ProjectsLandings"));
 const ExperienceDevdatep = lazy(() => import("@/pages/ExperienceDevdatep"));
 
 export const router = createBrowserRouter([
@@ -56,7 +57,11 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/proyectos/apps" replace />,
+            element: <Navigate to="/proyectos/landings" replace />,
+          },
+          {
+            path: "landings",
+            element: <ProjectsLandings />,
           },
           {
             path: "apps",
