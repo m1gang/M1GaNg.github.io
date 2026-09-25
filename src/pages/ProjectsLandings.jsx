@@ -26,7 +26,7 @@ const ProjectsLandings = () => {
   };
 
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 lg:overflow-y-auto">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden lg:h-screen">
       <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 min-h-full w-full">
         <MagicCard className="lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500 hover:bg-white/[0.02]">
           <div className="flex items-center gap-4 h-full w-full justify-center">
@@ -49,7 +49,7 @@ const ProjectsLandings = () => {
           </div>
         </MagicCard>
 
-        <MagicCard className="lg:col-span-12 lg:row-span-3 card-glass p-4 bg-[#0a0a0a90] border-white/5 overflow-hidden group">
+        <MagicCard className="lg:col-span-12 lg:row-span-4 card-glass p-4 bg-[#0a0a0a90] border-white/5 overflow-hidden group">
           <div className="w-full h-full">
             <ImageCarousel
               images={currentProject.images}

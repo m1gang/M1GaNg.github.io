@@ -64,16 +64,20 @@ export const router = createBrowserRouter([
             element: <ProjectsLandings />,
           },
           {
-            path: "apps",
+            path: "estudio",
             element: <ProjectsApps />,
           },
           {
+            path: "apps",
+            element: <Navigate to="/proyectos/estudio" replace />,
+          },
+          {
             path: "miniapps",
-            element: <Navigate to="/proyectos/apps" replace />,
+            element: <Navigate to="/proyectos/estudio" replace />,
           },
           {
             path: "react",
-            element: <Navigate to="/proyectos/apps" replace />,
+            element: <Navigate to="/proyectos/estudio" replace />,
           },
           {
             path: "condisa",

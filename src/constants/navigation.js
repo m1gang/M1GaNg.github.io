@@ -51,7 +51,7 @@ export const SUB_NAV_CONFIG = {
   ],
   proyectos: [
     { label: "Landings", path: "/proyectos/landings", isDefault: true },
-    { label: "Apps", path: "/proyectos/apps" },
+    { label: "Estudio", path: "/proyectos/estudio" },
     { label: "Condisa", path: "/proyectos/condisa" },
   ],
   contacto: [{ label: "Contacto", path: "/contacto" }],

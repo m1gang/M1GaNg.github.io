@@ -12,9 +12,6 @@ import {
   Zap,
 } from "lucide-react";
 
-const landingImage = (file) =>
-  new URL(`../assets/img/projects/landing/${file}`, import.meta.url).href;
-
 export const LANDINGS = [
   {
     id: "solux",
@@ -32,7 +29,12 @@ export const LANDINGS = [
       { name: "Sharp", Icon: ImageIcon },
       { name: "Vercel", Icon: Rocket },
     ],
-    images: [landingImage("solux-landing.webp")],
+    images: [
+      new URL(
+        "../assets/img/projects/landing/solux-landing.webp",
+        import.meta.url,
+      ).href,
+    ],
   },
   {
     id: "kora",
@@ -51,7 +53,12 @@ export const LANDINGS = [
       { name: "Sharp", Icon: ImageIcon },
       { name: "Vercel", Icon: Rocket },
     ],
-    images: [landingImage("kora-landing.webp")],
+    images: [
+      new URL(
+        "../assets/img/projects/landing/kora-landing.webp",
+        import.meta.url,
+      ).href,
+    ],
   },
   {
     id: "construcciones",
@@ -68,7 +75,12 @@ export const LANDINGS = [
       { name: "Sharp", Icon: ImageIcon },
       { name: "Cloudflare Workers", Icon: Cloud },
     ],
-    images: [landingImage("construcciones-sostenibles.webp")],
+    images: [
+      new URL(
+        "../assets/img/projects/landing/construcciones-sostenibles.webp",
+        import.meta.url,
+      ).href,
+    ],
   },
   {
     id: "gamag",
@@ -87,6 +99,11 @@ export const LANDINGS = [
       { name: "Tabler Icons", Icon: Shapes },
       { name: "Cloudflare", Icon: Cloud },
     ],
-    images: [landingImage("gamag-landing.webp")],
+    images: [
+      new URL(
+        "../assets/img/projects/landing/gamag-landing.webp",
+        import.meta.url,
+      ).href,
+    ],
   },
 ];
