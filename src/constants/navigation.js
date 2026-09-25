@@ -39,15 +39,10 @@ export const SUB_NAV_CONFIG = {
   ],
   experiencia: [
     {
-      label: "Devdatep",
-      path: "/experiencia/devdatep",
+      label: "Trayectoria",
+      path: "/experiencia",
       isDefault: true,
     },
-    {
-      label: "Condisa",
-      path: "/experiencia/condisa",
-    },
-    { label: "UNCP", path: "/experiencia/uncp" },
   ],
   proyectos: [
     { label: "Mini Apps", path: "/proyectos/miniapps", isDefault: true },

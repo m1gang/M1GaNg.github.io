@@ -5,13 +5,11 @@ import MainLayout from "../layouts/MainLayout";
 const HomePortada = lazy(() => import("../pages/HomePortada"));
 const ProfileAbout = lazy(() => import("../pages/ProfileAbout"));
 const ProfileEducation = lazy(() => import("../pages/ProfileEducation"));
-const ExperienceCondisa = lazy(() => import("../pages/ExperienceCondisa"));
-const ExperienceUNCP = lazy(() => import("../pages/ExperienceUNCP"));
+const Experience = lazy(() => import("../pages/Experience"));
 const Contact = lazy(() => import("../pages/Contact"));
 const ProjectsMiniApps = lazy(() => import("../pages/ProjectsMiniApps"));
 const ProjectsReact = lazy(() => import("../pages/ProjectsReact"));
 const ProjectsCondisa = lazy(() => import("../pages/ProjectsCondisa"));
-const ExperienceDevdatep = lazy(() => import("@/pages/ExperienceDevdatep"));
 
 export const router = createBrowserRouter([
   {
@@ -78,19 +76,19 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/experiencia/devdatep" replace />,
+            element: <Experience />,
           },
           {
             path: "devdatep",
-            element: <ExperienceDevdatep />,
+            element: <Navigate to="/experiencia" replace />,
           },
           {
             path: "condisa",
-            element: <ExperienceCondisa />,
+            element: <Navigate to="/experiencia" replace />,
           },
           {
             path: "uncp",
-            element: <ExperienceUNCP />,
+            element: <Navigate to="/experiencia" replace />,
           },
         ],
       },
