@@ -4,9 +4,7 @@ import MainLayout from "../layouts/MainLayout";
 
 const HomePortada = lazy(() => import("../pages/HomePortada"));
 const ProfileAbout = lazy(() => import("../pages/ProfileAbout"));
-const ProfileIntereses = lazy(() => import("../pages/ProfileIntereses"));
 const ProfileEducation = lazy(() => import("../pages/ProfileEducation"));
-const ProfileSkills = lazy(() => import("../pages/ProfileSkills"));
 const ExperienceCondisa = lazy(() => import("../pages/ExperienceCondisa"));
 const ExperienceUNCP = lazy(() => import("../pages/ExperienceUNCP"));
 const Contact = lazy(() => import("../pages/Contact"));
@@ -49,16 +47,8 @@ export const router = createBrowserRouter([
             element: <ProfileAbout />,
           },
           {
-            path: "intereses",
-            element: <ProfileIntereses />,
-          },
-          {
             path: "educacion",
             element: <ProfileEducation />,
-          },
-          {
-            path: "habilidades",
-            element: <ProfileSkills />,
           },
         ],
       },

@@ -1,187 +1,85 @@
-import { useRef } from "react";
-import { GraduationCap, BookOpen, Flame, Globe, Landmark } from "lucide-react";
+﻿import { GraduationCap, Flame, Code2, Landmark, CheckCircle2, Sparkles, BadgeCheck, Layout, Palette, Wrench } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
+import TechBadge from "../components/TechBadge";
 import uncpLogo from "../assets/img/education/uncp-logo-2.webp";
 import fisLogo from "../assets/img/education/fis-logo.webp";
-const ProfileEducation = () => {
-  const gridRef = useRef(null);
+import HtmlIcon from "../components/icons/tech/html.svg?react";
+import CssIcon from "../components/icons/tech/css.svg?react";
+import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
+import TypescriptIcon from "../components/icons/tech/typescript.svg?react";
+import ReactIcon from "../components/icons/tech/react.svg?react";
+import AstroIcon from "../components/icons/tech/astro.svg?react";
+import TailwindIcon from "../components/icons/tech/tailwindcss.svg?react";
+import ViteIcon from "../components/icons/tech/vitejs.svg?react";
+import GitIcon from "../components/icons/tech/git.svg?react";
+import GithubIcon from "../components/icons/tech/github.svg?react";
+import PhpIcon from "../components/icons/tech/php.svg?react";
+import MysqlIcon from "../components/icons/tech/mysql.svg?react";
+import FirebaseIcon from "../components/icons/tech/firebase.svg?react";
+import ReactQueryIcon from "../components/icons/tech/reactquery.svg?react";
+import ZustandIcon from "../components/icons/tech/zustand.svg?react";
+import FigmaIcon from "../components/icons/tech/figma.svg?react";
+import BootstrapIcon from "../components/icons/tech/bootstrap.svg?react";
+import MaterialUiIcon from "../components/icons/tech/materialui.svg?react";
+import JqueryIcon from "../components/icons/tech/jquery.svg?react";
+import GiphyIcon from "../components/icons/tech/giphy.svg?react";
+import OpenCodeIcon from "../components/icons/tech/opencode.svg?react";
+import LinearIcon from "../components/icons/tech/linear.svg?react";
+import ObsidianIcon from "../components/icons/tech/obsidian.svg?react";
+import TicktickIcon from "../components/icons/tech/ticktick.svg?react";
+import OrcaIcon from "../components/icons/tech/orca.svg?react";
+import FreecodecampIcon from "../components/icons/tech/freecodecamp.svg?react";
+import UdemyIcon from "../components/icons/tech/udemy.svg?react";
 
-  return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 lg:overflow-y-auto font-clash">
+const SKILL_GROUPS = [
+  { title: "Frontend", icon: Layout, skills: [["HTML", HtmlIcon], ["CSS", CssIcon], ["JavaScript", JavascriptIcon], ["TypeScript", TypescriptIcon], ["React", ReactIcon], ["Astro", AstroIcon], ["Tailwind", TailwindIcon]] },
+  { title: "Herramientas", icon: Wrench, skills: [["Vite", ViteIcon], ["Git", GitIcon], ["GitHub", GithubIcon], ["TickTick", TicktickIcon], ["Linear", LinearIcon], ["Orca", OrcaIcon], ["OpenCode", OpenCodeIcon], ["Obsidian", ObsidianIcon]] },
+  { title: "Datos & Backend", icon: Code2, skills: [["PHP", PhpIcon], ["MySQL", MysqlIcon], ["Firebase", FirebaseIcon], ["React Query", ReactQueryIcon], ["Zustand", ZustandIcon]] },
+  { title: "Diseño & UI", icon: Palette, skills: [["Figma", FigmaIcon], ["Bootstrap", BootstrapIcon], ["Material UI", MaterialUiIcon], ["jQuery", JqueryIcon], ["Giphy API", GiphyIcon]] },
+];
 
+const CERTIFICATIONS = [
+  { title: "Responsive Web Design", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: "2024", Icon: Flame, color: "#fb923c" },
+  { title: "JavaScript Algorithms and Data Structures", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: "2025", Icon: Code2, color: "#facc15" },
+  { title: "Desarrollo Front-End", source: "Gobierno del Perú", sourceIcon: Landmark, year: "2025", Icon: Landmark, color: "#38bdf8" },
+  { title: "Aprende TypeScript paso a paso", source: "Udemy", sourceIcon: UdemyIcon, year: "2025", Icon: CheckCircle2, color: "#a78bfa", featured: true },  { title: "React: De cero a experto", source: "Udemy", sourceIcon: UdemyIcon, year: "2026", Icon: Sparkles, color: "#34d399", featured: true },
+];
 
-      <div
-        ref={gridRef}
-        className="grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-5 gap-4 min-h-full w-full"
-      >
-        {/* --- Top: Academic Formation (Full Width) --- */}
-        <MagicCard
-          className="lg:col-span-3 lg:row-span-2 card-glass p-6 lg:p-8 bg-gradient-to-br from-[#111111] to-[#0a1f0a] border-white/5 relative group font-roboto"
-        >
-          {/* Subtle Green Glow Background */}
-          <div className="absolute top-[-40%] right-[-10%] w-[500px] h-[500px] bg-linear-to-br to-green-500/10 from-green-500/10 blur-[120px] rounded-full pointer-events-none group-hover:bg-green-500/15 transition-all duration-1000"></div>
+const CertificationItem = ({ title, source, sourceIcon: SourceIcon, year, Icon, featured }) => (
+  <div className={`group flex min-w-0 items-center gap-3 rounded-xl border px-3 py-2.5 transition-colors ${featured ? "border-emerald-300/20 bg-emerald-300/[0.04]" : "border-white/10 bg-white/[0.02] hover:bg-white/[0.05]"}`}>
+    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 text-white/80">{SourceIcon ? <SourceIcon width={20} height={20} aria-hidden="true" /> : <Icon size={18} strokeWidth={1.7} aria-hidden="true" />}</span>
+    <div className="min-w-0 flex-1"><h3 className="truncate text-xs font-semibold text-white/90">{title}</h3><p className="mt-0.5 text-[10px] text-white/45">{source}</p></div>
+    <span className="shrink-0 text-[10px] font-bold tracking-[0.16em] text-white/45">{year}</span>
+  </div>
+);
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center relative z-10 w-full h-full">
-            {/* Left/Center Info */}
-            <div className="lg:col-span-9 flex flex-col items-center justify-center text-center h-full">
-              <h2 className="text-lg md:text-2xl font-light tracking-[0.3em] text-[#ffffff90] mb-2 uppercase leading-none">
-                Formación Académica
-              </h2>
-              <h3 className="text-base md:text-xl font-bold text-[#e1b272] mb-4 tracking-wider uppercase max-w-2xl">
-                Universidad Nacional del Centro del Perú
-              </h3>
+const ProfileEducation = () => (
+  <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 lg:overflow-y-auto font-clash">
+    <div className="grid min-h-full w-full grid-cols-1 gap-4 lg:grid-cols-12 lg:grid-rows-1">
+      <MagicCard className="card-glass group relative flex min-h-[19rem] flex-col justify-center overflow-hidden p-5 sm:p-7 lg:col-span-7 lg:row-span-1">
+        <div className="pointer-events-none absolute -right-20 -top-20 size-80 rounded-full bg-emerald-400/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-20 size-72 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="relative flex h-full flex-col justify-center gap-6">
+          <div className="flex items-center gap-3"><span className="grid size-12 place-items-center rounded-2xl border border-emerald-300/25 bg-emerald-300/10 text-emerald-300"><GraduationCap size={25} strokeWidth={1.6} /></span><div><p className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/45">Formación académica</p><p className="mt-1 text-sm text-emerald-300/90">2018 — 2023</p></div></div>
+          <div className="max-w-2xl"><h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Universidad Nacional del Centro del Perú</h2><div className="mt-4 flex flex-wrap items-center gap-2.5 text-sm text-white/65"><span className="inline-flex items-center gap-2"><img src={fisLogo} alt="" className="size-5 object-contain" />Facultad de Ingeniería de Sistemas</span><span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-xs text-emerald-200">Bachiller en Ing. de Sistemas</span></div></div>
+          <div className="flex items-end justify-between gap-4 border-t border-white/10 pt-4"><p className="max-w-md text-xs leading-relaxed text-white/45">Formación técnica con enfoque en sistemas, desarrollo web y resolución de problemas.</p><img src={uncpLogo} alt="Logo de la UNCP" className="h-16 w-auto shrink-0 object-contain opacity-90 drop-shadow-[0_0_20px_rgba(255,255,255,0.14)]" /></div>
+        </div>
+      </MagicCard>
 
-              <div className="flex flex-col items-center gap-3">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={fisLogo}
-                    alt="Sistemas Icon"
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-[0_0_8px_rgba(34,211,238,0.4)]"
-                  />
-                  <h4 className="text-sm md:text-lg font-bold text-white tracking-tight">
-                    Facultad de Ingeniería de Sistemas
-                  </h4>
-                </div>
-
-                <div className="flex flex-col items-center gap-2 mt-2">
-                  <div className="flex items-center gap-2">
-                    <div className="p-1 bg-blue-500/20 rounded">
-                      <GraduationCap className="text-blue-400 w-5 h-5" />
-                    </div>
-                    <span className="text-sm md:text-base font-bold text-white/90">
-                      Bachiller en Ing. de Sistemas
-                    </span>
-                  </div>
-                  <div className="flex justify-center items-center gap-2">
-                    <span className="text-[#ff4b2b] text-sm md:text-base font-black tracking-widest mt-1">
-                      ( 2018 - 2023 )
-                    </span>
-                  </div>
-                </div>
-              </div>
+      <MagicCard className="card-glass font-roboto flex min-h-[19rem] flex-col self-stretch p-5 lg:h-full lg:col-span-5 lg:row-span-1"><div className="mb-4 flex items-center gap-2.5"><span className="grid size-9 place-items-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-300"><BadgeCheck size={19} /></span><div><h2 className="text-sm font-semibold text-white/90">Certificados</h2><p className="text-[11px] text-white/40">Formación continua</p></div></div><div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overscroll-contain pr-1 [scrollbar-color:rgba(255,255,255,0.22)_transparent] [scrollbar-width:thin]">{CERTIFICATIONS.map((certification) => <CertificationItem key={certification.title} {...certification} />)}</div></MagicCard>
+      <div className="flex flex-1 flex-col lg:col-span-12 lg:row-span-1"><div className="grid flex-1 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {SKILL_GROUPS.map(({ title, icon: Icon, skills }) => (
+          <MagicCard key={title} className="card-glass font-roboto flex min-h-[9rem] flex-col gap-3 p-4">
+            <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/55"><Icon size={16} className="text-cyan-300" />{title}</div>
+            <div className="flex flex-wrap content-start gap-2">
+              {skills.map(([name, icon]) => <TechBadge key={name} name={name} icon={icon} iconSize={18} className="gap-2 rounded-xl border-white/10 bg-[#2929293b] px-3.5 py-2.5 shadow-lg" textClassName="text-xs font-semibold text-white/75" iconClassName="opacity-95" />)}
             </div>
-
-            {/* Right Logo (Hombre Pájaro) */}
-            <div className="lg:col-span-3 flex justify-center items-center">
-              <img
-                src={uncpLogo}
-                alt="UNCP LOGO"
-                className="w-full max-w-[140px] lg:max-w-[180px] h-auto object-contain drop-shadow-[0_0_30px_rgba(255,255,255,0.2)] opacity-100"
-              />
-            </div>
-          </div>
-        </MagicCard>
-
-        {/* --- Middle Row: Certifications (3 cards) --- */}
-        <MagicCard className="lg:col-span-1 lg:row-span-2 card-glass p-6 lg:p-8 flex flex-col justify-between bg-[#0a0a0a80] border-white/5 font-roboto group text-center lg:text-left">
-          <span className="text-sm md:text-base font-light tracking-[0.2em] text-white/60 w-full text-center mb-6">
-            CERTIFICADO
-          </span>
-          <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-4 h-full">
-            <div className="flex flex-col gap-1 flex-1 justify-center lg:justify-end items-center lg:items-start text-center lg:text-left">
-              <h4 className="text-base md:text-lg font-medium text-white/90 leading-tight">
-                Responsive Web
-                <br />
-                Design
-              </h4>
-              <div className="flex flex-col mt-4 gap-1">
-                <span className="text-[#ff4b2b] font-black text-sm md:text-base tracking-widest">
-                  2024
-                </span>
-                <p className="text-white/60 text-xs md:text-sm">freeCodeCamp</p>
-              </div>
-            </div>
-            <div className="shrink-0">
-              <Flame className="w-12 h-12 md:w-16 md:h-16 text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300" />
-            </div>
-          </div>
-        </MagicCard>
-
-        <MagicCard className="lg:col-span-1 lg:row-span-2 card-glass p-6 lg:p-8 flex flex-col justify-between bg-[#0a0a0a80] border-white/5 font-roboto group text-center lg:text-left">
-          <span className="text-sm md:text-base font-light tracking-[0.2em] text-white/60 w-full text-center mb-6">
-            CERTIFICADO
-          </span>
-          <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-4 h-full">
-            <div className="flex flex-col gap-1 flex-1 justify-center lg:justify-end items-center lg:items-start text-center lg:text-left">
-              <h4 className="text-base md:text-lg font-medium text-white/90 leading-tight">
-                JavaScript Algorithms
-                <br />
-                and Data Structures
-              </h4>
-              <div className="flex flex-col mt-4 gap-1">
-                <span className="text-[#ff4b2b] font-black text-sm md:text-base tracking-widest">
-                  2025
-                </span>
-                <p className="text-white/60 text-xs md:text-sm">freeCodeCamp</p>
-              </div>
-            </div>
-            <div className="shrink-0">
-              <Flame className="w-12 h-12 md:w-16 md:h-16 text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300" />
-            </div>
-          </div>
-        </MagicCard>
-
-        <MagicCard className="lg:col-span-1 lg:row-span-2 card-glass p-6 lg:p-8 flex flex-col justify-between bg-[#0a0a0a80] border-white/5 font-roboto group text-center lg:text-left">
-          <span className="text-sm md:text-base font-light tracking-[0.2em] text-white/60 w-full text-center mb-6">
-            CERTIFICADO
-          </span>
-          <div className="flex flex-col lg:flex-row items-center lg:items-end justify-between gap-4 h-full">
-            <div className="flex flex-col gap-1 flex-1 justify-center lg:justify-end items-center lg:items-start text-center lg:text-left">
-              <h4 className="text-base md:text-lg font-medium text-white/90 leading-tight">
-                Desarrollo Front-End
-                <br />
-                <span className="text-sm text-white/70">(Nivel Básico)</span>
-              </h4>
-              <div className="flex flex-col mt-4 gap-1">
-                <span className="text-[#ff4b2b] font-black text-sm md:text-base tracking-widest">
-                  2025
-                </span>
-                <p className="text-white/60 text-xs md:text-sm">
-                  Gobierno del Perú
-                </p>
-              </div>
-            </div>
-            <div className="shrink-0">
-              <Landmark className="w-12 h-12 md:w-16 md:h-16 text-white group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] transition-all duration-300" />
-            </div>
-          </div>
-        </MagicCard>
-
-        {/* --- Bottom Row: Continuous Learning --- */}
-        <MagicCard className="lg:col-span-3 lg:row-span-1 card-glass p-4 lg:p-6 bg-[#0a0a0a80] border-white/5 flex items-center justify-center font-roboto">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 w-full max-w-5xl">
-            {/* Left: Icon & Title */}
-            <div className="flex items-center gap-4 shrink-0">
-              <div className="relative">
-                <Globe
-                  size={50}
-                  className="text-white opacity-20 group-hover:opacity-40 transition-all duration-500"
-                />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75">
-                  <BookOpen size={24} className="text-white" />
-                </div>
-              </div>
-              <h3 className="text-xl md:text-3xl font-light tracking-tight text-white/90 leading-tight">
-                Aprendizaje
-                <br />
-                continuo
-              </h3>
-            </div>
-
-            {/* Right: Text Content */}
-            <div className="flex-1 text-center lg:text-right border-l-0 lg:border-l border-white/10 lg:pl-10">
-              <p className="text-xs md:text-[15px] text-white/70 leading-relaxed font-medium">
-                Me mantengo en constante actualización mediante proyectos en
-                GitHub, documentación oficial y práctica autodidacta.
-                Actualmente estoy fortaleciendo mi nivel en React y explorando
-                el uso de frameworks.
-              </p>
-            </div>
-          </div>
-        </MagicCard>
+          </MagicCard>
+        ))}
       </div>
     </div>
-  );
-};
 
+    </div>
+  </div>
+);
 export default ProfileEducation;
