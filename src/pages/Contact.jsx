@@ -20,22 +20,23 @@ import {
   Clock,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MagicCard } from "../components/MagicCard";
 import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 
-// Radius system: cards rounded-2xl (16px), inputs/buttons/icon tiles rounded-xl (12px), status pill rounded-full.
-// Color system: monochrome zinc/white base; brand gradients on icon tiles
-// (dark gradient resting, light gradient on hover); emerald reserved for
-// semantic success/availability states only.
+// Sistema visual heredado del resto del portafolio:
+// - Contenedor: max-w-7xl + font-clash, cards MagicCard + .card-glass (25px, zinc monocromo)
+// - Iconos: tile monocromo bg-white/5 + border-white/10 (como TechBadge), sin degradados de marca
+// - Esmeralda reservado solo para estado semántico Disponible / éxito.
 const PHONE_LABEL = "+51 954 936 677";
 const PHONE_HREF = "tel:+51954936677";
 const MESSAGE_MAX = 1000;
 
+const TILE_CLS =
+  "bg-white/5 border-white/10 text-white/80 group-hover:bg-white/10 group-hover:border-white/20 group-hover:text-white";
+
 const CHANNELS = [
   {
     icon: Mail,
-    tile: "border-transparent bg-gradient-to-br from-[#7A1F1A] via-[#C5221F] to-[#EA4335] text-white",
-    tileHover:
-      "group-hover:border-[#EA4335]/25 group-hover:from-[#FFF1F0] group-hover:via-[#FDE3E1] group-hover:to-[#FAC5C0] group-hover:text-[#C5221F] group-hover:shadow-[0_8px_24px_-8px_rgba(234,67,53,0.55)]",
     label: "Correo electrónico",
     value: EMAIL,
     href: `mailto:${EMAIL}`,
@@ -43,18 +44,12 @@ const CHANNELS = [
   },
   {
     icon: Phone,
-    tile: "border-transparent bg-gradient-to-br from-[#075E54] via-[#0E7A3D] to-[#25D366] text-white",
-    tileHover:
-      "group-hover:border-[#25D366]/25 group-hover:from-[#E9F9EF] group-hover:via-[#D3F2DC] group-hover:to-[#A9E5BC] group-hover:text-[#0E7A3D] group-hover:shadow-[0_8px_24px_-8px_rgba(37,211,102,0.55)]",
     label: "Teléfono / WhatsApp",
     value: PHONE_LABEL,
     href: PHONE_HREF,
   },
   {
     icon: MapPin,
-    tile: "border-transparent bg-gradient-to-br from-[#78350F] via-[#B45309] to-[#F59E0B] text-white",
-    tileHover:
-      "group-hover:border-[#F59E0B]/25 group-hover:from-[#FFF6E9] group-hover:via-[#FDEBD0] group-hover:to-[#FAD7A8] group-hover:text-[#B45309] group-hover:shadow-[0_8px_24px_-8px_rgba(245,158,11,0.55)]",
     label: "Ubicación",
     value: LOCATION_LABEL,
     href: null,
@@ -64,36 +59,24 @@ const CHANNELS = [
 const SOCIALS = [
   {
     icon: Github,
-    tile: "border-transparent bg-gradient-to-br from-black via-[#232323] to-[#3D3D3D] text-white",
-    tileHover:
-      "group-hover:border-black/10 group-hover:from-white group-hover:via-[#F1F1F3] group-hover:to-[#D9D9DE] group-hover:text-[#181717] group-hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.8)]",
     label: "GitHub",
     detail: "github.com/M1GaNg",
     href: "https://github.com/M1GaNg",
   },
   {
     icon: Linkedin,
-    tile: "border-transparent bg-gradient-to-br from-[#063267] via-[#0A66C2] to-[#2F8FE0] text-white",
-    tileHover:
-      "group-hover:border-[#0A66C2]/25 group-hover:from-[#EFF6FF] group-hover:via-[#DCEBFD] group-hover:to-[#B9D6FA] group-hover:text-[#0A66C2] group-hover:shadow-[0_8px_24px_-8px_rgba(10,102,194,0.6)]",
     label: "LinkedIn",
     detail: "Perfil profesional",
     href: "https://linkedin.com",
   },
   {
     icon: Twitter,
-    tile: "border-transparent bg-gradient-to-br from-black via-[#1C1C1E] to-[#3A3A3C] text-white",
-    tileHover:
-      "group-hover:border-black/10 group-hover:from-white group-hover:via-[#F4F4F5] group-hover:to-[#D4D4D8] group-hover:text-black group-hover:shadow-[0_8px_24px_-8px_rgba(0,0,0,0.8)]",
     label: "X (Twitter)",
     detail: "Perfil en X",
     href: "https://twitter.com",
   },
   {
     icon: Instagram,
-    tile: "border-transparent bg-gradient-to-br from-[#4F5BD5] via-[#962FBF] to-[#D62976] text-white",
-    tileHover:
-      "group-hover:border-[#D62976]/25 group-hover:from-[#FFF7E8] group-hover:via-[#FCE0EC] group-hover:to-[#E7D8FA] group-hover:text-[#C13584] group-hover:shadow-[0_8px_24px_-8px_rgba(214,41,118,0.6)]",
     label: "Instagram",
     detail: "Perfil en Instagram",
     href: "https://instagram.com",
@@ -164,41 +147,38 @@ const Contact = () => {
     reduceMotion
       ? {}
       : {
-          initial: { opacity: 0, y: 16 },
+          initial: { opacity: 0, y: 18 },
           animate: { opacity: 1, y: 0 },
           transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] },
         };
 
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto px-4 py-3 lg:px-8 lg:py-3 xl:px-10 flex flex-col min-h-0 min-w-0 font-roboto overflow-y-auto lg:overflow-hidden selection:bg-white/20 selection:text-white [-webkit-tap-highlight-color:transparent]">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 flex-1 min-h-0 min-w-0 lg:overflow-hidden">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 font-clash selection:bg-white/20 selection:text-white [-webkit-tap-highlight-color:transparent]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:min-h-0">
         {/* ── Formulario protagonista ─────────────────────────── */}
-        <motion.section
-          {...rise(0)}
-          aria-labelledby="contact-form-title"
-          className="card-glass lg:col-span-7 p-5 lg:p-6 bg-[#0a0a0a90] border-white/5 rounded-2xl flex flex-col min-h-0 min-w-0 lg:overflow-hidden"
-        >
-          <div className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              <h2
-                id="contact-form-title"
-                className="font-clash text-[28px] lg:text-[32px] font-semibold tracking-tight leading-tight text-white text-balance"
-              >
-                Escríbeme
-              </h2>
-              <p className="mt-1.5 max-w-[52ch] text-sm leading-relaxed text-white/70">
-                Cuéntame de tu proyecto o tu vacante. Respondo en menos de
-                24&nbsp;horas, de lunes a viernes.
-              </p>
-            </div>
-            <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1.5 text-[13px] font-medium text-emerald-200">
-              <span className="relative flex size-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60 motion-reduce:animate-none" />
-                <span className="relative inline-flex size-2 rounded-full bg-emerald-300" />
+        <motion.div {...rise(0)} className="lg:col-span-7 min-w-0">
+          <MagicCard aria-labelledby="contact-form-title" className="card-glass p-5 lg:p-6 font-roboto flex flex-col min-w-0">
+            <div className="flex items-start justify-between gap-4">
+              <div className="min-w-0">
+                <h2
+                  id="contact-form-title"
+                  className="text-[28px] lg:text-[32px] font-semibold tracking-tight leading-tight text-white text-balance"
+                >
+                  Escríbeme
+                </h2>
+                <p className="mt-1.5 max-w-[52ch] text-sm leading-relaxed text-white/70">
+                  Cuéntame de tu proyecto o tu vacante. Respondo en menos de
+                  24&nbsp;horas, de lunes a viernes.
+                </p>
+              </div>
+              <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1.5 text-[13px] font-medium text-emerald-200">
+                <span className="relative flex size-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60 motion-reduce:animate-none" />
+                  <span className="relative inline-flex size-2 rounded-full bg-emerald-300" />
+                </span>
+                Disponible
               </span>
-              Disponible
-            </span>
-          </div>
+            </div>
 
           <form
             onSubmit={handleSubmit}
@@ -336,7 +316,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={sending}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/25 bg-gradient-to-r from-[#151515] via-black to-[#2E2E2E] px-5 h-12 text-[15px] font-semibold text-white shadow-[0_2px_12px_-4px_rgba(0,0,0,0.8)] transition-all duration-300 hover:-translate-y-[1px] hover:border-transparent hover:from-zinc-100 hover:via-white hover:to-zinc-200 hover:text-zinc-950 hover:shadow-[0_12px_36px_-10px_rgba(255,255,255,0.45)] active:translate-y-0 active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 h-12 text-[15px] font-semibold text-zinc-950 shadow-[0_8px_28px_-10px_rgba(255,255,255,0.5)] transition-all duration-300 hover:-translate-y-[1px] hover:bg-zinc-200 active:translate-y-0 active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
               >
                 {sending ? (
                   <>
@@ -368,30 +348,32 @@ const Contact = () => {
               )}
             </div>
           </form>
-        </motion.section>
+          </MagicCard>
+        </motion.div>
 
-        {/* ── Columna lateral seccionada: canales + redes + urgente ── */}
-        <motion.aside
-          {...rise(0.1)}
-          aria-label="Canales directos y redes sociales"
-          className="lg:col-span-5 min-h-0 min-w-0 flex flex-col lg:overflow-hidden"
-        >
-          <div className="card-glass bg-[#0a0a0a90] border-white/5 rounded-2xl p-3 flex flex-col gap-1 min-h-0 lg:overflow-y-auto">
-            <p className="flex items-center gap-1.5 px-2 pt-1 text-[13px] font-medium text-white/55">
+        {/* ── Columna lateral: contacto directo + redes ── */}
+        <motion.div {...rise(0.08)} className="lg:col-span-5 min-w-0 flex flex-col gap-4">
+          <MagicCard
+            aria-label="Contacto directo"
+            className="card-glass p-3 font-roboto flex flex-col gap-1 min-w-0"
+          >
+            <h2 className="px-2 pt-1 text-base font-bold text-white tracking-tight">
+              Contacto directo
+            </h2>
+            <p className="flex items-center gap-1.5 px-2 text-[13px] font-medium text-white/55">
               <Clock aria-hidden="true" className="size-4 shrink-0" />
               Respuesta en menos de 24 h · Lun-Vie
             </p>
 
             <ul className="flex flex-col">
-              {CHANNELS.map(({ icon: Icon, tile, tileHover, label, value, href, action }) => (
+              {CHANNELS.map(({ icon: Icon, label, value, href, action }) => (
                 <li key={label}>
-                  <div className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.04]">
+                  <div className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 transition-colors duration-300 hover:border-white/10 hover:bg-white/[0.04]">
                     <span
                       aria-hidden="true"
                       className={cn(
-                        "grid size-10 shrink-0 place-items-center rounded-xl border shadow-[0_2px_10px_-4px_rgba(0,0,0,0.8)] transition-all duration-300 group-hover:-translate-y-[1px]",
-                        tile,
-                        tileHover,
+                        "grid size-10 shrink-0 place-items-center rounded-xl border transition-colors duration-300",
+                        TILE_CLS,
                       )}
                     >
                       <Icon className="size-5" />
@@ -421,7 +403,7 @@ const Contact = () => {
                             ? "Correo copiado al portapapeles"
                             : `Copiar ${EMAIL}`
                         }
-                        className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60 transition-all duration-300 hover:-translate-y-[1px] hover:border-white/20 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                        className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/60 transition-colors duration-300 hover:border-white/20 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                       >
                         {copied ? (
                           <Check aria-hidden="true" className="size-4" />
@@ -440,25 +422,31 @@ const Contact = () => {
               </p>
             )}
 
-            <div aria-hidden="true" className="mx-2 my-1 h-px shrink-0 bg-white/8" />
+          </MagicCard>
 
+          <MagicCard
+            aria-label="Redes sociales y currículum"
+            className="card-glass p-3 font-roboto flex flex-col gap-1 min-w-0"
+          >
+            <h2 className="px-2 pt-1 text-base font-bold text-white tracking-tight">
+              Redes y CV
+            </h2>
             <p className="px-2 text-[13px] font-medium text-white/55">Redes</p>
             <ul className="grid grid-cols-2 gap-0.5">
-              {SOCIALS.map(({ icon: Icon, tile, tileHover, label, detail, href }) => (
+              {SOCIALS.map(({ icon: Icon, label, detail, href }) => (
                 <li key={label} className="min-w-0">
                   <a
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${label} - abrir perfil en una pestaña nueva`}
-                    className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 transition-colors duration-300 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     <span
                       aria-hidden="true"
                       className={cn(
-                        "grid size-9 shrink-0 place-items-center rounded-xl border shadow-[0_2px_10px_-4px_rgba(0,0,0,0.8)] transition-all duration-300 group-hover:-translate-y-[1px]",
-                        tile,
-                        tileHover,
+                        "grid size-9 shrink-0 place-items-center rounded-xl border transition-colors duration-300",
+                        TILE_CLS,
                       )}
                     >
                       <Icon className="size-[18px]" />
@@ -480,18 +468,21 @@ const Contact = () => {
               ))}
             </ul>
 
-            <div aria-hidden="true" className="mx-2 my-1 h-px shrink-0 bg-white/8" />
+            <div aria-hidden="true" className="mx-2 my-1 h-px shrink-0 bg-white/10" />
 
             <a
               href="https://www.cvresume.dev/m1gang"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Ver CV - abrir en una pestaña nueva"
-              className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 transition-all duration-300 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 transition-colors duration-300 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <span
                 aria-hidden="true"
-                className="grid size-9 shrink-0 place-items-center rounded-xl border border-transparent bg-gradient-to-br from-[#065F46] via-[#059669] to-[#34D399] text-white transition-all duration-300 group-hover:-translate-y-[1px] group-hover:border-[#34D399]/25 group-hover:from-[#ECFDF5] group-hover:via-[#D1FAE5] group-hover:to-[#A7F3D0] group-hover:text-[#065F46] group-hover:shadow-[0_8px_24px_-8px_rgba(52,211,153,0.55)]"
+                className={cn(
+                  "grid size-9 shrink-0 place-items-center rounded-xl border transition-colors duration-300",
+                  TILE_CLS,
+                )}
               >
                 <FileDown aria-hidden="true" className="size-[18px]" />
               </span>
@@ -508,8 +499,8 @@ const Contact = () => {
                 className="size-4 shrink-0 text-white/35 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
               />
             </a>
-          </div>
-        </motion.aside>
+          </MagicCard>
+        </motion.div>
       </div>
     </div>
   );
