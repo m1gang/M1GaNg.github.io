@@ -35,7 +35,6 @@ export const SUB_NAV_CONFIG = {
   ],
   perfil: [
     { label: "Sobre mí", path: "/perfil/sobre-mi", isDefault: true },
-    { label: "Intereses", path: "/perfil/intereses" },
     { label: "Educación", path: "/perfil/educacion" },
     { label: "Habilidades", path: "/perfil/habilidades" },
   ],

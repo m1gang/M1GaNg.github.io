@@ -4,7 +4,6 @@ import MainLayout from "../layouts/MainLayout";
 
 const HomePortada = lazy(() => import("../pages/HomePortada"));
 const ProfileAbout = lazy(() => import("../pages/ProfileAbout"));
-const ProfileIntereses = lazy(() => import("../pages/ProfileIntereses"));
 const ProfileEducation = lazy(() => import("../pages/ProfileEducation"));
 const ProfileSkills = lazy(() => import("../pages/ProfileSkills"));
 const ExperienceCondisa = lazy(() => import("../pages/ExperienceCondisa"));
@@ -47,10 +46,6 @@ export const router = createBrowserRouter([
           {
             path: "sobre-mi",
             element: <ProfileAbout />,
-          },
-          {
-            path: "intereses",
-            element: <ProfileIntereses />,
           },
           {
             path: "educacion",
