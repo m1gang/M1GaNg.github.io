@@ -370,7 +370,7 @@ const HomePortada = () => {
           >
             <div className="flex flex-col md:flex-row lg:grid lg:grid-cols-2 w-full gap-2">
               <GlowButton
-                to="/proyectos/miniapps"
+                to="/proyectos/landings"
                 className="w-full md:flex-1 lg:col-span-2"
                 glow="linear-gradient(135deg, rgb(122, 105, 249), rgb(242, 99, 120), rgb(245, 131, 63))"
                 icon={ProjectsButtonIcon}

@@ -7,8 +7,7 @@ const ProfileAbout = lazy(() => import("../pages/ProfileAbout"));
 const ProfileEducation = lazy(() => import("../pages/ProfileEducation"));
 const Experience = lazy(() => import("../pages/Experience"));
 const Contact = lazy(() => import("../pages/Contact"));
-const ProjectsMiniApps = lazy(() => import("../pages/ProjectsMiniApps"));
-const ProjectsReact = lazy(() => import("../pages/ProjectsReact"));
+const ProjectsApps = lazy(() => import("../pages/ProjectsApps"));
 const ProjectsCondisa = lazy(() => import("../pages/ProjectsCondisa"));
 
 export const router = createBrowserRouter([
@@ -55,19 +54,31 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="/proyectos/miniapps" replace />,
+            element: <Navigate to="/proyectos/landings" replace />,
           },
           {
-            path: "miniapps",
-            element: <ProjectsMiniApps />,
-          },
-          {
-            path: "react",
-            element: <ProjectsReact />,
+            path: "landings",
+            element: <ProjectsLandings />,
           },
           {
             path: "condisa",
             element: <ProjectsCondisa />,
+          },
+          {
+            path: "estudio",
+            element: <ProjectsApps />,
+          },
+          {
+            path: "apps",
+            element: <Navigate to="/proyectos/estudio" replace />,
+          },
+          {
+            path: "miniapps",
+            element: <Navigate to="/proyectos/estudio" replace />,
+          },
+          {
+            path: "react",
+            element: <Navigate to="/proyectos/estudio" replace />,
           },
         ],
       },
