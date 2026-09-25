@@ -32,7 +32,6 @@ export const Loader = () => {
   // centered container and scaled to a smaller size for a cleaner loader UI.
   return (
     <div
-
       style={{
         width: "100%",
         height: "100vh",
