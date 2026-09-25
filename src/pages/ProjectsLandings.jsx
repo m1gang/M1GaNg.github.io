@@ -30,6 +30,14 @@ const ProjectsLandings = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 min-h-full w-full">
         <MagicCard className="lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500 hover:bg-white/[0.02]">
           <div className="flex items-center gap-4 h-full w-full justify-center">
+            <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
+              <img
+                src={currentProject.iconSrc}
+                alt={currentProject.title}
+                className="w-10 h-10 object-contain drop-shadow-md"
+              />
+            </div>
+
             <div className="min-w-0">
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-white/40">
                 {currentProject.tagline}

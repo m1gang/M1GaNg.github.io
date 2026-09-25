@@ -64,6 +64,10 @@ export const router = createBrowserRouter([
             element: <ProjectsLandings />,
           },
           {
+            path: "condisa",
+            element: <ProjectsCondisa />,
+          },
+          {
             path: "estudio",
             element: <ProjectsApps />,
           },
@@ -78,10 +82,6 @@ export const router = createBrowserRouter([
           {
             path: "react",
             element: <Navigate to="/proyectos/estudio" replace />,
-          },
-          {
-            path: "condisa",
-            element: <ProjectsCondisa />,
           },
         ],
       },
