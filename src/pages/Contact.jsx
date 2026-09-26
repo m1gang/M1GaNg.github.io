@@ -151,14 +151,14 @@ const Contact = () => {
       };
 
   return (
-    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-4 overflow-y-auto lg:min-h-0 font-clash selection:bg-white/20 selection:text-white [-webkit-tap-highlight-color:transparent]">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:min-h-0">
+    <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-4 overflow-y-auto lg:min-h-0 lg:overflow-hidden font-clash selection:bg-white/20 selection:text-white [-webkit-tap-highlight-color:transparent]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:flex-1 lg:min-h-0 lg:items-stretch">
         {/* ── Contexto + expectativa ─────────────────────────── */}
         <motion.div
           {...rise}
-          className="lg:col-span-5 min-w-0 order-2 lg:order-1"
+          className="lg:col-span-5 min-w-0 order-2 lg:order-1 lg:min-h-0 lg:h-full"
         >
-          <MagicCard className="card-glass p-5 lg:p-6 font-roboto flex flex-col gap-5 min-w-0 h-full">
+          <MagicCard className="card-glass p-5 lg:p-5 font-roboto flex flex-col gap-5 lg:gap-3 min-w-0 h-full lg:min-h-0 lg:overflow-y-auto">
             <div className="min-w-0">
               <div className="flex items-center gap-2.5 flex-wrap">
                 <h2 className="text-[28px] lg:text-[32px] font-semibold tracking-tight leading-tight text-white text-balance">
@@ -227,11 +227,11 @@ const Contact = () => {
             )}
 
             {/* Qué pasa después */}
-            <ol className="flex flex-col gap-1">
+            <ol className="flex flex-col gap-1 lg:gap-0.5">
               {STEPS.map(({ icon: Icon, title, desc }, i) => (
                 <li
                   key={title}
-                  className="flex items-start gap-3 rounded-xl px-1 py-1.5"
+                  className="flex items-start gap-3 rounded-xl px-1 py-1.5 lg:py-1"
                 >
                   <span className="flex items-center gap-2.5 shrink-0">
                     <span
@@ -240,18 +240,18 @@ const Contact = () => {
                     >
                       {i + 1}
                     </span>
-                    <span
-                      aria-hidden="true"
-                      className="grid size-9 place-items-center rounded-xl border border-white/10 bg-white/5 text-white/75"
-                    >
-                      <Icon className="size-[18px]" />
+                      <span
+                        aria-hidden="true"
+                        className="grid size-9 lg:size-8 place-items-center rounded-xl border border-white/10 bg-white/5 text-white/75"
+                      >
+                        <Icon className="size-[18px]" />
+                      </span>
                     </span>
-                  </span>
-                  <span className="min-w-0 pt-0.5">
-                    <span className="block text-[15px] font-semibold leading-snug text-white">
-                      {title}
-                    </span>
-                    <span className="mt-0.5 block text-sm leading-relaxed text-white/65">
+                    <span className="min-w-0 pt-0.5">
+                      <span className="block text-[15px] font-semibold leading-snug text-white">
+                        {title}
+                      </span>
+                      <span className="mt-0.5 block text-sm lg:text-[13px] leading-relaxed text-white/65">
                       {desc}
                     </span>
                   </span>
@@ -268,12 +268,12 @@ const Contact = () => {
                   href={WHATSAPP_HREF}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 transition-colors duration-200 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  className="group flex items-center gap-2.5 rounded-xl border border-transparent px-2 py-1.5 lg:py-1 transition-colors duration-200 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <span
                     aria-hidden="true"
                     className={cn(
-                      "grid size-10 shrink-0 place-items-center rounded-xl border transition-colors duration-200",
+                      "grid size-10 lg:size-9 shrink-0 place-items-center rounded-xl border transition-colors duration-200",
                       TILE_CLS,
                     )}
                   >
@@ -293,10 +293,10 @@ const Contact = () => {
                   />
                 </a>
               </li>
-              <li className="flex items-center gap-2.5 px-2 py-1.5">
+              <li className="flex items-center gap-2.5 px-2 py-1.5 lg:py-1">
                 <span
                   aria-hidden="true"
-                  className="grid size-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80"
+                  className="grid size-10 lg:size-9 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/5 text-white/80"
                 >
                   <MapPin className="size-5" />
                 </span>
@@ -320,11 +320,11 @@ const Contact = () => {
         {/* ── Formulario protagonista ─────────────────────────── */}
         <motion.div
           {...rise}
-          className="lg:col-span-7 min-w-0 order-1 lg:order-2"
+          className="lg:col-span-7 min-w-0 order-1 lg:order-2 lg:min-h-0 lg:h-full"
         >
           <MagicCard
             aria-labelledby="contact-form-title"
-            className="card-glass p-5 lg:p-6 font-roboto flex flex-col min-w-0 h-full"
+            className="card-glass p-5 lg:p-5 font-roboto flex flex-col min-w-0 h-full lg:min-h-0 lg:overflow-y-auto"
           >
             <div className="min-w-0">
               <h2
@@ -341,7 +341,7 @@ const Contact = () => {
 
             <form
               onSubmit={handleSubmit}
-              className="mt-4 flex flex-col gap-3 flex-1 min-h-0"
+              className="mt-4 lg:mt-3 flex flex-col gap-3 lg:gap-2.5 flex-1 min-h-0"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 <div className="min-w-0">
@@ -478,7 +478,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 h-12 text-[15px] font-semibold text-zinc-950 shadow-[0_8px_28px_-10px_rgba(255,255,255,0.5)] transition-all duration-200 hover:-translate-y-[1px] hover:bg-zinc-200 active:translate-y-0 active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 h-12 lg:h-11 text-[15px] font-semibold text-zinc-950 shadow-[0_8px_28px_-10px_rgba(255,255,255,0.5)] transition-all duration-200 hover:-translate-y-[1px] hover:bg-zinc-200 active:translate-y-0 active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
                 >
                   {sending ? (
                     <>
@@ -522,7 +522,7 @@ const Contact = () => {
       </div>
 
       {/* ── Redes y CV en una sola tira ─────────────────────── */}
-      <motion.div {...rise} className="min-w-0">
+      <motion.div {...rise} className="min-w-0 shrink-0">
         <MagicCard
           aria-label="Redes sociales y currículum"
           className="card-glass px-4 py-3 font-roboto flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 min-w-0"
