@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import {
   Mail,
   Phone,
@@ -23,6 +23,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { reveal, useReducedMotion } from "@/lib/motion";
 import { MagicCard } from "../components/MagicCard";
 import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 
@@ -142,13 +143,7 @@ const Contact = () => {
   };
 
   // Un solo momento de entrada, sin secuencias orquestadas (modo Operate).
-  const rise = reduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 14 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-      };
+  const rise = reveal(reduceMotion);
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-4 overflow-y-auto lg:min-h-0 lg:overflow-hidden font-clash selection:bg-white/20 selection:text-white [-webkit-tap-highlight-color:transparent]">
@@ -484,7 +479,7 @@ const Contact = () => {
                     <>
                       <Loader2
                         aria-hidden="true"
-                        className="w-5 h-5 animate-spin"
+                        className="w-5 h-5 animate-spin motion-reduce:animate-none"
                       />
                       Enviando…
                     </>

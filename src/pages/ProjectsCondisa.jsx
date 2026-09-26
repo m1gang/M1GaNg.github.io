@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
+import { motion } from "motion/react";
 import { MagicCard } from "../components/MagicCard";
+import { reveal, useReducedMotion } from "@/lib/motion";
 import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
 import TechBadge from "../components/TechBadge";
@@ -15,6 +17,7 @@ import JqueryIcon from "../components/icons/tech/jquery.svg?react";
 
 const ProjectsCondisa = () => {
   const gridRef = useRef(null);
+  const reduce = useReducedMotion();
   const [activeProject, setActiveProject] = useState("website");
 
   // Project Data Configuration
@@ -124,67 +127,90 @@ const ProjectsCondisa = () => {
         className="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-6 gap-4 h-full w-full"
       >
         {/* Project Switcher - Icon & Title */}
-        <MagicCard className="lg:col-span-4 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500 hover:bg-white/[0.02]">
-          <div className="flex items-center gap-4 h-full w-full justify-center">
-            <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
-              {currentProject.icon}
-            </div>
+        <motion.div
+          {...reveal(reduce, { index: 0 })}
+          className="lg:col-span-4 lg:row-span-1"
+        >
+          <MagicCard className="h-full card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500 hover:bg-white/[0.02]">
+            <div className="flex items-center gap-4 h-full w-full justify-center">
+              <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
+                {currentProject.icon}
+              </div>
 
-            <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
-              {currentProject.title}
-            </h2>
-          </div>
-        </MagicCard>
+              <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
+                {currentProject.title}
+              </h2>
+            </div>
+          </MagicCard>
+        </motion.div>
 
         {/* Project Description */}
-        <MagicCard className="lg:col-span-8 lg:row-span-1 card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto">
-          <div className="flex items-center h-full">
-            <p className="text-xs md:text-sm text-white/70">
-              {currentProject.description}
-            </p>
-          </div>
-        </MagicCard>
-        <MagicCard className="lg:col-span-12 lg:row-span-4 card-glass p-4 bg-[#0a0a0a90] border-white/5 overflow-hidden group">
-          <div className="w-full h-full">
-            <ImageCarousel
-              images={currentProject.images}
-              alt={`${currentProject.title} screenshot`}
-              autoPlay={true}
-              interval={4000}
-              onPrevProject={prevProject}
-              onNextProject={nextProject}
-            />
-          </div>
-        </MagicCard>
+        <motion.div
+          {...reveal(reduce, { index: 1 })}
+          className="lg:col-span-8 lg:row-span-1"
+        >
+          <MagicCard className="h-full card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto">
+            <div className="flex items-center h-full">
+              <p className="text-xs md:text-sm text-white/70">
+                {currentProject.description}
+              </p>
+            </div>
+          </MagicCard>
+        </motion.div>
+
+        <motion.div
+          {...reveal(reduce, { index: 2 })}
+          className="lg:col-span-12 lg:row-span-4"
+        >
+          <MagicCard className="h-full card-glass p-4 bg-[#0a0a0a90] border-white/5 overflow-hidden group">
+            <div className="w-full h-full">
+              <ImageCarousel
+                images={currentProject.images}
+                alt={`${currentProject.title} screenshot`}
+                autoPlay={true}
+                interval={4000}
+                onPrevProject={prevProject}
+                onNextProject={nextProject}
+              />
+            </div>
+          </MagicCard>
+        </motion.div>
 
         {/* Tech Stack & GitHub */}
-        <MagicCard className="lg:col-span-12 lg:row-span-1 card-glass p-4 lg:p-6 bg-[#0a0a0a90] border-white/5 font-roboto">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-4 h-full">
-            {/* Tech Badges */}
-            <div className="flex flex-wrap gap-3 items-center justify-center lg:justify-start">
-              <div className="flex flex-wrap gap-3">
-                {currentProject.techs.map((tech, index) => (
-                  <TechBadge
-                    key={index}
-                    icon={tech.Icon}
-                    name={tech.name}
-                  />
-                ))}
+        <motion.div
+          {...reveal(reduce, { index: 3 })}
+          className="lg:col-span-12 lg:row-span-1"
+        >
+          <MagicCard className="h-full card-glass p-4 lg:p-6 bg-[#0a0a0a90] border-white/5 font-roboto">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-4 h-full">
+              {/* Tech Badges */}
+              <div className="flex flex-wrap gap-3 items-center justify-center lg:justify-start">
+                <div className="flex flex-wrap gap-3">
+                  {currentProject.techs.map((tech, index) => (
+                    <TechBadge
+                      key={index}
+                      icon={tech.Icon}
+                      name={tech.name}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* GitHub Button */}
-            <a
-              href={currentProject.repoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-colors group"
-            >
-              <Github className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
-              <span className="text-white font-semibold">Ver Repositorio</span>
-            </a>
-          </div>
-        </MagicCard>
+              {/* GitHub Button */}
+              <a
+                href={currentProject.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-colors group"
+              >
+                <Github className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+                <span className="text-white font-semibold">
+                  Ver Repositorio
+                </span>
+              </a>
+            </div>
+          </MagicCard>
+        </motion.div>
       </div>
     </div>
   );

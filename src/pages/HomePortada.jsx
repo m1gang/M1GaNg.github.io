@@ -1,6 +1,8 @@
 import { Link } from "react-router";
+import { motion } from "motion/react";
 import { ArrowUpRight, Github, Mail, MapPin } from "lucide-react";
 import { EMAIL, LOCATION_LABEL } from "../constants/contact";
+import { reveal, useReducedMotion } from "@/lib/motion";
 import profile from "../assets/img/migang-pics.webp";
 import featuredProjectImg from "../assets/img/projects/landing/construcciones-sostenibles-1.webp";
 import {
@@ -65,7 +67,10 @@ const GlowButton = ({
   label,
   className = "",
 }) => {
+  const reduce = useReducedMotion();
   const glowStyle = { background: glow };
+  // Animaciones ambientales infinitas: fuera con prefers-reduced-motion.
+  const loop = (animation) => (reduce ? {} : { animation });
 
   const inner = (
     <>
@@ -82,16 +87,16 @@ const GlowButton = ({
       {/* Halo animado recorriendo el borde */}
       <span
         className="inset-0 absolute pointer-events-none select-none"
-        style={{
-          animation:
-            "10s ease-in-out 0s infinite alternate none running border-glow-translate",
-        }}
+        style={loop(
+          "10s ease-in-out 0s infinite alternate none running border-glow-translate",
+        )}
       >
         <span
           className="block z-0 h-full w-12 blur-xl -translate-x-1/2 rounded-full"
           style={{
-            animation:
+            ...loop(
               "10s ease-in-out 0s infinite alternate none running border-glow-scale",
+            ),
             ...glowStyle,
           }}
         />
@@ -99,13 +104,14 @@ const GlowButton = ({
 
       {/* Contenido centrado sobre fondo oscuro */}
       <span className="flex items-center justify-center gap-1 relative z-[1] bg-neutral-950/90 rounded-full py-2 px-4 w-full h-full">
-        <span className="relative group-hover:scale-105 transition-transform group-hover:rotate-[360deg] duration-500">
+        <span className="relative group-hover:scale-105 transition-transform group-hover:rotate-[360deg] duration-500 motion-reduce:transition-none">
           <IconComponent size={18} className="opacity-90" />
           <span
             className="rounded-full size-1 absolute opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-lg"
             style={{
-              animation:
+              ...loop(
                 "14s ease-in-out 0s infinite alternate none running star-shine",
+              ),
               ...glowStyle,
             }}
           />
@@ -149,6 +155,8 @@ const FEATURED_PROJECT = {
 
 // ── HomePortada ───────────────────────────────────────────────────────────────
 const HomePortada = () => {
+  const reduce = useReducedMotion();
+
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 lg:overflow-hidden font-clash">
       <section className="w-full h-auto lg:h-full bento-section rounded-md text-white">
@@ -162,18 +170,20 @@ const HomePortada = () => {
         >
           {/* 1. FOTO DE PERFIL
                sm: order-2  md: [1-2, row2]  lg: [1-2, rows1-2] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 0, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass flex min-h-0 justify-center overflow-hidden p-2 font-roboto
                         order-2
                         md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-2
                         lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1"
           >
             <img src={profile} alt="profile-migang" className="h-full w-full object-contain" />
-          </div>
+          </motion.div>
 
           {/* 2. PRESENTACIÓN
                sm: order-1  md: [1-4, row1]  lg: [3-6, rows1-2] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 1, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass flex min-h-0 flex-col items-center justify-center gap-1 overflow-hidden px-4 py-3 font-roboto
                         order-1
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-1
@@ -210,11 +220,12 @@ const HomePortada = () => {
               "Me especializo en construir experiencias digitales que no solo
               funcionan, sino que comunican y fluyen."
             </p>
-          </div>
+          </motion.div>
 
           {/* 3. ESTADÍSTICAS
                sm: order-3  md: [1-2, row3]  lg: [1-2, rows3-4] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 2, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass shadow-lg min-h-0 overflow-hidden p-5 font-roboto
                         order-3
                         md:col-span-2 md:row-span-1 md:col-start-1 md:row-start-3
@@ -250,11 +261,12 @@ const HomePortada = () => {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* 4. SKILLS
                sm: order-4  md: [3-4, rows2-3]  lg: [3-4, rows3-5] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 3, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass min-h-0 overflow-hidden font-roboto
                         order-4
                         md:col-span-2 md:row-span-2 md:col-start-3 md:row-start-2
@@ -328,11 +340,12 @@ const HomePortada = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* 5. TECNOLOGÍAS (badges)
                sm: order-5  md: [1-4, row4]  lg: [5-6, rows3-4] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 4, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass flex min-h-0 flex-col overflow-hidden font-roboto
                         order-5
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-4
@@ -359,10 +372,11 @@ const HomePortada = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* 7. BOTONES DE ACCIÓN */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 5, y: 14, duration: 0.4, stagger: 0.05 })}
             className="flex min-h-0 flex-col justify-center items-center px-4 py-3 font-roboto w-full
                         order-7
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-6
@@ -395,11 +409,12 @@ const HomePortada = () => {
                 label="Ver CV"
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* 6. DISPONIBILIDAD Y CONTACTO DIRECTO
                sm: order-6  md: [1-4, row5]  lg: [1-2, row5] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 6, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass relative flex min-h-0 flex-col justify-center gap-1.5 overflow-hidden px-5 py-4 font-roboto
                         order-6
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-5
@@ -444,11 +459,12 @@ const HomePortada = () => {
               <MapPin aria-hidden="true" className="size-4 shrink-0 text-white/45" />
               {LOCATION_LABEL}
             </p>
-          </div>
+          </motion.div>
 
           {/* 8. CONTRIBUCIONES GITHUB
                sm: order-8  md: [1-4, auto]  lg: [1-4, row6] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 7, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass flex min-h-0 flex-col justify-center overflow-hidden px-4 py-2 font-roboto
                         order-8
                         md:col-span-4 md:col-start-1
@@ -482,11 +498,12 @@ const HomePortada = () => {
                 }}
               />
             </a>
-          </div>
+          </motion.div>
 
           {/* 9. PROYECTO DESTACADO
                sm: order-9  md: [1-4, auto]  lg: [5-6, row6] */}
-          <div
+          <motion.div
+            {...reveal(reduce, { index: 8, y: 14, duration: 0.4, stagger: 0.05 })}
             className="magic-card card-glass flex min-h-0 flex-col justify-center gap-1.5 overflow-hidden px-4 py-3 font-roboto
                         order-9
                         md:col-span-4 md:col-start-1
@@ -530,7 +547,7 @@ const HomePortada = () => {
                 </a>
               </span>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -1,5 +1,6 @@
 ﻿import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotion } from "@/lib/motion";
 import { ExternalLink, Gamepad2, Palette, Dribbble, MapPin, Clock, BriefcaseBusiness, Code2, Eye, Users } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import { LOCATION_LABEL } from "../constants/contact";
@@ -169,7 +170,7 @@ const ProfileAbout = () => {
               ? [0, 1, 2].map((i) => (
                   <div
                     key={i}
-                    className="absolute top-1/2 left-1/2 w-[92px] h-[92px] rounded-xl animate-pulse bg-white/10"
+                    className="absolute top-1/2 left-1/2 w-[92px] h-[92px] rounded-xl animate-pulse motion-reduce:animate-none bg-white/10"
                     style={{
                       marginLeft: -46 + (i - 1) * 70,
                       marginTop: -46,

@@ -1,16 +1,22 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotion } from "./lib/motion";
 import { Loader } from "./pages/Loader";
 import { RouterProvider } from "react-router";
 import { router } from "./routes/routes";
 
+const FADE = { duration: 0.1, ease: "easeInOut" };
+
 function App() {
   const [showLoader, setShowLoader] = useState(true);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     const t = setTimeout(() => setShowLoader(false), 1000);
     return () => clearTimeout(t);
   }, []);
+
+  const fade = reduce ? {} : { transition: FADE };
 
   return (
     <>
@@ -18,9 +24,9 @@ function App() {
         {showLoader ? (
           <motion.div
             key="loader"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
+            initial={reduce ? false : { opacity: 1 }}
+            exit={reduce ? undefined : { opacity: 0 }}
+            {...fade}
             className="absolute inset-0 bg-black z-100"
           >
             <Loader />
@@ -28,9 +34,9 @@ function App() {
         ) : (
           <motion.div
             key="content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.1, ease: "easeInOut" }}
+            initial={reduce ? false : { opacity: 0 }}
+            animate={reduce ? undefined : { opacity: 1 }}
+            {...fade}
             className="bg-black min-h-screen"
           >
             <RouterProvider router={router} />
