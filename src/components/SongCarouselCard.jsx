@@ -1,8 +1,9 @@
 ﻿import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { Play, Pause, Disc3 } from "lucide-react";
 import { useDeezerSongs } from "../hooks/useDeezer";
 import { slotOffsets, coverTransform, coverMaskStyle } from "../lib/coverflow";
+import { useReducedMotion } from "../lib/motion";
 
 // El coverflow es el protagonista de la card: las carátulas ocupan la mayor
 // parte del espacio y debajo solo quedan dots + título + artista.
@@ -10,7 +11,9 @@ const BASE = 180; // lado de la carátula activa en px
 const STEP = 122; // separación entre centros de carátulas adyacentes
 
 const Skeleton = ({ className }) => (
-  <div className={`animate-pulse bg-white/10 rounded-lg ${className || ""}`} />
+  <div
+    className={`animate-pulse motion-reduce:animate-none bg-white/10 rounded-lg ${className || ""}`}
+  />
 );
 
 export const SongCarouselCard = () => {
@@ -75,7 +78,7 @@ export const SongCarouselCard = () => {
           ? [0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="absolute top-1/2 left-1/2 w-[180px] h-[180px] rounded-3xl animate-pulse bg-white/10"
+                className="absolute top-1/2 left-1/2 w-[180px] h-[180px] rounded-3xl animate-pulse motion-reduce:animate-none bg-white/10"
                 style={{
                   marginLeft: -90 + (i - 1) * STEP,
                   marginTop: -90,

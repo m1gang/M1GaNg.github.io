@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { ArrowUpRight, Github, Mail, MapPin } from "lucide-react";
 import { EMAIL, LOCATION_LABEL } from "../constants/contact";
-import { reveal } from "@/lib/motion";
+import { reveal, useReducedMotion } from "@/lib/motion";
 import profile from "../assets/img/migang-pics.webp";
 import featuredProjectImg from "../assets/img/projects/landing/construcciones-sostenibles-1.webp";
 import {
@@ -67,7 +67,10 @@ const GlowButton = ({
   label,
   className = "",
 }) => {
+  const reduce = useReducedMotion();
   const glowStyle = { background: glow };
+  // Animaciones ambientales infinitas: fuera con prefers-reduced-motion.
+  const loop = (animation) => (reduce ? {} : { animation });
 
   const inner = (
     <>
@@ -84,16 +87,16 @@ const GlowButton = ({
       {/* Halo animado recorriendo el borde */}
       <span
         className="inset-0 absolute pointer-events-none select-none"
-        style={{
-          animation:
-            "10s ease-in-out 0s infinite alternate none running border-glow-translate",
-        }}
+        style={loop(
+          "10s ease-in-out 0s infinite alternate none running border-glow-translate",
+        )}
       >
         <span
           className="block z-0 h-full w-12 blur-xl -translate-x-1/2 rounded-full"
           style={{
-            animation:
+            ...loop(
               "10s ease-in-out 0s infinite alternate none running border-glow-scale",
+            ),
             ...glowStyle,
           }}
         />
@@ -101,13 +104,14 @@ const GlowButton = ({
 
       {/* Contenido centrado sobre fondo oscuro */}
       <span className="flex items-center justify-center gap-1 relative z-[1] bg-neutral-950/90 rounded-full py-2 px-4 w-full h-full">
-        <span className="relative group-hover:scale-105 transition-transform group-hover:rotate-[360deg] duration-500">
+        <span className="relative group-hover:scale-105 transition-transform group-hover:rotate-[360deg] duration-500 motion-reduce:transition-none">
           <IconComponent size={18} className="opacity-90" />
           <span
             className="rounded-full size-1 absolute opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 blur-lg"
             style={{
-              animation:
+              ...loop(
                 "14s ease-in-out 0s infinite alternate none running star-shine",
+              ),
               ...glowStyle,
             }}
           />

@@ -199,6 +199,14 @@
     }
 }
 
+/* prefers-reduced-motion: estas animaciones decorativas no aportan información. */
+@media (prefers-reduced-motion: reduce) {
+    .animate-gradient,
+    .animate-blob {
+        animation: none;
+    }
+}
+
 @keyframes border-glow-translate {
     0% {
         transform: translate(-50%, -50%);

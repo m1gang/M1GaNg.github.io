@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import {
   Mail,
   Phone,
@@ -23,7 +23,7 @@ import {
   CalendarCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { reveal } from "@/lib/motion";
+import { reveal, useReducedMotion } from "@/lib/motion";
 import { MagicCard } from "../components/MagicCard";
 import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 
@@ -479,7 +479,7 @@ const Contact = () => {
                     <>
                       <Loader2
                         aria-hidden="true"
-                        className="w-5 h-5 animate-spin"
+                        className="w-5 h-5 animate-spin motion-reduce:animate-none"
                       />
                       Enviando…
                     </>
