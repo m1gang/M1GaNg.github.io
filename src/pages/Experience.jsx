@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "motion/react";
+import { reveal } from "@/lib/motion";
 import { MapPin, Monitor, Phone, Database, FileText, Globe, Wrench, Lightbulb } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import TechBadge from "../components/TechBadge";
@@ -106,13 +107,7 @@ const Experience = () => {
         {EXPERIENCES.map((exp, index) => (
           <motion.li
             key={exp.id}
-            initial={reduce ? false : { opacity: 0, y: 18 }}
-            animate={reduce ? {} : { opacity: 1, y: 0 }}
-            transition={
-              reduce
-                ? {}
-                : { duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }
-            }
+            {...reveal(reduce, { index, y: 18, duration: 0.55, stagger: 0.08 })}
             className="relative"
           >
             <span
