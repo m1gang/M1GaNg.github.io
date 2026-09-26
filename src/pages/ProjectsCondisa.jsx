@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { MagicCard } from "../components/MagicCard";
-import { reveal } from "@/lib/motion";
+import { reveal, useReducedMotion } from "@/lib/motion";
 import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
 import TechBadge from "../components/TechBadge";

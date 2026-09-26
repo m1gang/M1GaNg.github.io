@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { ArrowUpRight, Github, Lock } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import ImageCarousel from "../components/ImageCarousel";
 import TechBadge from "../components/TechBadge";
 import { LANDINGS } from "../data/landings";
-import { reveal } from "@/lib/motion";
+import { reveal, useReducedMotion } from "@/lib/motion";
 
 const ProjectsLandings = () => {
   const reduce = useReducedMotion();

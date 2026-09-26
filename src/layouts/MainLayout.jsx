@@ -1,10 +1,10 @@
 import { Suspense, useRef } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useLocation, useOutlet } from "react-router";
 import Sidebar from "../components/layout/Sidebar";
 import SubNavbar from "../components/layout/SubNavbar";
 import { SUB_NAV_CONFIG } from "../constants/navigation";
-import { pageTransition } from "../lib/motion";
+import { pageTransition, useReducedMotion } from "../lib/motion";
 
 const SECTION_TITLES = {
   inicio: "Inicio",
@@ -60,7 +60,7 @@ const MainLayout = () => {
 
         {/* Content Outlet — entrada/salida entre rutas */}
         <div className="flex-1 w-full overflow-hidden flex flex-col lg:min-h-0">
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
               {...pageTransition(reduce)}

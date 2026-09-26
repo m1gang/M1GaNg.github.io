@@ -1,7 +1,7 @@
 ﻿import { GraduationCap, Flame, Code2, Landmark, CheckCircle2, Sparkles, BadgeCheck, Layout, Palette, Wrench } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { MagicCard } from "../components/MagicCard";
-import { reveal } from "@/lib/motion";
+import { reveal, useReducedMotion } from "@/lib/motion";
 import TechBadge from "../components/TechBadge";
 import uncpLogo from "../assets/img/education/uncp-logo-2.webp";
 import fisLogo from "../assets/img/education/fis-logo.webp";

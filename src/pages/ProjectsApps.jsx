@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
 import { Github } from "lucide-react";
 import { MagicCard } from "../components/MagicCard";
 import ImageCarousel from "../components/ImageCarousel";
@@ -7,7 +7,7 @@ import TechBadge from "../components/TechBadge";
 import { MINI_APPS } from "../data/miniapps";
 import { REACT_APPS } from "../data/apps-react";
 import { TECH_ICONS } from "../data/tech-icons";
-import { reveal } from "@/lib/motion";
+import { reveal, useReducedMotion } from "@/lib/motion";
 
 const STUDY_PROJECTS = [...Object.values(MINI_APPS), ...Object.values(REACT_APPS)];
 
