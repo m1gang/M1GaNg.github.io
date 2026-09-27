@@ -1,11 +1,21 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useReducedMotion } from "./lib/motion";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Loader } from "./pages/Loader";
 import { RouterProvider } from "react-router";
 import { router } from "./routes/routes";
 
 const FADE = { duration: 0.1, ease: "easeInOut" };
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   const [showLoader, setShowLoader] = useState(true);
@@ -19,7 +29,7 @@ function App() {
   const fade = reduce ? {} : { transition: FADE };
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <AnimatePresence mode="wait">
         {showLoader ? (
           <motion.div
@@ -43,7 +53,7 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </QueryClientProvider>
   );
 }
 

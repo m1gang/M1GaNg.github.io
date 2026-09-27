@@ -24,7 +24,7 @@ import {
   STATS,
   TECH_BADGES,
 } from "../data/home";
-import { GitHubCalendar } from "react-github-calendar";
+import { ActivityCalendar, useGitHubActivity } from "../hooks/useGitHubActivity";
 
 // ─── Grid layout (6 cols × 6 rows en lg, 4 cols en md, 1 col en sm) ──────────
 //
@@ -140,6 +140,9 @@ const GlowButton = ({
 // ── HomePortada ───────────────────────────────────────────────────────────────
 const HomePortada = () => {
   const reduce = useReducedMotion();
+  const { data: contributions, isPending } = useGitHubActivity(
+    GITHUB_CALENDAR_PROPS.username,
+  );
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:min-h-0 lg:overflow-hidden font-clash">
@@ -396,7 +399,11 @@ const HomePortada = () => {
               aria-label="Ver perfil de GitHub de M1GaNg"
               className="block w-full overflow-x-auto rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              <GitHubCalendar {...GITHUB_CALENDAR_PROPS} />
+              <ActivityCalendar
+                {...GITHUB_CALENDAR_PROPS}
+                data={contributions}
+                loading={isPending}
+              />
             </a>
           </motion.div>
 

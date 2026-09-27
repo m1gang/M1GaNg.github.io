@@ -11,6 +11,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.15
         version: 4.3.3(vite@7.3.6(@types/node@24.13.4)(jiti@2.7.0)(lightningcss@1.32.0))
+      '@tanstack/react-query':
+        specifier: ^5.103.3
+        version: 5.103.3(react@19.3.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -26,15 +29,12 @@ importers:
       react:
         specifier: ^19.1.1
         version: 19.3.0
+      react-activity-calendar:
+        specifier: ^3.2.1
+        version: 3.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react-dom:
         specifier: ^19.1.1
         version: 19.3.0(react@19.3.0)
-      react-github-calendar:
-        specifier: ^5.0.9
-        version: 5.0.9(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      react-icons:
-        specifier: ^5.7.0
-        version: 5.7.0(react@19.3.0)
       react-router:
         specifier: ^7.9.6
         version: 7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -742,6 +742,14 @@ packages:
     resolution: {integrity: sha512-yYU8cogLeSh/ms2jh8Fj7jaba/EWa7Ja6GoUqYZaraEuCI5YS6ms6ObZgjjedm+jm6XZjdNRWBpPP6Z86oOxcw==}
     peerDependencies:
       vite: ^5.2.0 || ^6 || ^7 || ^8
+
+  '@tanstack/query-core@5.103.3':
+    resolution: {integrity: sha512-w6gJ5Alt+s55Wuok6/aURtR3AufW3PuNjnM0b3RC1xUz3MVA0EC9j7U3texGftvtOTYWiPVvQzCZjv3Cvzwc/g==}
+
+  '@tanstack/react-query@5.103.3':
+    resolution: {integrity: sha512-QJMF0QUwJaFm6rrYAq1mlYyMsdiqd9w6gAsFSy+F+8g6/8pQrRy9u3a2yQGpSAmMO4DAZmRHwFZ8UulLaJkBmg==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1704,16 +1712,6 @@ packages:
     peerDependencies:
       react: ^19.3.0
 
-  react-github-calendar@5.0.9:
-    resolution: {integrity: sha512-/nK6T6sg+XHvFpRS0ur6RZYrue56L1TvgDBiOEDxijnsQdpMxz//19h8/KFHlwIyPEIpQCU9LxOqUTRKEmexMA==}
-    peerDependencies:
-      react: ^18.0.0 || ^19.0.0
-
-  react-icons@5.7.0:
-    resolution: {integrity: sha512-LBLy340Rzqy6+/yVhZKT3B/QpP1BZaesGqasf09HPOBzRarcDIFH0WwXlXQfE7q7ipxK4MSiC5DIBWURCny6fw==}
-    peerDependencies:
-      react: '*'
-
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -2529,6 +2527,13 @@ snapshots:
       '@tailwindcss/oxide': 4.3.3
       tailwindcss: 4.3.3
       vite: 7.3.6(@types/node@24.13.4)(jiti@2.7.0)(lightningcss@1.32.0)
+
+  '@tanstack/query-core@5.103.3': {}
+
+  '@tanstack/react-query@5.103.3(react@19.3.0)':
+    dependencies:
+      '@tanstack/query-core': 5.103.3
+      react: 19.3.0
 
   '@types/babel__core@7.20.5':
     dependencies:
@@ -3636,17 +3641,6 @@ snapshots:
     dependencies:
       react: 19.3.0
       scheduler: 0.28.0
-
-  react-github-calendar@5.0.9(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
-    dependencies:
-      react: 19.3.0
-      react-activity-calendar: 3.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-    transitivePeerDependencies:
-      - react-dom
-
-  react-icons@5.7.0(react@19.3.0):
-    dependencies:
-      react: 19.3.0
 
   react-is@16.13.1: {}
 
