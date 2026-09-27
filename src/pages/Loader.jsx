@@ -1,4 +1,5 @@
-import MetallicPaint, { parseLogoImage } from "../components/MetallicPaint";
+import MetallicPaint from "../components/MetallicPaint";
+import { parseLogoImage } from "../lib/metallic/parseLogoImage";
 import { useState, useEffect } from "react";
 
 // replace with your own SVG
