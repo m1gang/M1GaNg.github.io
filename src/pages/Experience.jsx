@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { MapPin, Lightbulb } from "lucide-react";
 import { reveal, useReducedMotion } from "@/lib/motion";
 import { MagicCard } from "../components/MagicCard";
 import TechBadge from "../components/TechBadge";
