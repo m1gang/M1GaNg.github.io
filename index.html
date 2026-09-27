@@ -1,140 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es-PE" style="background:#000">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/svg/migang.svg" />
+    <link rel="preload" as="image" href="/migang-logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="MiGaNg — Ingeniero de Sistemas y Frontend Developer. React, Tailwind y experiencias web modernas. Proyectos, experiencia y contacto."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MiGaNg - Ingeniero de Sistemas & Frontend Developer" />
+    <meta
+      property="og:description"
+      content="Portafolio de MiGaNg: proyectos React, experiencia en desarrollo web y soporte IT, contacto."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="MiGaNg - Ingeniero de Sistemas & Frontend Developer" />
+    <meta
+      name="twitter:description"
+      content="Portafolio de MiGaNg: proyectos React, experiencia en desarrollo web y soporte IT, contacto."
+    />
+    <title>MiGaNg - Ingeniero de Sistemas & Frontend Developer</title>
+  </head>
 
-<head>
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"
-    integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="icon" href="./assets/img/migang.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./styles/styles.css" />
-
-  <title>Portafolio - MiGaNg</title>
-</head>
-
-<body>
-  <header class='profile'>
-    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450.1 347.25">
-      <path
-        d="M211.2 341.57l-13.74-13.73 233.23-233.23 13.73 13.73c7.57 7.57 7.57 19.9 0 27.47l-205.76 205.76c-7.57 7.57-19.91 7.57-27.47 0zm89.24-322.22l13.74-13.74c7.56-7.57 20.01-7.47 27.69 0.22l88.8 88.8-27.47 27.47-102.76-102.76z" />
-      <path
-        d="M215.53 290.98l-31.91 8.99c-6.95 1.96-13.9 0.15-19-4.96L5.68 136.07c-7.57-7.57-7.56-19.91 0-27.47l13.73-13.74 89.02-89.02c7.57-7.57 19.9-7.57 27.47 0l13.74 13.73-102.76 102.76-27.47-27.47 196.12 196.12z" />
-      <path
-        d="M145.3 174.48l-65.92-65.92 31.91-8.99c6.95-1.96 13.9-0.14 19 4.96l42.48 42.48 27.47 27.47-41.24 41.24-27.47-27.47 13.76-13.76z" />
-      <path
-        d="M182.45 52.38l135.87 135.87-31.91 8.99c-6.95 1.96-13.9 0.14-19-4.96L131.54 56.41l31.91-8.99c6.95-1.96 13.9-0.15 19 4.96z" />
-      <path
-        d="M304.78 69.95l65.92 65.92-31.91 8.99c-6.95 1.96-13.9 0.14-19.01-4.96l-42.47-42.48-13.74-13.74c-7.57-7.57-7.57-19.91 0-27.47l27.5-27.5 27.47 27.47-13.76 13.77z" />
-    </svg>
-    <nav id='navbar'>
-      <ul>
-        <li><a href='#welcome-section'>SOBRE MI</a></li>
-        <li><a href='#projects'>PROYECTOS</a></li>
-        <li><a href='#contact'>CONTACTO</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section id='welcome-section'>
-      <div>
-        <h1>Hola soy <span><a id="profile-link" target='_blank'>&ltMiGaNg/&gt</a></span></h1>
-        <p>DESARROLLADOR WEB</p>
-
-      </div>
-
-      <img src="https://i.postimg.cc/BnC8xJD2/zyro-image-1-1.png" />
-
-
-    </section>
-    <section id='projects'>
-      <h1>PROJECTS</h1>
-      <div class='div-projects'>
-        <div class='project'>
-          <img src="./assets/img/journal-app-react.png" />
-          <a class='project-tile' href='https://github.com/m1gang/journal-app-react' target="_blank">Journal App
-            React</a>
-          <p class='project-description'>App de diario personal con autenticación, gestión de notas y subida de
-            imágenes. Hecha con React, Vite, Firebase y Material-UI.</p>
-          <div class="tech-tags">
-            <span class="tag react"><i class="ri-reactjs-line"></i> React</span>
-            <span class="tag vite"><img src="https://vitejs.dev/logo.svg" alt="Vite" class="icon-svg" /> Vite</span>
-            <span class="tag firebase"><img src="https://www.svgrepo.com/show/373595/firebase.svg" alt="Firebase"
-                class="icon-svg" /> Firebase</span>
-            <span class="tag mui"><img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
-                alt="Material UI" class="icon-svg" /> Material-UI</span>
-          </div>
-        </div>
-        <div class='project'>
-          <img src="./assets/img/gif-search-react.png" />
-          <a href='https://github.com/m1gang/gifs-app-updated' target="_blank">Gif Search React</a>
-          <p class='project-description'>Buscador de GIFs moderno usando la API de Giphy. Desarrollado con React,
-            TypeScript y Vite.</p>
-          <div class="tech-tags">
-            <span class="tag react"><i class="ri-reactjs-line"></i> React</span>
-            <span class="tag typescript"><i class="ri-code-s-slash-line"></i> TypeScript</span>
-            <span class="tag vite"><img src="https://vitejs.dev/logo.svg" alt="Vite" class="icon-svg" /> Vite</span>
-            <span class="tag giphy"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Giphy-logo.svg"
-                alt="Giphy" class="icon-svg" /> Giphy API</span>
-          </div>
-        </div>
-        <div class='project'>
-          <img src="./assets/img/pos-libreria.png" />
-          <a href='https://github.com/M1GaNg/Sistema-POS-libreria' target="_blank">Sistema POS Librería</a>
-          <p class='project-description'>Sistema de punto de venta en PHP y MySQL para gestión de inventario, ventas,
-            clientes y reportes en PDF.</p>
-          <div class="tech-tags">
-            <span class="tag php"><i class="ri-php-line"></i> PHP</span>
-            <span class="tag mysql"><img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"
-                class="icon-svg" /> MySQL</span>
-            <span class="tag js"><i class="ri-javascript-line"></i> JavaScript</span>
-            <span class="tag bootstrap"><img
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-                alt="Bootstrap" class="icon-svg" /> Bootstrap</span>
-            <span class="tag pdf"><i class="ri-file-pdf-2-line"></i> PDF</span>
-          </div>
-        </div>
-        <div class='project'>
-          <img src="./assets/img/website-condisa.png" />
-          <a href='https://github.com/M1GaNg/CondisaRomeroWebDesign' target="_blank">Condisa Romero Web Site</a>
-          <p class='project-description'>Sitio web corporativo responsivo para empresa constructora, hecho con React y
-            Vite, portafolio, blog y animaciones.</p>
-          <div class="tech-tags">
-            <span class="tag react"><i class="ri-reactjs-line"></i> React</span>
-            <span class="tag vite"><img src="https://vitejs.dev/logo.svg" alt="Vite" class="icon-svg" /> Vite</span>
-            <span class="tag css"><i class="ri-css3-line"></i> CSS3</span>
-            <span class="tag remix"><i class="ri-remixicon-line"></i> Remix Icons</span>
-          </div>
-        </div>
-
-      </div>
-    </section>
-    <section id='contact'>
-      <h1>CONTACT</h1>
-      <div class='social'>
-        <i class="ri-facebook-box-fill"></i>
-        <i class="ri-twitter-x-fill"></i>
-        <i class="ri-linkedin-box-fill"></i>
-        <i class="ri-github-fill"></i>
-        <i class="ri-mail-fill"></i>
-      </div>
-  </main>
-  <footer>
-    <p>© Created for <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450.1 347.25">
-        <path
-          d="M211.2 341.57l-13.74-13.73 233.23-233.23 13.73 13.73c7.57 7.57 7.57 19.9 0 27.47l-205.76 205.76c-7.57 7.57-19.91 7.57-27.47 0zm89.24-322.22l13.74-13.74c7.56-7.57 20.01-7.47 27.69 0.22l88.8 88.8-27.47 27.47-102.76-102.76z" />
-        <path
-          d="M215.53 290.98l-31.91 8.99c-6.95 1.96-13.9 0.15-19-4.96L5.68 136.07c-7.57-7.57-7.56-19.91 0-27.47l13.73-13.74 89.02-89.02c7.57-7.57 19.9-7.57 27.47 0l13.74 13.73-102.76 102.76-27.47-27.47 196.12 196.12z" />
-        <path
-          d="M145.3 174.48l-65.92-65.92 31.91-8.99c6.95-1.96 13.9-0.14 19 4.96l42.48 42.48 27.47 27.47-41.24 41.24-27.47-27.47 13.76-13.76z" />
-        <path
-          d="M182.45 52.38l135.87 135.87-31.91 8.99c-6.95 1.96-13.9 0.14-19-4.96L131.54 56.41l31.91-8.99c6.95-1.96 13.9-0.15 19 4.96z" />
-        <path
-          d="M304.78 69.95l65.92 65.92-31.91 8.99c-6.95 1.96-13.9 0.14-19.01-4.96l-42.47-42.48-13.74-13.74c-7.57-7.57-7.57-19.91 0-27.47l27.5-27.5 27.47 27.47-13.76 13.77z" />
-      </svg> <b>MiGaNg</b></p>
-  </footer>
-</body>
-
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
