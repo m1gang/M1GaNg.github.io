@@ -25,6 +25,7 @@ import {
   TECH_BADGES,
 } from "../data/home";
 import { ActivityCalendar, useGitHubActivity } from "../hooks/useGitHubActivity";
+import TechBadge from "../components/TechBadge";
 
 // ─── Grid layout (6 cols × 6 rows en lg, 4 cols en md, 1 col en sm) ──────────
 //
@@ -283,15 +284,9 @@ const HomePortada = () => {
                         md:col-span-4 md:row-span-1 md:col-start-1 md:row-start-4
                         lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-3"
           >
-            <div className="flex flex-wrap justify-center items-center p-4 grow font-sawbones text-lg">
+            <div className="flex flex-wrap justify-center items-center p-4 grow font-sawbones text-lg gap-2">
               {TECH_BADGES.map(({ Icon, label }) => (
-                <div
-                  key={label}
-                  className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit"
-                >
-                  <Icon width={20} height={20} />
-                  <span className="text-base">{label}</span>
-                </div>
+                <TechBadge key={label} name={label} icon={Icon} iconSize={20} />
               ))}
             </div>
           </motion.div>
