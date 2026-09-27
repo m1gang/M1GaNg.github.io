@@ -8,6 +8,9 @@ import { router } from "./routes/routes";
 
 const FADE = { duration: 0.1, ease: "easeInOut" };
 
+// El loader se muestra 2s, una sola vez al iniciar (no vuelve en navegación SPA).
+const LOADER_MS = 2000;
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -22,7 +25,7 @@ function App() {
   const reduce = useReducedMotion();
 
   useEffect(() => {
-    const t = setTimeout(() => setShowLoader(false), 1000);
+    const t = setTimeout(() => setShowLoader(false), LOADER_MS);
     return () => clearTimeout(t);
   }, []);
 

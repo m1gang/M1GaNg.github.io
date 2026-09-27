@@ -1,10 +1,6 @@
 import MetallicPaint from "../components/MetallicPaint";
-import { parseLogoImage } from "../lib/metallic/parseLogoImage";
+import { getLogoAsset } from "../lib/metallic/logoAsset";
 import { useState, useEffect } from "react";
-
-// Logo en public/ (preindexado desde index.html) para que el fetch viaje en
-// paralelo al bundle.
-const LOGO_URL = "/migang-logo.svg";
 
 export const Loader = () => {
   const [imageData, setImageData] = useState(null);
@@ -12,27 +8,17 @@ export const Loader = () => {
   useEffect(() => {
     let cancelled = false;
 
-    async function loadDefaultImage() {
-      try {
-        const response = await fetch(LOGO_URL);
-        const blob = await response.blob();
+    getLogoAsset().then((parsedData) => {
+      if (!cancelled) setImageData(parsedData?.imageData ?? null);
+    });
 
-        const parsedData = await parseLogoImage(blob);
-        if (!cancelled) setImageData(parsedData?.imageData ?? null);
-      } catch (err) {
-        console.error("Error loading default image:", err);
-      }
-    }
-
-    loadDefaultImage();
     return () => {
       cancelled = true;
     };
   }, []);
 
-  // Always render the MetallicPaint canvas immediately (use a tiny fallback
-  // ImageData until the parsed imageData is ready). The logo is shown in a
-  // centered container and scaled to a smaller size for a cleaner loader UI.
+  // El logo se muestra centrado a 200px; el canvas metálico aparece cuando el
+  // parse (iniciado en main.jsx) termina.
   return (
     <div
       style={{
