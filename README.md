@@ -1,12 +1,38 @@
-# React + Vite
+# MiGaNg — Portafolio v2.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio personal de **Miguel Ángel Yapias Veli (MiGaNg)** — Ingeniero de Sistemas y Frontend Developer.
 
-Currently, two official plugins are available:
+Bento grid con loader de logo metálico (WebGL2), animaciones de entrada/salida entre rutas, datos en caché con TanStack Query (GitHub + Deezer) y diseño oscuro en zinc con glassmorphism.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## Expanding the ESLint configuration
+- **React 19** + **Vite 7** + **React Router 7**
+- **Tailwind CSS 4** + **Motion** (Framer Motion) + **shadcn/ui** (New York, Zinc)
+- **TanStack Query** (caché de datos), **Lucide** (iconos UI), **SVGR** (logos de marca)
+- **WebGL2** (shader de pintura metálica en el loader)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Comandos
+
+```bash
+pnpm dev       # servidor de desarrollo
+pnpm build     # build de producción
+pnpm preview   # preview del build
+pnpm lint      # ESLint
+```
+
+## Estructura
+
+```
+src/
+  components/   # UI compartida (TechBadge, MagicCard, GlowButton, carruseles…)
+  hooks/        # useDeezer, useGitHubActivity, useMetallicGL, useAutoplay…
+  layouts/      # MainLayout (sidebar + outlet con transiciones)
+  lib/          # motion (sistema de movimiento), metallic (shaders + parse)
+  pages/        # Home, Perfil, Proyectos, Experiencia, Contacto
+  data/         # datos por sección (experiencia, proyectos, perfil…)
+  styles/       # fuentes y keyframes
+```
+
+## Despliegue
+
+GitHub Pages — cada PR a `react-rewrite` se integra y `main` recibe el merge con su tag de versión.
