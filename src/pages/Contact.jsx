@@ -4,10 +4,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Github,
-  Linkedin,
-  Twitter,
-  Instagram,
   Send,
   Copy,
   Check,
@@ -18,14 +14,24 @@ import {
   AtSign,
   Tag,
   Clock,
-  PenLine,
-  Reply,
-  CalendarCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { reveal, useReducedMotion } from "@/lib/motion";
 import { MagicCard } from "../components/MagicCard";
-import { EMAIL, LOCATION_LABEL } from "../constants/contact";
+import {
+  CV_URL,
+  EMAIL,
+  GITHUB_URL,
+  LOCATION_LABEL,
+  MESSAGE_MAX,
+  PHONE_LABEL,
+  PHONE_HREF,
+  SOCIALS,
+  STEPS,
+  TILE_CLS,
+  WHATSAPP_HREF,
+  inputCls,
+} from "../constants/contact";
 
 // Rediseño Contacto — estructura "Timeline + formulario con expectativa":
 // - Izquierda: contexto, email hero copiable, 3 pasos de respuesta, canales directos.
@@ -33,57 +39,6 @@ import { EMAIL, LOCATION_LABEL } from "../constants/contact";
 // - Abajo: tira única de redes + CV en línea, sin rejilla de tarjetas idénticas.
 // Sistema heredado: max-w-7xl + font-clash, MagicCard + .card-glass (25px, zinc
 // monocromo), tiles bg-white/5 border-white/10, esmeralda solo semántico.
-const PHONE_LABEL = "+51 954 936 677";
-const PHONE_HREF = "tel:+51954936677";
-const WHATSAPP_HREF = "https://wa.me/51954936677";
-const MESSAGE_MAX = 1000;
-
-const TILE_CLS =
-  "bg-white/5 border-white/10 text-white/80 group-hover:bg-white/10 group-hover:border-white/20 group-hover:text-white";
-
-const STEPS = [
-  {
-    icon: PenLine,
-    title: "Cuéntame el objetivo",
-    desc: "Contexto, alcance y tiempos. Cuanto más concreto, mejor propuesta.",
-  },
-  {
-    icon: Reply,
-    title: "Respondo en menos de 24 h",
-    desc: "De lunes a viernes. Si es urgente, usa WhatsApp directo.",
-  },
-  {
-    icon: CalendarCheck,
-    title: "Agendamos una llamada",
-    desc: "15 minutos para alinear alcance, tiempos y siguiente paso.",
-  },
-];
-
-const SOCIALS = [
-  {
-    icon: Github,
-    label: "GitHub",
-    href: "https://github.com/M1GaNg",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    href: "https://linkedin.com",
-  },
-  {
-    icon: Twitter,
-    label: "X",
-    href: "https://twitter.com",
-  },
-  {
-    icon: Instagram,
-    label: "Instagram",
-    href: "https://instagram.com",
-  },
-];
-
-const inputCls =
-  "w-full bg-white/5 border border-white/10 rounded-xl text-[15px] leading-relaxed text-white placeholder:text-white/60 caret-white selection:bg-white/20 selection:text-white transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus:border-white/40 focus:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-white/15";
 
 const Contact = () => {
   const reduceMotion = useReducedMotion();
@@ -549,7 +504,7 @@ const Contact = () => {
             ))}
             <li>
               <a
-                href="https://www.cvresume.dev/m1gang"
+                href={CV_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Ver CV — abrir en una pestaña nueva"

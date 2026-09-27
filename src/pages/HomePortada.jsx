@@ -1,7 +1,12 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import { ArrowUpRight, Github, Mail, MapPin } from "lucide-react";
-import { EMAIL, LOCATION_LABEL } from "../constants/contact";
+import {
+  CV_URL,
+  EMAIL,
+  GITHUB_URL,
+  LOCATION_LABEL,
+} from "../constants/contact";
 import { reveal, useReducedMotion } from "@/lib/motion";
 import profile from "../assets/img/migang-pics.webp";
 import featuredProjectImg from "../assets/img/projects/landing/construcciones-sostenibles-1.webp";
@@ -10,27 +15,15 @@ import {
   ContactButtonIcon,
   CvButtonIcon,
 } from "../components/ButtonIcon";
-import ProyectosIcon from "../components/icons/custom/proyectos.svg?react";
-import CertificacionIcon from "../components/icons/custom/certificacion.svg?react";
-import ExperienciaLaboralIcon from "../components/icons/custom/experiencia-laboral.svg?react";
-import ExperienciaIcon from "../components/icons/custom/experiencia.svg?react";
-import CodeIcon from "../assets/svg/skills/code.svg?react";
-import SupportIcon from "../assets/svg/skills/support.svg?react";
-import DesignIcon from "../assets/svg/skills/design.svg?react";
-import LearningIcon from "../assets/svg/skills/learning.svg?react";
-import UiUxIcon from "../assets/svg/skills/ui_ux.svg?react";
-import TeamIcon from "../assets/svg/skills/team.svg?react";
 import MigangIsotipo from "../components/icons/custom/migang-isotipo.svg?react";
 import MigangLogotipo from "../components/icons/custom/migang-logotipo.svg?react";
-import ReactIcon from "../components/icons/tech/react.svg?react";
-import TailwindIcon from "../components/icons/tech/tailwindcss.svg?react";
-import ViteIcon from "../components/icons/tech/vitejs.svg?react";
-import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
-import CssIcon from "../components/icons/tech/css.svg?react";
-import HtmlIcon from "../components/icons/tech/html.svg?react";
-import GitIcon from "../components/icons/tech/git.svg?react";
-import GithubIcon from "../components/icons/tech/github.svg?react";
-import FigmaIcon from "../components/icons/tech/figma.svg?react";
+import {
+  FEATURED_PROJECT,
+  GITHUB_CALENDAR_PROPS,
+  SKILLS,
+  STATS,
+  TECH_BADGES,
+} from "../data/home";
 import { GitHubCalendar } from "react-github-calendar";
 
 // ─── Grid layout (6 cols × 6 rows en lg, 4 cols en md, 1 col en sm) ──────────
@@ -144,15 +137,6 @@ const GlowButton = ({
   );
 };
 
-// ── Proyecto destacado ──────────────────────────────────────────────────────
-// Último proyecto publicado: se muestra en la card "Último proyecto" del bento.
-const FEATURED_PROJECT = {
-  name: "Construcciones Sostenibles",
-  tagline: "Landing page · Astro + Tailwind CSS",
-  url: "https://github.com/m1gang/construcsostenibles-landingpage",
-  demo: "https://www.construcciones-sostenibles.com/",
-};
-
 // ── HomePortada ───────────────────────────────────────────────────────────────
 const HomePortada = () => {
   const reduce = useReducedMotion();
@@ -232,34 +216,22 @@ const HomePortada = () => {
                         lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-3"
           >
             <div className="grid grid-cols-2 grid-rows-2 gap-3 h-full w-full">
-              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
-                <p className="text-6xl leading-none text-red-600 font-sawbones">+17</p>
-                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
-                  <ProyectosIcon width={20} height={20} />
-                  Proyectos
-                </span>
-              </div>
-              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
-                <p className="text-6xl leading-none text-red-600 font-sawbones">+3</p>
-                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
-                  <CertificacionIcon width={20} height={20} />
-                  Certificaciones
-                </span>
-              </div>
-              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
-                <p className="text-6xl leading-none text-red-600 font-sawbones">3</p>
-                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
-                  <ExperienciaLaboralIcon width={20} height={20} />
-                  Experiencias
-                </span>
-              </div>
-              <div className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center">
-                <p className="text-[50px] leading-none text-red-600 font-sawbones">+1 año</p>
-                <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
-                  <ExperienciaIcon width={20} height={20} />
-                  Trayectoria
-                </span>
-              </div>
+              {STATS.map(({ value, Icon, label, valueClassName }) => (
+                <div
+                  key={label}
+                  className="flex min-h-0 flex-col items-center justify-center gap-1.5 px-1 text-center"
+                >
+                  <p
+                    className={`${valueClassName} leading-none text-red-600 font-sawbones`}
+                  >
+                    {value}
+                  </p>
+                  <span className="flex flex-wrap items-center justify-center gap-1.5 text-lg leading-tight">
+                    <Icon width={20} height={20} />
+                    {label}
+                  </span>
+                </div>
+              ))}
             </div>
           </motion.div>
 
@@ -273,50 +245,7 @@ const HomePortada = () => {
                         lg:col-span-2 lg:row-span-3 lg:col-start-3 lg:row-start-3"
           >
             <div className="grid grid-cols-2 grid-rows-3 p-4 gap-2 h-full w-full">
-              {[
-                {
-                  Icon: CodeIcon,
-                  title: "Desarrollo web",
-                  subtitle: "Front end con React",
-                  chip: "bg-[#8b8afd]/10",
-                  textGradient: "linear-gradient(135deg, #00C6FB, #005BEA, #C73AC9)",
-                },
-                {
-                  Icon: SupportIcon,
-                  title: "Soporte técnico",
-                  subtitle: "Optimización",
-                  chip: "bg-[#343d4e]/10",
-                  textGradient: "linear-gradient(135deg, #FFF4E4, #F0F6EE, #E7F0F0)",
-                },
-                {
-                  Icon: DesignIcon,
-                  title: "Diseño gráfico",
-                  subtitle: "Corel, Branding",
-                  chip: "bg-[#cc1b75]/10",
-                  textGradient: "linear-gradient(135deg, #F2A968, #CA1462, #8A2A86)",
-                },
-                {
-                  Icon: LearningIcon,
-                  title: "Aprendizaje continuo",
-                  subtitle: "Siempre aprendiendo",
-                  chip: "bg-[#6d6d6d]/10",
-                  textGradient: "linear-gradient(135deg, #B6DBDB, #687D7D, #9C8B8B)",
-                },
-                {
-                  Icon: UiUxIcon,
-                  title: "UI / UX",
-                  subtitle: "Prototipos",
-                  chip: "bg-[#37d09e]/10",
-                  textGradient: "linear-gradient(135deg, #C3FAC7, #F5E896, #DEE084)",
-                },
-                {
-                  Icon: TeamIcon,
-                  title: "Comunicación",
-                  subtitle: "Trabajo en equipo",
-                  chip: "bg-[#afb1b7]/10",
-                  textGradient: "linear-gradient(135deg, #E7F0FD, #ACCBEE, #9DB6D1)",
-                },
-              ].map(({ Icon, title, subtitle, chip, textGradient }) => (
+              {SKILLS.map(({ Icon, title, subtitle, chip, textGradient }) => (
                 <div
                   key={subtitle}
                   className="flex min-h-0 flex-col items-center justify-center gap-1.5 rounded-2xl text-2xl"
@@ -352,17 +281,7 @@ const HomePortada = () => {
                         lg:col-span-2 lg:row-span-2 lg:col-start-5 lg:row-start-3"
           >
             <div className="flex flex-wrap justify-center items-center p-4 grow font-sawbones text-lg">
-              {[
-                { Icon: ReactIcon, label: "React" },
-                { Icon: TailwindIcon, label: "Tailwind" },
-                { Icon: ViteIcon, label: "Vite" },
-                { Icon: JavascriptIcon, label: "Javascript" },
-                { Icon: CssIcon, label: "CSS" },
-                { Icon: HtmlIcon, label: "HTML" },
-                { Icon: GitIcon, label: "Git" },
-                { Icon: GithubIcon, label: "Github" },
-                { Icon: FigmaIcon, label: "Figma" },
-              ].map(({ Icon, label }) => (
+              {TECH_BADGES.map(({ Icon, label }) => (
                 <div
                   key={label}
                   className="inline-flex items-center gap-2 bg-[#2929293b] border border-[#ffffff15] m-2 px-3 py-1 rounded-full w-fit h-fit"
@@ -400,7 +319,7 @@ const HomePortada = () => {
               />
 
               <GlowButton
-                href="https://www.cvresume.dev/m1gang"
+                href={CV_URL}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full md:flex-1"
@@ -445,7 +364,7 @@ const HomePortada = () => {
                   <Mail aria-hidden="true" className="size-4" />
                 </a>
                 <a
-                  href="https://github.com/M1GaNg"
+                  href={GITHUB_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Abrir mi perfil de GitHub en una pestaña nueva"
@@ -477,26 +396,7 @@ const HomePortada = () => {
               aria-label="Ver perfil de GitHub de M1GaNg"
               className="block w-full overflow-x-auto rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
-              <GitHubCalendar
-                username="M1GaNg"
-                colorScheme="dark"
-                theme={{
-                  dark: ["#161b22", "#0e4429", "#006d32", "#26a641", "#39d353"],
-                }}
-                blockSize={10}
-                blockMargin={3}
-                fontSize={11}
-                showColorLegend={false}
-                labels={{
-                  months: [
-                    "Ene", "Feb", "Mar", "Abr", "May", "Jun",
-                    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic",
-                  ],
-                  weekdays: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
-                  totalCount: "{{count}} contribuciones en el último año",
-                  legend: { less: "Menos", more: "Más" },
-                }}
-              />
+              <GitHubCalendar {...GITHUB_CALENDAR_PROPS} />
             </a>
           </motion.div>
 
