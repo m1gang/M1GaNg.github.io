@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "motion/react";
 import { MagicCard } from "../components/MagicCard";
 import { reveal, useReducedMotion } from "@/lib/motion";
@@ -6,20 +6,14 @@ import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
 import TechBadge from "../components/TechBadge";
 import { CONDISA_PROJECTS } from "../data/condisa";
+import { useCyclicIndex } from "../hooks/useCyclicIndex";
 
 const ProjectsCondisa = () => {
   const gridRef = useRef(null);
   const reduce = useReducedMotion();
-  const [activeProject, setActiveProject] = useState("website");
-
   const projectKeys = Object.keys(CONDISA_PROJECTS);
-
-  const goToProject = (step) => {
-    const currentIndex = projectKeys.indexOf(activeProject);
-    setActiveProject(
-      projectKeys[(currentIndex + step + projectKeys.length) % projectKeys.length],
-    );
-  };
+  const { key: activeProject, goToNext, goToPrevious } =
+    useCyclicIndex(projectKeys);
 
   const currentProject = CONDISA_PROJECTS[activeProject];
 
@@ -72,8 +66,8 @@ const ProjectsCondisa = () => {
                 alt={`${currentProject.title} screenshot`}
                 autoPlay={true}
                 interval={4000}
-                onPrevProject={() => goToProject(-1)}
-                onNextProject={() => goToProject(1)}
+                onPrevProject={goToPrevious}
+                onNextProject={goToNext}
               />
             </div>
           </MagicCard>

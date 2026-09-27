@@ -1,6 +1,5 @@
 ﻿import { useState } from "react";
 import { motion } from "motion/react";
-import { useReducedMotion } from "@/lib/motion";
 import {
   ExternalLink,
   MapPin,
@@ -12,7 +11,7 @@ import { LOCATION_LABEL } from "../constants/contact";
 import profile from "../assets/img/about.webp";
 import { SongCarouselCard } from "../components/SongCarouselCard";
 import { useDeezerArtists } from "../hooks/useDeezer";
-import { slotOffsets, coverTransform, coverMaskStyle } from "../lib/coverflow";
+import { useCoverflow } from "../hooks/useCoverflow";
 import {
   HOBBY_GRADIENTS,
   HOBBIES,
@@ -24,11 +23,9 @@ import {
 const ProfileAbout = () => {
   const { artists, status } = useDeezerArtists();
   const [activeArtist, setActiveArtist] = useState(0);
-  const reduce = useReducedMotion();
-  const offsets = slotOffsets(artists.length, activeArtist);
-  const spring = reduce
-    ? { duration: 0 }
-    : { type: "spring", stiffness: 320, damping: 34, mass: 0.8 };
+  const { base, step, spring, maskStyle, getOffsets, getTransform } =
+    useCoverflow({ base: 92, step: 70 });
+  const offsets = getOffsets(artists.length, activeArtist);
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:h-screen lg:min-h-0 lg:overflow-y-auto font-clash">
@@ -125,14 +122,14 @@ const ProfileAbout = () => {
 
         {/* Artistas Favoritos (pos 5): coverflow — cols 9-12 / rows 2-3 */}
         <MagicCard className="min-h-[10rem] lg:min-h-0 lg:col-start-9 lg:col-span-4 lg:row-start-2 lg:row-span-2 card-glass p-4 font-roboto flex flex-col justify-center gap-3">
-          <div className="relative h-[112px] shrink-0 overflow-hidden" style={coverMaskStyle}>
+          <div className="relative h-[112px] shrink-0 overflow-hidden" style={maskStyle}>
             {status === "loading"
               ? [0, 1, 2].map((i) => (
                   <div
                     key={i}
                     className="absolute top-1/2 left-1/2 w-[92px] h-[92px] rounded-xl animate-pulse motion-reduce:animate-none bg-white/10"
                     style={{
-                      marginLeft: -46 + (i - 1) * 70,
+                      marginLeft: -46 + (i - 1) * step,
                       marginTop: -46,
                       transform: i === 1 ? "scale(1.3)" : "scale(0.85)",
                       zIndex: i === 1 ? 10 : 5,
@@ -142,7 +139,7 @@ const ProfileAbout = () => {
               : artists.map((artist, idx) => {
                   const offset = offsets[idx] ?? 99;
                   const isActive = offset === 0;
-                  const { x, scale, dim, opacity, zIndex } = coverTransform(offset, 70);
+                  const { x, scale, dim, opacity, zIndex } = getTransform(offset);
                   if (Math.abs(offset) > 3) return null;
                   const Wrapper = isActive && artist.link ? "a" : "button";
 
@@ -152,7 +149,7 @@ const ProfileAbout = () => {
                       initial={false}
                       animate={{ x, scale, opacity }}
                       transition={spring}
-                      style={{ marginLeft: -46, marginTop: -46, zIndex }}
+                      style={{ marginLeft: -base / 2, marginTop: -base / 2, zIndex }}
                       className="absolute top-1/2 left-1/2"
                     >
                       <Wrapper

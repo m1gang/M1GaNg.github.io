@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import {
   Mail,
@@ -18,12 +17,12 @@ import {
 import { cn } from "@/lib/utils";
 import { reveal, useReducedMotion } from "@/lib/motion";
 import { MagicCard } from "../components/MagicCard";
+import { useContactForm } from "../hooks/useContactForm";
 import {
   CV_URL,
   EMAIL,
   GITHUB_URL,
   LOCATION_LABEL,
-  MESSAGE_MAX,
   PHONE_LABEL,
   PHONE_HREF,
   SOCIALS,
@@ -42,60 +41,17 @@ import {
 
 const Contact = () => {
   const reduceMotion = useReducedMotion();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [status, setStatus] = useState("idle");
-  const [copied, setCopied] = useState(false);
-  const sendTimer = useRef(null);
-  const copyTimer = useRef(null);
-
-  const sending = status === "sending";
-  const sent = status === "sent";
-  const messageCount = formData.message.length;
-
-  useEffect(
-    () => () => {
-      if (sendTimer.current) clearTimeout(sendTimer.current);
-      if (copyTimer.current) clearTimeout(copyTimer.current);
-    },
-    [],
-  );
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (status === "sent") setStatus("idle");
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (sending) return;
-    setStatus("sending");
-    sendTimer.current = setTimeout(() => {
-      setStatus("sent");
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 900);
-  };
-
-  const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(EMAIL);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = EMAIL;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-    }
-    setCopied(true);
-    if (copyTimer.current) clearTimeout(copyTimer.current);
-    copyTimer.current = setTimeout(() => setCopied(false), 2000);
-  };
+  const {
+    formData,
+    copied,
+    sending,
+    sent,
+    messageCount,
+    handleChange,
+    handleSubmit,
+    handleCopyEmail,
+    messageMax,
+  } = useContactForm();
 
   // Un solo momento de entrada, sin secuencias orquestadas (modo Operate).
   const rise = reveal(reduceMotion);
@@ -399,12 +355,12 @@ const Contact = () => {
                     aria-hidden="true"
                     className={cn(
                       "text-[13px] tabular-nums",
-                      messageCount > MESSAGE_MAX - 100
+                      messageCount > messageMax - 100
                         ? "font-medium text-white/75"
                         : "text-white/45",
                     )}
                   >
-                    {messageCount}/{MESSAGE_MAX}
+                    {messageCount}/{messageMax}
                   </span>
                 </div>
                 <textarea
@@ -416,7 +372,7 @@ const Contact = () => {
                   rows={3}
                   required
                   disabled={sending}
-                  maxLength={MESSAGE_MAX}
+                  maxLength={messageMax}
                   className={cn(
                     inputCls,
                     "min-h-[84px] lg:min-h-[72px] flex-1 px-4 py-2.5 resize-none lg:resize-none",

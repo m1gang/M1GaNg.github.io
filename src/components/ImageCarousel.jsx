@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
 import {
   ChevronLeft,
   ChevronRight,
   Pause,
   Play,
 } from "lucide-react";
+import { useAutoplay } from "../hooks/useAutoplay";
 
 const ImageCarousel = ({
   images,
@@ -14,50 +14,14 @@ const ImageCarousel = ({
   onPrevProject,
   onNextProject,
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(
-    () =>
-      autoPlay &&
-      (typeof window === "undefined" ||
-        !window.matchMedia("(prefers-reduced-motion: reduce)").matches),
-  );
-  const [pausedByHover, setPausedByHover] = useState(false);
-
-  useEffect(() => {
-    let intervalId;
-    if (isPlaying && !pausedByHover && images.length > 1) {
-      intervalId = setInterval(() => {
-        setCurrentIndex((prevIndex) =>
-          prevIndex === images.length - 1 ? 0 : prevIndex + 1,
-        );
-      }, interval);
-    }
-    return () => clearInterval(intervalId);
-  }, [isPlaying, pausedByHover, images.length, interval]);
-
-  useEffect(() => {
-    const onVisibility = () => {
-      if (document.hidden) setIsPlaying(false);
-    };
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => document.removeEventListener("visibilitychange", onVisibility);
-  }, []);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
-    );
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
-    );
-  };
-
-  const togglePlay = () => {
-    setIsPlaying(!isPlaying);
-  };
+  const {
+    index: currentIndex,
+    isPlaying,
+    setPausedByHover,
+    goToPrevious,
+    goToNext,
+    togglePlay,
+  } = useAutoplay({ count: images?.length ?? 0, interval, autoPlay });
 
   if (!images || images.length === 0) {
     return (
