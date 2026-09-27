@@ -2,30 +2,32 @@ import MetallicPaint from "../components/MetallicPaint";
 import { parseLogoImage } from "../lib/metallic/parseLogoImage";
 import { useState, useEffect } from "react";
 
-// replace with your own SVG
-// NOTE: your SVG should have a bit of padding around the shape, to keep it from being cut off
-// it should also have black fill color, to allow the metallic effect to show through the mask
-// Use URL form so we always get an asset URL (avoids SVGR returning a component)
-const logo = new URL("../assets/svg/migang-logo.svg", import.meta.url).href;
+// Logo en public/ (preindexado desde index.html) para que el fetch viaje en
+// paralelo al bundle.
+const LOGO_URL = "/migang-logo.svg";
 
 export const Loader = () => {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
+    let cancelled = false;
+
     async function loadDefaultImage() {
       try {
-        const response = await fetch(logo);
+        const response = await fetch(LOGO_URL);
         const blob = await response.blob();
-        const file = new File([blob], "default.png", { type: blob.type });
 
-        const parsedData = await parseLogoImage(file);
-        setImageData(parsedData?.imageData ?? null);
+        const parsedData = await parseLogoImage(blob);
+        if (!cancelled) setImageData(parsedData?.imageData ?? null);
       } catch (err) {
         console.error("Error loading default image:", err);
       }
     }
 
     loadDefaultImage();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   // Always render the MetallicPaint canvas immediately (use a tiny fallback
