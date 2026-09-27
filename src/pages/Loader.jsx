@@ -1,35 +1,24 @@
-import MetallicPaint, { parseLogoImage } from "../components/MetallicPaint";
+import MetallicPaint from "../components/MetallicPaint";
+import { getLogoAsset } from "../lib/metallic/logoAsset";
 import { useState, useEffect } from "react";
-
-// replace with your own SVG
-// NOTE: your SVG should have a bit of padding around the shape, to keep it from being cut off
-// it should also have black fill color, to allow the metallic effect to show through the mask
-// Use URL form so we always get an asset URL (avoids SVGR returning a component)
-const logo = new URL("../assets/svg/migang-logo.svg", import.meta.url).href;
 
 export const Loader = () => {
   const [imageData, setImageData] = useState(null);
 
   useEffect(() => {
-    async function loadDefaultImage() {
-      try {
-        const response = await fetch(logo);
-        const blob = await response.blob();
-        const file = new File([blob], "default.png", { type: blob.type });
+    let cancelled = false;
 
-        const parsedData = await parseLogoImage(file);
-        setImageData(parsedData?.imageData ?? null);
-      } catch (err) {
-        console.error("Error loading default image:", err);
-      }
-    }
+    getLogoAsset().then((parsedData) => {
+      if (!cancelled) setImageData(parsedData?.imageData ?? null);
+    });
 
-    loadDefaultImage();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  // Always render the MetallicPaint canvas immediately (use a tiny fallback
-  // ImageData until the parsed imageData is ready). The logo is shown in a
-  // centered container and scaled to a smaller size for a cleaner loader UI.
+  // El logo se muestra centrado a 200px; el canvas metálico aparece cuando el
+  // parse (iniciado en main.jsx) termina.
   return (
     <div
       style={{

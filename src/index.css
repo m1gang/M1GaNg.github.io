@@ -5,6 +5,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Fondo negro permanente: evita el flash blanco en el cruce loader → home. */
+html,
+body,
+#root {
+    background-color: #000;
+}
+
+#root {
+    min-height: 100vh;
+}
+
 :root {
     --radius: 0.625rem;
 }
