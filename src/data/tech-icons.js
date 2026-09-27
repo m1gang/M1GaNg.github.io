@@ -22,7 +22,14 @@ import PhpIcon from "../components/icons/tech/php.svg?react";
 import MysqlIcon from "../components/icons/tech/mysql.svg?react";
 import BootstrapIcon from "../components/icons/tech/bootstrap.svg?react";
 import JqueryIcon from "../components/icons/tech/jquery.svg?react";
+import AstroIcon from "../components/icons/tech/astro.svg?react";
+import CloudflareIcon from "../components/icons/tech/cloudflare.svg?react";
+import FramerIcon from "../components/icons/tech/framer.svg?react";
+import TablerIcon from "../components/icons/tech/tabler.svg?react";
+import VercelIcon from "../components/icons/tech/vercel.svg?react";
 
+// Registro central de iconos de tecnología (logos de marca).
+// Clave = nombre tal como se muestra en la UI; valor = componente SVGR.
 export const TECH_ICONS = {
   HTML: HtmlIcon,
   CSS: CssIcon,
@@ -32,6 +39,7 @@ export const TECH_ICONS = {
   freecodecamp: FreecodecampIcon,
   API: ApiInterfaceIcon,
   Tailwind: TailwindIcon,
+  "Tailwind CSS": TailwindIcon,
   Responsive: ResponsiveIcon,
   React: ReactIcon,
   TypeScript: TypescriptIcon,
@@ -49,4 +57,10 @@ export const TECH_ICONS = {
   MySQL: MysqlIcon,
   Bootstrap: BootstrapIcon,
   jquery: JqueryIcon,
+  Astro: AstroIcon,
+  Cloudflare: CloudflareIcon,
+  "Cloudflare Workers": CloudflareIcon,
+  Motion: FramerIcon,
+  "Tabler Icons": TablerIcon,
+  Vercel: VercelIcon,
 };

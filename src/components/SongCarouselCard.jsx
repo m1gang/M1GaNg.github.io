@@ -1,14 +1,9 @@
-﻿import { useEffect, useRef, useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "motion/react";
 import { Play, Pause, Disc3 } from "lucide-react";
 import { useDeezerSongs } from "../hooks/useDeezer";
-import { slotOffsets, coverTransform, coverMaskStyle } from "../lib/coverflow";
-import { useReducedMotion } from "../lib/motion";
-
-// El coverflow es el protagonista de la card: las carátulas ocupan la mayor
-// parte del espacio y debajo solo quedan dots + título + artista.
-const BASE = 180; // lado de la carátula activa en px
-const STEP = 122; // separación entre centros de carátulas adyacentes
+import { useCoverflow } from "../hooks/useCoverflow";
+import { usePreviewAudio } from "../hooks/usePreviewAudio";
 
 const Skeleton = ({ className }) => (
   <div
@@ -19,45 +14,19 @@ const Skeleton = ({ className }) => (
 export const SongCarouselCard = () => {
   const { songs, status } = useDeezerSongs();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const audioRef = useRef(null);
-  const reduce = useReducedMotion();
+  const { audioRef, isPlaying, togglePlay } = usePreviewAudio(
+    songs[currentIndex] || songs[0],
+  );
   const song = songs[currentIndex] || songs[0];
   const isLoading = status === "loading";
-  const offsets = slotOffsets(songs.length, currentIndex);
-
-  // Al cambiar de canción: parar el preview en curso
-  useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
-    setIsPlaying(false);
-  }, [currentIndex]);
-
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    if (!audio || !song?.preview) return;
-    if (audio.paused) {
-      audio
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch(() => setIsPlaying(false));
-    } else {
-      audio.pause();
-      setIsPlaying(false);
-    }
-  };
+  const { base, step, spring, maskStyle, getOffsets, getTransform } =
+    useCoverflow({ base: 180, step: 122 });
+  const offsets = getOffsets(songs.length, currentIndex);
 
   const goTo = (index) => {
     const total = songs.length;
     setCurrentIndex(((index % total) + total) % total);
   };
-
-  const spring = reduce
-    ? { duration: 0 }
-    : { type: "spring", stiffness: 320, damping: 34, mass: 0.8 };
 
   return (
     <div className="h-full w-full flex flex-col font-roboto select-none gap-2.5">
@@ -65,14 +34,14 @@ export const SongCarouselCard = () => {
       <audio
         ref={audioRef}
         src={song?.preview || undefined}
-        onEnded={() => setIsPlaying(false)}
+        onEnded={() => togglePlay()}
         preload="none"
       />
 
       {/* ── COVERFLOW: protagonista de la card ──────────────────────────────── */}
       <div
         className="relative flex-1 min-h-[190px] overflow-hidden"
-        style={coverMaskStyle}
+        style={maskStyle}
       >
         {isLoading
           ? [0, 1, 2].map((i) => (
@@ -80,7 +49,7 @@ export const SongCarouselCard = () => {
                 key={i}
                 className="absolute top-1/2 left-1/2 w-[180px] h-[180px] rounded-3xl animate-pulse motion-reduce:animate-none bg-white/10"
                 style={{
-                  marginLeft: -90 + (i - 1) * STEP,
+                  marginLeft: -90 + (i - 1) * step,
                   marginTop: -90,
                   transform: i === 1 ? "scale(1)" : "scale(0.86)",
                   zIndex: i === 1 ? 10 : 5,
@@ -91,10 +60,7 @@ export const SongCarouselCard = () => {
               const offset = offsets[idx] ?? 99;
               if (Math.abs(offset) > 2) return null;
               const isActive = offset === 0;
-              const { x, scale, dim, opacity, zIndex } = coverTransform(
-                offset,
-                STEP,
-              );
+              const { x, scale, dim, opacity, zIndex } = getTransform(offset);
 
               return (
                 <motion.button
@@ -115,8 +81,8 @@ export const SongCarouselCard = () => {
                       : "border border-white/10 hover:border-white/30"
                   }`}
                   style={{
-                    marginLeft: -BASE / 2,
-                    marginTop: -BASE / 2,
+                    marginLeft: -base / 2,
+                    marginTop: -base / 2,
                     zIndex,
                   }}
                 >

@@ -1,11 +1,4 @@
-import {
-  SiAstro,
-  SiCloudflare,
-  SiFramer,
-  SiTailwindcss,
-  SiVercel,
-} from "react-icons/si";
-import { TbBrandTabler } from "react-icons/tb";
+import { TECH_ICONS } from "./tech-icons";
 
 export const LANDINGS = [
   {
@@ -21,11 +14,11 @@ export const LANDINGS = [
     deployLabel: "Sitio en producción",
     repoUrl: null,
     techs: [
-      { name: "Astro", Icon: SiAstro },
-      { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Motion", Icon: SiFramer },
-      { name: "Tabler Icons", Icon: TbBrandTabler },
-      { name: "Cloudflare", Icon: SiCloudflare },
+      { name: "Astro", Icon: TECH_ICONS.Astro },
+      { name: "Tailwind CSS", Icon: TECH_ICONS["Tailwind CSS"] },
+      { name: "Motion", Icon: TECH_ICONS.Motion },
+      { name: "Tabler Icons", Icon: TECH_ICONS["Tabler Icons"] },
+      { name: "Cloudflare", Icon: TECH_ICONS.Cloudflare },
     ],
     images: [
       new URL(
@@ -47,9 +40,9 @@ export const LANDINGS = [
     deployLabel: "Vercel",
     repoUrl: "https://github.com/m1gang/kora-landingPage",
     techs: [
-      { name: "Astro", Icon: SiAstro },
-      { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Vercel", Icon: SiVercel },
+      { name: "Astro", Icon: TECH_ICONS.Astro },
+      { name: "Tailwind CSS", Icon: TECH_ICONS["Tailwind CSS"] },
+      { name: "Vercel", Icon: TECH_ICONS.Vercel },
     ],
     images: [
       new URL(
@@ -71,9 +64,9 @@ export const LANDINGS = [
     deployLabel: "Sitio en producción",
     repoUrl: "https://github.com/m1gang/construcsostenibles-landingpage",
     techs: [
-      { name: "Astro", Icon: SiAstro },
-      { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Cloudflare Workers", Icon: SiCloudflare },
+      { name: "Astro", Icon: TECH_ICONS.Astro },
+      { name: "Tailwind CSS", Icon: TECH_ICONS["Tailwind CSS"] },
+      { name: "Cloudflare Workers", Icon: TECH_ICONS.Cloudflare },
     ],
     images: [
       new URL(
@@ -95,9 +88,9 @@ export const LANDINGS = [
     deployLabel: "Vercel",
     repoUrl: "https://github.com/m1gang/solux-landingPage",
     techs: [
-      { name: "Astro", Icon: SiAstro },
-      { name: "Tailwind CSS", Icon: SiTailwindcss },
-      { name: "Vercel", Icon: SiVercel },
+      { name: "Astro", Icon: TECH_ICONS.Astro },
+      { name: "Tailwind CSS", Icon: TECH_ICONS["Tailwind CSS"] },
+      { name: "Vercel", Icon: TECH_ICONS.Vercel },
     ],
     images: [
       new URL(
@@ -107,3 +100,4 @@ export const LANDINGS = [
     ],
   },
 ];
+

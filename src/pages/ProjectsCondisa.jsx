@@ -1,124 +1,21 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion } from "motion/react";
 import { MagicCard } from "../components/MagicCard";
 import { reveal, useReducedMotion } from "@/lib/motion";
 import { Github } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel";
 import TechBadge from "../components/TechBadge";
-import ReactIcon from "../components/icons/tech/react.svg?react";
-import ViteIcon from "../components/icons/tech/vitejs.svg?react";
-import CssIcon from "../components/icons/tech/css.svg?react";
-import ResponsiveIcon from "../components/icons/tech/responsive.svg?react";
-import PhpIcon from "../components/icons/tech/php.svg?react";
-import MysqlIcon from "../components/icons/tech/mysql.svg?react";
-import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
-import BootstrapIcon from "../components/icons/tech/bootstrap.svg?react";
-import JqueryIcon from "../components/icons/tech/jquery.svg?react";
+import { CONDISA_PROJECTS } from "../data/condisa";
+import { useCyclicIndex } from "../hooks/useCyclicIndex";
 
 const ProjectsCondisa = () => {
   const gridRef = useRef(null);
   const reduce = useReducedMotion();
-  const [activeProject, setActiveProject] = useState("website");
+  const projectKeys = Object.keys(CONDISA_PROJECTS);
+  const { key: activeProject, goToNext, goToPrevious } =
+    useCyclicIndex(projectKeys);
 
-  // Project Data Configuration
-  const projectsData = {
-    website: {
-      id: "website",
-      title: "Website Condisa Romero",
-      description:
-        "Sitio web corporativo para una empresa de construcción y servicios. Desarrollado para fortalecer la presencia digital y facilitar el contacto con clientes. Cuenta con secciones de servicios, proyectos y blog, optimizado para SEO y rendimiento.",
-      icon: (
-        <img
-          src={
-            new URL(
-              "../assets/img/icon-projects/web-condisa.webp",
-              import.meta.url,
-            ).href
-          }
-          alt="Website Condisa Romero"
-          className="w-10 h-10 object-contain drop-shadow-md"
-        />
-      ),
-      images: [
-        new URL(
-          "../assets/img/projects/condisa/website-condisa-romero-1.webp",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../assets/img/projects/condisa/website-condisa-romero-2.webp",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../assets/img/projects/condisa/website-condisa-romero-3.webp",
-          import.meta.url,
-        ).href,
-      ],
-      techs: [
-        { Icon: ReactIcon, name: "React", color: "text-cyan-400" },
-        { Icon: ViteIcon, name: "Vite", color: "text-purple-500" },
-        { Icon: CssIcon, name: "CSS", color: "text-blue-600" },
-        { Icon: ResponsiveIcon, name: "Responsive", color: "text-green-500" },
-      ],
-      repoUrl: "https://github.com/m1gang/website-condisa-romero",
-    },
-    pos: {
-      id: "pos",
-      title: "Sistema POS Librería",
-      description:
-        "Sistema de Punto de Venta (POS) completo para la gestión de inventario y ventas de una librería. Incluye manejo de productos, control de stock, generación de reportes y facturación. Desarrollado con PHP y MySQL para una gestión robusta de datos.",
-      icon: (
-        <img
-          src={
-            new URL(
-              "../assets/img/icon-projects/pos-condisa.webp",
-              import.meta.url,
-            ).href
-          }
-          alt="Sistema POS Librería"
-          className="w-10 h-10 object-contain drop-shadow-md"
-        />
-      ),
-      images: [
-        new URL(
-          "../assets/img/projects/condisa/pos-libreria-1.webp",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../assets/img/projects/condisa/pos-libreria-2.webp",
-          import.meta.url,
-        ).href,
-        new URL(
-          "../assets/img/projects/condisa/pos-libreria-3.webp",
-          import.meta.url,
-        ).href,
-      ],
-      techs: [
-        { Icon: PhpIcon, name: "PHP" },
-        { Icon: MysqlIcon, name: "MySQL" },
-        { Icon: JavascriptIcon, name: "JS" },
-        { Icon: BootstrapIcon, name: "Bootstrap" },
-        { Icon: JqueryIcon, name: "jquery" },
-      ],
-      repoUrl: "https://github.com/m1gang/pos-system-php",
-    },
-  };
-
-  const nextProject = () => {
-    const projectKeys = Object.keys(projectsData);
-    const currentIndex = projectKeys.indexOf(activeProject);
-    const nextIndex = (currentIndex + 1) % projectKeys.length;
-    setActiveProject(projectKeys[nextIndex]);
-  };
-
-  const prevProject = () => {
-    const projectKeys = Object.keys(projectsData);
-    const currentIndex = projectKeys.indexOf(activeProject);
-    const prevIndex =
-      (currentIndex - 1 + projectKeys.length) % projectKeys.length;
-    setActiveProject(projectKeys[prevIndex]);
-  };
-
-  const currentProject = projectsData[activeProject];
+  const currentProject = CONDISA_PROJECTS[activeProject];
 
   return (
     <div className="flex-1 w-full max-w-7xl mx-auto p-4 lg:px-10 lg:py-4 flex flex-col gap-6 overflow-y-auto lg:overflow-hidden  lg:h-screen">
@@ -169,8 +66,8 @@ const ProjectsCondisa = () => {
                 alt={`${currentProject.title} screenshot`}
                 autoPlay={true}
                 interval={4000}
-                onPrevProject={prevProject}
-                onNextProject={nextProject}
+                onPrevProject={goToPrevious}
+                onNextProject={goToNext}
               />
             </div>
           </MagicCard>
