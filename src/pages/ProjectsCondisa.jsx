@@ -31,7 +31,11 @@ const ProjectsCondisa = () => {
           <MagicCard className="h-full card-glass p-4 lg:px-6 lg:py-4 bg-[#0a0a0a90] border-white/5 font-roboto transition-colors duration-500 hover:bg-white/[0.02]">
             <div className="flex items-center gap-4 h-full w-full justify-center">
               <div className="p-3 rounded-xl border bg-white/5 border-white/10 transition-colors duration-500 shrink-0 flex items-center justify-center">
-                {currentProject.icon}
+                <img
+                  src={currentProject.icon}
+                  alt={currentProject.iconAlt}
+                  className="w-10 h-10 object-contain drop-shadow-md"
+                />
               </div>
 
               <h2 className="text-lg md:text-xl font-bold text-white text-center select-none">
