@@ -10,17 +10,43 @@
       name="description"
       content="MiGaNg — Ingeniero de Sistemas y Frontend Developer. React, Tailwind y experiencias web modernas. Proyectos, experiencia y contacto."
     />
+    <!--
+      Open Graph / Twitter Card.
+      La imagen vive en public/ (no en src/assets/) a propósito: los assets
+      importados se hashean en cada build y la URL cambiaría, rompiendo la
+      caché de los crawlers. public/ mantiene https://m1gang.github.io/og-migang.png
+      estable. No la precargamos: solo la piden los crawlers, no los visitantes.
+    -->
+    <link rel="canonical" href="https://m1gang.github.io/" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MiGaNg" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:url" content="https://m1gang.github.io/" />
     <meta property="og:title" content="MiGaNg - Ingeniero de Sistemas & Frontend Developer" />
     <meta
       property="og:description"
       content="Portafolio de MiGaNg: proyectos React, experiencia en desarrollo web y soporte IT, contacto."
     />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://m1gang.github.io/og-migang.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="MiGaNg — Ingeniero de Sistemas & Frontend Developer"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="MiGaNg - Ingeniero de Sistemas & Frontend Developer" />
     <meta
       name="twitter:description"
       content="Portafolio de MiGaNg: proyectos React, experiencia en desarrollo web y soporte IT, contacto."
+    />
+    <meta name="twitter:image" content="https://m1gang.github.io/og-migang.png" />
+    <meta
+      name="twitter:image:alt"
+      content="MiGaNg — Ingeniero de Sistemas & Frontend Developer"
     />
     <title>MiGaNg - Ingeniero de Sistemas & Frontend Developer</title>
     <script type="module" crossorigin src="/assets/index-B4uJMLN_.js"></script>
