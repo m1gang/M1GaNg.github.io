@@ -42,13 +42,16 @@ const SKILL_GROUPS = [
   { title: "Diseño & UI", icon: Palette, skills: [["Figma", FigmaIcon], ["Bootstrap", BootstrapIcon], ["Material UI", MaterialUiIcon], ["jQuery", JqueryIcon], ["Giphy API", GiphyIcon]] },
 ];
 
+// Ordenados a mano del más reciente al más antiguo. Los certificados sin fecha
+// de mes quedan agrupados por año; dentro de un mismo año manda el orden de
+// declaración, así que mover un item lo reordena sin tocar nada más.
 const CERTIFICATIONS = [
-  { title: "Responsive Web Design", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: 2024, url: "https://www.freecodecamp.org/certification/migang/responsive-web-design" },
-  { title: "JavaScript Algorithms and Data Structures", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: 2025, url: "https://www.freecodecamp.org/certification/migang/javascript-algorithms-and-data-structures-v8" },
+  { title: "Obsidian: Tu Segundo Cerebro con IA", source: "HolaMundo", sourceIcon: HolamundoIcon, year: 2026, url: "https://academia.holamundo.io/certificates/qlejqp7uio", featured: true },
+  { title: "React: De cero a experto", source: "Udemy", sourceIcon: UdemyIcon, year: 2026, url: "https://www.udemy.com/certificate/UC-ab7b739a-503d-434d-baaf-4481c02bbada/", featured: true },
   { title: "Desarrollo Front-End", source: "Gobierno del Perú", sourceIcon: GobPeIcon, year: 2025, url: "/certificado/Certificado_Desarrollo_Web_Front-end.pdf", featured: true },
   { title: "Aprende TypeScript paso a paso", source: "Udemy", sourceIcon: UdemyIcon, year: 2025, url: "https://www.udemy.com/certificate/UC-b4e8e098-9a59-4173-bed0-d4225e294239/" },
-  { title: "React: De cero a experto", source: "Udemy", sourceIcon: UdemyIcon, year: 2026, url: "https://www.udemy.com/certificate/UC-ab7b739a-503d-434d-baaf-4481c02bbada/", featured: true },
-  { title: "Obsidian: Tu Segundo Cerebro con IA", source: "HolaMundo", sourceIcon: HolamundoIcon, year: 2026, month: 10, url: "https://academia.holamundo.io/certificates/qlejqp7uio", featured: true },
+  { title: "JavaScript Algorithms and Data Structures", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: 2025, url: "https://www.freecodecamp.org/certification/migang/javascript-algorithms-and-data-structures-v8" },
+  { title: "Responsive Web Design", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: 2024, url: "https://www.freecodecamp.org/certification/migang/responsive-web-design" },
 ];
 
 const CertificationItem = ({ title, source, sourceIcon: SourceIcon, year, url, featured }) => (
