@@ -1,4 +1,4 @@
-﻿import { GraduationCap, Flame, Code2, Landmark, CheckCircle2, Sparkles, BadgeCheck, Layout, Palette, Wrench } from "lucide-react";
+﻿import { GraduationCap, Code2, BadgeCheck, Layout, Palette, Wrench, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 import { MagicCard } from "../components/MagicCard";
 import { reveal, useReducedMotion } from "@/lib/motion";
@@ -32,6 +32,8 @@ import TicktickIcon from "../components/icons/tech/ticktick.svg?react";
 import OrcaIcon from "../components/icons/tech/orca.svg?react";
 import FreecodecampIcon from "../components/icons/tech/freecodecamp.svg?react";
 import UdemyIcon from "../components/icons/tech/udemy.svg?react";
+import HolamundoIcon from "../components/icons/tech/holamundo.svg?react";
+import GobPeIcon from "../components/icons/tech/gob-pe.svg?react";
 
 const SKILL_GROUPS = [
   { title: "Frontend", icon: Layout, skills: [["HTML", HtmlIcon], ["CSS", CssIcon], ["JavaScript", JavascriptIcon], ["TypeScript", TypescriptIcon], ["React", ReactIcon], ["Astro", AstroIcon], ["Tailwind", TailwindIcon]] },
@@ -41,18 +43,36 @@ const SKILL_GROUPS = [
 ];
 
 const CERTIFICATIONS = [
-  { title: "Responsive Web Design", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: "2024", Icon: Flame, color: "#fb923c" },
-  { title: "JavaScript Algorithms and Data Structures", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: "2025", Icon: Code2, color: "#facc15" },
-  { title: "Desarrollo Front-End", source: "Gobierno del Perú", sourceIcon: Landmark, year: "2025", Icon: Landmark, color: "#38bdf8" },
-  { title: "Aprende TypeScript paso a paso", source: "Udemy", sourceIcon: UdemyIcon, year: "2025", Icon: CheckCircle2, color: "#a78bfa", featured: true },  { title: "React: De cero a experto", source: "Udemy", sourceIcon: UdemyIcon, year: "2026", Icon: Sparkles, color: "#34d399", featured: true },
+  { title: "Responsive Web Design", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: "2024", url: "https://www.freecodecamp.org/certification/migang/responsive-web-design" },
+  { title: "JavaScript Algorithms and Data Structures", source: "freeCodeCamp", sourceIcon: FreecodecampIcon, year: "2025", url: "https://www.freecodecamp.org/certification/migang/javascript-algorithms-and-data-structures-v8" },
+  { title: "Desarrollo Front-End", source: "Gobierno del Perú", sourceIcon: GobPeIcon, year: "2025", url: "/certificado/Certificado_Desarrollo_Web_Front-end.pdf", featured: true },
+  { title: "Aprende TypeScript paso a paso", source: "Udemy", sourceIcon: UdemyIcon, year: "2025", url: "https://www.udemy.com/certificate/UC-b4e8e098-9a59-4173-bed0-d4225e294239/" },
+  { title: "React: De cero a experto", source: "Udemy", sourceIcon: UdemyIcon, year: "2026", url: "https://www.udemy.com/certificate/UC-ab7b739a-503d-434d-baaf-4481c02bbada/", featured: true },
 ];
 
-const CertificationItem = ({ title, source, sourceIcon: SourceIcon, year, Icon, featured }) => (
-  <div className={`group flex min-w-0 items-center gap-3 rounded-xl border px-3 py-2.5 transition-colors ${featured ? "border-emerald-300/20 bg-emerald-300/[0.04]" : "border-white/10 bg-white/[0.02] hover:bg-white/[0.05]"}`}>
-    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 text-white/80">{SourceIcon ? <SourceIcon width={20} height={20} aria-hidden="true" /> : <Icon size={18} strokeWidth={1.7} aria-hidden="true" />}</span>
-    <div className="min-w-0 flex-1"><h3 className="truncate text-xs font-semibold text-white/90">{title}</h3><p className="mt-0.5 text-[10px] text-white/45">{source}</p></div>
+const CertificationItem = ({ title, source, sourceIcon: SourceIcon, year, url, featured }) => (
+  <a
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Ver certificado de ${title} (se abre en una pestaña nueva)`}
+    className={`group flex min-w-0 items-center gap-3 rounded-xl border px-3 py-2.5 transition-colors hover:bg-white/[0.07] focus-visible:bg-white/[0.07] ${featured ? "border-emerald-300/20 bg-emerald-300/[0.04]" : "border-white/10 bg-white/[0.02]"}`}
+  >
+    <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-white/10 text-white/80">
+      {SourceIcon && <SourceIcon width={20} height={20} aria-hidden="true" />}
+    </span>
+    <div className="min-w-0 flex-1">
+      <h3 className="truncate text-xs font-semibold text-white/90">{title}</h3>
+      <p className="mt-0.5 text-[10px] text-white/45">{source}</p>
+    </div>
     <span className="shrink-0 text-[10px] font-bold tracking-[0.16em] text-white/45">{year}</span>
-  </div>
+    <ArrowUpRight
+      size={14}
+      strokeWidth={2}
+      aria-hidden="true"
+      className="shrink-0 text-white/35 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white/80 group-focus-visible:translate-x-0.5 group-focus-visible:-translate-y-0.5 group-focus-visible:text-white/80"
+    />
+  </a>
 );
 
 const ProfileEducation = () => {
