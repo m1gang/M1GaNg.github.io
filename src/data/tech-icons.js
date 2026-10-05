@@ -3,6 +3,8 @@ import CssIcon from "../components/icons/tech/css.svg?react";
 import JavascriptIcon from "../components/icons/tech/javascript.svg?react";
 import RegexIcon from "../components/icons/tech/regex.svg?react";
 import FreecodecampIcon from "../components/icons/tech/freecodecamp.svg?react";
+import HolamundoIcon from "../components/icons/tech/holamundo.svg?react";
+import GobPeIcon from "../components/icons/tech/gob-pe.svg?react";
 import ApiInterfaceIcon from "../components/icons/tech/api-interface.svg?react";
 import TailwindIcon from "../components/icons/tech/tailwindcss.svg?react";
 import ResponsiveIcon from "../components/icons/tech/responsive.svg?react";
@@ -37,6 +39,8 @@ export const TECH_ICONS = {
   JS: JavascriptIcon,
   Regex: RegexIcon,
   freecodecamp: FreecodecampIcon,
+  holamundo: HolamundoIcon,
+  "gob-pe": GobPeIcon,
   API: ApiInterfaceIcon,
   Tailwind: TailwindIcon,
   "Tailwind CSS": TailwindIcon,
