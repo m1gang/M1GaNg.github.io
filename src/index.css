@@ -18,6 +18,9 @@ body,
 
 :root {
     --radius: 0.625rem;
+    /* Sileo toasts: acentos semánticos del portafolio (esmeralda / rojo zinc). */
+    --sileo-state-success: oklch(0.8 0.19 160);
+    --sileo-state-error: oklch(0.72 0.19 25);
 }
 
 @theme inline {

@@ -1,22 +1,16 @@
 import { motion } from "motion/react";
-import {
-  Send,
-  Check,
-  Loader2,
-  User,
-  AtSign,
-  Tag,
-} from "lucide-react";
+import { Send, Check, Loader2, User, AtSign, Tag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagicCard } from "../MagicCard";
 import { EMAIL, inputCls } from "../../constants/contact";
 
-// Formulario protagonista de Contacto (envío simulado, sin backend).
+// Formulario protagonista de Contacto (envío real a Web3Forms + honeypot).
 export const ContactForm = ({
   rise,
   formData,
   sending,
   sent,
+  error,
   messageCount,
   messageMax,
   handleChange,
@@ -214,6 +208,17 @@ export const ContactForm = ({
               <a
                 href={`mailto:${EMAIL}`}
                 className="font-semibold underline underline-offset-4 hover:text-emerald-200"
+              >
+                {EMAIL}
+              </a>
+            </p>
+          )}
+          {error && (
+            <p role="alert" className="text-center text-sm text-red-300">
+              Algo salió mal. Inténtalo de nuevo o escríbeme directo a{" "}
+              <a
+                href={`mailto:${EMAIL}`}
+                className="font-semibold underline underline-offset-4 hover:text-red-200"
               >
                 {EMAIL}
               </a>

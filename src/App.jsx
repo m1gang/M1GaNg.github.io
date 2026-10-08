@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Loader } from "./pages/Loader";
 import { RouterProvider } from "react-router";
 import { router } from "./routes/routes";
+import { Toaster } from "sileo";
 
 const FADE = { duration: 0.1, ease: "easeInOut" };
 
@@ -33,6 +34,19 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Toaster
+        position="top-right"
+        options={{
+          fill: "#18181b",
+          roundness: 20,
+          styles: {
+            title: "font-clash tracking-tight text-white!",
+            description: "font-roboto text-white/75!",
+            badge: "bg-white/10!",
+            button: "bg-white/10! hover:bg-white/15!",
+          },
+        }}
+      />
       <AnimatePresence mode="wait">
         {showLoader ? (
           <motion.div
