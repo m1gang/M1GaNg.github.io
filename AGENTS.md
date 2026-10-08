@@ -36,6 +36,6 @@ React 19 + Vite 7 + Tailwind CSS 4 + React Router 7 + Motion + shadcn/ui (New Yo
 
 - `MagicCard.jsx` is a plain `[[ORCA_RICH_MD:e4a4f6eb18ded0f330614369a93481f9:inline-html:%3Cdiv%3E]]` wrapper (no motion/tilt/particles). Do not pass motion props.
 - `ImageCarousel.jsx` autoplay respects `prefers-reduced-motion`, pauses on hover/tab-hide; edge nav buttons are always visible on touch (`hover:none`).
-- Contact form is visual-only (simulated sent state, no backend).
+- Contact form submits via Web3Forms (free tier): access key in `.env` as `VITE_WEB3FORMS_ACCESS_KEY` (see `.env.example`), honeypot `botcheck` travels empty in the JSON payload. Toasts use Sileo (`<Toaster>` mounted in `App.jsx`, dark defaults via `options`).
 - No test framework. No CI workflows detected.
 

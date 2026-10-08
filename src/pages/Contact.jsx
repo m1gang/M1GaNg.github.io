@@ -17,6 +17,7 @@ const Contact = () => {
     copied,
     sending,
     sent,
+    error,
     messageCount,
     handleChange,
     handleSubmit,
@@ -40,6 +41,7 @@ const Contact = () => {
           formData={formData}
           sending={sending}
           sent={sent}
+          error={error}
           messageCount={messageCount}
           messageMax={messageMax}
           handleChange={handleChange}
