@@ -38,6 +38,9 @@ importers:
       react-router:
         specifier: ^7.9.6
         version: 7.18.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      sileo:
+        specifier: 0.1.5
+        version: 0.1.5(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       tailwind-merge:
         specifier: ^3.4.0
         version: 3.7.0
@@ -1816,6 +1819,12 @@ packages:
   side-channel@1.1.1:
     resolution: {integrity: sha512-6x6dK6zJdpTzF4sQeNYxwtvBzf6Eg4GtlesS94HOvTudUeyK2WXAaIfmDgsyslYrRBeFIlsi54AYsFGUuhmvrQ==}
     engines: {node: '>= 0.4'}
+
+  sileo@0.1.5:
+    resolution: {integrity: sha512-Fc/3VNFWgQlZttkyvAdnPlzWrLTaii6FIas7nMivlx3uGuKpuNNRZGtSgNRFqTHFn70ZxEjKYxsBIO0nQlDGAg==}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
 
   snake-case@3.0.4:
     resolution: {integrity: sha512-LAOh4z89bGQvl9pFfNF8V146i7o7/CqFPbqzYgP+yYzDIDeS9HaNFtXABamRW+AQzEVODcvE79ljJ+8a9YSdMg==}
@@ -3801,6 +3810,14 @@ snapshots:
       side-channel-list: 1.0.1
       side-channel-map: 1.0.1
       side-channel-weakmap: 1.0.2
+
+  sileo@0.1.5(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+    dependencies:
+      motion: 12.43.0(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+    transitivePeerDependencies:
+      - '@emotion/is-prop-valid'
 
   snake-case@3.0.4:
     dependencies:
