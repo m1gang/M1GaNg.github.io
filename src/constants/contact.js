@@ -1,15 +1,6 @@
 // Datos de contacto compartidos por la portada y la página de contacto.
 // Fuente única: si cambia el correo o la ubicación, se cambia aquí.
-import {
-  Code2,
-  Github,
-  Handshake,
-  Instagram,
-  Linkedin,
-  Rocket,
-  Twitter,
-  Wrench,
-} from "lucide-react";
+import { Code2, Github, Instagram, Linkedin, Rocket, Twitter, Wrench } from "lucide-react";
 
 export const EMAIL = "miguelangelyv1@gmail.com";
 export const LOCATION_LABEL = "Perú · GMT-5 · Remoto o presencial";
@@ -30,13 +21,12 @@ export const inputCls =
 
 // Servicios — tarjeta "En qué puedo ayudar" de Contacto. Copy
 // aterrizado en lo que el portafolio ya afirma (rol de frontend,
-// proyectos de landings, soporte técnico y las vacantes que el
-// propio formulario menciona): ningún claim nuevo.
+// proyectos de landings, soporte técnico). Las vacantes ya las
+// nombra el contexto de la cabecera, no se repiten aquí.
 export const SERVICES = [
   { icon: Code2, title: "Frontend freelance" },
   { icon: Rocket, title: "Landing pages" },
   { icon: Wrench, title: "Soporte IT" },
-  { icon: Handshake, title: "Vacantes y colaboración" },
 ];
 
 // Tira de redes — pie de la página de Contacto.

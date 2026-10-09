@@ -7,8 +7,9 @@ import { EMAIL, inputCls } from "../../constants/contact";
 // "La Carta" — el formulario, componente principal del tablero.
 // Sin scroll interno: ocupa toda la altura de su celda y el campo
 // de mensaje absorbe el espacio sobrante (flex-1). El sellado
-// lleva degradado esmeralda de tres paradas con highlight físico
-// y sombra con offset real.
+// lleva degradado rosa-rojo-naranja (cera) con highlight físico
+// y sombra con offset real; el esmeralda queda solo para lo
+// semántico (badge de disponibilidad, estado enviado).
 export const ContactForm = ({
   rise,
   formData,
@@ -167,7 +168,7 @@ export const ContactForm = ({
           <button
             type="submit"
             disabled={sending}
-            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-br from-emerald-300 via-emerald-400 to-emerald-600 px-4 h-12 lg:h-12 text-[15px] font-bold tracking-tight text-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),inset_0_-1px_0_rgba(6,78,59,0.18),0_14px_34px_-10px_rgba(16,185,129,0.6)] transition-all duration-200 hover:-translate-y-[2px] hover:brightness-105 active:translate-y-0 active:scale-[0.98] active:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(6,78,59,0.18),0_6px_16px_-8px_rgba(16,185,129,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-rose-500 via-red-500 to-orange-500 px-4 h-12 lg:h-12 text-[15px] font-bold tracking-tight text-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-1px_0_rgba(124,10,10,0.25),0_14px_34px_-10px_rgba(244,63,94,0.55)] transition-all duration-200 hover:-translate-y-[2px] hover:brightness-105 active:translate-y-0 active:scale-[0.98] active:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(124,10,10,0.25),0_6px_16px_-8px_rgba(244,63,94,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
           >
             {sending ? (
               <>
