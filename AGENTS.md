@@ -11,6 +11,20 @@ pnpm lint      # ESLint on *.{js,jsx}
 
 No test script, no typecheck script.
 
+### Deploy (GitHub Pages via `gh-pages` branch)
+
+Pages publica la rama `gh-pages`, y su contenido es el `dist/` buildeado. **El build debe ejecutarse con el `.env` presente**, porque las variables `VITE_*` se incrustan en el JavaScript al compilar (no se leen en runtime): si el `dist` se construye sin `.env`, en producción `import.meta.env.VITE_WEB3FORMS_ACCESS_KEY` queda `undefined` y el formulario falla con el toast "Formulario sin configurar" aunque en local funcione.
+
+Windows (PowerShell), sin escribir la clave en disco:
+
+```powershell
+$env:VITE_WEB3FORMS_ACCESS_KEY = ((Get-Content .env | Select-String '^VITE_WEB3FORMS_ACCESS_KEY=') -split '=',2)[1].Trim()
+pnpm build
+# verificar antes de subir: la clave debe aparecer en dist/assets/*.js
+```
+
+Luego copiar `dist/*` dentro de un worktree sobre `origin/gh-pages`, commitear como `deploy: <sha de main>` y hacer push a `gh-pages`.
+
 ## Stack
 
 React 19 + Vite 7 + Tailwind CSS 4 + React Router 7 + Motion + shadcn/ui (New York, Zinc, no RSC)
