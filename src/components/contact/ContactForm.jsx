@@ -4,7 +4,15 @@ import { cn } from "@/lib/utils";
 import { MagicCard } from "../MagicCard";
 import { EMAIL, inputCls } from "../../constants/contact";
 
-// Formulario protagonista de Contacto (envío real a Web3Forms + honeypot).
+// "La Carta" — el formulario, componente principal del tablero.
+// Sin scroll interno: ocupa toda la altura de su celda y el campo
+// de mensaje absorbe el espacio sobrante (flex-1) con tope
+// max-h-56, para que la carta respire sin estirarse de más. Si la
+// columna lateral es más alta, el sobrante se centra alrededor del
+// bloque de mensaje (justify-center), nunca como huecos raros.
+// El sellado lleva degradado rosa-rojo-naranja (cera) con highlight
+// físico y sombra con offset real; el esmeralda queda solo para lo
+// semántico (badge de disponibilidad, estado enviado).
 export const ContactForm = ({
   rise,
   formData,
@@ -18,28 +26,15 @@ export const ContactForm = ({
 }) => (
   <motion.div
     {...rise}
-    className="lg:col-span-7 min-w-0 order-1 lg:order-2 lg:min-h-0 lg:h-full"
+    className="flex min-h-0 min-w-0 md:col-span-7 lg:[grid-area:form]"
   >
     <MagicCard
-      aria-labelledby="contact-form-title"
-      className="card-glass p-5 lg:p-5 font-roboto flex flex-col min-w-0 h-full lg:min-h-0 lg:overflow-y-auto"
+      aria-labelledby="contact-page-title"
+      className="card-glass h-full w-full p-4 lg:p-5 font-roboto flex flex-col min-w-0"
     >
-      <div className="min-w-0">
-        <h2
-          id="contact-form-title"
-          className="text-[28px] lg:text-[32px] font-semibold tracking-tight leading-tight text-white text-balance"
-        >
-          Escríbeme
-        </h2>
-        <p className="mt-1.5 max-w-[52ch] text-sm leading-relaxed text-white/75">
-          Campos obligatorios marcados con *. Sin spam, sin compromiso: solo una
-          respuesta clara.
-        </p>
-      </div>
-
       <form
         onSubmit={handleSubmit}
-        className="mt-4 lg:mt-3 flex flex-col gap-3 lg:gap-2.5 flex-1 min-h-0"
+        className="flex flex-col gap-3 flex-1 min-h-0"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="min-w-0">
@@ -132,7 +127,8 @@ export const ContactForm = ({
           </div>
         </div>
 
-        <div className="flex flex-col flex-1 min-h-0">
+        {/* El mensaje absorbe la altura sobrante de la carta, con tope */}
+        <div className="flex flex-col justify-center flex-1 min-h-0">
           <div className="mb-1.5 flex items-baseline justify-between gap-3">
             <label
               htmlFor="contact-message"
@@ -161,22 +157,21 @@ export const ContactForm = ({
             value={formData.message}
             onChange={handleChange}
             placeholder="Contexto, objetivo y tiempos: ¿qué necesitas lograr y para cuándo?"
-            rows={3}
             required
             disabled={sending}
             maxLength={messageMax}
             className={cn(
               inputCls,
-              "min-h-[84px] lg:min-h-[72px] flex-1 px-4 py-2.5 resize-none lg:resize-none",
+              "flex-1 min-h-[120px] max-h-56 px-4 py-2.5 resize-none",
             )}
           />
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 pt-0.5">
           <button
             type="submit"
             disabled={sending}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 h-12 lg:h-11 text-[15px] font-semibold text-zinc-950 shadow-[0_8px_28px_-10px_rgba(255,255,255,0.5)] transition-all duration-200 hover:-translate-y-[1px] hover:bg-zinc-200 active:translate-y-0 active:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-r from-rose-500 via-red-500 to-orange-500 px-4 h-12 lg:h-12 text-[15px] font-bold tracking-tight text-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.4),inset_0_-1px_0_rgba(124,10,10,0.25),0_14px_34px_-10px_rgba(244,63,94,0.55)] transition-all duration-200 hover:-translate-y-[2px] hover:brightness-105 active:translate-y-0 active:scale-[0.98] active:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(124,10,10,0.25),0_6px_16px_-8px_rgba(244,63,94,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
           >
             {sending ? (
               <>
@@ -184,17 +179,22 @@ export const ContactForm = ({
                   aria-hidden="true"
                   className="w-5 h-5 animate-spin motion-reduce:animate-none"
                 />
-                Enviando…
+                Sellando…
               </>
             ) : sent ? (
               <>
                 <Check aria-hidden="true" className="w-5 h-5" />
-                Enviar otro mensaje
+                Sellar otro mensaje
               </>
             ) : (
               <>
-                <Send aria-hidden="true" className="w-5 h-5" />
-                Enviar mensaje
+                <span
+                  aria-hidden="true"
+                  className="grid size-7 shrink-0 place-items-center rounded-lg bg-zinc-950/12 transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  <Send className="size-[15px]" />
+                </span>
+                Sellar y enviar
               </>
             )}
           </button>
