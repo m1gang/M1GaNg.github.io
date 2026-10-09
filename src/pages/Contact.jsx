@@ -102,7 +102,7 @@ const Contact = () => {
           {/* 3. COLUMNA LATERAL — canales directos (arriba), en qué
               puedo ayudar (centro, flexible: absorbe la altura
               sobrante) y redes con CV (abajo) */}
-          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[minmax(0,1.2fr)_minmax(0,2.4fr)_minmax(0,1.3fr)]">
+          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[minmax(0,1.25fr)_minmax(0,1.7fr)_minmax(0,1.3fr)]">
             <ContactChannels
               rise={rise(2)}
               copied={copied}
