@@ -23,6 +23,8 @@ pnpm build
 # verificar antes de subir: la clave debe aparecer en dist/assets/*.js
 ```
 
+Vite carga `.env` solo, así que `pnpm build` desde la raíz del repo ya la incluye; la inyección manual solo hace falta si el build corre en un entorno sin el archivo.
+
 Luego copiar `dist/*` dentro de un worktree sobre `origin/gh-pages`, commitear como `deploy: <sha de main>` y hacer push a `gh-pages`.
 
 ## Stack
