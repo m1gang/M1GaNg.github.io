@@ -24,7 +24,7 @@ export const ContactSocials = ({ rise }) => (
     aria-label="Redes sociales y currículum"
     className="flex min-w-0"
   >
-    <MagicCard className="card-glass h-full w-full px-4 py-3.5 lg:px-5 font-roboto flex flex-col gap-3">
+    <MagicCard className="card-glass h-full w-full px-4 py-3.5 lg:px-5 font-roboto flex flex-col justify-center gap-3">
       {/* Redes con gradientes de marca + CV */}
       <ul className="flex flex-wrap items-center gap-1.5">
         {SOCIALS.map(({ icon: Icon, label, href }) => (

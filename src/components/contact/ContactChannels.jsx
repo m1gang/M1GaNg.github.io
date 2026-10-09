@@ -29,7 +29,7 @@ export const ContactChannels = ({ rise, copied, handleCopyEmail }) => (
     aria-label="Canales directos de contacto"
     className="flex min-w-0"
   >
-    <MagicCard className="card-glass h-full w-full p-4 lg:p-5 font-roboto flex flex-col gap-2">
+    <MagicCard className="card-glass h-full w-full p-4 lg:p-5 font-roboto flex flex-col justify-center gap-2">
       {/* Email directo copiable */}
       <div className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.06]">
         <span
