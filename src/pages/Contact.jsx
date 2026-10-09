@@ -3,7 +3,6 @@ import { reveal, useReducedMotion } from "@/lib/motion";
 import { MagicCard } from "@/components/MagicCard";
 import { useContactForm } from "../hooks/useContactForm";
 import ContactForm from "../components/contact/ContactForm";
-import ContactSteps from "../components/contact/ContactSteps";
 import ContactChannels from "../components/contact/ContactChannels";
 import ContactSocials from "../components/contact/ContactSocials";
 
@@ -15,6 +14,10 @@ import ContactSocials from "../components/contact/ContactSocials";
 // contenido ni se anida scroll. Color concentrado: esmeralda para
 // la acción, gradientes de marca en redes. Sistema heredado: zinc
 // monocromo, .card-glass (25px), Clash Display + Roboto.
+//
+// Port-11: se retira el card "Qué pasa después" (información vacía
+// para el visitante) y las redes suben a la columna lateral, junto
+// a los canales directos. El grid baja a 2 filas: cabecera + cuerpo.
 const Contact = () => {
   const reduceMotion = useReducedMotion();
   const {
@@ -40,15 +43,16 @@ const Contact = () => {
         aria-label="Contacto"
         className="bento-section rounded-md text-white w-full h-auto lg:h-full"
       >
-        {/* Grid avanzado: áreas nombradas. lg = 3 filas
-            (cabecera / cuerpo / tira) con el formulario ocupando
-            8 de 12 columnas del cuerpo. md = 12 cols por spans;
-            móvil = columna única. */}
+        {/* Grid avanzado: áreas nombradas. lg = 2 filas
+            (cabecera / cuerpo) con el formulario ocupando 8 de 12
+            columnas y la columna lateral (canales + redes) las 4
+            restantes. md = 12 cols por spans; móvil = columna
+            única. */}
         <div
           className="grid gap-4 h-auto lg:h-full grid-cols-1
                      md:grid-cols-12
-                     lg:grid-rows-[auto_minmax(min-content,1fr)_auto]
-                     lg:[grid-template-areas:'head_head_head_head_head_head_head_head_head_head_head_head'_'form_form_form_form_form_form_form_form_side_side_side_side'_'strip_strip_strip_strip_strip_strip_strip_strip_strip_strip_strip_strip']"
+                     lg:grid-rows-[auto_minmax(min-content,1fr)]
+                     lg:[grid-template-areas:'head_head_head_head_head_head_head_head_head_head_head_head'_'form_form_form_form_form_form_form_form_side_side_side_side']"
         >
           {/* 1. CABECERA — tira compacta: disponibilidad, headline y contexto */}
           <motion.header
@@ -89,18 +93,15 @@ const Contact = () => {
             handleSubmit={handleSubmit}
           />
 
-          {/* 3. COLUMNA LATERAL — pasos (arriba) + canales directos (abajo) */}
-          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[minmax(0,1fr)_auto]">
-            <ContactSteps rise={rise(2)} />
+          {/* 3. COLUMNA LATERAL — canales directos (arriba) + redes y CV (abajo) */}
+          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[auto_auto]">
             <ContactChannels
-              rise={rise(3)}
+              rise={rise(2)}
               copied={copied}
               handleCopyEmail={handleCopyEmail}
             />
+            <ContactSocials rise={rise(3)} />
           </div>
-
-          {/* 4. REDES Y CV — tira final */}
-          <ContactSocials rise={rise(4)} />
         </div>
       </section>
     </div>

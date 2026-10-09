@@ -1,17 +1,16 @@
 import { motion } from "motion/react";
-import { Mail, Check, Copy, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, Check, Copy, Phone, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagicCard } from "../MagicCard";
 import {
   EMAIL,
-  LOCATION_LABEL,
   PHONE_LABEL,
   TILE_CLS,
   WHATSAPP_HREF,
 } from "../../constants/contact";
 
-// Canales directos — tarjeta inferior de la columna lateral:
-// email copiable, WhatsApp y ubicación. Sin scroll interno.
+// Canales directos — tarjeta superior de la columna lateral:
+// email copiable y WhatsApp. Sin scroll interno.
 export const ContactChannels = ({ rise, copied, handleCopyEmail }) => (
   <motion.section
     {...rise}
@@ -94,12 +93,6 @@ export const ContactChannels = ({ rise, copied, handleCopyEmail }) => (
           Correo copiado. Pégalo donde prefieras.
         </p>
       )}
-
-      {/* Ubicación */}
-      <p className="flex items-center gap-1.5 text-[13px] font-medium text-white/60">
-        <MapPin aria-hidden="true" className="size-4 shrink-0" />
-        {LOCATION_LABEL}
-      </p>
     </MagicCard>
   </motion.section>
 );

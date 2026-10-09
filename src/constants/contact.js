@@ -1,6 +1,6 @@
 // Datos de contacto compartidos por la portada y la página de contacto.
 // Fuente única: si cambia el correo o la ubicación, se cambia aquí.
-import { PenLine, Reply, CalendarCheck, Github, Linkedin, Twitter, Instagram } from "lucide-react";
+import { Github, Linkedin, Twitter, Instagram } from "lucide-react";
 
 export const EMAIL = "miguelangelyv1@gmail.com";
 export const LOCATION_LABEL = "Perú · GMT-5 · Remoto o presencial";
@@ -18,25 +18,6 @@ export const TILE_CLS =
 
 export const inputCls =
   "w-full bg-white/5 border border-white/10 rounded-xl text-[15px] leading-relaxed text-white placeholder:text-white/60 caret-white selection:bg-white/20 selection:text-white transition-[border-color,background-color,box-shadow] duration-200 hover:border-white/20 focus:border-white/40 focus:bg-white/[0.07] focus:outline-none focus:ring-2 focus:ring-white/15";
-
-// Pasos de respuesta — sección "Qué pasa después" de Contacto.
-export const STEPS = [
-  {
-    icon: PenLine,
-    title: "Cuéntame el objetivo",
-    desc: "Contexto, alcance y tiempos. Cuanto más concreto, mejor propuesta.",
-  },
-  {
-    icon: Reply,
-    title: "Respondo en menos de 24 h",
-    desc: "De lunes a viernes. Si es urgente, usa WhatsApp directo.",
-  },
-  {
-    icon: CalendarCheck,
-    title: "Agendamos una llamada",
-    desc: "15 minutos para alinear alcance, tiempos y siguiente paso.",
-  },
-];
 
 // Tira de redes — pie de la página de Contacto.
 export const SOCIALS = [
