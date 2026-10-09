@@ -1,1 +1,0 @@
-import{j as t}from"./index-B8ZLqvzX.js";const a=({children:r,className:e="",...o})=>t.jsx("div",{className:`${e} relative overflow-hidden transition-all duration-300 hover:bg-white/[0.02] hover:border-white/20`,...o,children:r});export{a as M};
