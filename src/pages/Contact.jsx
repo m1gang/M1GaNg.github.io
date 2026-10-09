@@ -4,6 +4,7 @@ import { MagicCard } from "@/components/MagicCard";
 import { useContactForm } from "../hooks/useContactForm";
 import ContactForm from "../components/contact/ContactForm";
 import ContactChannels from "../components/contact/ContactChannels";
+import ContactServices from "../components/contact/ContactServices";
 import ContactSocials from "../components/contact/ContactSocials";
 
 // Rediseño Contacto — tablero bento con áreas nombradas (port-10,
@@ -18,6 +19,9 @@ import ContactSocials from "../components/contact/ContactSocials";
 // Port-11: se retira el card "Qué pasa después" (información vacía
 // para el visitante) y las redes suben a la columna lateral, junto
 // a los canales directos. El grid baja a 2 filas: cabecera + cuerpo.
+// Port-12: la columna lateral pasa a 3 cards (canales, en qué puedo
+// ayudar, redes); la del medio es flexible y absorbe la altura
+// sobrante para que no quede espacio muerto bajo la columna.
 const Contact = () => {
   const reduceMotion = useReducedMotion();
   const {
@@ -93,14 +97,17 @@ const Contact = () => {
             handleSubmit={handleSubmit}
           />
 
-          {/* 3. COLUMNA LATERAL — canales directos (arriba) + redes y CV (abajo) */}
-          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[auto_auto]">
+          {/* 3. COLUMNA LATERAL — canales directos (arriba), en qué
+              puedo ayudar (centro, flexible: absorbe la altura
+              sobrante) y redes con CV (abajo) */}
+          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[auto_minmax(min-content,1fr)_auto]">
             <ContactChannels
               rise={rise(2)}
               copied={copied}
               handleCopyEmail={handleCopyEmail}
             />
-            <ContactSocials rise={rise(3)} />
+            <ContactServices rise={rise(3)} />
+            <ContactSocials rise={rise(4)} />
           </div>
         </div>
       </section>

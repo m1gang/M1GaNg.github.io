@@ -1,23 +1,25 @@
 import { motion } from "motion/react";
-import { Mail, Check, Copy, Phone, ArrowUpRight } from "lucide-react";
+import { Mail, Check, Copy, Phone, MessageCircle, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagicCard } from "../MagicCard";
 import {
   EMAIL,
+  PHONE_HREF,
   PHONE_LABEL,
   TILE_CLS,
   WHATSAPP_HREF,
 } from "../../constants/contact";
 
-// Canales directos — tarjeta superior de la columna lateral:
-// email copiable y WhatsApp. Sin scroll interno.
+// Canales directos — card superior de la columna lateral: email
+// copiable y el número de teléfono por sus dos vías (llamada y
+// WhatsApp). Sin scroll interno.
 export const ContactChannels = ({ rise, copied, handleCopyEmail }) => (
   <motion.section
     {...rise}
     aria-label="Canales directos de contacto"
     className="flex min-w-0"
   >
-    <MagicCard className="card-glass h-full w-full p-4 lg:p-5 font-roboto flex flex-col gap-2.5">
+    <MagicCard className="card-glass h-full w-full p-4 lg:p-5 font-roboto flex flex-col gap-2">
       {/* Email directo copiable */}
       <div className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-2.5 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.06]">
         <span
@@ -58,22 +60,23 @@ export const ContactChannels = ({ rise, copied, handleCopyEmail }) => (
         </button>
       </div>
 
-      {/* Teléfono / WhatsApp — tile con el verde de marca */}
+      {/* Teléfono — llamada directa */}
       <a
-        href={WHATSAPP_HREF}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={PHONE_HREF}
         className="group flex items-center gap-3 rounded-2xl border border-transparent px-2.5 transition-colors duration-200 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
         <span
           aria-hidden="true"
-          className="grid size-10 shrink-0 place-items-center rounded-xl border border-transparent bg-gradient-to-br from-[#25D366] to-[#075E54] text-white"
+          className={cn(
+            "grid size-9 shrink-0 place-items-center rounded-xl border transition-colors duration-200",
+            TILE_CLS,
+          )}
         >
           <Phone className="size-[18px]" />
         </span>
         <span className="min-w-0 flex-1">
           <span className="block text-[12px] leading-tight text-white/60">
-            Teléfono / WhatsApp
+            Teléfono
           </span>
           <span className="block truncate text-[15px] font-medium leading-snug text-white">
             {PHONE_LABEL}
@@ -85,10 +88,37 @@ export const ContactChannels = ({ rise, copied, handleCopyEmail }) => (
         />
       </a>
 
+      {/* WhatsApp — chat con el verde de marca */}
+      <a
+        href={WHATSAPP_HREF}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center gap-3 rounded-2xl border border-transparent px-2.5 transition-colors duration-200 hover:border-white/10 hover:bg-white/[0.04] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        <span
+          aria-hidden="true"
+          className="grid size-9 shrink-0 place-items-center rounded-xl border border-transparent bg-gradient-to-br from-[#25D366] to-[#075E54] text-white"
+        >
+          <MessageCircle className="size-[18px]" />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[12px] leading-tight text-white/60">
+            WhatsApp
+          </span>
+          <span className="block truncate text-[15px] font-medium leading-snug text-white">
+            Chatea conmigo
+          </span>
+        </span>
+        <ArrowUpRight
+          aria-hidden="true"
+          className="size-4 shrink-0 text-white/35 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white"
+        />
+      </a>
+
       {copied && (
         <p
           aria-live="polite"
-          className="-mt-1 text-[13px] leading-tight text-emerald-300"
+          className="-mt-0.5 text-[13px] leading-tight text-emerald-300"
         >
           Correo copiado. Pégalo donde prefieras.
         </p>
