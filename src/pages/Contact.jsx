@@ -50,14 +50,17 @@ const Contact = () => {
         {/* Grid avanzado: áreas nombradas. lg = 2 filas
             (cabecera / cuerpo) con el formulario ocupando 8 de 12
             columnas y la columna lateral (canales + servicios +
-            redes) las 4 restantes. Filas 100% fr, como la portada:
-            escalan proporcionalmente y rellenan exacto el alto de
-            la ventana. md = 12 cols por spans; móvil = columna
-            única con altura natural. */}
+            redes) las 4 restantes. Filas en auto con
+            content-center: cada fila mide lo que su contenido
+            necesita (nada se aprieta ni se recorta) y el aire
+            sobrante de la ventana queda fuera de la composición,
+            repartido arriba y abajo — nunca dentro de las cards.
+            md = 12 cols por spans; móvil = columna única con
+            altura natural. */}
         <div
           className="grid gap-4 h-auto lg:h-full lg:min-h-0 grid-cols-1
                      md:grid-cols-12
-                     lg:grid-rows-[minmax(0,0.6fr)_minmax(0,6.4fr)]
+                     lg:grid-rows-[auto_auto] lg:content-center
                      lg:[grid-template-areas:'head_head_head_head_head_head_head_head_head_head_head_head'_'form_form_form_form_form_form_form_form_side_side_side_side']"
         >
           {/* 1. CABECERA — tira compacta: disponibilidad, headline y contexto */}
@@ -65,7 +68,7 @@ const Contact = () => {
             {...rise(0)}
             className="md:col-span-12 lg:[grid-area:head] min-w-0"
           >
-            <MagicCard className="card-glass h-full px-4 py-2.5 lg:px-5 lg:py-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <MagicCard className="card-glass h-full px-4 py-3 lg:px-5 lg:py-4 flex flex-wrap items-center gap-x-4 gap-y-2">
               <span className="inline-flex shrink-0 items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-400/10 px-3 py-1 text-[13px] font-medium text-emerald-200">
                 <span className="relative flex size-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-60 motion-reduce:animate-none" />
@@ -100,9 +103,9 @@ const Contact = () => {
           />
 
           {/* 3. COLUMNA LATERAL — canales directos (arriba), en qué
-              puedo ayudar (centro, flexible: absorbe la altura
-              sobrante) y redes con CV (abajo) */}
-          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[minmax(0,1.25fr)_minmax(0,1.7fr)_minmax(0,1.3fr)]">
+              puedo ayudar (centro) y redes con CV (abajo), cada
+              card a su altura natural */}
+          <div className="flex min-h-0 min-w-0 flex-col gap-4 md:col-span-5 lg:[grid-area:side] lg:grid lg:grid-rows-[auto_auto_auto] lg:content-center">
             <ContactChannels
               rise={rise(2)}
               copied={copied}

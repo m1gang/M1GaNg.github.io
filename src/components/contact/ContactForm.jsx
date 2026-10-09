@@ -6,9 +6,12 @@ import { EMAIL, inputCls } from "../../constants/contact";
 
 // "La Carta" — el formulario, componente principal del tablero.
 // Sin scroll interno: ocupa toda la altura de su celda y el campo
-// de mensaje absorbe el espacio sobrante (flex-1). El sellado
-// lleva degradado rosa-rojo-naranja (cera) con highlight físico
-// y sombra con offset real; el esmeralda queda solo para lo
+// de mensaje absorbe el espacio sobrante (flex-1) con tope
+// max-h-56, para que la carta respire sin estirarse de más. Si la
+// columna lateral es más alta, el sobrante se centra alrededor del
+// bloque de mensaje (justify-center), nunca como huecos raros.
+// El sellado lleva degradado rosa-rojo-naranja (cera) con highlight
+// físico y sombra con offset real; el esmeralda queda solo para lo
 // semántico (badge de disponibilidad, estado enviado).
 export const ContactForm = ({
   rise,
@@ -124,8 +127,8 @@ export const ContactForm = ({
           </div>
         </div>
 
-        {/* El mensaje absorbe la altura sobrante de la carta */}
-        <div className="flex flex-col flex-1 min-h-0">
+        {/* El mensaje absorbe la altura sobrante de la carta, con tope */}
+        <div className="flex flex-col justify-center flex-1 min-h-0">
           <div className="mb-1.5 flex items-baseline justify-between gap-3">
             <label
               htmlFor="contact-message"
@@ -159,7 +162,7 @@ export const ContactForm = ({
             maxLength={messageMax}
             className={cn(
               inputCls,
-              "flex-1 min-h-[140px] px-4 py-2.5 resize-none",
+              "flex-1 min-h-[120px] max-h-56 px-4 py-2.5 resize-none",
             )}
           />
         </div>

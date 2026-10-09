@@ -2,11 +2,10 @@ import { motion } from "motion/react";
 import { MagicCard } from "../MagicCard";
 import { SERVICES } from "../../constants/contact";
 
-// En qué puedo ayudar — card central de la columna lateral. Su
-// fila fr queda dimensionada sobre su altura natural, así que el
-// contenido nunca se aprieta ni se recorta; si sobra altura, la
-// card la absorbe como padding equilibrado (justify-center) en
-// lugar de explosionar los huecos entre filas.
+// En qué puedo ayudar — card central de la columna lateral, a su
+// altura natural: el contenido nunca se aprieta ni se recorta; si
+// la columna estira, la card absorbe la altura como padding
+// equilibrado (justify-center).
 export const ContactServices = ({ rise }) => (
   <motion.section
     {...rise}

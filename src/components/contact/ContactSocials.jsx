@@ -1,8 +1,8 @@
 import { motion } from "motion/react";
-import { ArrowUpRight, FileDown, MapPin, Clock } from "lucide-react";
+import { ArrowUpRight, FileDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { MagicCard } from "../MagicCard";
-import { CV_URL, LOCATION_LABEL, SOCIALS } from "../../constants/contact";
+import { CV_URL, SOCIALS } from "../../constants/contact";
 
 // Gradientes de marca por red (brief del usuario): el color de
 // cada logo va con su marca. GitHub y X son marcas
@@ -14,17 +14,16 @@ const SOCIAL_THEME = {
   Instagram: "from-[#833AB4] via-[#E1306C] to-[#F77737] text-white",
 };
 
-// Redes y CV — tarjeta inferior de la columna lateral. Su fila fr
-// queda dimensionada sobre su altura natural: el contenido nunca
-// se aprieta; si sobra altura, la card la absorbe como padding
-// equilibrado (justify-center).
+// Redes y CV — tarjeta inferior de la columna lateral: solo los
+// pills con gradientes de marca. Sin pie de texto (a pedido del
+// usuario): así la card queda compacta y todo encaja sin apretar.
 export const ContactSocials = ({ rise }) => (
   <motion.section
     {...rise}
     aria-label="Redes sociales y currículum"
     className="flex min-w-0"
   >
-    <MagicCard className="card-glass h-full w-full px-4 py-4 lg:px-5 font-roboto flex flex-col justify-center gap-3.5">
+    <MagicCard className="card-glass h-full w-full p-4 lg:p-5 font-roboto flex flex-col justify-center gap-3">
       {/* Redes con gradientes de marca + CV */}
       <ul className="flex flex-wrap items-center gap-2">
         {SOCIALS.map(({ icon: Icon, label, href }) => (
@@ -65,20 +64,6 @@ export const ContactSocials = ({ rise }) => (
           </a>
         </li>
       </ul>
-
-      <div aria-hidden="true" className="h-px shrink-0 bg-white/10" />
-
-      {/* Ubicación y promesa de respuesta */}
-      <div className="flex flex-col gap-1.5 text-[13px] font-medium text-white/60">
-        <span className="flex items-center gap-1.5">
-          <MapPin aria-hidden="true" className="size-4 shrink-0" />
-          {LOCATION_LABEL}
-        </span>
-        <span className="flex items-center gap-1.5">
-          <Clock aria-hidden="true" className="size-4 shrink-0" />
-          Respuesta en menos de 24 h · Lun-Vie
-        </span>
-      </div>
     </MagicCard>
   </motion.section>
 );
