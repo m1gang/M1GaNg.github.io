@@ -167,7 +167,7 @@ export const ContactForm = ({
           <button
             type="submit"
             disabled={sending}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-emerald-300 via-emerald-400 to-emerald-600 px-5 h-12 lg:h-11 text-[15px] font-bold text-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_12px_32px_-10px_rgba(16,185,129,0.55)] transition-all duration-200 hover:-translate-y-[1px] hover:brightness-105 active:translate-y-0 active:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_6px_18px_-8px_rgba(16,185,129,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
+            className="group inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-gradient-to-br from-emerald-300 via-emerald-400 to-emerald-600 px-4 h-12 lg:h-12 text-[15px] font-bold tracking-tight text-zinc-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),inset_0_-1px_0_rgba(6,78,59,0.18),0_14px_34px_-10px_rgba(16,185,129,0.6)] transition-all duration-200 hover:-translate-y-[2px] hover:brightness-105 active:translate-y-0 active:scale-[0.98] active:shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(6,78,59,0.18),0_6px_16px_-8px_rgba(16,185,129,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 disabled:hover:translate-y-0"
           >
             {sending ? (
               <>
@@ -184,7 +184,12 @@ export const ContactForm = ({
               </>
             ) : (
               <>
-                <Send aria-hidden="true" className="w-5 h-5" />
+                <span
+                  aria-hidden="true"
+                  className="grid size-7 shrink-0 place-items-center rounded-lg bg-zinc-950/12 transition-transform duration-200 group-hover:translate-x-0.5"
+                >
+                  <Send className="size-[15px]" />
+                </span>
                 Sellar y enviar
               </>
             )}
