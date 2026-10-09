@@ -1,5 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy a GitHub Pages
 
+# Despliegue automatico: en cada push a main se construye el sitio y se
+# publica en Pages. Con esto el build siempre se hace con las variables
+# de entorno correctas y ya no hace falta generar el dist a mano.
 on:
   push:
     branches: [main]
@@ -7,36 +10,51 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
-  build:
+  build-y-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
         with:
-          cache_dependency_path: pnpm-lock.yaml
+          version: 11
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
 
-      - name: Install dependencies
+      - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
 
-      - name: Build
+      # La clave de Web3Forms se lee del Secret del repo. Si no existe,
+      # se usa el valor de .env.example (la clave es publica por diseño,
+      # ver FAQ de Web3Forms), para que el build nunca falle.
+      - name: Construir
+        env:
+          VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
         run: pnpm build
 
-      - name: Deploy to GitHub Pages
+      - name: Verificar que la clave quedo en el bundle
+        run: |
+          KEY="${VITE_WEB3FORMS_ACCESS_KEY:-$(grep -oP '(?<=^VITE_WEB3FORMS_ACCESS_KEY=).*' .env.example | tr -d '\r')}"
+          if grep -rqF "$KEY" dist/assets/*.js; then
+            echo "OK: la clave esta en el bundle"
+          else
+            echo "::error::La clave de Web3Forms no quedo en el bundle"
+            exit 1
+          fi
+
+      - name: Publicar en la rama gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          commit_message: "deploy: ${{ github.sha }}"

@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import svgr from "vite-plugin-svgr";
@@ -7,6 +7,22 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Carga el .env local y, si la variable no está, toma el valor de
+// .env.example como reserva. Así un build sin .env (CI, otra máquina)
+// nunca queda con la clave vacía: el formulario seguiría funcionando
+// en producción. La clave de Web3Forms es pública por diseño (FAQ).
+const mode = process.env.NODE_ENV || "production";
+const env = loadEnv(mode, __dirname, "");
+if (!env.VITE_WEB3FORMS_ACCESS_KEY) {
+  const example = path.join(__dirname, ".env.example");
+  if (fs.existsSync(example)) {
+    const match = fs
+      .readFileSync(example, "utf8")
+      .match(/^VITE_WEB3FORMS_ACCESS_KEY=(.*)$/m);
+    if (match) process.env.VITE_WEB3FORMS_ACCESS_KEY = match[1].trim();
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
