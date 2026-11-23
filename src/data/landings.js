@@ -99,5 +99,29 @@ export const LANDINGS = [
       ).href,
     ],
   },
+  {
+    id: "pimentel",
+    title: "Landing Page Ayuda Social Pimentel",
+    description:
+      "Landing page bilingüe (ES/EN) para la Asociación de Ayuda Social Pimentel, ONG peruana de acción humanitaria: misión, valores e impacto en cifras, seis programas sociales, galería de videos y vías de donación, voluntariado y alianzas enlazadas directo por WhatsApp.",
+    iconSrc: new URL(
+      "../assets/img/icon-projects/asosciacionpimentel.svg",
+      import.meta.url,
+    ).href,
+    deployUrl: "https://ayudasocialpimentel.org/",
+    deployLabel: "Sitio en producción",
+    repoUrl: null,
+    techs: [
+      { name: "Astro", Icon: TECH_ICONS.Astro },
+      { name: "Tailwind CSS", Icon: TECH_ICONS["Tailwind CSS"] },
+      { name: "Cloudflare", Icon: TECH_ICONS.Cloudflare },
+    ],
+    images: [
+      new URL(
+        "../assets/img/projects/landing/ayudasocialpimentel.org_.webp",
+        import.meta.url,
+      ).href,
+    ],
+  },
 ];
 
