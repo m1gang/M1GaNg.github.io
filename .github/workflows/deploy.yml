@@ -7,6 +7,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Refresco diario: el calendario de contribuciones cambia 1 vez al día.
+    # (minuto 17 para esquivar la congestión de GitHub a las :00)
+    - cron: "17 6 * * *"
 
 permissions:
   contents: write
@@ -30,6 +34,16 @@ jobs:
 
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
+
+      # Calendario de contribuciones: genera public/contributions.json con la
+      # API GraphQL (incluye contribuciones privadas, solo conteos anonimos)
+      # usando secrets.CONTRIBUTIONS_TOKEN. El token jamas llega al bundle.
+      # Si falta el secret o falla la consulta, el deploy continua igual y el
+      # frontend cae al endpoint publico de jogruber.
+      - name: Generar contributions.json
+        env:
+          CONTRIBUTIONS_TOKEN: ${{ secrets.CONTRIBUTIONS_TOKEN }}
+        run: node scripts/fetch-contributions.mjs
 
       # La clave de Web3Forms se lee del Secret del repo. Si no existe,
       # se usa el valor de .env.example (la clave es publica por diseño,

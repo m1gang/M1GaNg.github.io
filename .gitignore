@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .env
 
+# Generado en CI por scripts/fetch-contributions.mjs (contribuciones)
+public/contributions.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
